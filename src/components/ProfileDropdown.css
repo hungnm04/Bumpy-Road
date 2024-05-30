@@ -1,0 +1,42 @@
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .profile-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 24px; /* Increase icon size for better visibility */
+    color: #333; /* Set a color for the icon */
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 50px; /* Adjusted for better alignment */
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    min-width: 150px; /* Ensure the dropdown has a minimum width */
+    z-index: 1000; /* Ensure the dropdown is above other elements */
+  }
+  
+  .dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .dropdown-menu li {
+    padding: 10px 20px; /* More padding for better spacing */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .dropdown-menu li:hover {
+    background-color: #f0f0f0;
+  }
+  

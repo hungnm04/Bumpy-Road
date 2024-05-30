@@ -1,0 +1,128 @@
+/* Container styles */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Login box styles */
+.login-box {
+  width: 400px; /* Adjust width to match Postman login box */
+  background-color: #f9f9f9; /* Set background color */
+  border-radius: 5px;
+  padding: 30px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styles */
+.login-header {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 24px; /* Increase font size for header */
+}
+
+/* Input field styles */
+.input-group input {
+  width: 100%;
+  padding: 15px; /* Increase padding for input fields */
+  margin-bottom: 20px; /* Increase margin-bottom for input fields */
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Stay signed in checkbox styles */
+.stay-signed-in {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.stay-signed-in input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.secondary-button {
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.3s;
+  margin-left: auto; /* Push the button to the far right */
+}
+
+/* Submit button styles */
+.submit-button {
+  width: calc(100% - 30px); /* Adjust width to be smaller and have padding */
+  padding: 12px; /* Decrease padding for smaller button */
+  margin-bottom: 20px; /* Add margin to create space from the next button */
+  background-color: #f36; /* Set background color for button */
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px; /* Increase font size for button */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #ff4d19; /* Change background color on hover */
+}
+
+/* Forgot password link styles */
+.secondary-button {
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  font-size: 14px; /* Decrease font size for forgot password link */
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.secondary-button:hover {
+  color: #ff6c37; /* Change color on hover */
+}
+
+/* Google button styles */
+.google-button {
+  width: calc(100% - 30px); /* Adjust width to be smaller and have padding */
+  padding: 12px; /* Decrease padding for smaller button */
+  margin-bottom: 20px; /* Add margin to create space from the next button */
+  background-color: #db4437; /* Set background color for Google button */
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px; /* Increase font size for button */
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the content horizontally */
+  margin: auto;
+}
+
+.google-button:hover {
+  background-color: #3b79e0; /* Change background color on hover */
+}
+
+/* Google icon styles */
+.google-icon {
+  margin-right: 10px;
+}
+
+.additional-options {
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 850px) {
+  .stay-signed-in {
+    display: none; /* Hide the "Stay signed in" section */
+  }
+}

@@ -1,0 +1,147 @@
+/* NavbarStyles.css */
+
+/* Style your components */
+.NavbarItems {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  height: 80px;
+  width: 95%;
+  border-radius: 13px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 9999;
+}
+
+.nav-menu {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  grid-gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.nav-links {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 0.7rem 1rem; /* Adjust padding here */
+  white-space: nowrap;
+}
+
+.nav-links:hover {
+  background-color: #01959a;
+  color: #fff;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-links-mobile {
+  display: none;
+}
+
+.auth-button{
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+  border-radius: 0.3rem;
+  border: none;
+  background-color: #000; /* Change button color */
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.auth-button:hover {
+  background-color: #ccc; /* Change hover color */
+}
+
+.menu-icons {
+  display: none; /* Initially hidden */
+}
+
+@media screen and (max-width: 850px) {
+  /* Other styles for smaller screens */
+  .NavbarItems {
+    z-index: 99;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: white;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    opacity: 0;
+    align-items: stretch;
+    padding: 80px 0 30px 0;
+    margin: 0;
+    transition: 0.3s ease-in-out;
+    border-radius: 13px;
+  }
+
+  .nav-menu.active {
+    left: 0;
+    opacity: 1;
+    z-index: -1;
+    transition: 0.3s ease-in-out;
+  }
+
+  .nav-links {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 2rem 0; /* Original padding */
+    width: 100%;
+    display: block; /* Ensure the link takes up the full width */
+  }
+
+  .nav-links:hover {
+    background-color: #01959a;
+    transition: 0.2s ease-in-out;
+  }
+
+  .nav-links-mobile {
+    display: block;
+    text-align: center;
+    padding: 1.5rem;
+    margin: auto;
+    border-radius: 4px;
+    width: 70%;
+    background-color: #01959a;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    white-space: nowrap;
+    letter-spacing: 2px;
+  }
+
+  .auth-button {
+    display: none;
+  }
+
+  .menu-icons {
+    display: block !important;
+  }
+
+  .menu-icons i {
+    font-size: 1.9rem;
+    cursor: pointer;
+    color: #000;
+  }
+}
