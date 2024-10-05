@@ -1,6 +1,6 @@
-# Applet Project
+# Bumpy Road Project
 
-Welcome to the Applet Project! This project is built using React.js, a JavaScript library for building user-friendly interfaces. It allows you to create reusable UI components and is commonly used for building single-page applications.
+Welcome to the Bumpy Road Project! This project is built using React.js, a JavaScript library for building user-friendly interfaces. It allows you to create reusable UI components and is commonly used for building single-page applications.
 
 ## Setup
 
@@ -20,13 +20,8 @@ To get started with the project, follow these steps:
 
    ```
    npm run dev
+
+   nodemon server.js
    ```
 
 This will start the development server and you can access the app in your browser at the specified URL.
-
-Feel free to explore the code and make any necessary modifications to suit your needs. Happy coding!
-Without wasting your time, let's see what react js actually is...
-
-- React is a JavaScript library for building user-friendly interfaces.
-- It is Used to build single-page applications.
-- Also, it allows us to create reusable UI components.

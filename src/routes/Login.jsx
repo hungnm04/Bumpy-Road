@@ -5,10 +5,10 @@ import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [staySignedIn, setStaySignedIn] = useState(false);
-  const [errors, setErrors] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState({ username: "", password: "" });
   const [backendError, setBackendError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -16,9 +16,9 @@ const Login = () => {
     e.preventDefault();
 
     let isValid = true;
-    const newErrors = { email: "", password: "" };
-    if (!email) {
-      newErrors.email = "Please enter your email or username";
+    const newErrors = { username: "", password: "" };
+    if (!username) {
+      newErrors.username = "Please enter your email or username";
       isValid = false;
     }
     if (!password) {
@@ -38,11 +38,11 @@ const Login = () => {
       const response = await fetch("http://localhost:5000/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, staySignedIn }),
+        body: JSON.stringify({ username, password, staySignedIn }),
       });
 
       const result = await response.json();
-      console.log("Login response:", result)
+      console.log("Login response:", result);
   
       if (!response.ok) {
         setBackendError(result.message || "An error occurred. Please try again.");
@@ -53,7 +53,7 @@ const Login = () => {
         if (result.role === 'admin') {
           navigate("/admindashboard");
         } else if (result.role === 'guest') {
-          navigate("/");
+          navigate("/authenticated-home");
         } else {
           setBackendError("Unknown user role. Please contact support.");
         }
@@ -67,7 +67,7 @@ const Login = () => {
   };
 
   const handleGoogleSignIn = () => {
-    
+    // Handle Google Sign-In
   };
 
   return (
@@ -79,12 +79,12 @@ const Login = () => {
           <div className="input-group">
             <input
               type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               placeholder="Email or Username"
               required
             />
-            {errors.email && <span className="error">{errors.email}</span>}
+            {errors.username && <span className="error">{errors.username}</span>}
           </div>
           <div className="input-group">
             <input

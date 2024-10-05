@@ -5,8 +5,8 @@ const Footer = () => {
     <div className="footer">
       <div className="top">
         <div>
-          <h1>Bumpy</h1>
-          <p>Your Choice</p>
+          <h1>Bumpy Road</h1>
+          <p>Your Choice Our Mission</p>
         </div>
         <div>
           <a href="/">

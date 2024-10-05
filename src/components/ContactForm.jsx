@@ -16,24 +16,23 @@ const ContactForm = () => {
     let isValid = true;
     const newErrors = { name: "", email: "", subject: "", message: "" };
 
-    // Validate form fields
     if (!name) {
-      newErrors.name = "Please enter your name"; // Set error message for name field
+      newErrors.name = "Please enter your name"; 
       isValid = false;
     }
     if (!email) {
-      newErrors.email = "Please enter your email"; // Set error message for email field
+      newErrors.email = "Please enter your email"; 
       isValid = false;
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = "Please enter a valid email address"; // Set error message for invalid email format
+      newErrors.email = "Please enter a valid email address"; 
       isValid = false;
     }
     if (!subject) {
-      newErrors.subject = "Please enter a subject"; // Set error message for subject field
+      newErrors.subject = "Please enter a subject"; 
       isValid = false;
     }
     if (!message) {
-      newErrors.message = "Please enter a message"; // Set error message for message field
+      newErrors.message = "Please enter a message"; 
       isValid = false;
     }
 
@@ -57,7 +56,6 @@ const ContactForm = () => {
         setBackendError(result.message || "An error occurred. Please try again.");
       } else {
         alert("Message sent successfully!");
-        // Reset form fields after successful submission
         setName("");
         setEmail("");
         setSubject("");

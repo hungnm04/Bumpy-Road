@@ -9,6 +9,9 @@ import Login from "./routes/Login";
 import CreateAccount from "./routes/CreateAccount";
 import AdminDashboard from "./routes/AdminDashboard";
 import AuthenticatedHome from "./routes/AuthenticatedHome";
+import Profile from "./routes/Profile";
+import PageNotFound from "./components/PageNotFound";
+import MountainDetails from "./components/MountainDetails";
 
 export default function App() { 
   return (
@@ -22,6 +25,9 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/admindashboard" element={<AdminDashboard />} />
         <Route path="/authenticated-home" element={<AuthenticatedHome />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="*" element={<PageNotFound />} />
+        <Route path="/places/:id" element={<MountainDetails />} />
         <Route path="/create-account" element={<CreateAccount />} />{" "}
       </Routes>
     </div>
