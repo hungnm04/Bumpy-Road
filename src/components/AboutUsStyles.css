@@ -1,19 +1,50 @@
-/* Style your components */
+/* Container for the about page */
 .about-container {
   margin: 4rem 6rem;
   text-align: start;
+  color: #333;
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
 }
 
-.about-container h1 {
-  padding-bottom: 1rem;
+/* Section styles */
+.about-section {
+  margin-bottom: 3rem;
 }
 
-.about-container p {
+/* Header styles */
+.about-section h1 {
+  font-size: 2rem;
+  color: #00796b;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #00796b;
+  padding-bottom: 0.5rem;
+  transition: color 0.3s;
+}
+
+/* Text styles */
+.about-section p {
+  font-size: 1.1rem;
+  color: #555;
   padding-bottom: 2rem;
 }
 
+/* Hover effect for headings */
+.about-section h1:hover {
+  color: #004d40;
+}
+
+/* Responsive styles */
 @media screen and (max-width: 850px) {
   .about-container {
     margin: 4rem 2rem;
+  }
+
+  .about-section h1 {
+    font-size: 1.5rem;
+  }
+
+  .about-section p {
+    font-size: 1rem;
   }
 }

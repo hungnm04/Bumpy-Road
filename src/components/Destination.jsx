@@ -8,23 +8,24 @@ import "./DestinationStyles.css";
 const Destination = () => {
   return (
     <div className="destination">
-      <h1>Popular Destinations</h1>
-      <p>
+      <h1 className="destination-title">Discover Popular Destinations</h1>
+      <p className="destination-quote">
         "Mountains are the cathedrals where I practice my religion." - Anatoli
         Boukreev
       </p>
+
       <DestinationData
-        className="first-des-reverse"
+        className="destination-block reverse"
         heading="Adventure Awaits"
-        text="Embark on a journey to the heart of adventure in mountainous landscapes. Whether you're scaling sheer rock faces, trekking through dense forests, or skiing down powdery slopes, there's no shortage of excitement to be found among the peaks. Traverse winding trails that lead to hidden waterfalls, breathe in the crisp mountain air, and lose yourself in the awe-inspiring vistas that stretch as far as the eye can see."
+        text="Venture into the wild, where the allure of towering peaks invites thrill-seekers and nature lovers alike. Whether you're ascending craggy cliffs or hiking serene paths, the mountains promise untamed beauty and a sense of freedom that can't be found elsewhere."
         img1={Mountain1}
         img2={Mountain2}
       />
 
       <DestinationData
-        className="first-des"
+        className="destination-block"
         heading="Serenity and Solitude"
-        text=" Amidst the hustle and bustle of modern life, mountain retreats offer a sanctuary of serenity and solitude. Retreat to cozy mountain lodges nestled among pine forests, where the only sounds you'll hear are the rustling of leaves and the gentle melody of mountain streams. Disconnect from the chaos of the world below and reconnect with yourself in the tranquility of nature's embrace."
+        text="Step away from the clamor of daily life and into the peace that only mountains can offer. Surrounded by towering trees and the gentle hum of nature, you'll find solace in the stillness of these high-altitude retreats, a place to reflect and reconnect."
         img1={Mountain3}
         img2={Mountain4}
       />

@@ -4,7 +4,9 @@ const submitFaqForm = async (req, res) => {
   const { name, email, subject, message } = req.body;
 
   if (!name || !email || !subject || !message) {
-    return res.status(400).json({ message: "Name, email, subject, and message are required" });
+    return res
+      .status(400)
+      .json({ message: "Name, email, subject, and message are required" });
   }
 
   try {
@@ -17,7 +19,9 @@ const submitFaqForm = async (req, res) => {
     }
   } catch (error) {
     console.error("Error during FAQ submission:", error);
-    res.status(500).json({ message: "An error occurred during FAQ submission" });
+    res
+      .status(500)
+      .json({ message: "An error occurred during FAQ submission" });
   }
 };
 

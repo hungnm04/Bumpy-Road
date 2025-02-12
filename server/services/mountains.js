@@ -1,67 +1,67 @@
-const Client = require("pg").Client;
+const pool = require("../config/db");
 require("dotenv").config();
+
 async function getMountainsByName(name) {
-    const client = new Client({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
-      port: process.env.DB_PORT,
-    });
-  
-    try {
-      await client.connect();
-  
-      let query = 'SELECT * FROM mountains WHERE 1=1';
-      const queryParams = [];
-  
-      if (name) {
-        queryParams.push(`%${name}%`);
-        query += ' AND name LIKE $1'; 
-      }
-  
-      const result = await client.query(query, queryParams);
-  
-      return result.rows;
-    } catch (error) {
-      console.error("Error getting mountains:", error);
-      throw error;
-    } finally {
-      await client.end();
-    }
+  let query = `
+        SELECT 
+            id, 
+            name, 
+            location,
+            photo_url
+        FROM mountains 
+        WHERE 1=1
+    `;
+  const queryParams = [];
+
+  if (name) {
+    queryParams.push(`%${name}%`);
+    query += " AND name LIKE $1";
   }
 
-    async function getPlaceById(id) {
-      const client = new Client({
-        host: process.env.DB_HOST,
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWORD,
-        database: process.env.DB_NAME,
-        port: process.env.DB_PORT,
-      });
-    
-      try {
-        await client.connect();
-    
-        const query = 'SELECT * FROM mountains WHERE id = $1'; 
-        const queryParams = [id]; 
-    
-        const result = await client.query(query, queryParams);
-    
-        if (result.rows.length === 0) {
-          return null; 
-        }
-    
-        return result.rows[0]; 
-      } catch (error) {
-        console.error("Error getting place by ID:", error);
-        throw error;
-      } finally {
-        await client.end();
-      }
+  try {
+    const result = await pool.query(query, queryParams);
+    return result.rows;
+  } catch (error) {
+    console.error("Error getting mountains:", error);
+    throw error;
+  }
+}
+
+async function getPlaceById(id) {
+  const query = "SELECT * FROM mountains WHERE id = $1";
+  const queryParams = [id];
+
+  try {
+    const result = await pool.query(query, queryParams);
+    if (result.rows.length === 0) {
+      return null;
     }
-  
-  module.exports = {
-    getMountainsByName, getPlaceById
-  };
-  
+    return result.rows[0];
+  } catch (error) {
+    console.error("Error getting place by ID:", error);
+    throw error;
+  }
+}
+
+async function getFeaturedPlacesFromDB() {
+  const query = `
+        SELECT *
+        FROM mountains
+        ORDER BY RANDOM()
+        LIMIT 3
+    `;
+
+  try {
+    const result = await pool.query(query);
+    return result.rows;
+  } catch (error) {
+    console.error("Error fetching featured places from DB:", error);
+    throw error;
+  }
+}
+
+module.exports = {
+  getMountainsByName,
+  getPlaceById,
+  getFeaturedPlacesFromDB,
+};

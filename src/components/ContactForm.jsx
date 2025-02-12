@@ -1,42 +1,46 @@
 import React, { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import "./ContactFormStyles.css";
 
 const ContactForm = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
-  const [errors, setErrors] = useState({ name: "", email: "", subject: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState({});
   const [backendError, setBackendError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+    setErrors({ ...errors, [e.target.name]: "" }); // Clear error on change
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    const { name, email, subject, message } = formData;
+
+    if (!name) newErrors.name = "Please enter your name.";
+    if (!email) newErrors.email = "Please enter your email.";
+    else if (!/\S+@\S+\.\S+/.test(email))
+      newErrors.email = "Please enter a valid email address.";
+    if (!subject) newErrors.subject = "Please enter a subject.";
+    if (!message) newErrors.message = "Please enter a message.";
+
+    return newErrors;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let isValid = true;
-    const newErrors = { name: "", email: "", subject: "", message: "" };
-
-    if (!name) {
-      newErrors.name = "Please enter your name"; 
-      isValid = false;
-    }
-    if (!email) {
-      newErrors.email = "Please enter your email"; 
-      isValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = "Please enter a valid email address"; 
-      isValid = false;
-    }
-    if (!subject) {
-      newErrors.subject = "Please enter a subject"; 
-      isValid = false;
-    }
-    if (!message) {
-      newErrors.message = "Please enter a message"; 
-      isValid = false;
-    }
-
-    if (!isValid) {
+    const newErrors = validateForm();
+    if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
@@ -48,23 +52,24 @@ const ContactForm = () => {
       const response = await fetch("http://localhost:5000/faq", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, subject, message }),
+        body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
         const result = await response.json();
-        setBackendError(result.message || "An error occurred. Please try again.");
+        setBackendError(
+          result.message || "An error occurred. Please try again."
+        );
+        toast.error(result.message || "An error occurred. Please try again.");
       } else {
-        alert("Message sent successfully!");
-        setName("");
-        setEmail("");
-        setSubject("");
-        setMessage("");
-        setErrors({ name: "", email: "", subject: "", message: "" });
+        toast.success("Message sent successfully!");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setErrors({});
       }
     } catch (error) {
       console.error("Error during FAQ submission:", error);
       setBackendError("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -72,45 +77,50 @@ const ContactForm = () => {
 
   return (
     <div className="form-container">
+      <Toaster position="top-center" reverseOrder={false} />
       <h1>Send a message to us!</h1>
-      {backendError && <p className="error">{backendError}</p>}
+      {backendError && <p className="error backend-error">{backendError}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
+          {errors.name && <p className="error">{errors.name}</p>}
           <input
-            placeholder={"Name"} 
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            name="name"
+            placeholder="Name"
+            value={formData.name}
+            onChange={handleChange}
             className={errors.name ? "error-input" : ""}
           />
-          {errors.name && <p className="error">{errors.name}</p>}
         </div>
         <div className="form-group">
+          {errors.email && <p className="error">{errors.email}</p>}
           <input
-            placeholder={"Email"} 
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
             className={errors.email ? "error-input" : ""}
           />
-          {errors.email && <p className="error">{errors.email}</p>}
         </div>
         <div className="form-group">
+          {errors.subject && <p className="error">{errors.subject}</p>}
           <input
-            placeholder={"Subject"} 
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
+            name="subject"
+            placeholder="Subject"
+            value={formData.subject}
+            onChange={handleChange}
             className={errors.subject ? "error-input" : ""}
           />
-          {errors.subject && <p className="error">{errors.subject}</p>}
         </div>
         <div className="form-group">
+          {errors.message && <p className="error">{errors.message}</p>}
           <textarea
-            placeholder={"Message"} 
+            name="message"
+            placeholder="Message"
             rows="4"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
+            value={formData.message}
+            onChange={handleChange}
             className={errors.message ? "error-input" : ""}
           ></textarea>
-          {errors.message && <p className="error">{errors.message}</p>}
         </div>
         <button type="submit" disabled={isLoading}>
           {isLoading ? "Sending..." : "Send message"}

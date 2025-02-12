@@ -2,51 +2,98 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const { login, createAccount, getProfile, updateProfile } = require("./server/controllers/userControllers");
-const { submitFaqForm } = require("./server/controllers/faqController");
-const { getPlaces, getMountainsById } = require("./server/controllers/mountainControllers");
+const cookieParser = require("cookie-parser");
+const path = require("path");
+const http = require("http");
+
+// Import controllers
+const userController = require("./server/controllers/userControllers");
+const faqController = require("./server/controllers/faqController");
+const mountainController = require("./server/controllers/mountainControllers");
+const reviewController = require("./server/controllers/reviewControllers");
+const adminRoutes = require("./server/routes/adminRoutes");
+
+// Import middlewares
+const { authenticateJWT } = require("./server/middlewares/auth");
+const { handleFileUpload } = require("./server/middlewares/uploadMiddleware");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const server = http.createServer(app);
 
+// Initialize Socket.IO before routes
+require("./server/config/socket").init(server);
+
+// Middleware setup
 app.use(bodyParser.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+app.use(cookieParser());
 
-// Login endpoint
-app.post("/login", login);
+// Serve static files BEFORE routes
+app.use("/storage", express.static(path.join(__dirname, "storage")));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use(
+  "/src/assets/mountain_photos",
+  express.static(path.join(__dirname, "src/assets/mountain_photos"))
+);
 
-// Profile endpoint
-app.get("/profile", getProfile);
+// Auth routes
+app.post("/login", userController.login);
+app.post("/create-account", userController.createAccount);
+app.get("/auth-status", userController.authStatus);
+app.post("/logout", authenticateJWT, userController.logout);
+app.post("/refresh-token", userController.refreshToken);
 
-app.put("/profile", updateProfile);
+// Profile routes
+app.get("/profile", authenticateJWT, userController.getProfile);
+app.put("/profile", authenticateJWT, userController.updateProfile);
+app.post(
+  "/upload-avatar",
+  authenticateJWT,
+  handleFileUpload,
+  userController.uploadAvatar
+);
 
-// Create-account endpoint
-app.post("/create-account", createAccount);
+// Mountain routes
+app.get("/places", mountainController.getPlaces);
+app.get("/places/:id", mountainController.getMountainsById);
+app.get("/featured-places", mountainController.getFeaturedPlaces);
 
-// Faq endpoint
-app.post("/faq", submitFaqForm);
+// Review routes
+app.get("/mountains/:mountainId/reviews", reviewController.fetchReviews);
+app.post(
+  "/mountains/:mountainId/reviews",
+  authenticateJWT,
+  reviewController.submitReview
+);
 
-// Mountain endpoints
-app.get("/places/", getPlaces);
-app.get("/places/:id", getMountainsById); 
+// Admin routes
+app.use("/admin", authenticateJWT, adminRoutes);
 
-// Define your main route
-app.get("/", (req, res) => {
-  res.send("Welcome to the backend server");
+// FAQ route
+app.post("/faq", faqController.submitFaqForm);
+
+// Add notification routes
+app.use(
+  "/notifications",
+  authenticateJWT,
+  require("./server/routes/notificationRoutes")
+);
+
+// Error handling
+app.use((err, req, res, _next) => {
+  res.status(500).json({
+    success: false,
+    message: "Internal Server Error",
+  });
 });
 
-// Handle 404 - Page not found
-app.use((req, res, next) => {
-  res.status(404).send('404 Not Found - The page you are looking for does not exist.');
-});
-
-// Error handling middleware for internal server errors
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('500 Internal Server Error - Something went wrong on the server!');
-});
-
-// Start the server
-app.listen(PORT, () => {
+// Start server using the http server instance
+server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

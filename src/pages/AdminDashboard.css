@@ -1,0 +1,628 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Admin Dashboard Layout */
+.admin-dashboard-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.admin-sidebar {
+  width: 250px;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.admin-logo-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.admin-logo {
+  width: 48px;
+  height: 48px;
+  margin-right: 10px;
+}
+
+.admin-brand-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1a73e8;
+}
+
+.admin-nav-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-nav-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #666;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.admin-nav-item:hover,
+.admin-nav-item.active {
+  background-color: #f0f2f5;
+  color: #1a73e8;
+}
+
+.admin-nav-icon {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+/* Main Content */
+.admin-main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Update Search Bar Styles */
+.admin-search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  transition: all 0.3s ease;
+}
+
+.admin-search-bar:focus-within {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 350px;
+}
+
+.admin-search-input {
+  border: none;
+  outline: none;
+  margin-left: 8px;
+  width: 100%;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.admin-search-input:disabled {
+  background-color: transparent;
+  cursor: not-allowed;
+  color: #999;
+}
+
+.admin-search-clear {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0 4px;
+  transition: color 0.3s ease;
+}
+
+.admin-search-clear:hover {
+  color: #333;
+}
+
+/* Add highlight effect for search matches */
+.search-highlight {
+  background-color: rgba(99, 102, 241, 0.1);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.admin-user-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+
+.admin-user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.admin-logout-button {
+  background-color: #dc3545;
+  color: #ffffff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.admin-logout-button:hover {
+  background-color: #c82333;
+}
+
+/* Stats Grid */
+.admin-dashboard-grid {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.admin-stats-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  flex: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.admin-stats-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.admin-stats-icon {
+  font-size: 24px;
+  color: #1a73e8;
+}
+
+.admin-stats-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Locations Table */
+.admin-locations-table {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.admin-add-location-btn,
+.admin-add-user-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  gap: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-add-location-btn {
+  background-color: #00aa6c;
+  color: white;
+}
+
+.admin-add-location-btn:hover {
+  background-color: #008f5d;
+  box-shadow: 0 4px 8px rgba(0, 170, 108, 0.2);
+  transform: translateY(-1px);
+}
+
+.admin-add-user-btn {
+  background-color: #1a73e8;
+  color: white;
+}
+
+.admin-add-user-btn:hover {
+  background-color: #1557b0;
+  box-shadow: 0 4px 8px rgba(26, 115, 232, 0.2);
+  transform: translateY(-1px);
+}
+
+.admin-add-location-btn svg,
+.admin-add-user-btn svg {
+  font-size: 18px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+.admin-location-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-location-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.admin-location-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-location-name {
+  font-weight: bold;
+}
+
+.admin-location-country {
+  color: #888;
+}
+
+.admin-difficulty-badge {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.admin-difficulty-expert {
+  background-color: #e63946;
+}
+
+.admin-status-badge {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.admin-status-active {
+  background-color: #28a745;
+}
+
+/* Updated Action Buttons Styles */
+.admin-action-buttons {
+  display: flex;
+  gap: 12px; /* Increased gap between buttons */
+  align-items: center;
+}
+
+.admin-edit-btn,
+.admin-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: capitalize;
+  gap: 4px;
+}
+
+.admin-edit-btn {
+  background-color: #ffffff;
+  color: #00aa6c;
+  border: 1px solid #00aa6c;
+}
+
+.admin-edit-btn:hover {
+  background-color: #e6f5ef;
+  box-shadow: 0 2px 4px rgba(0, 170, 108, 0.1);
+}
+
+.admin-delete-btn {
+  background-color: #ffffff;
+  color: #ff5d5d;
+  border: 1px solid #ff5d5d;
+}
+
+.admin-delete-btn:hover {
+  background-color: #fff1f1;
+  box-shadow: 0 2px 4px rgba(255, 93, 93, 0.1);
+}
+
+/* Add action button icons */
+.admin-edit-btn svg,
+.admin-delete-btn svg {
+  font-size: 16px;
+}
+
+/* Table cell padding adjustment for better button alignment */
+.admin-table td:last-child {
+  padding: 12px 20px; /* Increased padding */
+  white-space: nowrap;
+  min-width: 180px; /* Ensure minimum width for buttons container */
+}
+
+/* Override previous button styles */
+.admin-edit-btn,
+.admin-delete-btn {
+  margin: 0;
+  min-width: 80px;
+}
+
+/* Add hover effect to table rows */
+.admin-table tr:hover td {
+  background-color: #f8f9fa;
+}
+
+/* Smooth transition for interactive elements */
+.admin-table tr,
+.admin-table td,
+.admin-edit-btn,
+.admin-delete-btn {
+  transition: all 0.2s ease;
+}
+
+/* Users Table */
+.admin-users-table .admin-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Remove old button styles */
+/* Delete these old styles:
+.admin-add-location-btn {
+  background-color: #1a73e8;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.admin-add-location-btn:hover {
+  background-color: #0c5ec2;
+}
+
+.admin-add-user-btn {
+  padding: 0.5rem 1rem;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-add-user-btn:hover {
+  background-color: #218838;
+}
+*/
+
+/* Modern Button Styles */
+.admin-add-location-btn,
+.admin-add-user-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  gap: 6px;
+  background-color: #6366f1; /* Indigo primary */
+  color: white;
+  box-shadow: 0 2px 4px rgba(99, 102, 241, 0.1);
+}
+
+.admin-add-location-btn:hover,
+.admin-add-user-btn:hover {
+  background-color: #4f46e5; /* Darker indigo */
+  box-shadow: 0 4px 8px rgba(99, 102, 241, 0.2);
+  transform: translateY(-1px);
+}
+
+.admin-edit-btn,
+.admin-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: capitalize;
+  gap: 4px;
+}
+
+.admin-edit-btn {
+  background-color: #ffffff;
+  color: #6366f1; /* Indigo */
+  border: 1px solid #6366f1;
+}
+
+.admin-edit-btn:hover {
+  background-color: #eef2ff; /* Light indigo */
+  border-color: #4f46e5;
+  box-shadow: 0 2px 4px rgba(99, 102, 241, 0.1);
+}
+
+.admin-delete-btn {
+  background-color: #ffffff;
+  color: #f43f5e; /* Modern rose */
+  border: 1px solid #f43f5e;
+}
+
+.admin-delete-btn:hover {
+  background-color: #fff1f2; /* Light rose */
+  border-color: #e11d48;
+  box-shadow: 0 2px 4px rgba(244, 63, 94, 0.1);
+}
+
+/* Update logout button to match the theme */
+.admin-logout-button {
+  background-color: #f43f5e; /* Modern rose */
+  color: #ffffff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.admin-logout-button:hover {
+  background-color: #e11d48; /* Darker rose */
+  box-shadow: 0 2px 4px rgba(244, 63, 94, 0.2);
+}
+
+/* Remove old/conflicting button styles */
+/* Delete these duplicate styles:
+.admin-edit-btn, .admin-delete-btn {
+  padding: 0.3rem 0.6rem;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-edit-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.admin-edit-btn:hover {
+  background-color: #0069d9;
+}
+
+.admin-delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.admin-delete-btn:hover {
+  background-color: #c82333;
+}
+*/
+
+/* Table Styles */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.admin-table th {
+  background-color: #f2f2f2;
+}
+
+.admin-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.admin-table tr:hover {
+  background-color: #ddd;
+}
+
+/* Error and Loading Messages */
+.admin-error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 20px;
+  border: 1px solid #f5c6cb;
+}
+
+.admin-loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .admin-dashboard-container {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .admin-dashboard-grid {
+    flex-direction: column;
+  }
+}
+
+.description-cell {
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

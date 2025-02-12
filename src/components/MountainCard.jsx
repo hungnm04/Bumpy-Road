@@ -1,26 +1,28 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import "./MountainCardStyles.css";
 
 function MountainCard({ site }) {
-  const imageUrl = `src/assets/mountain_photos/${site.photo_url}`;
+  const [imageError, setImageError] = useState(false);
+
+  const imageUrl =
+    !imageError && site.photo_url
+      ? `/src/assets/mountain_photos/${site.photo_url}`
+      : "/placeholder-mountain.jpg";
 
   return (
     <div className="mountain-card">
-      <div className="mountain-image">
-        <img src={imageUrl} alt={site.name} />
-      </div>
-      <div className="mountain-details">
-        <h2 className="mountain-name">{site.name}</h2>
-        <div className="mountain-location">
-          <span className="location-icon">&#x1F4CD;</span> {site.location}, {site.continent}
-        </div>
-        <p className="mountain-description">{site.description}</p>
-        <div className="mountain-footer">
-          <Link to={`/places/${site.id}`}>
-            <button className="view-more-btn">View More</button>
-          </Link>
-        </div>
+      <img
+        src={imageUrl}
+        alt={site.name}
+        className="mountain-image"
+        onError={(e) => {
+          setImageError(true);
+          e.target.src = "/placeholder-mountain.jpg";
+        }}
+      />
+      <div className="mountain-info">
+        <h3>{site.name}</h3>
+        <p>{site.location}</p>
       </div>
     </div>
   );

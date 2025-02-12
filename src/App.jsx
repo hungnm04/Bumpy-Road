@@ -1,19 +1,20 @@
 import "./styles.css";
 import { Route, Routes } from "react-router-dom";
-import About from "./routes/About";
-import Places from "./routes/Places";
-import BlogPage from "./routes/BlogPage";
-import FAQ from "./routes/FAQ";
-import HomePage from "./routes/HomePage";
-import Login from "./routes/Login";
-import CreateAccount from "./routes/CreateAccount";
-import AdminDashboard from "./routes/AdminDashboard";
-import AuthenticatedHome from "./routes/AuthenticatedHome";
-import Profile from "./routes/Profile";
+import About from "./pages/About";
+import Places from "./pages/Places";
+import BlogPage from "./pages/BlogPage";
+import FAQ from "./pages/FAQ";
+import HomePage from "./pages/HomePage";
+import Login from "./pages/Login";
+import CreateAccount from "./pages/CreateAccount";
+import AdminDashboard from "./pages/AdminDashboard";
+import Profile from "./pages/Profile";
 import PageNotFound from "./components/PageNotFound";
 import MountainDetails from "./components/MountainDetails";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import AuthRoute from "./routes/AuthRoute";
 
-export default function App() { 
+export default function App() {
   return (
     <div className="App">
       <Routes>
@@ -22,10 +23,17 @@ export default function App() {
         <Route path="/Places" element={<Places />} />
         <Route path="/BlogPage" element={<BlogPage />} />
         <Route path="/FAQ" element={<FAQ />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/admindashboard" element={<AdminDashboard />} />
-        <Route path="/authenticated-home" element={<AuthenticatedHome />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/login" element={<AuthRoute element={<Login />} />} />
+        <Route
+          path="/admindashboard"
+          element={
+            <ProtectedRoute element={<AdminDashboard />} allowedRole="admin" />
+          }
+        />
+        <Route
+          path="/profile"
+          element={<ProtectedRoute element={<Profile />} />}
+        />
         <Route path="*" element={<PageNotFound />} />
         <Route path="/places/:id" element={<MountainDetails />} />
         <Route path="/create-account" element={<CreateAccount />} />{" "}
@@ -33,4 +41,3 @@ export default function App() {
     </div>
   );
 }
-

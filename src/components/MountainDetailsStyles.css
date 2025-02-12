@@ -1,42 +1,156 @@
 /* MountainDetailsStyles.css */
 
+/* Main Container */
 .mountain-details-page {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+/* Mountain Overview Section */
+.mountain-overview {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.mountain-image-container {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.mountain-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.mountain-info {
+  text-align: center;
+}
+
+.mountain-name {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.mountain-location {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.mountain-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Reviews Section */
+.reviews-section {
+  width: 100%;
+  padding: 2rem;
+  background-color: #ffffff;
+}
+
+.reviews-header {
+  position: flex;
+  top: 0;
+  background-color: #fff;
+  padding: 1rem 0;
+  z-index: 100;
+  border-bottom: 1px solid #edeff1;
+}
+
+.reviews-header h2 {
+  margin-bottom: 1rem;
+}
+
+.reviews-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.review-header-container {
+  width: 100%;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #edeff1;
+  padding-bottom: 1rem;
+}
+
+.review-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+}
+
+.review-header-top h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #1c1c1c;
+}
+
+.sort-select {
+  padding: 0.5rem;
+  border: 1px solid #edeff1;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: #787c7e;
+  background-color: white;
+  cursor: pointer;
+}
+
+.sort-select:hover {
+  border-color: #0079d3;
+}
+
+/* Update review form styling */
+.review-form-inline {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.comment-input {
+  width: 100%;
+  min-height: 100px;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .mountain-overview {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .mountain-image-container,
+  .mountain-info {
+    flex: 1;
+  }
+
+  .mountain-image-container {
+    margin-right: 2rem;
+  }
+
+  .mountain-info {
+    text-align: left;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .reviews-section {
+    padding: 1rem;
+  }
+
+  .review-header-top {
     flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    gap: 1rem;
+    align-items: flex-start;
   }
-  
-  .mountain-details-page h1 {
-    font-size: 36px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .mountain-details-page img {
+
+  .sort-select {
     width: 100%;
-    max-width: 500px;
-    border-radius: 8px;
-    margin-bottom: 20px;
   }
-  
-  .mountain-details-page p {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #555;
-  }
-  
-  .mountain-details-page p strong {
-    font-weight: bold;
-    color: #000;
-  }
-  
-  .mountain-details-page .mountain-footer {
-    margin-top: 20px;
-  }
-  
+}

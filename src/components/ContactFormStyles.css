@@ -45,13 +45,13 @@
 }
 
 .error {
-  color: #ff0000; /* Set color for error messages */
-  font-size: 0.8rem; /* Adjust font size for error messages */
-  margin-top: -0.5rem; /* Add negative margin to overlap with input fields */
+  color: #ff0000;
+  font-size: 0.8rem;
+  margin-top: -0.5rem;
 }
 
 .error-input {
-  border-color: #ff0000; /* Set border color for input fields with errors */
+  border-color: #ff0000;
 }
 
 @media screen and (max-width: 850px) {

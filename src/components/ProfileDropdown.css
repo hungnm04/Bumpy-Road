@@ -1,42 +1,74 @@
+/* src/components/ProfileDropdown.css */
+
 .profile-dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
+}
+
+.profile-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 24px; /* Increased icon size */
+  color: #333; /* Icon color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-dropdown-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-button svg {
+  width: 24px;
+  height: 24px;
+  color: #666;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 50px; /* Adjusted for better alignment */
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  min-width: 160px; /* Ensures minimum width */
+  z-index: 1000; /* Above other elements */
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.dropdown-menu li {
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
   }
-  
-  .profile-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    font-size: 24px; /* Increase icon size for better visibility */
-    color: #333; /* Set a color for the icon */
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
-  
-  .dropdown-menu {
-    position: absolute;
-    top: 50px; /* Adjusted for better alignment */
-    right: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
-    min-width: 150px; /* Ensure the dropdown has a minimum width */
-    z-index: 1000; /* Ensure the dropdown is above other elements */
-  }
-  
-  .dropdown-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .dropdown-menu li {
-    padding: 10px 20px; /* More padding for better spacing */
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth hover effect */
-  }
-  
-  .dropdown-menu li:hover {
-    background-color: #f0f0f0;
-  }
-  
+}

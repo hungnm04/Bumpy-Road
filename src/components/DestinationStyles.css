@@ -1,83 +1,92 @@
-/* Style your components */
+/* Main Destination Container */
 .destination {
-  margin: 4rem 6rem;
+  padding: 4rem 6rem;
+  background: linear-gradient(to bottom right, #f4f4f9, #e8eaf6);
+  color: #333;
+  text-align: center;
 }
 
-.destination h1 {
+.destination-title {
   font-size: 3rem;
+  color: #1a237e;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
-.first-des {
+.destination-quote {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 3rem;
+}
+
+/* Destination Block Styles */
+.destination-block {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 4.5rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
 }
 
-.first-des-reverse {
-  display: flex;
+.destination-block:hover {
+  transform: scale(1.02);
+}
+
+/* Flexbox for Images and Text */
+.destination-block img {
+  width: 48%;
+  height: auto;
+  border-radius: 10px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.destination-block img:hover {
+  opacity: 0.85;
+}
+
+.destination-block.reverse {
   flex-direction: row-reverse;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 4.5rem;
 }
 
-.des-text {
-  width: 45%;
-  text-align: start;
+.destination-block h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: #0d47a1;
+}
+
+.destination-block p {
   font-size: 1.1rem;
+  line-height: 1.8;
+  color: #424242;
+  margin-bottom: 2rem;
 }
 
-.des-text h2 {
-  padding-bottom: 1rem;
-}
-
-.image {
-  position: relative;
-  width: 50%;
-  display: flex;
-  justify-content: space-between;
-  index: -99;
-}
-
-.image img {
-  width: 49%;
-  height: 350px;
-  object-fit: cover;
-  border-radius: 6px;
-  box-shadow: -1px -1px 62px -18px rgba(0, 0, 0, 0.19);
-}
-
-.image img:nth-child(2) {
-  position: absolute;
-  top: -10%;
-  right: 0;
-}
-
+/* Responsive Design */
 @media screen and (max-width: 850px) {
   .destination {
-    margin: 4rem 2rem;
-  }
-  .first-des {
-    display: flex;
-    flex-direction: column-reverse;
-    margin-top: 2.5rem;
+    padding: 2rem;
   }
 
-  .des-text {
-    width: 100%;
-  }
-  .image {
-    width: 100%;
-    margin: 1.8rem 0;
-  }
-  .image img {
-    height: 250px;
+  .destination-title {
+    font-size: 2.5rem;
   }
 
-  .first-des-reverse {
-    display: flex;
-    flex-direction: column-reverse;
-    margin-top: 4.5rem;
+  .destination-quote {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .destination-block {
+    flex-direction: column;
+  }
+
+  .destination-block img {
+    width: 100%;
+    margin-bottom: 1rem;
   }
 }
