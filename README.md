@@ -19,9 +19,12 @@ To get started with the project, follow these steps:
 6. Start the development server by running the following command:
 
    ```
-   npm run dev
+   npm run dev in client
 
-   nodemon server.js
+   nodemon server.js for server
+
+   admin account: admin
+   password: adminpassword
    ```
 
 This will start the development server and you can access the app in your browser at the specified URL.
