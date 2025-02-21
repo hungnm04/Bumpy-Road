@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { fetchWithAuth } from "../../server/utils/fetchWithAuth";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./BlogPageStyles.css";
@@ -8,6 +9,7 @@ function BlogPage() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,6 +42,20 @@ function BlogPage() {
     fetchBlogs();
   }, []);
 
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const response = await fetchWithAuth("http://localhost:5000/auth-status");
+        if (response.ok) {
+          setIsAuthenticated(true);
+        }
+      } catch (error) {
+        console.error("Auth check failed:", error);
+      }
+    };
+    checkAuth();
+  }, []);
+
   // Early return for loading and error states
   if (loading) return (
     <>
@@ -67,8 +83,18 @@ function BlogPage() {
       <Navbar />
       <div className="blog-container">
         <div className="blog-header">
-          <h1>Adventure Stories</h1>
-          <p>Explore mountain experiences and expert insights</p>
+          <div className="blog-header-content">
+            <h1>Adventure Stories</h1>
+            <p>Explore mountain experiences and expert insights</p>
+          </div>
+          <div className="blog-actions">
+            {isAuthenticated && (
+              <Link to="/blog/create" className="create-blog-button">
+                <span className="button-icon">+</span>
+                <span className="button-text">Create Story</span>
+              </Link>
+            )}
+          </div>
         </div>
 
         <div className="blog-grid">

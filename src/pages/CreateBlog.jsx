@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchWithAuth } from "../../server/utils/fetchWithAuth";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./BlogPageStyles.css";
@@ -13,6 +14,7 @@ function CreateBlog() {
     image_url: "",
   });
   const [error, setError] = useState("");
+  const [imagePreview, setImagePreview] = useState("");
 
   const categories = [
     "Adventure",
@@ -27,12 +29,11 @@ function CreateBlog() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/blog", {
+      const response = await fetchWithAuth("http://localhost:5000/api/blog", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
         body: JSON.stringify(formData),
       });
 
@@ -51,6 +52,15 @@ function CreateBlog() {
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleImageUrlChange = (e) => {
+    const url = e.target.value;
+    setFormData(prev => ({
+      ...prev,
+      image_url: url
+    }));
+    setImagePreview(url);
   };
 
   return (
@@ -91,14 +101,25 @@ function CreateBlog() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="image_url">Image URL (optional)</label>
+            <label htmlFor="image_url">Image URL</label>
             <input
               type="url"
               id="image_url"
               name="image_url"
               value={formData.image_url}
-              onChange={handleChange}
+              onChange={handleImageUrlChange}
+              placeholder="Enter image URL"
             />
+            {imagePreview && (
+              <img
+                src={imagePreview}
+                alt="Preview"
+                className={`image-preview ${imagePreview ? 'show' : ''}`}
+                onError={(e) => {
+                  e.target.src = "/src/assets/mountain_photos/placeholder-mountain.png";
+                }}
+              />
+            )}
           </div>
 
           <div className="form-group">
