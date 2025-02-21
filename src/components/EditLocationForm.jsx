@@ -21,9 +21,7 @@ const EditLocationForm = ({ mountainId, onClose, onLocationUpdated }) => {
   useEffect(() => {
     const fetchMountainData = async () => {
       try {
-        const response = await fetchWithAuth(
-          `http://localhost:5000/admin/mountains/${mountainId}`
-        );
+        const response = await fetchWithAuth(`http://localhost:5000/admin/mountains/${mountainId}`);
         const data = await response.json();
         if (data.success) {
           setFormData(data.mountain);
@@ -33,9 +31,7 @@ const EditLocationForm = ({ mountainId, onClose, onLocationUpdated }) => {
             setPreviewUrl(photoUrl);
           } else {
             // For local files, construct the full URL
-            setPreviewUrl(
-              `http://localhost:5000/src/assets/mountain_photos/${photoUrl}`
-            );
+            setPreviewUrl(`http://localhost:5000/src/assets/mountain_photos/${photoUrl}`);
           }
         }
       } catch (error) {
@@ -66,13 +62,10 @@ const EditLocationForm = ({ mountainId, onClose, onLocationUpdated }) => {
         const formDataWithFile = new FormData();
         formDataWithFile.append("photo", selectedFile);
 
-        const uploadResponse = await fetchWithAuth(
-          "http://localhost:5000/admin/upload-photo",
-          {
-            method: "POST",
-            body: formDataWithFile,
-          }
-        );
+        const uploadResponse = await fetchWithAuth("http://localhost:5000/admin/upload-photo", {
+          method: "POST",
+          body: formDataWithFile,
+        });
 
         if (!uploadResponse.ok) throw new Error("Failed to upload image");
 
@@ -82,14 +75,11 @@ const EditLocationForm = ({ mountainId, onClose, onLocationUpdated }) => {
         photoUrl = uploadData.filename;
       }
 
-      const response = await fetchWithAuth(
-        `http://localhost:5000/admin/mountains/${mountainId}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...formData, photo_url: photoUrl }),
-        }
-      );
+      const response = await fetchWithAuth(`http://localhost:5000/admin/mountains/${mountainId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, photo_url: photoUrl }),
+      });
 
       const data = await response.json();
       if (!data.success) throw new Error(data.message);

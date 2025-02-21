@@ -62,9 +62,7 @@ const Login = () => {
               placeholder="Email or Username"
               required
             />
-            {errors.username && (
-              <span className="error">{errors.username}</span>
-            )}
+            {errors.username && <span className="error">{errors.username}</span>}
           </div>
           <div className="input-group">
             <input
@@ -74,9 +72,7 @@ const Login = () => {
               placeholder="Password"
               required
             />
-            {errors.password && (
-              <span className="error">{errors.password}</span>
-            )}
+            {errors.password && <span className="error">{errors.password}</span>}
           </div>
           <button type="submit" className="submit-button" disabled={isLoading}>
             {isLoading ? "Logging in..." : "Login"}

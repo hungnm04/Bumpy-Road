@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./MountainCardStyles.css";
 
 function MountainCard({ site }) {
-  const [imageError, setImageError] = useState(false);
 
   const imageUrl =
     !imageError && site.photo_url

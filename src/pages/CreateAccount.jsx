@@ -90,9 +90,7 @@ const CreateAccount = () => {
               placeholder="Username"
               required
             />
-            {errors.username && (
-              <span className="error">{errors.username}</span>
-            )}
+            {errors.username && <span className="error">{errors.username}</span>}
           </div>
           <div className="input-group">
             <input
@@ -102,9 +100,7 @@ const CreateAccount = () => {
               placeholder="Password"
               required
             />
-            {errors.password && (
-              <span className="error">{errors.password}</span>
-            )}
+            {errors.password && <span className="error">{errors.password}</span>}
           </div>
           <div className="input-group">
             <input
@@ -114,9 +110,7 @@ const CreateAccount = () => {
               placeholder="Confirm Password"
               required
             />
-            {errors.confirmPassword && (
-              <span className="error">{errors.confirmPassword}</span>
-            )}
+            {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
           </div>
           <button type="submit" className="submit-button">
             Create Account

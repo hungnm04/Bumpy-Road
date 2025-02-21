@@ -14,12 +14,7 @@ async function submitFAQ(name, email, subject, message) {
       VALUES ($1, $2, $3, $4, (now() AT TIME ZONE 'UTC' AT TIME ZONE 'Europe/Paris'))
       RETURNING id, created_at
     `;
-    const faqResult = await client.query(faqQuery, [
-      name,
-      email,
-      subject,
-      message,
-    ]);
+    const faqResult = await client.query(faqQuery, [name, email, subject, message]);
     const { id: faqId, created_at } = faqResult.rows[0];
 
     // Create notification with proper timestamp

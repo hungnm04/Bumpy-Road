@@ -18,9 +18,7 @@ async function submitReview(req, res) {
   const username = req.user.username;
 
   if (!rating || !comment) {
-    return res
-      .status(400)
-      .json({ message: "Rating and comment are required." });
+    return res.status(400).json({ message: "Rating and comment are required." });
   }
 
   try {

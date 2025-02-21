@@ -5,9 +5,7 @@ const login = async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
-    return res
-      .status(400)
-      .json({ message: "Username and password are required" });
+    return res.status(400).json({ message: "Username and password are required" });
   }
 
   try {
@@ -35,16 +33,16 @@ const login = async (req, res) => {
     // Set tokens in HTTP-only cookies
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: true,
       maxAge: 15 * 60 * 1000,
-      sameSite: "Strict",
+      sameSite: "none",
     });
 
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: true,
       maxAge: 7 * 24 * 60 * 60 * 1000,
-      sameSite: "Strict",
+      sameSite: "none",
     });
 
     res.status(200).json({
@@ -105,9 +103,7 @@ const getProfile = async (req, res) => {
     if (profile) {
       res.status(200).json({ success: true, profile });
     } else {
-      res
-        .status(404)
-        .json({ success: false, message: "User profile not found" });
+      res.status(404).json({ success: false, message: "User profile not found" });
     }
   } catch (error) {
     console.error("Error fetching user profile:", error);
@@ -147,9 +143,7 @@ const refreshToken = (req, res) => {
   const refreshToken = req.cookies.refreshToken;
 
   if (!refreshToken) {
-    return res
-      .status(401)
-      .json({ message: "Refresh token not found, please log in again" });
+    return res.status(401).json({ message: "Refresh token not found, please log in again" });
   }
 
   try {
@@ -229,5 +223,5 @@ module.exports = {
   updateProfile,
   authStatus,
   logout,
-  uploadAvatar, // Add this
+  uploadAvatar,
 };

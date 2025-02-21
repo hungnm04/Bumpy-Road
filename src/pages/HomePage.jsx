@@ -14,9 +14,7 @@ function HomePage() {
   useEffect(() => {
     const checkUserRole = async () => {
       try {
-        const response = await fetchWithAuth(
-          "http://localhost:5000/auth-status"
-        );
+        const response = await fetchWithAuth("http://localhost:5000/auth-status");
         if (response.ok) {
           const data = await response.json();
           if (data.authenticated && data.user.role === "admin") {

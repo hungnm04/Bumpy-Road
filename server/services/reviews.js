@@ -18,12 +18,7 @@ async function addReview({ mountainId, username, rating, comment }) {
     VALUES ($1, $2, $3, $4)
     RETURNING id, mountain_id, username, rating, comment, created_at
   `;
-  const { rows } = await pool.query(query, [
-    mountainId,
-    username,
-    rating,
-    comment,
-  ]);
+  const { rows } = await pool.query(query, [mountainId, username, rating, comment]);
   return rows[0];
 }
 

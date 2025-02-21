@@ -1,32 +1,119 @@
 /* MountainCardStyles.css */
 
 .mountain-card {
+  background: white;
   border: 1px solid #e0e0e0;
-  border-radius: 10px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition:
-    transform 0.2s ease-in-out,
-    box-shadow 0.2s ease-in-out;
-  background-color: #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
   cursor: pointer;
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .mountain-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.mountain-card-image-wrapper {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
 }
 
 .mountain-image {
   width: 100%;
-  height: 200px; /* Reduced from 250px */
+  height: 100%;
   object-fit: cover;
-  object-position: center; /* Ensures image is centered */
-  display: block;
+  transition: transform 0.5s ease;
+}
+
+.mountain-card:hover .mountain-image {
+  transform: scale(1.1);
+}
+
+.mountain-card-overlay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+}
+
+.mountain-difficulty {
+  background: rgba(0, 170, 108, 0.95);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.mountain-card-content {
+  padding: 24px;
+}
+
+.mountain-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 12px;
+}
+
+.mountain-location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.location-icon {
+  color: #00aa6c;
+}
+
+.mountain-stats {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.mountain-stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.stat-icon {
+  color: #00aa6c;
+}
+
+.mountain-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.rating-stars {
+  color: #ffc107;
+  font-size: 1.1rem;
+}
+
+.rating-count {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .mountain-card-image-wrapper {
+    height: 200px;
+  }
 }
 
 .mountain-details {
@@ -57,11 +144,6 @@
 .mountain-name {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-}
-
-.mountain-location {
-  color: #777;
-  margin-bottom: 1rem;
 }
 
 .mountain-description {

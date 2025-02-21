@@ -10,8 +10,7 @@ const Destination = () => {
     <div className="destination">
       <h1 className="destination-title">Discover Popular Destinations</h1>
       <p className="destination-quote">
-        "Mountains are the cathedrals where I practice my religion." - Anatoli
-        Boukreev
+        "Mountains are the cathedrals where I practice my religion." - Anatoli Boukreev
       </p>
 
       <DestinationData

@@ -7,13 +7,10 @@ export async function fetchWithAuth(url, options = {}) {
 
   if (response.status === 401) {
     try {
-      const refreshResponse = await fetch(
-        "http://localhost:5000/refresh-token",
-        {
-          method: "POST",
-          credentials: "include",
-        }
-      );
+      const refreshResponse = await fetch("http://localhost:5000/refresh-token", {
+        method: "POST",
+        credentials: "include",
+      });
 
       if (refreshResponse.ok) {
         // Retry the original request after refreshing the token

@@ -6,11 +6,6 @@ const userController = require("../controllers/userControllers");
 
 router.get("/profile", authenticateToken, userController.getProfile);
 router.put("/profile", authenticateToken, userController.updateProfile);
-router.post(
-  "/upload-avatar",
-  authenticateToken,
-  handleFileUpload,
-  userController.uploadAvatar
-);
+router.post("/upload-avatar", authenticateToken, handleFileUpload, userController.uploadAvatar);
 
 module.exports = router;

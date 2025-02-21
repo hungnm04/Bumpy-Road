@@ -22,10 +22,7 @@ const ProfileDropdown = ({ profile, onLogout }) => {
 
   return (
     <div className="profile-dropdown" ref={dropdownRef}>
-      <div
-        className="profile-dropdown-header"
-        onClick={() => setIsOpen(!isOpen)}
-      >
+      <div className="profile-dropdown-header" onClick={() => setIsOpen(!isOpen)}>
         {profile?.avatar_url ? (
           <img
             src={

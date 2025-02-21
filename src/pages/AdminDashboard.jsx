@@ -2,14 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AdminDashboard.css";
 import { GiMountaintop } from "react-icons/gi";
-import {
-  FiSearch,
-  FiUsers,
-  FiMap,
-  FiPlus,
-  FiEdit2,
-  FiTrash2,
-} from "react-icons/fi";
+import { FiSearch, FiUsers, FiMap, FiPlus, FiEdit2, FiTrash2 } from "react-icons/fi";
 import { MdLogout } from "react-icons/md";
 import { fetchWithAuth } from "../../server/utils/fetchWithAuth";
 import AddLocationForm from "../components/AddLocationForm";
@@ -66,23 +59,17 @@ const AdminDashboard = () => {
       setError(null);
       try {
         // Fetch Total Locations
-        const totalResponse = await fetchWithAuth(
-          "http://localhost:5000/admin/total-locations"
-        );
+        const totalResponse = await fetchWithAuth("http://localhost:5000/admin/total-locations");
         if (totalResponse.ok) {
           const totalData = await totalResponse.json();
           setTotalLocations(totalData.totalLocations);
         } else {
           const errorData = await totalResponse.json();
-          throw new Error(
-            errorData.message || "Failed to fetch total locations"
-          );
+          throw new Error(errorData.message || "Failed to fetch total locations");
         }
 
         // Fetch Active Users
-        const activeResponse = await fetchWithAuth(
-          "http://localhost:5000/admin/active-users"
-        );
+        const activeResponse = await fetchWithAuth("http://localhost:5000/admin/active-users");
         if (activeResponse.ok) {
           const activeData = await activeResponse.json();
           setActiveUsers(activeData.activeUsers);
@@ -107,9 +94,7 @@ const AdminDashboard = () => {
         setLoading(true);
         setError(null);
         try {
-          const response = await fetchWithAuth(
-            "http://localhost:5000/admin/mountains"
-          );
+          const response = await fetchWithAuth("http://localhost:5000/admin/mountains");
           if (response.ok) {
             const data = await response.json();
             setMountains(data.mountains);
@@ -127,9 +112,7 @@ const AdminDashboard = () => {
         setLoading(true);
         setError(null);
         try {
-          const response = await fetchWithAuth(
-            "http://localhost:5000/admin/users"
-          );
+          const response = await fetchWithAuth("http://localhost:5000/admin/users");
           if (response.ok) {
             const data = await response.json();
             setUsers(data.users);
@@ -151,9 +134,7 @@ const AdminDashboard = () => {
 
   const handleLocationAdded = async () => {
     // Refresh the mountains list
-    const response = await fetchWithAuth(
-      "http://localhost:5000/admin/mountains"
-    );
+    const response = await fetchWithAuth("http://localhost:5000/admin/mountains");
     if (response.ok) {
       const data = await response.json();
       setMountains(data.mountains);
@@ -203,12 +184,9 @@ const AdminDashboard = () => {
   const handleDeleteUser = async (username) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
-        const response = await fetchWithAuth(
-          `http://localhost:5000/admin/users/${username}`,
-          {
-            method: "DELETE",
-          }
-        );
+        const response = await fetchWithAuth(`http://localhost:5000/admin/users/${username}`, {
+          method: "DELETE",
+        });
 
         if (response.ok) {
           handleUserAdded(); // Refresh users list
@@ -225,15 +203,9 @@ const AdminDashboard = () => {
     const filteredMountains = mountains.filter(
       (mountain) =>
         !searchTerms.mountains ||
-        mountain.name
-          .toLowerCase()
-          .includes(searchTerms.mountains.toLowerCase()) ||
-        mountain.location
-          .toLowerCase()
-          .includes(searchTerms.mountains.toLowerCase()) ||
-        mountain.continent
-          .toLowerCase()
-          .includes(searchTerms.mountains.toLowerCase())
+        mountain.name.toLowerCase().includes(searchTerms.mountains.toLowerCase()) ||
+        mountain.location.toLowerCase().includes(searchTerms.mountains.toLowerCase()) ||
+        mountain.continent.toLowerCase().includes(searchTerms.mountains.toLowerCase())
     );
 
     const filteredUsers = users.filter(
@@ -260,8 +232,7 @@ const AdminDashboard = () => {
         onChange={(e) =>
           setSearchTerms((prev) => ({
             ...prev,
-            [selectedNav === "locations" ? "mountains" : "users"]:
-              e.target.value,
+            [selectedNav === "locations" ? "mountains" : "users"]: e.target.value,
           }))
         }
         disabled={selectedNav === "overview"}
@@ -329,11 +300,7 @@ const AdminDashboard = () => {
           {renderSearchBar()}
           <div className="admin-user-actions">
             <NotificationPopover />
-            <img
-              src="https://i.pravatar.cc/150?img=12"
-              alt="Admin"
-              className="admin-user-avatar"
-            />
+            <img src="https://i.pravatar.cc/150?img=12" alt="Admin" className="admin-user-avatar" />
             <button className="admin-logout-button" onClick={handleLogout}>
               <MdLogout style={{ marginRight: "5px" }} />
               Logout
@@ -369,10 +336,7 @@ const AdminDashboard = () => {
               <div className="admin-locations-table">
                 <div className="admin-table-header">
                   <h2>Mountain Locations</h2>
-                  <button
-                    className="admin-add-location-btn"
-                    onClick={() => setShowAddForm(true)}
-                  >
+                  <button className="admin-add-location-btn" onClick={() => setShowAddForm(true)}>
                     <FiPlus />
                     Add Location
                   </button>
@@ -419,8 +383,7 @@ const AdminDashboard = () => {
                               alt={mountain.name}
                               className="mountain-small-image"
                               onError={(e) => {
-                                e.target.src =
-                                  "/src/assets/placeholder-mountain.png";
+                                e.target.src = "/src/assets/placeholder-mountain.png";
                                 e.target.onerror = null;
                               }}
                             />
@@ -433,12 +396,8 @@ const AdminDashboard = () => {
                           </td>
                           <td>{mountain.location}</td>
                           <td>{mountain.continent}</td>
-                          <td>
-                            {new Date(mountain.created_at).toLocaleDateString()}
-                          </td>
-                          <td>
-                            {new Date(mountain.updated_at).toLocaleDateString()}
-                          </td>
+                          <td>{new Date(mountain.created_at).toLocaleDateString()}</td>
+                          <td>{new Date(mountain.updated_at).toLocaleDateString()}</td>
                           <td>
                             <div className="admin-action-buttons">
                               <button
@@ -476,10 +435,7 @@ const AdminDashboard = () => {
               <div className="admin-users-table">
                 <div className="admin-table-header">
                   <h2>Users</h2>
-                  <button
-                    className="admin-add-user-btn"
-                    onClick={() => setShowAddUserForm(true)}
-                  >
+                  <button className="admin-add-user-btn" onClick={() => setShowAddUserForm(true)}>
                     <FiPlus />
                     Add User
                   </button>
@@ -522,9 +478,7 @@ const AdminDashboard = () => {
                           <td>{user.email}</td>
                           <td>{user.first_name}</td>
                           <td>{user.last_name}</td>
-                          <td>
-                            {new Date(user.created_at).toLocaleDateString()}
-                          </td>
+                          <td>{new Date(user.created_at).toLocaleDateString()}</td>
                           <td>
                             <div className="admin-action-buttons">
                               <button

@@ -20,9 +20,7 @@ const Navbar = () => {
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
-        const response = await fetchWithAuth(
-          "http://localhost:5000/auth-status"
-        );
+        const response = await fetchWithAuth("http://localhost:5000/auth-status");
         if (response.ok) {
           const data = await response.json();
           setIsAuthenticated(data.authenticated);
@@ -151,9 +149,7 @@ const Navbar = () => {
                 />
                 <div className="search-result-info">
                   <div className="search-result-name">{result.name}</div>
-                  <div className="search-result-location">
-                    {result.location}
-                  </div>
+                  <div className="search-result-location">{result.location}</div>
                 </div>
               </li>
             ))}

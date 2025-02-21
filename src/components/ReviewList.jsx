@@ -30,9 +30,7 @@ function ReviewList({ reviews }) {
                     {new Date(review.created_at).toLocaleDateString()}
                   </span>
                 </div>
-                <span className="review-rating">
-                  {"★".repeat(review.rating)}
-                </span>
+                <span className="review-rating">{"★".repeat(review.rating)}</span>
               </div>
               <p className="review-comment">{review.comment}</p>
             </div>

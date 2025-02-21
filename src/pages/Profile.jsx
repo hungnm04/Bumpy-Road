@@ -57,14 +57,11 @@ const Profile = () => {
       updatedFields.first_name = editedProfile.first_name;
     if (editedProfile.last_name !== profile.last_name)
       updatedFields.last_name = editedProfile.last_name;
-    if (editedProfile.email !== profile.email)
-      updatedFields.email = editedProfile.email;
-    if (editedProfile.bio !== profile.bio)
-      updatedFields.bio = editedProfile.bio;
+    if (editedProfile.email !== profile.email) updatedFields.email = editedProfile.email;
+    if (editedProfile.bio !== profile.bio) updatedFields.bio = editedProfile.bio;
 
     try {
-      const { profile: updatedProfile } =
-        await profileAPI.updateProfile(updatedFields);
+      const { profile: updatedProfile } = await profileAPI.updateProfile(updatedFields);
       setProfile(updatedProfile);
       setEditedProfile(updatedProfile);
       setEditMode(false);
@@ -220,8 +217,7 @@ const Profile = () => {
             <div className="profile-details">
               <h2>Profile Information</h2>
               <p>
-                <strong>Full Name:</strong> {profile?.first_name}{" "}
-                {profile?.last_name}
+                <strong>Full Name:</strong> {profile?.first_name} {profile?.last_name}
               </p>
               <p>
                 <strong>Username:</strong> {displayUsername}
@@ -241,17 +237,12 @@ const Profile = () => {
       )}
       {uploadProgress > 0 && (
         <div className="avatar-upload-progress">
-          <div
-            className="avatar-upload-progress-bar"
-            style={{ width: `${uploadProgress}%` }}
-          />
+          <div className="avatar-upload-progress-bar" style={{ width: `${uploadProgress}%` }} />
         </div>
       )}
 
       {toastMessage && (
-        <div className={`toast-notification ${toastMessage ? "show" : ""}`}>
-          {toastMessage}
-        </div>
+        <div className={`toast-notification ${toastMessage ? "show" : ""}`}>{toastMessage}</div>
       )}
     </div>
   );

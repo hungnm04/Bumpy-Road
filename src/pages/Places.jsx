@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import MountainCard from "../components/MountainCard";
 import Footer from "../components/Footer";
 import "./PlacesStyles.css";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaMapMarkerAlt, FaStar, FaRoute, FaMountain } from "react-icons/fa";
 
 function Places() {
   const navigate = useNavigate();
@@ -83,7 +83,7 @@ function Places() {
             <FaSearch className="places-search-icon" />
             <input
               type="text"
-              placeholder="Search for a mountain..."
+              placeholder="Search mountains, trails, or locations..."
               value={placesSearchQuery}
               onChange={handlePlacesSearchChange}
               className="places-input"
@@ -111,20 +111,19 @@ function Places() {
                   />
                   <div className="search-result-info">
                     <div className="search-result-name">{site.name}</div>
-                    <div className="search-result-location">
-                      {site.location}
-                    </div>
+                    <div className="search-result-location">{site.location}</div>
                   </div>
                 </li>
               ))}
             </ul>
           )}
         </div>
+        
         {loading ? (
-          <p>Loading...</p>
+          <div className="loading-spinner">Loading amazing destinations...</div>
         ) : !placesSearchQuery.trim() ? (
           <div className="featured-places">
-            <h2>Featured Mountainous Sites</h2>
+            <h2>Popular Mountain Destinations</h2>
             <div className="mountain-card-grid">
               {featuredPlaces.map((site) => (
                 <div
@@ -132,15 +131,32 @@ function Places() {
                   className="mountain-card-wrapper"
                   onClick={() => handleMountainClick(site.id)}
                 >
-                  <MountainCard key={site.id} site={site} />
-                </div>
-              ))}
+                  <div className="mountain-card">
+                    <div className="mountain-card-image">
+                      <img
+                        src={`/src/assets/mountain_photos/${site.photo_url}`}
+                        alt={site.name}
+                        onError={(e) => {
+                          e.target.src = "/src/assets/mountain_photos/placeholder-mountain.png";
+                        }}
+                      />
+                      <div className="mountain-card-badge">Featured</div>
+                    </div>
+                    <div className="mountain-card-content">
+                      <h3 className="mountain-card-title">{site.name}</h3>
+                      <div className="mountain-card-location">
+                        <FaMapMarkerAlt /> {site.location}
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
             </div>
           </div>
         ) : null}
       </div>
       <Footer />
-    </div>
+    </div >
   );
 }
 

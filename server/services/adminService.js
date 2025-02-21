@@ -128,8 +128,7 @@ const addUser = async (userData) => {
     }
 
     // Check if user already exists
-    const checkQuery =
-      "SELECT username FROM users WHERE username = $1 OR email = $2";
+    const checkQuery = "SELECT username FROM users WHERE username = $1 OR email = $2";
     const checkResult = await pool.query(checkQuery, [username, email]);
 
     if (checkResult.rows.length > 0) {
@@ -142,13 +141,7 @@ const addUser = async (userData) => {
       RETURNING username, email, first_name, last_name, created_at
     `;
 
-    const values = [
-      username,
-      email,
-      password,
-      first_name || "",
-      last_name || "",
-    ];
+    const values = [username, email, password, first_name || "", last_name || ""];
     const result = await pool.query(query, values);
 
     return result.rows[0];
@@ -174,13 +167,7 @@ const deleteUser = async (username) => {
 
 const updateUser = async (username, userData) => {
   try {
-    const {
-      email,
-      first_name,
-      last_name,
-      new_password,
-      username: newUsername,
-    } = userData;
+    const { email, first_name, last_name, new_password, username: newUsername } = userData;
 
     // Start building the query dynamically
     let queryParts = [];

@@ -1,12 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./NotificationModal.css";
-import {
-  MdClose,
-  MdEmail,
-  MdSubject,
-  MdMessage,
-  MdAccessTime,
-} from "react-icons/md";
+import { MdClose, MdEmail, MdSubject, MdMessage, MdAccessTime } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 
 const NotificationModal = ({ notification, onClose }) => {
@@ -50,9 +44,7 @@ const NotificationModal = ({ notification, onClose }) => {
 
   const handleReplyEmail = (data) => {
     const subject = encodeURIComponent(`Re: ${data.subject}`);
-    const body = encodeURIComponent(
-      `\n\nOriginal message from ${data.name}:\n${data.message}`
-    );
+    const body = encodeURIComponent(`\n\nOriginal message from ${data.name}:\n${data.message}`);
     const mailtoLink = `mailto:${data.email}?subject=${subject}&body=${body}`;
     window.location.href = mailtoLink;
   };
@@ -98,10 +90,7 @@ const NotificationModal = ({ notification, onClose }) => {
         </div>
 
         <div className="faq-actions">
-          <button
-            className="action-button reply-button"
-            onClick={() => handleReplyEmail(data)}
-          >
+          <button className="action-button reply-button" onClick={() => handleReplyEmail(data)}>
             <MdEmail className="button-icon" />
             Reply via Email
           </button>

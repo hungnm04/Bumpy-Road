@@ -62,8 +62,7 @@ const createUser = async ({
     );
 
     if (existingUser.rows.length > 0) {
-      const field =
-        existingUser.rows[0].username === username ? "username" : "email";
+      const field = existingUser.rows[0].username === username ? "username" : "email";
       return { success: false, message: `${field} already exists` };
     }
 
@@ -137,18 +136,13 @@ const updateUserProfile = async (username, updatedData) => {
     await client.query("BEGIN");
 
     // Get current user data to check for existing avatar
-    const currentUser = await client.query(
-      "SELECT avatar_url FROM users WHERE username = $1",
-      [username]
-    );
+    const currentUser = await client.query("SELECT avatar_url FROM users WHERE username = $1", [
+      username,
+    ]);
 
     if (currentUser.rows[0]?.avatar_url && avatar_url) {
       // Clean up old avatar file
-      const oldAvatarPath = path.join(
-        __dirname,
-        "..",
-        currentUser.rows[0].avatar_url
-      );
+      const oldAvatarPath = path.join(__dirname, "..", currentUser.rows[0].avatar_url);
       cleanupOldAvatar(oldAvatarPath);
     }
 

@@ -9,12 +9,7 @@ const handleFileUpload = async (req, res, next) => {
       fileSize: 20 * 1024 * 1024,
     },
     fileFilter: (req, file, cb) => {
-      const allowedTypes = [
-        "image/jpeg",
-        "image/png",
-        "image/gif",
-        "image/webp",
-      ];
+      const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
       if (!allowedTypes.includes(file.mimetype)) {
         return cb(new Error("Only image files are allowed!"), false);
       }
@@ -39,10 +34,7 @@ const handleFileUpload = async (req, res, next) => {
       });
     }
 
-    const fileInfo = await storageService.saveAvatar(
-      req.file.buffer,
-      req.file.originalname
-    );
+    const fileInfo = await storageService.saveAvatar(req.file.buffer, req.file.originalname);
 
     // Update avatar in database
     const result = await UserModel.updateAvatar(req.user.username, fileInfo);

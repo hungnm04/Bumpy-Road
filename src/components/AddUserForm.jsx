@@ -20,16 +20,13 @@ const AddUserForm = ({ onClose, onUserAdded }) => {
     setError("");
 
     try {
-      const response = await fetchWithAuth(
-        "http://localhost:5000/admin/users",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetchWithAuth("http://localhost:5000/admin/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
       const data = await response.json();
       if (!data.success) {

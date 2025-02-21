@@ -6,9 +6,7 @@ const authenticateJWT = (req, res, next) => {
   const accessToken = req.cookies.accessToken;
 
   if (!accessToken) {
-    return res
-      .status(401)
-      .json({ message: "Access token missing, please log in" });
+    return res.status(401).json({ message: "Access token missing, please log in" });
   }
 
   jwt.verify(accessToken, process.env.JWT_SECRET, (err, user) => {

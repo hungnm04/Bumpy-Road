@@ -37,9 +37,7 @@ const NotificationPopover = () => {
 
   const fetchNotifications = async () => {
     try {
-      const response = await fetchWithAuth(
-        "http://localhost:5000/notifications/unread"
-      );
+      const response = await fetchWithAuth("http://localhost:5000/notifications/unread");
       if (response.ok) {
         const data = await response.json();
         setNotifications(data.notifications);
@@ -51,9 +49,7 @@ const NotificationPopover = () => {
 
   const fetchAllNotifications = async () => {
     try {
-      const response = await fetchWithAuth(
-        "http://localhost:5000/notifications/all"
-      );
+      const response = await fetchWithAuth("http://localhost:5000/notifications/all");
       if (response.ok) {
         const data = await response.json();
         setNotifications(data.notifications);
@@ -86,18 +82,13 @@ const NotificationPopover = () => {
   const handleNotificationClick = async (notification) => {
     try {
       // Mark as read
-      await fetchWithAuth(
-        `http://localhost:5000/notifications/${notification.id}/read`,
-        {
-          method: "PUT",
-        }
-      );
+      await fetchWithAuth(`http://localhost:5000/notifications/${notification.id}/read`, {
+        method: "PUT",
+      });
 
       // Update local state
       setNotifications((prev) =>
-        prev.map((n) =>
-          n.id === notification.id ? { ...n, is_read: true } : n
-        )
+        prev.map((n) => (n.id === notification.id ? { ...n, is_read: true } : n))
       );
 
       // Show modal with notification details
@@ -124,14 +115,9 @@ const NotificationPopover = () => {
 
   return (
     <div className="notification-wrapper" ref={popoverRef}>
-      <button
-        className="notification-button"
-        onClick={() => setIsOpen(!isOpen)}
-      >
+      <button className="notification-button" onClick={() => setIsOpen(!isOpen)}>
         <MdNotificationsActive />
-        {unreadCount > 0 && (
-          <span className="notification-badge">{unreadCount}</span>
-        )}
+        {unreadCount > 0 && <span className="notification-badge">{unreadCount}</span>}
       </button>
 
       {isOpen && (
@@ -157,9 +143,7 @@ const NotificationPopover = () => {
                   </div>
                   <div className="notification-content">
                     <p className="notification-title">{notification.title}</p>
-                    <p className="notification-preview">
-                      {notification.content}
-                    </p>
+                    <p className="notification-preview">{notification.content}</p>
                     <span className="notification-time">
                       {new Date(notification.created_at).toLocaleString()}
                     </span>

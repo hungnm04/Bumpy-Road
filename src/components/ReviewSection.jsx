@@ -9,9 +9,7 @@ function ReviewSection({ mountainId }) {
 
   const fetchReviews = async () => {
     try {
-      const res = await fetch(
-        `http://localhost:5000/mountains/${mountainId}/reviews`
-      );
+      const res = await fetch(`http://localhost:5000/mountains/${mountainId}/reviews`);
       if (!res.ok) throw new Error("Failed to fetch reviews.");
       const data = await res.json();
       setReviews(data);

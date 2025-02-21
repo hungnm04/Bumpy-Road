@@ -16,9 +16,7 @@ async function getPlaces(req, res) {
     }
   } catch (error) {
     console.error("Error fetching mountains:", error);
-    res
-      .status(500)
-      .json({ message: "An error occurred while fetching mountains" });
+    res.status(500).json({ message: "An error occurred while fetching mountains" });
   }
 }
 
@@ -49,9 +47,7 @@ async function getFeaturedPlaces(req, res) {
     res.status(200).json(places);
   } catch (error) {
     console.error("Error fetching featured places:", error);
-    res
-      .status(500)
-      .json({ message: "An error occurred while fetching featured places" });
+    res.status(500).json({ message: "An error occurred while fetching featured places" });
   }
 }
 

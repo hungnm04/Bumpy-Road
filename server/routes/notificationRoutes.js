@@ -5,9 +5,7 @@ const pool = require("../config/db");
 // Get all notifications (both read and unread)
 router.get("/all", async (req, res) => {
   try {
-    const result = await pool.query(
-      "SELECT * FROM notifications ORDER BY created_at DESC"
-    );
+    const result = await pool.query("SELECT * FROM notifications ORDER BY created_at DESC");
     res.json({ notifications: result.rows });
   } catch (error) {
     console.error("Error fetching all notifications:", error);
@@ -49,9 +47,7 @@ router.put("/:id/read", async (req, res) => {
 // Mark all as read
 router.put("/mark-all-read", async (req, res) => {
   try {
-    await pool.query(
-      "UPDATE notifications SET is_read = true WHERE is_read = false"
-    );
+    await pool.query("UPDATE notifications SET is_read = true WHERE is_read = false");
     res.json({ message: "All notifications marked as read" });
   } catch (error) {
     console.error("Error marking all notifications as read:", error);

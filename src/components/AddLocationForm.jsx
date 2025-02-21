@@ -38,14 +38,11 @@ const AddLocationForm = ({ onClose, onLocationAdded }) => {
         const formDataWithFile = new FormData();
         formDataWithFile.append("photo", selectedFile);
 
-        const uploadResponse = await fetch(
-          "http://localhost:5000/admin/upload-photo",
-          {
-            method: "POST",
-            credentials: "include",
-            body: formDataWithFile,
-          }
-        );
+        const uploadResponse = await fetch("http://localhost:5000/admin/upload-photo", {
+          method: "POST",
+          credentials: "include",
+          body: formDataWithFile,
+        });
 
         if (!uploadResponse.ok) {
           throw new Error("Failed to upload image");
@@ -60,19 +57,16 @@ const AddLocationForm = ({ onClose, onLocationAdded }) => {
         photoUrl = `/src/assets/mountain_photos/${data.filename}`;
       }
 
-      const response = await fetchWithAuth(
-        "http://localhost:5000/admin/mountains",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            ...formData,
-            photo_url: photoUrl,
-          }),
-        }
-      );
+      const response = await fetchWithAuth("http://localhost:5000/admin/mountains", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          photo_url: photoUrl,
+        }),
+      });
 
       const data = await response.json();
       if (!data.success) {

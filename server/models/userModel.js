@@ -18,11 +18,7 @@ class UserModel {
         WHERE username = $3 
         RETURNING avatar_url`;
 
-      const { rows } = await client.query(query, [
-        fileInfo.path,
-        fileInfo.url,
-        username,
-      ]);
+      const { rows } = await client.query(query, [fileInfo.path, fileInfo.url, username]);
 
       // If successful and there was an old avatar, delete it
       if (rows[0] && currentAvatar && currentAvatar.path !== fileInfo.path) {
@@ -40,8 +36,7 @@ class UserModel {
   }
 
   static async getCurrentAvatar(username) {
-    const query =
-      "SELECT avatar_path, avatar_url FROM users WHERE username = $1";
+    const query = "SELECT avatar_path, avatar_url FROM users WHERE username = $1";
     const { rows } = await pool.query(query, [username]);
     return rows[0];
   }

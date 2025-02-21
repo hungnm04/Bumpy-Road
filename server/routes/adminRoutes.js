@@ -5,11 +5,7 @@ const adminController = require("../controllers/adminController");
 // Remove debug middleware
 
 // Mountains endpoints
-router.post(
-  "/upload-photo",
-  adminController.upload.single("photo"),
-  adminController.uploadPhoto
-);
+router.post("/upload-photo", adminController.upload.single("photo"), adminController.uploadPhoto);
 router.post("/mountains", express.json(), adminController.addMountain);
 router.get("/mountains", adminController.getAllMountains);
 router.get("/mountains/:id", adminController.getMountainById);

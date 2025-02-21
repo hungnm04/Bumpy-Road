@@ -7,12 +7,7 @@ function FAQ() {
   return (
     <>
       <Navbar />
-      <Hero
-        cName="hero-mid"
-        heroImg={AboutImg}
-        title="Contact"
-        btnClass="about-tag"
-      />
+      <Hero cName="hero-mid" heroImg={AboutImg} title="Contact" btnClass="about-tag" />
       <ContactForm />
     </>
   );

@@ -28,8 +28,7 @@ const ContactForm = () => {
 
     if (!name) newErrors.name = "Please enter your name.";
     if (!email) newErrors.email = "Please enter your email.";
-    else if (!/\S+@\S+\.\S+/.test(email))
-      newErrors.email = "Please enter a valid email address.";
+    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = "Please enter a valid email address.";
     if (!subject) newErrors.subject = "Please enter a subject.";
     if (!message) newErrors.message = "Please enter a message.";
 
@@ -57,9 +56,7 @@ const ContactForm = () => {
 
       if (!response.ok) {
         const result = await response.json();
-        setBackendError(
-          result.message || "An error occurred. Please try again."
-        );
+        setBackendError(result.message || "An error occurred. Please try again.");
         toast.error(result.message || "An error occurred. Please try again.");
       } else {
         toast.success("Message sent successfully!");

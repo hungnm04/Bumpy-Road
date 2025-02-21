@@ -22,9 +22,7 @@ const EditUserForm = ({ userId, onClose, onUserUpdated }) => {
         setLoading(true);
         setError("");
 
-        const response = await fetchWithAuth(
-          `http://localhost:5000/admin/users/${userId}`
-        );
+        const response = await fetchWithAuth(`http://localhost:5000/admin/users/${userId}`);
         if (!response.ok) {
           throw new Error("Failed to fetch user details");
         }
@@ -69,26 +67,20 @@ const EditUserForm = ({ userId, onClose, onUserUpdated }) => {
       }
 
       // Create submission data without empty fields
-      const submissionData = Object.entries(formData).reduce(
-        (acc, [key, value]) => {
-          if (value && key !== "confirm_password") {
-            acc[key] = value;
-          }
-          return acc;
-        },
-        {}
-      );
-
-      const response = await fetchWithAuth(
-        `http://localhost:5000/admin/users/${userId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(submissionData),
+      const submissionData = Object.entries(formData).reduce((acc, [key, value]) => {
+        if (value && key !== "confirm_password") {
+          acc[key] = value;
         }
-      );
+        return acc;
+      }, {});
+
+      const response = await fetchWithAuth(`http://localhost:5000/admin/users/${userId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(submissionData),
+      });
 
       const data = await response.json();
       if (!data.success) {
@@ -171,9 +163,7 @@ const EditUserForm = ({ userId, onClose, onUserUpdated }) => {
               className="toggle-password-btn"
               onClick={() => setPasswordChangeMode(!passwordChangeMode)}
             >
-              {passwordChangeMode
-                ? "Cancel Password Change"
-                : "Change Password"}
+              {passwordChangeMode ? "Cancel Password Change" : "Change Password"}
             </button>
 
             {passwordChangeMode && (
