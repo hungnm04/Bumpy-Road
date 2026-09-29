@@ -1,0 +1,912 @@
+{
+  "nodes": [
+    {
+      "id": "file:server/middlewares/auth.js",
+      "type": "file",
+      "name": "auth.js",
+      "filePath": "server/middlewares/auth.js",
+      "summary": "JWT authentication middleware providing requireEnvSecret helper, authenticateJWT middleware for verifying tokens, and requireRole middleware for role-based authorization.",
+      "tags": ["middleware", "authentication", "jwt", "authorization"],
+      "complexity": "simple",
+      "languageNotes": "Express middleware pattern with JWT token verification and role-based access control."
+    },
+    {
+      "id": "function:server/middlewares/auth.js:authenticateJWT",
+      "type": "function",
+      "name": "authenticateJWT",
+      "filePath": "server/middlewares/auth.js",
+      "lineRange": [13, 31],
+      "summary": "Middleware that verifies JWT tokens from Authorization header, extracts user info, and attaches it to the request object.",
+      "tags": ["middleware", "authentication", "jwt"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/middlewares/auth.js:requireRole",
+      "type": "function",
+      "name": "requireRole",
+      "filePath": "server/middlewares/auth.js",
+      "lineRange": [33, 38],
+      "summary": "Middleware factory that generates role-checking middleware to verify user has one of the specified roles.",
+      "tags": ["middleware", "authorization", "rbac"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/middlewares/uploadMiddleware.js",
+      "type": "file",
+      "name": "uploadMiddleware.js",
+      "filePath": "server/middlewares/uploadMiddleware.js",
+      "summary": "Multer-based file upload middleware that handles image uploads, validates file types and size limits, processes images with sharp, and saves avatars via storageService.",
+      "tags": ["middleware", "file-upload", "image-processing", "multer"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/middlewares/uploadMiddleware.js:handleFileUpload",
+      "type": "function",
+      "name": "handleFileUpload",
+      "filePath": "server/middlewares/uploadMiddleware.js",
+      "lineRange": [8, 52],
+      "summary": "Express middleware handling single file avatar uploads with 5MB size limit, MIME type validation, and image metadata extraction using sharp.",
+      "tags": ["middleware", "file-upload", "image-processing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/models/userModel.js",
+      "type": "file",
+      "name": "userModel.js",
+      "filePath": "server/models/userModel.js",
+      "summary": "UserModel class providing static methods for avatar management including updateAvatar with old avatar cleanup and getCurrentAvatar retrieval.",
+      "tags": ["data-model", "database", "user-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:server/models/userModel.js:UserModel",
+      "type": "class",
+      "name": "UserModel",
+      "filePath": "server/models/userModel.js",
+      "lineRange": [4, 43],
+      "summary": "Database model class for user avatar management with methods to update avatars and retrieve current avatar URLs.",
+      "tags": ["data-model", "database", "user-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/routes/adminRoutes.js",
+      "type": "file",
+      "name": "adminRoutes.js",
+      "filePath": "server/routes/adminRoutes.js",
+      "summary": "Express router defining admin API endpoints for managing mountains, users, and reviewing candidate destinations.",
+      "tags": ["api-handler", "routes", "admin", "express"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/routes/blogRoutes.js",
+      "type": "file",
+      "name": "blogRoutes.js",
+      "filePath": "server/routes/blogRoutes.js",
+      "summary": "Express router for blog API endpoints, re-exporting blog services for CRUD operations.",
+      "tags": ["api-handler", "routes", "blog"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/routes/notificationRoutes.js",
+      "type": "file",
+      "name": "notificationRoutes.js",
+      "filePath": "server/routes/notificationRoutes.js",
+      "summary": "Express router handling real-time notification endpoints with Socket.IO integration for broadcasting updates.",
+      "tags": ["api-handler", "routes", "notifications", "websocket"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/routes/profile.js",
+      "type": "file",
+      "name": "profile.js",
+      "filePath": "server/routes/profile.js",
+      "summary": "Express router for user profile management endpoints including avatar upload handling.",
+      "tags": ["api-handler", "routes", "user-profile"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/routes/users.js",
+      "type": "file",
+      "name": "users.js",
+      "filePath": "server/routes/users.js",
+      "summary": "Express router for user authentication and management endpoints, re-exporting user service functions.",
+      "tags": ["api-handler", "routes", "authentication", "user-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/scripts/auditDestinationGuides.js",
+      "type": "file",
+      "name": "auditDestinationGuides.js",
+      "filePath": "server/scripts/auditDestinationGuides.js",
+      "summary": "CLI script that audits published destination guides, evaluates their quality, and promotes top candidates to featured status based on balanced selection criteria.",
+      "tags": ["script", "data-pipeline", "content-curation", "cli"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/scripts/auditDestinationGuides.js:auditDestinationGuides",
+      "type": "function",
+      "name": "auditDestinationGuides",
+      "filePath": "server/scripts/auditDestinationGuides.js",
+      "lineRange": [125, 166],
+      "summary": "Main orchestration function that loads published destinations, ranks candidates by quality score, selects balanced guides, and promotes selected guides.",
+      "tags": ["script", "orchestration", "content-curation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/scripts/auditDestinationGuides.js:rankCandidates",
+      "type": "function",
+      "name": "rankCandidates",
+      "filePath": "server/scripts/auditDestinationGuides.js",
+      "lineRange": [41, 54],
+      "summary": "Ranks destination candidates by quality score, bonus factors (source availability, elevation data), and alphabetical ordering.",
+      "tags": ["utility", "ranking", "sorting"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/scripts/auditDestinationGuides.js:selectBalancedGuides",
+      "type": "function",
+      "name": "selectBalancedGuides",
+      "filePath": "server/scripts/auditDestinationGuides.js",
+      "lineRange": [56, 78],
+      "summary": "Selects destination guides ensuring balanced representation across destination types within the specified limit.",
+      "tags": ["utility", "selection", "balancing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/scripts/auditDestinationGuides.js:promoteGuide",
+      "type": "function",
+      "name": "promoteGuide",
+      "filePath": "server/scripts/auditDestinationGuides.js",
+      "lineRange": [94, 123],
+      "summary": "Promotes a destination guide to featured status, clearing previous featured status and setting new featured order.",
+      "tags": ["database", "update", "featured-content"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/scripts/discoverDestinations.js",
+      "type": "file",
+      "name": "discoverDestinations.js",
+      "filePath": "server/scripts/discoverDestinations.js",
+      "summary": "CLI script for discovering and ingesting mountain destinations from Wikidata and other sources, supporting batch processing with configurable limits.",
+      "tags": ["script", "data-ingestion", "wikidata", "cli"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/scripts/discoverDestinations.js:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "server/scripts/discoverDestinations.js",
+      "lineRange": [42, 96],
+      "summary": "Main discovery workflow that parses CLI arguments, loads destination sources, fetches Wikimedia media, and upserts destinations to the database.",
+      "tags": ["script", "orchestration", "data-ingestion"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/scripts/ingestPhotoSources.js",
+      "type": "file",
+      "name": "ingestPhotoSources.js",
+      "filePath": "server/scripts/ingestPhotoSources.js",
+      "summary": "CLI script for ingesting photos from external sources (Unsplash, Wikimedia Commons), downloading, resizing to 1920x1080, and storing in local file system.",
+      "tags": ["script", "image-ingestion", "photo-sourcing", "cli"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/scripts/ingestPhotoSources.js:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "server/scripts/ingestPhotoSources.js",
+      "lineRange": [75, 164],
+      "summary": "Main photo ingestion workflow that loads mountains, fetches photos from configured sources, downloads and re-encodes images, and associates them with destinations.",
+      "tags": ["script", "orchestration", "image-processing"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/scripts/ingestPhotoSources.js:downloadAndReencode",
+      "type": "function",
+      "name": "downloadAndReencode",
+      "filePath": "server/scripts/ingestPhotoSources.js",
+      "lineRange": [37, 73],
+      "summary": "Downloads image from URL, validates hostname against allowed hosts, resizes to 1920x1080 using sharp, and saves to filesystem with SHA256 hash naming.",
+      "tags": ["utility", "image-processing", "download"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/scripts/migrate.js",
+      "type": "file",
+      "name": "migrate.js",
+      "filePath": "server/scripts/migrate.js",
+      "summary": "Database migration script that waits for PostgreSQL readiness, then executes SQL migration files in order from the migrations directory.",
+      "tags": ["script", "database", "migration", "postgresql"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/scripts/migrate.js:migrate",
+      "type": "function",
+      "name": "migrate",
+      "filePath": "server/scripts/migrate.js",
+      "lineRange": [22, 65],
+      "summary": "Executes SQL migrations by reading .sql files from migrations directory, running each within a transaction, and tracking migration state in the database.",
+      "tags": ["database", "migration", "transaction"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/scripts/publishReadyDestinations.js",
+      "type": "file",
+      "name": "publishReadyDestinations.js",
+      "filePath": "server/scripts/publishReadyDestinations.js",
+      "summary": "CLI script that finds destinations marked as ready for publication and bulk-publishes them by updating their status to published.",
+      "tags": ["script", "database", "publishing", "cli"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/scripts/publishReadyDestinations.js:publishReadyDestinations",
+      "type": "function",
+      "name": "publishReadyDestinations",
+      "filePath": "server/scripts/publishReadyDestinations.js",
+      "lineRange": [3, 36],
+      "summary": "Queries destinations with ready=true status and bulk-updates them to published status.",
+      "tags": ["database", "bulk-update", "publishing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/scripts/runSql.js",
+      "type": "file",
+      "name": "runSql.js",
+      "filePath": "server/scripts/runSql.js",
+      "summary": "CLI utility script that executes a single SQL file against the database, useful for running ad-hoc queries or individual migration files.",
+      "tags": ["script", "database", "utility", "cli"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/scripts/runSql.js:runSql",
+      "type": "function",
+      "name": "runSql",
+      "filePath": "server/scripts/runSql.js",
+      "lineRange": [5, 17],
+      "summary": "Reads SQL file from command line argument and executes it against the database connection pool.",
+      "tags": ["database", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/scripts/seedAdmin.js",
+      "type": "file",
+      "name": "seedAdmin.js",
+      "filePath": "server/scripts/seedAdmin.js",
+      "summary": "Database seeding script that creates an admin user with hashed password and assigns editorial blog posts for content management.",
+      "tags": ["script", "database", "seeding", "admin"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/scripts/seedAdmin.js:seedAdmin",
+      "type": "function",
+      "name": "seedAdmin",
+      "filePath": "server/scripts/seedAdmin.js",
+      "lineRange": [18, 74],
+      "summary": "Seeds admin user with specified credentials and assigns editorial blog posts for testing and content management.",
+      "tags": ["database", "seeding", "admin"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/services/adminService.js",
+      "type": "file",
+      "name": "adminService.js",
+      "filePath": "server/services/adminService.js",
+      "summary": "Comprehensive admin service providing mountain CRUD operations, user management, and ingestion candidate review with quality evaluation and bulk publishing.",
+      "tags": ["service", "admin", "crud", "data-management"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/services/adminService.js:addMountain",
+      "type": "function",
+      "name": "addMountain",
+      "filePath": "server/services/adminService.js",
+      "lineRange": [75, 181],
+      "summary": "Creates a new mountain destination with normalized guide data, quality evaluation, and comprehensive metadata storage.",
+      "tags": ["service", "database", "create"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/services/adminService.js:updateMountain",
+      "type": "function",
+      "name": "updateMountain",
+      "filePath": "server/services/adminService.js",
+      "lineRange": [183, 287],
+      "summary": "Updates existing mountain destination with new data, handles photo changes by deleting old stored photos, and re-evaluates quality.",
+      "tags": ["service", "database", "update"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/services/adminService.js:deleteMountain",
+      "type": "function",
+      "name": "deleteMountain",
+      "filePath": "server/services/adminService.js",
+      "lineRange": [289, 303],
+      "summary": "Deletes mountain destination from database and removes associated stored photo from filesystem.",
+      "tags": ["service", "database", "delete"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/services/adminService.js:getMountainById",
+      "type": "function",
+      "name": "getMountainById",
+      "filePath": "server/services/adminService.js",
+      "lineRange": [305, 318],
+      "summary": "Retrieves a single mountain destination by its ID with full metadata.",
+      "tags": ["service", "database", "read"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/services/adminService.js:getIngestionCandidates",
+      "type": "function",
+      "name": "getIngestionCandidates",
+      "filePath": "server/services/adminService.js",
+      "lineRange": [450, 482],
+      "summary": "Fetches destination candidates pending review, including draft, published, and rejected items with full editorial metadata.",
+      "tags": ["service", "database", "query"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/services/adminService.js:setCandidateStatus",
+      "type": "function",
+      "name": "setCandidateStatus",
+      "filePath": "server/services/adminService.js",
+      "lineRange": [484, 511],
+      "summary": "Updates candidate status to published or rejected with optional editorial tags normalization.",
+      "tags": ["service", "database", "update"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/services/adminService.js:bulkPublishCandidates",
+      "type": "function",
+      "name": "bulkPublishCandidates",
+      "filePath": "server/services/adminService.js",
+      "lineRange": [513, 532],
+      "summary": "Bulk publishes multiple candidates at once by ID, deduplicating and validating integer IDs before executing update.",
+      "tags": ["service", "database", "bulk-update"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/services/blogServices.js",
+      "type": "file",
+      "name": "blogServices.js",
+      "filePath": "server/services/blogServices.js",
+      "summary": "Blog service providing functions for retrieving and creating blog posts with database operations.",
+      "tags": ["service", "blog", "crud"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/services/destinationQuality.js",
+      "type": "file",
+      "name": "destinationQuality.js",
+      "filePath": "server/services/destinationQuality.js",
+      "summary": "Quality evaluation service for destination guides that assesses completeness, content quality, and generates quality scores and profiles.",
+      "tags": ["service", "quality-assessment", "content-validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/services/destinationQuality.js:evaluateGuideQuality",
+      "type": "function",
+      "name": "evaluateGuideQuality",
+      "filePath": "server/services/destinationQuality.js",
+      "lineRange": [76, 111],
+      "summary": "Evaluates destination guide quality by checking required fields (name, location, country, continent, type), content word count, and optional notes.",
+      "tags": ["utility", "quality-assessment", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/services/destinationQuality.js:buildGuideProfile",
+      "type": "function",
+      "name": "buildGuideProfile",
+      "filePath": "server/services/destinationQuality.js",
+      "lineRange": [113, 127],
+      "summary": "Builds a quality profile for a destination including type classification, overview text, and quality assessment.",
+      "tags": ["utility", "data-transformation", "profiling"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/services/faq.js",
+      "type": "file",
+      "name": "faq.js",
+      "filePath": "server/services/faq.js",
+      "summary": "FAQ submission service that stores questions in database and broadcasts new submissions via Socket.IO for real-time notifications.",
+      "tags": ["service", "faq", "notifications", "socket-io"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/services/faq.js:submitFAQ",
+      "type": "function",
+      "name": "submitFAQ",
+      "filePath": "server/services/faq.js",
+      "lineRange": [5, 51],
+      "summary": "Processes FAQ submission by storing question in database with metadata and emitting real-time notification via Socket.IO.",
+      "tags": ["service", "database", "notifications"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/services/mountains.js",
+      "type": "file",
+      "name": "mountains.js",
+      "filePath": "server/services/mountains.js",
+      "summary": "Mountain search and retrieval service supporting filtered queries by query string, region, country, type, elevation range, difficulty, and tags.",
+      "tags": ["service", "search", "query", "mountains"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/services/mountains.js:searchMountains",
+      "type": "function",
+      "name": "searchMountains",
+      "filePath": "server/services/mountains.js",
+      "lineRange": [10, 99],
+      "summary": "Comprehensive mountain search with support for text query, region, country, destination type, elevation range, difficulty level, and tag filtering.",
+      "tags": ["service", "search", "filtering"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/services/mountains.js:getPlaceById",
+      "type": "function",
+      "name": "getPlaceById",
+      "filePath": "server/services/mountains.js",
+      "lineRange": [101, 162],
+      "summary": "Retrieves full place details by ID including base info and weather conditions data in a single response.",
+      "tags": ["service", "database", "read"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/services/mountains.js:getFeaturedPlacesFromDB",
+      "type": "function",
+      "name": "getFeaturedPlacesFromDB",
+      "filePath": "server/services/mountains.js",
+      "lineRange": [164, 179],
+      "summary": "Fetches all featured places ordered by their featured_order for homepage display.",
+      "tags": ["service", "database", "query"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/services/reviews.js",
+      "type": "file",
+      "name": "reviews.js",
+      "filePath": "server/services/reviews.js",
+      "summary": "Review service for managing mountain reviews, providing functions to retrieve reviews by mountain ID and add new reviews.",
+      "tags": ["service", "reviews", "ratings"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/services/reviews.js:getReviewsByMountainId",
+      "type": "function",
+      "name": "getReviewsByMountainId",
+      "filePath": "server/services/reviews.js",
+      "lineRange": [3, 13],
+      "summary": "Retrieves all reviews for a specific mountain ordered by creation date.",
+      "tags": ["service", "database", "query"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/services/reviews.js:addReview",
+      "type": "function",
+      "name": "addReview",
+      "filePath": "server/services/reviews.js",
+      "lineRange": [15, 23],
+      "summary": "Creates a new review for a mountain with rating, title, and text content.",
+      "tags": ["service", "database", "create"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/services/storageService.js",
+      "type": "file",
+      "name": "storageService.js",
+      "filePath": "server/services/storageService.js",
+      "summary": "StorageService class managing local filesystem storage for uploaded files with avatar-specific directory structure, hash-based deduplication, and path safety validation.",
+      "tags": ["service", "storage", "file-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:server/services/storageService.js:StorageService",
+      "type": "class",
+      "name": "StorageService",
+      "filePath": "server/services/storageService.js",
+      "lineRange": [5, 71],
+      "summary": "File storage service managing avatar images with SHA256 hash-based naming, deduplication, and directory structure creation.",
+      "tags": ["service", "storage", "file-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/services/users.js",
+      "type": "file",
+      "name": "users.js",
+      "filePath": "server/services/users.js",
+      "summary": "User service providing authentication, password management, profile retrieval, and profile updates with avatar cleanup.",
+      "tags": ["service", "authentication", "user-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/services/users.js:verifyLogin",
+      "type": "function",
+      "name": "verifyLogin",
+      "filePath": "server/services/users.js",
+      "lineRange": [25, 64],
+      "summary": "Authenticates user by email or username, verifies password with bcrypt, and returns user data or error message.",
+      "tags": ["service", "authentication", "password-verification"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/services/users.js:createUser",
+      "type": "function",
+      "name": "createUser",
+      "filePath": "server/services/users.js",
+      "lineRange": [66, 126],
+      "summary": "Creates new user account with password validation, duplicate checking, and bcrypt password hashing.",
+      "tags": ["service", "database", "create", "user-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/services/users.js:getUserProfile",
+      "type": "function",
+      "name": "getUserProfile",
+      "filePath": "server/services/users.js",
+      "lineRange": [128, 148],
+      "summary": "Retrieves user profile data excluding sensitive password information.",
+      "tags": ["service", "database", "read", "user-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/services/users.js:updateUserProfile",
+      "type": "function",
+      "name": "updateUserProfile",
+      "filePath": "server/services/users.js",
+      "lineRange": [150, 191],
+      "summary": "Updates user profile fields including optional avatar upload with old avatar cleanup using database transaction.",
+      "tags": ["service", "database", "update", "transaction"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/services/weatherWindow.js",
+      "type": "file",
+      "name": "weatherWindow.js",
+      "filePath": "server/services/weatherWindow.js",
+      "summary": "Weather window service for finding optimal hiking conditions by fetching Open-Meteo forecasts, scoring hourly conditions, and ranking destinations by weather favorability.",
+      "tags": ["service", "weather", "forecasting", "api-integration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/services/weatherWindow.js:scoreForecast",
+      "type": "function",
+      "name": "scoreForecast",
+      "filePath": "server/services/weatherWindow.js",
+      "lineRange": [154, 221],
+      "summary": "Scores weather forecast for a destination based on temperature comfort zone, precipitation probability, wind speed, visibility, and UV index preferences.",
+      "tags": ["service", "scoring", "weather-analysis"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:server/services/weatherWindow.js:fetchForecasts",
+      "type": "function",
+      "name": "fetchForecasts",
+      "filePath": "server/services/weatherWindow.js",
+      "lineRange": [240, 258],
+      "summary": "Fetches weather forecasts from Open-Meteo API for multiple destinations within specified date range.",
+      "tags": ["service", "api-integration", "weather"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/services/weatherWindow.js:findGuideCandidates",
+      "type": "function",
+      "name": "findGuideCandidates",
+      "filePath": "server/services/weatherWindow.js",
+      "lineRange": [260, 303],
+      "summary": "Finds published destinations that have weather data available and meet minimum quality criteria for weather window consideration.",
+      "tags": ["service", "query", "filtering"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/services/weatherWindow.js:rankWeatherWindows",
+      "type": "function",
+      "name": "rankWeatherWindows",
+      "filePath": "server/services/weatherWindow.js",
+      "lineRange": [312, 354],
+      "summary": "Ranks weather window results by composite score and builds response with best windows per destination.",
+      "tags": ["service", "ranking", "aggregation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/services/weatherWindow.js:getPlaceConditions",
+      "type": "function",
+      "name": "getPlaceConditions",
+      "filePath": "server/services/weatherWindow.js",
+      "lineRange": [356, 386],
+      "summary": "Retrieves weather conditions for a specific place including current score, best window, and hourly breakdown.",
+      "tags": ["service", "query", "weather"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/utils/errorHandling.js",
+      "type": "file",
+      "name": "errorHandling.js",
+      "filePath": "server/utils/errorHandling.js",
+      "summary": "Error handling utilities providing centralized error response formatting for the Express application.",
+      "tags": ["utility", "error-handling", "express"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:server/middlewares/auth.js",
+      "target": "function:server/middlewares/auth.js:authenticateJWT",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/middlewares/auth.js",
+      "target": "function:server/middlewares/auth.js:requireRole",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/middlewares/uploadMiddleware.js",
+      "target": "function:server/middlewares/uploadMiddleware.js:handleFileUpload",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/models/userModel.js",
+      "target": "class:server/models/userModel.js:UserModel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/scripts/auditDestinationGuides.js",
+      "target": "function:server/scripts/auditDestinationGuides.js:auditDestinationGuides",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/scripts/auditDestinationGuides.js",
+      "target": "function:server/scripts/auditDestinationGuides.js:rankCandidates",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/scripts/auditDestinationGuides.js",
+      "target": "function:server/scripts/auditDestinationGuides.js:selectBalancedGuides",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/scripts/auditDestinationGuides.js",
+      "target": "function:server/scripts/auditDestinationGuides.js:promoteGuide",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/scripts/discoverDestinations.js",
+      "target": "function:server/scripts/discoverDestinations.js:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/scripts/ingestPhotoSources.js",
+      "target": "function:server/scripts/ingestPhotoSources.js:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/scripts/ingestPhotoSources.js",
+      "target": "function:server/scripts/ingestPhotoSources.js:downloadAndReencode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/scripts/migrate.js",
+      "target": "function:server/scripts/migrate.js:migrate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/scripts/publishReadyDestinations.js",
+      "target": "function:server/scripts/publishReadyDestinations.js:publishReadyDestinations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/scripts/runSql.js",
+      "target": "function:server/scripts/runSql.js:runSql",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/scripts/seedAdmin.js",
+      "target": "function:server/scripts/seedAdmin.js:seedAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/adminService.js",
+      "target": "function:server/services/adminService.js:addMountain",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/adminService.js",
+      "target": "function:server/services/adminService.js:updateMountain",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/adminService.js",
+      "target": "function:server/services/adminService.js:deleteMountain",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/adminService.js",
+      "target": "function:server/services/adminService.js:getMountainById",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/adminService.js",
+      "target": "function:server/services/adminService.js:getIngestionCandidates",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/adminService.js",
+      "target": "function:server/services/adminService.js:setCandidateStatus",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/adminService.js",
+      "target": "function:server/services/adminService.js:bulkPublishCandidates",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/destinationQuality.js",
+      "target": "function:server/services/destinationQuality.js:evaluateGuideQuality",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/destinationQuality.js",
+      "target": "function:server/services/destinationQuality.js:buildGuideProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/faq.js",
+      "target": "function:server/services/faq.js:submitFAQ",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/mountains.js",
+      "target": "function:server/services/mountains.js:searchMountains",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/mountains.js",
+      "target": "function:server/services/mountains.js:getPlaceById",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/mountains.js",
+      "target": "function:server/services/mountains.js:getFeaturedPlacesFromDB",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/reviews.js",
+      "target": "function:server/services/reviews.js:getReviewsByMountainId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/reviews.js",
+      "target": "function:server/services/reviews.js:addReview",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/storageService.js",
+      "target": "class:server/services/storageService.js:StorageService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/users.js",
+      "target": "function:server/services/users.js:verifyLogin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/users.js",
+      "target": "function:server/services/users.js:createUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/users.js",
+      "target": "function:server/services/users.js:getUserProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/users.js",
+      "target": "function:server/services/users.js:updateUserProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/weatherWindow.js",
+      "target": "function:server/services/weatherWindow.js:scoreForecast",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/weatherWindow.js",
+      "target": "function:server/services/weatherWindow.js:fetchForecasts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/weatherWindow.js",
+      "target": "function:server/services/weatherWindow.js:findGuideCandidates",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/weatherWindow.js",
+      "target": "function:server/services/weatherWindow.js:rankWeatherWindows",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/services/weatherWindow.js",
+      "target": "function:server/services/weatherWindow.js:getPlaceConditions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    }
+  ]
+}

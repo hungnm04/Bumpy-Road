@@ -1,0 +1,1156 @@
+{
+  "nodes": [
+    {
+      "id": "file:.claude/settings.local.json",
+      "type": "config",
+      "name": "settings.local.json",
+      "filePath": ".claude/settings.local.json",
+      "summary": "Claude Code local settings configuration that defines project-specific permission rules for directory access.",
+      "tags": ["configuration", "permissions", "claude-code"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.ua/config.json",
+      "type": "config",
+      "name": "config.json",
+      "filePath": ".ua/config.json",
+      "summary": "Understand-Anything plugin configuration specifying the output language for generated documentation.",
+      "tags": ["configuration", "plugin", "localization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "backend/package.json",
+      "summary": "Backend Node.js package configuration defining dependencies, scripts, and project metadata for the Bumpy Road API server.",
+      "tags": ["configuration", "nodejs", "dependencies"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/database/seeds/dev_seed.sql",
+      "type": "table",
+      "name": "dev_seed.sql",
+      "filePath": "backend/database/seeds/dev_seed.sql",
+      "summary": "Development database seed file that populates initial users (admin and guest), mountain destinations, and sample reviews for testing.",
+      "tags": ["database", "seed", "development", "testing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server.js",
+      "type": "file",
+      "name": "server.js",
+      "filePath": "backend/server.js",
+      "summary": "Express.js server entry point that configures middleware (CORS, helmet, cookie-parser), sets up routes, and initializes storage and avatar defaults.",
+      "tags": ["entry-point", "api-handler", "express", "server"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/server/config/db.js",
+      "type": "file",
+      "name": "db.js",
+      "filePath": "backend/server/config/db.js",
+      "summary": "Database connection pool configuration using pg library with environment variable support for connection string or individual parameters.",
+      "tags": ["configuration", "database", "postgresql"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/config/setupDefaultAvatar.js",
+      "type": "file",
+      "name": "setupDefaultAvatar.js",
+      "filePath": "backend/server/config/setupDefaultAvatar.js",
+      "summary": "Creates the default user avatar image from SVG, converts to PNG using sharp, and ensures the avatars directory exists.",
+      "tags": ["configuration", "utility", "image-processing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/config/setupStorage.js",
+      "type": "file",
+      "name": "setupStorage.js",
+      "filePath": "backend/server/config/setupStorage.js",
+      "summary": "Initializes storage directories for avatars and mountain photos on server startup.",
+      "tags": ["configuration", "utility", "filesystem"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/config/socket.js",
+      "type": "file",
+      "name": "socket.js",
+      "filePath": "backend/server/config/socket.js",
+      "summary": "Provides Socket.IO CORS configuration by parsing allowed client origins from environment variables.",
+      "tags": ["configuration", "socket.io", "cors"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/controllers/adminController.js",
+      "type": "file",
+      "name": "adminController.js",
+      "filePath": "backend/server/controllers/adminController.js",
+      "summary": "Admin API handlers for managing mountains, users, photos, and data ingestion candidates with validation and error handling.",
+      "tags": ["api-handler", "admin", "crud"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/server/controllers/blogController.js",
+      "type": "file",
+      "name": "blogController.js",
+      "filePath": "backend/server/controllers/blogController.js",
+      "summary": "Blog content API handlers supporting CRUD operations with authorization checks to ensure only authors can modify their posts.",
+      "tags": ["api-handler", "blog", "crud"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/controllers/faqController.js",
+      "type": "file",
+      "name": "faqController.js",
+      "filePath": "backend/server/controllers/faqController.js",
+      "summary": "Handles FAQ form submissions from users, validating input and storing questions in the database.",
+      "tags": ["api-handler", "form", "faq"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/controllers/mountainControllers.js",
+      "type": "file",
+      "name": "mountainControllers.js",
+      "filePath": "backend/server/controllers/mountainControllers.js",
+      "summary": "Mountain destination API handlers for searching places, fetching details by ID, and retrieving featured destinations with pagination.",
+      "tags": ["api-handler", "search", "mountains"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/controllers/reviewControllers.js",
+      "type": "file",
+      "name": "reviewControllers.js",
+      "filePath": "backend/server/controllers/reviewControllers.js",
+      "summary": "Review submission and retrieval handlers for mountain destinations with schema validation and error handling.",
+      "tags": ["api-handler", "reviews", "ratings"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/controllers/userControllers.js",
+      "type": "file",
+      "name": "userControllers.js",
+      "filePath": "backend/server/controllers/userControllers.js",
+      "summary": "User authentication and profile management including login, registration, JWT token handling, refresh tokens, and avatar uploads.",
+      "tags": ["api-handler", "authentication", "users"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/server/controllers/weatherWindowController.js",
+      "type": "file",
+      "name": "weatherWindowController.js",
+      "filePath": "backend/server/controllers/weatherWindowController.js",
+      "summary": "Weather window and condition API handlers that rank optimal hiking periods based on user preferences and filter criteria.",
+      "tags": ["api-handler", "weather", "ranking"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/ingestion/catalogRepository.js",
+      "type": "file",
+      "name": "catalogRepository.js",
+      "filePath": "backend/server/ingestion/catalogRepository.js",
+      "summary": "Database repository for ingesting and upserting mountain destination catalog data from external sources with transactional integrity.",
+      "tags": ["data-pipeline", "repository", "database"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/server/ingestion/httpClient.js",
+      "type": "file",
+      "name": "httpClient.js",
+      "filePath": "backend/server/ingestion/httpClient.js",
+      "summary": "HTTP client with caching, rate limiting, and hostname allowlisting for safe external API requests during data ingestion.",
+      "tags": ["utility", "http-client", "caching"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/ingestion/wikidata.js",
+      "type": "file",
+      "name": "wikidata.js",
+      "filePath": "backend/server/ingestion/wikidata.js",
+      "summary": "Wikidata SPARQL query executor for discovering and refreshing mountain destination data including coordinates, elevation, and descriptions.",
+      "tags": ["data-pipeline", "wikidata", "sparql"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/server/ingestion/wikimedia.js",
+      "type": "file",
+      "name": "wikimedia.js",
+      "filePath": "backend/server/ingestion/wikimedia.js",
+      "summary": "Wikimedia Commons API client for fetching image metadata and URLs associated with mountain destinations.",
+      "tags": ["data-pipeline", "media", "wikimedia"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/middlewares/auth.js",
+      "type": "file",
+      "name": "auth.js",
+      "filePath": "backend/server/middlewares/auth.js",
+      "summary": "JWT authentication middleware with role-based access control, ownership verification, and refresh token validation.",
+      "tags": ["middleware", "authentication", "authorization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/middlewares/uploadMiddleware.js",
+      "type": "file",
+      "name": "uploadMiddleware.js",
+      "filePath": "backend/server/middlewares/uploadMiddleware.js",
+      "summary": "File upload middleware using multer for processing user avatar images with MIME type validation and image processing.",
+      "tags": ["middleware", "upload", "image-processing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/models/userModel.js",
+      "type": "file",
+      "name": "userModel.js",
+      "filePath": "backend/server/models/userModel.js",
+      "summary": "User model class providing methods to update and retrieve user avatar URLs with automatic cleanup of old files.",
+      "tags": ["data-model", "repository", "users"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/routes/adminRoutes.js",
+      "type": "file",
+      "name": "adminRoutes.js",
+      "filePath": "backend/server/routes/adminRoutes.js",
+      "summary": "Express router defining admin API endpoints for mountains, users, photos, and ingestion management with authentication guards.",
+      "tags": ["api-handler", "routes", "admin"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/routes/blogRoutes.js",
+      "type": "file",
+      "name": "blogRoutes.js",
+      "filePath": "backend/server/routes/blogRoutes.js",
+      "summary": "Express router defining blog content API endpoints with public read access and protected write operations.",
+      "tags": ["api-handler", "routes", "blog"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:verifyUploadedImage",
+      "type": "function",
+      "name": "verifyUploadedImage",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [69, 122],
+      "summary": "Validates uploaded image buffers for mountain photos, processes them with sharp, and writes to storage with error cleanup.",
+      "tags": ["utility", "validation", "image-processing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:getTotalLocations",
+      "type": "function",
+      "name": "getTotalLocations",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [124, 132],
+      "summary": "Returns the total count of mountain destinations in the catalog for admin dashboard statistics.",
+      "tags": ["api-handler", "admin", "statistics"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:getActiveUsers",
+      "type": "function",
+      "name": "getActiveUsers",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [134, 142],
+      "summary": "Retrieves the count of active users with valid refresh tokens for admin dashboard statistics.",
+      "tags": ["api-handler", "admin", "statistics"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:getAllMountains",
+      "type": "function",
+      "name": "getAllMountains",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [144, 152],
+      "summary": "Returns a list of all mountains in the database for admin management interface.",
+      "tags": ["api-handler", "admin", "crud"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:getAllUsers",
+      "type": "function",
+      "name": "getAllUsers",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [154, 162],
+      "summary": "Returns a list of all registered users for admin management interface.",
+      "tags": ["api-handler", "admin", "crud"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:addMountain",
+      "type": "function",
+      "name": "addMountain",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [164, 190],
+      "summary": "Validates and creates a new mountain destination with Zod schema validation and admin service integration.",
+      "tags": ["api-handler", "admin", "crud"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:uploadPhoto",
+      "type": "function",
+      "name": "uploadPhoto",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [192, 214],
+      "summary": "Handles photo upload for existing mountains via the upload middleware.",
+      "tags": ["api-handler", "admin", "upload"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:updateMountain",
+      "type": "function",
+      "name": "updateMountain",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [216, 243],
+      "summary": "Updates mountain destination details with partial Zod schema validation.",
+      "tags": ["api-handler", "admin", "crud"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:deleteMountain",
+      "type": "function",
+      "name": "deleteMountain",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [245, 263],
+      "summary": "Removes a mountain destination from the database.",
+      "tags": ["api-handler", "admin", "crud"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:getMountainById",
+      "type": "function",
+      "name": "getMountainById",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [265, 280],
+      "summary": "Retrieves a single mountain by ID for admin detail view.",
+      "tags": ["api-handler", "admin", "crud"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:addUser",
+      "type": "function",
+      "name": "addUser",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [282, 308],
+      "summary": "Creates a new user account directly from admin panel with password hashing.",
+      "tags": ["api-handler", "admin", "crud"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:deleteUser",
+      "type": "function",
+      "name": "deleteUser",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [310, 328],
+      "summary": "Deletes a user account from the system.",
+      "tags": ["api-handler", "admin", "crud"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:updateUser",
+      "type": "function",
+      "name": "updateUser",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [330, 357],
+      "summary": "Updates user account details including password changes with Zod validation.",
+      "tags": ["api-handler", "admin", "crud"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:getUserById",
+      "type": "function",
+      "name": "getUserById",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [359, 374],
+      "summary": "Retrieves a single user by ID for admin detail view.",
+      "tags": ["api-handler", "admin", "crud"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:getIngestionRuns",
+      "type": "function",
+      "name": "getIngestionRuns",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [376, 384],
+      "summary": "Returns historical data ingestion run statistics for admin monitoring.",
+      "tags": ["api-handler", "admin", "monitoring"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:getIngestionCandidates",
+      "type": "function",
+      "name": "getIngestionCandidates",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [386, 394],
+      "summary": "Retrieves pending data ingestion candidates awaiting admin review and approval.",
+      "tags": ["api-handler", "admin", "moderation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:publishIngestionCandidate",
+      "type": "function",
+      "name": "publishIngestionCandidate",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [396, 407],
+      "summary": "Approves and publishes a pending ingestion candidate to the live catalog.",
+      "tags": ["api-handler", "admin", "moderation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:rejectIngestionCandidate",
+      "type": "function",
+      "name": "rejectIngestionCandidate",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [409, 420],
+      "summary": "Rejects and removes a pending ingestion candidate from review queue.",
+      "tags": ["api-handler", "admin", "moderation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/adminController.js:bulkPublishIngestionCandidates",
+      "type": "function",
+      "name": "bulkPublishIngestionCandidates",
+      "filePath": "backend/server/controllers/adminController.js",
+      "lineRange": [422, 433],
+      "summary": "Batch approves multiple ingestion candidates for efficient moderation.",
+      "tags": ["api-handler", "admin", "moderation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/blogController.js:getBlogs",
+      "type": "function",
+      "name": "getBlogs",
+      "filePath": "backend/server/controllers/blogController.js",
+      "lineRange": [20, 28],
+      "summary": "Returns all published blog posts from the database.",
+      "tags": ["api-handler", "blog", "read"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/blogController.js:getBlogById",
+      "type": "function",
+      "name": "getBlogById",
+      "filePath": "backend/server/controllers/blogController.js",
+      "lineRange": [30, 44],
+      "summary": "Retrieves a single blog post by ID with 404 handling.",
+      "tags": ["api-handler", "blog", "read"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/blogController.js:createBlog",
+      "type": "function",
+      "name": "createBlog",
+      "filePath": "backend/server/controllers/blogController.js",
+      "lineRange": [46, 69],
+      "summary": "Creates a new blog post with Zod validation and sets the authenticated user as author.",
+      "tags": ["api-handler", "blog", "crud"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/controllers/blogController.js:updateBlog",
+      "type": "function",
+      "name": "updateBlog",
+      "filePath": "backend/server/controllers/blogController.js",
+      "lineRange": [71, 104],
+      "summary": "Updates an existing blog post with authorization check ensuring only the author can modify.",
+      "tags": ["api-handler", "blog", "crud"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/controllers/blogController.js:deleteBlog",
+      "type": "function",
+      "name": "deleteBlog",
+      "filePath": "backend/server/controllers/blogController.js",
+      "lineRange": [106, 131],
+      "summary": "Deletes a blog post with authorization check ensuring only the author can delete.",
+      "tags": ["api-handler", "blog", "crud"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/controllers/faqController.js:submitFaqForm",
+      "type": "function",
+      "name": "submitFaqForm",
+      "filePath": "backend/server/controllers/faqController.js",
+      "lineRange": [13, 47],
+      "summary": "Validates and stores FAQ form submissions from visitors with spam prevention.",
+      "tags": ["api-handler", "form", "faq"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/controllers/mountainControllers.js:boundedInteger",
+      "type": "function",
+      "name": "boundedInteger",
+      "filePath": "backend/server/controllers/mountainControllers.js",
+      "lineRange": [7, 13],
+      "summary": "Helper to parse and bound integer query parameters with fallback defaults.",
+      "tags": ["utility", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/mountainControllers.js:getPlaces",
+      "type": "function",
+      "name": "getPlaces",
+      "filePath": "backend/server/controllers/mountainControllers.js",
+      "lineRange": [15, 38],
+      "summary": "Searches mountain destinations with pagination, sorting, and filtering parameters.",
+      "tags": ["api-handler", "search", "mountains"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/controllers/mountainControllers.js:getMountainsById",
+      "type": "function",
+      "name": "getMountainsById",
+      "filePath": "backend/server/controllers/mountainControllers.js",
+      "lineRange": [40, 56],
+      "summary": "Retrieves a single mountain destination by ID with type validation.",
+      "tags": ["api-handler", "mountains", "read"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/mountainControllers.js:getFeaturedPlaces",
+      "type": "function",
+      "name": "getFeaturedPlaces",
+      "filePath": "backend/server/controllers/mountainControllers.js",
+      "lineRange": [58, 66],
+      "summary": "Returns featured mountain destinations for homepage display.",
+      "tags": ["api-handler", "mountains", "featured"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/reviewControllers.js:fetchReviews",
+      "type": "function",
+      "name": "fetchReviews",
+      "filePath": "backend/server/controllers/reviewControllers.js",
+      "lineRange": [12, 21],
+      "summary": "Retrieves all reviews for a specific mountain destination.",
+      "tags": ["api-handler", "reviews", "read"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/reviewControllers.js:submitReview",
+      "type": "function",
+      "name": "submitReview",
+      "filePath": "backend/server/controllers/reviewControllers.js",
+      "lineRange": [23, 56],
+      "summary": "Validates and submits a new review for a mountain with duplicate detection.",
+      "tags": ["api-handler", "reviews", "crud"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/controllers/userControllers.js:authCookieOptions",
+      "type": "function",
+      "name": "authCookieOptions",
+      "filePath": "backend/server/controllers/userControllers.js",
+      "lineRange": [36, 42],
+      "summary": "Generates cookie configuration options with secure settings based on environment.",
+      "tags": ["utility", "cookies", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/userControllers.js:createAccessToken",
+      "type": "function",
+      "name": "createAccessToken",
+      "filePath": "backend/server/controllers/userControllers.js",
+      "lineRange": [44, 49],
+      "summary": "Creates a short-lived JWT access token for authenticated requests.",
+      "tags": ["utility", "jwt", "authentication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/userControllers.js:createRefreshToken",
+      "type": "function",
+      "name": "createRefreshToken",
+      "filePath": "backend/server/controllers/userControllers.js",
+      "lineRange": [51, 61],
+      "summary": "Creates a long-lived JWT refresh token with unique identifier for revocation support.",
+      "tags": ["utility", "jwt", "authentication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/userControllers.js:login",
+      "type": "function",
+      "name": "login",
+      "filePath": "backend/server/controllers/userControllers.js",
+      "lineRange": [63, 109],
+      "summary": "Authenticates user credentials and issues JWT tokens with refresh token storage.",
+      "tags": ["api-handler", "authentication", "login"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/controllers/userControllers.js:createAccount",
+      "type": "function",
+      "name": "createAccount",
+      "filePath": "backend/server/controllers/userControllers.js",
+      "lineRange": [111, 149],
+      "summary": "Registers a new user account with password hashing and default avatar assignment.",
+      "tags": ["api-handler", "authentication", "registration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/controllers/userControllers.js:getProfile",
+      "type": "function",
+      "name": "getProfile",
+      "filePath": "backend/server/controllers/userControllers.js",
+      "lineRange": [151, 168],
+      "summary": "Retrieves the authenticated user's profile data.",
+      "tags": ["api-handler", "users", "profile"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/userControllers.js:updateProfile",
+      "type": "function",
+      "name": "updateProfile",
+      "filePath": "backend/server/controllers/userControllers.js",
+      "lineRange": [170, 198],
+      "summary": "Updates user profile information including bio and contact details.",
+      "tags": ["api-handler", "users", "crud"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/controllers/userControllers.js:refreshToken",
+      "type": "function",
+      "name": "refreshToken",
+      "filePath": "backend/server/controllers/userControllers.js",
+      "lineRange": [200, 246],
+      "summary": "Validates and exchanges refresh token for new access token with revocation tracking.",
+      "tags": ["api-handler", "authentication", "jwt"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/controllers/userControllers.js:uploadAvatar",
+      "type": "function",
+      "name": "uploadAvatar",
+      "filePath": "backend/server/controllers/userControllers.js",
+      "lineRange": [248, 262],
+      "summary": "Handles avatar upload completion response for authenticated users.",
+      "tags": ["api-handler", "upload", "avatar"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/userControllers.js:authStatus",
+      "type": "function",
+      "name": "authStatus",
+      "filePath": "backend/server/controllers/userControllers.js",
+      "lineRange": [264, 326],
+      "summary": "Checks current authentication status, validates tokens, and handles automatic refresh when needed.",
+      "tags": ["api-handler", "authentication", "session"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/controllers/userControllers.js:logout",
+      "type": "function",
+      "name": "logout",
+      "filePath": "backend/server/controllers/userControllers.js",
+      "lineRange": [328, 348],
+      "summary": "Revokes the user's refresh token and clears authentication cookies.",
+      "tags": ["api-handler", "authentication", "logout"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/weatherWindowController.js:boundedInteger",
+      "type": "function",
+      "name": "boundedInteger",
+      "filePath": "backend/server/controllers/weatherWindowController.js",
+      "lineRange": [6, 12],
+      "summary": "Helper to parse and bound integer query parameters with fallback defaults.",
+      "tags": ["utility", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/weatherWindowController.js:defaultDates",
+      "type": "function",
+      "name": "defaultDates",
+      "filePath": "backend/server/controllers/weatherWindowController.js",
+      "lineRange": [14, 23],
+      "summary": "Generates default date range for weather queries (current week).",
+      "tags": ["utility", "date"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/weatherWindowController.js:requestFilters",
+      "type": "function",
+      "name": "requestFilters",
+      "filePath": "backend/server/controllers/weatherWindowController.js",
+      "lineRange": [25, 41],
+      "summary": "Extracts and normalizes weather query parameters from request with defaults.",
+      "tags": ["utility", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/weatherWindowController.js:getWeatherWindow",
+      "type": "function",
+      "name": "getWeatherWindow",
+      "filePath": "backend/server/controllers/weatherWindowController.js",
+      "lineRange": [43, 49],
+      "summary": "Returns ranked weather windows based on user preferences and location filters.",
+      "tags": ["api-handler", "weather", "ranking"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/controllers/weatherWindowController.js:getConditions",
+      "type": "function",
+      "name": "getConditions",
+      "filePath": "backend/server/controllers/weatherWindowController.js",
+      "lineRange": [51, 67],
+      "summary": "Retrieves current weather conditions for a specific mountain destination.",
+      "tags": ["api-handler", "weather", "conditions"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/server/config/db.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/server/config/setupStorage.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/server/config/setupDefaultAvatar.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/server/controllers/userControllers.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/server/controllers/faqController.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/server/controllers/mountainControllers.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/server/controllers/weatherWindowController.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/server/controllers/reviewControllers.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/server/routes/adminRoutes.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/server/routes/blogRoutes.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/server/middlewares/auth.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/server/middlewares/uploadMiddleware.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/server/config/setupDefaultAvatar.js",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/config/setupDefaultAvatar.js",
+      "target": "function:backend/server/config/setupDefaultAvatar.js:setupDefaultAvatar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:verifyUploadedImage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:getTotalLocations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:getActiveUsers",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:getAllMountains",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:getAllUsers",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:addMountain",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:uploadPhoto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:updateMountain",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:deleteMountain",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:getMountainById",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:addUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:deleteUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:updateUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:getUserById",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:getIngestionRuns",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:getIngestionCandidates",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:publishIngestionCandidate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:rejectIngestionCandidate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/adminController.js",
+      "target": "function:backend/server/controllers/adminController.js:bulkPublishIngestionCandidates",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/blogController.js",
+      "target": "function:backend/server/controllers/blogController.js:getBlogs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/blogController.js",
+      "target": "function:backend/server/controllers/blogController.js:getBlogById",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/blogController.js",
+      "target": "function:backend/server/controllers/blogController.js:createBlog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/blogController.js",
+      "target": "function:backend/server/controllers/blogController.js:updateBlog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/blogController.js",
+      "target": "function:backend/server/controllers/blogController.js:deleteBlog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/faqController.js",
+      "target": "function:backend/server/controllers/faqController.js:submitFaqForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/mountainControllers.js",
+      "target": "function:backend/server/controllers/mountainControllers.js:boundedInteger",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/mountainControllers.js",
+      "target": "function:backend/server/controllers/mountainControllers.js:getPlaces",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/mountainControllers.js",
+      "target": "function:backend/server/controllers/mountainControllers.js:getMountainsById",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/mountainControllers.js",
+      "target": "function:backend/server/controllers/mountainControllers.js:getFeaturedPlaces",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/reviewControllers.js",
+      "target": "function:backend/server/controllers/reviewControllers.js:fetchReviews",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/reviewControllers.js",
+      "target": "function:backend/server/controllers/reviewControllers.js:submitReview",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/userControllers.js",
+      "target": "function:backend/server/controllers/userControllers.js:authCookieOptions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/userControllers.js",
+      "target": "function:backend/server/controllers/userControllers.js:createAccessToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/userControllers.js",
+      "target": "function:backend/server/controllers/userControllers.js:createRefreshToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/userControllers.js",
+      "target": "function:backend/server/controllers/userControllers.js:login",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/userControllers.js",
+      "target": "function:backend/server/controllers/userControllers.js:createAccount",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/userControllers.js",
+      "target": "function:backend/server/controllers/userControllers.js:getProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/userControllers.js",
+      "target": "function:backend/server/controllers/userControllers.js:updateProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/userControllers.js",
+      "target": "function:backend/server/controllers/userControllers.js:refreshToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/userControllers.js",
+      "target": "function:backend/server/controllers/userControllers.js:uploadAvatar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/userControllers.js",
+      "target": "function:backend/server/controllers/userControllers.js:authStatus",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/userControllers.js",
+      "target": "function:backend/server/controllers/userControllers.js:logout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/weatherWindowController.js",
+      "target": "function:backend/server/controllers/weatherWindowController.js:boundedInteger",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/weatherWindowController.js",
+      "target": "function:backend/server/controllers/weatherWindowController.js:defaultDates",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/weatherWindowController.js",
+      "target": "function:backend/server/controllers/weatherWindowController.js:requestFilters",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/weatherWindowController.js",
+      "target": "function:backend/server/controllers/weatherWindowController.js:getWeatherWindow",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/controllers/weatherWindowController.js",
+      "target": "function:backend/server/controllers/weatherWindowController.js:getConditions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/routes/adminRoutes.js",
+      "target": "file:backend/server/controllers/adminController.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server/routes/adminRoutes.js",
+      "target": "file:backend/server/middlewares/auth.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server/routes/blogRoutes.js",
+      "target": "file:backend/server/controllers/blogController.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server/routes/blogRoutes.js",
+      "target": "file:backend/server/middlewares/auth.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

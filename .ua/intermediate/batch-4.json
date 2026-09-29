@@ -1,0 +1,253 @@
+{
+  "nodes": [
+    {
+      "id": "table:database/migrations/001_initial_schema.sql:users",
+      "type": "table",
+      "name": "users",
+      "filePath": "database/migrations/001_initial_schema.sql",
+      "lineRange": [15, 30],
+      "summary": "Core user account table storing authentication credentials, profile information, and role-based access control (admin/guest) for the application.",
+      "tags": ["database", "user-management", "authentication", "schema"],
+      "complexity": "moderate",
+      "languageNotes": "PostgreSQL table with CHECK constraints for role validation and email format, plus triggers for automatic updated_at timestamps."
+    },
+    {
+      "id": "table:database/migrations/001_initial_schema.sql:mountains",
+      "type": "table",
+      "name": "mountains",
+      "filePath": "database/migrations/001_initial_schema.sql",
+      "lineRange": [32, 41],
+      "summary": "Primary entity table for mountain destinations, storing basic location data, descriptions, and photos.",
+      "tags": ["database", "core-entity", "schema"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:database/migrations/001_initial_schema.sql:reviews",
+      "type": "table",
+      "name": "reviews",
+      "filePath": "database/migrations/001_initial_schema.sql",
+      "lineRange": [43, 53],
+      "summary": "User-submitted reviews for mountain destinations with star ratings and flagging capability for moderation.",
+      "tags": ["database", "user-content", "schema", "moderation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:database/migrations/001_initial_schema.sql:faqs",
+      "type": "table",
+      "name": "faqs",
+      "filePath": "database/migrations/001_initial_schema.sql",
+      "lineRange": [55, 63],
+      "summary": "Stores visitor-submitted FAQ/inquiry submissions including contact details and message content.",
+      "tags": ["database", "user-content", "schema"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:database/migrations/001_initial_schema.sql:notifications",
+      "type": "table",
+      "name": "notifications",
+      "filePath": "database/migrations/001_initial_schema.sql",
+      "lineRange": [65, 73],
+      "summary": "Application notification system with typed notifications, read status tracking, and JSONB payload for flexible data storage.",
+      "tags": ["database", "notifications", "schema"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:database/migrations/001_initial_schema.sql:blogs",
+      "type": "table",
+      "name": "blogs",
+      "filePath": "database/migrations/001_initial_schema.sql",
+      "lineRange": [75, 84],
+      "summary": "Editorial blog posts with author attribution, categories, and featured images.",
+      "tags": ["database", "content", "schema", "blog"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:database/migrations/001_initial_schema.sql:schema_migrations",
+      "type": "table",
+      "name": "schema_migrations",
+      "filePath": "database/migrations/001_initial_schema.sql",
+      "lineRange": [1, 5],
+      "summary": "Migration tracking table recording which SQL migration files have been applied and when.",
+      "tags": ["database", "migration", "schema"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:database/migrations/001_initial_schema.sql:set_updated_at",
+      "type": "function",
+      "name": "set_updated_at",
+      "filePath": "database/migrations/001_initial_schema.sql",
+      "lineRange": [7, 13],
+      "summary": "PostgreSQL trigger function that automatically sets the updated_at timestamp to CURRENT_TIMESTAMP whenever a row is modified.",
+      "tags": ["database", "trigger", "utility", "timestamp"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:database/migrations/002_destination_catalog.sql:mountain_sources",
+      "type": "table",
+      "name": "mountain_sources",
+      "filePath": "database/migrations/002_destination_catalog.sql",
+      "lineRange": [65, 76],
+      "summary": "Stores provenance data for mountain information ingested from external providers, tracking license and attribution details.",
+      "tags": ["database", "data-ingestion", "schema", "provenance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:database/migrations/002_destination_catalog.sql:mountain_media",
+      "type": "table",
+      "name": "mountain_media",
+      "filePath": "database/migrations/002_destination_catalog.sql",
+      "lineRange": [78, 91],
+      "summary": "Stores curated and fetched media assets (photos) for mountains with licensing and attribution metadata.",
+      "tags": ["database", "media", "schema", "licensing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:database/migrations/002_destination_catalog.sql:ingestion_runs",
+      "type": "table",
+      "name": "ingestion_runs",
+      "filePath": "database/migrations/002_destination_catalog.sql",
+      "lineRange": [93, 106],
+      "summary": "Tracks data ingestion pipeline execution history with counts of fetched, staged, updated, and failed records.",
+      "tags": ["database", "data-ingestion", "schema", "monitoring"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:database/migrations/002_destination_catalog.sql:set_mountain_slug",
+      "type": "function",
+      "name": "set_mountain_slug",
+      "filePath": "database/migrations/002_destination_catalog.sql",
+      "lineRange": [48, 58],
+      "summary": "Generates a URL-friendly slug from mountain name using regex replacements, appended with ID for uniqueness.",
+      "tags": ["database", "trigger", "utility", "url-slug"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:database/migrations/002_destination_catalog.sql:set_mountain_search_document",
+      "type": "function",
+      "name": "set_mountain_search_document",
+      "filePath": "database/migrations/002_destination_catalog.sql",
+      "lineRange": [108, 125],
+      "summary": "Builds a PostgreSQL full-text search TSVECTOR by concatenating searchable mountain attributes for text search queries.",
+      "tags": ["database", "trigger", "search", "full-text"],
+      "complexity": "moderate",
+      "languageNotes": "Uses pg_trgm extension for trigram-based fuzzy matching alongside standard tsvector search."
+    },
+    {
+      "id": "table:database/migrations/005_destination_guides_weather.sql:mountains",
+      "type": "table",
+      "name": "mountains",
+      "filePath": "database/migrations/005_destination_guides_weather.sql",
+      "summary": "Extended mountains table with destination guide metadata including traveler fit ratings, best seasons, and editorial review status.",
+      "tags": ["database", "core-entity", "schema", "travel-guide"],
+      "complexity": "complex",
+      "languageNotes": "Migration adds 14 new columns to existing mountains table for travel guide content management."
+    }
+  ],
+  "edges": [
+    {
+      "source": "table:database/migrations/001_initial_schema.sql:users",
+      "target": "function:database/migrations/001_initial_schema.sql:set_updated_at",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:database/migrations/001_initial_schema.sql:mountains",
+      "target": "function:database/migrations/001_initial_schema.sql:set_updated_at",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:database/migrations/001_initial_schema.sql:reviews",
+      "target": "table:database/migrations/001_initial_schema.sql:mountains",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:database/migrations/001_initial_schema.sql:reviews",
+      "target": "table:database/migrations/001_initial_schema.sql:users",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:database/migrations/001_initial_schema.sql:reviews",
+      "target": "function:database/migrations/001_initial_schema.sql:set_updated_at",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:database/migrations/001_initial_schema.sql:blogs",
+      "target": "table:database/migrations/001_initial_schema.sql:users",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:database/migrations/001_initial_schema.sql:blogs",
+      "target": "function:database/migrations/001_initial_schema.sql:set_updated_at",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:database/migrations/001_initial_schema.sql:faqs",
+      "target": "function:database/migrations/001_initial_schema.sql:set_updated_at",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:database/migrations/002_destination_catalog.sql:mountains",
+      "target": "function:database/migrations/002_destination_catalog.sql:set_mountain_slug",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:database/migrations/002_destination_catalog.sql:mountains",
+      "target": "function:database/migrations/002_destination_catalog.sql:set_mountain_search_document",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:database/migrations/002_destination_catalog.sql:mountain_sources",
+      "target": "table:database/migrations/002_destination_catalog.sql:mountains",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:database/migrations/002_destination_catalog.sql:mountain_media",
+      "target": "table:database/migrations/002_destination_catalog.sql:mountains",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:database/migrations/005_destination_guides_weather.sql:mountains",
+      "target": "table:database/migrations/002_destination_catalog.sql:mountain_media",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:database/migrations/003_editorial_blog_catalog.sql:blogs",
+      "target": "table:database/migrations/003_editorial_blog_catalog.sql:blogs",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:database/migrations/004_dedupe_reviews.sql:reviews",
+      "target": "table:database/migrations/004_dedupe_reviews.sql:reviews",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

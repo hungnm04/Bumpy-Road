@@ -1,0 +1,325 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/routes/AuthRoute.jsx",
+      "type": "file",
+      "name": "AuthRoute.jsx",
+      "filePath": "src/routes/AuthRoute.jsx",
+      "summary": "React route component that handles post-authentication redirects based on user role, sending admins to the dashboard and other users to the home page.",
+      "tags": ["route", "authentication", "authorization", "react-component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/routes/AuthRoute.jsx:AuthRoute",
+      "type": "function",
+      "name": "AuthRoute",
+      "filePath": "src/routes/AuthRoute.jsx",
+      "lineRange": [5, 41],
+      "summary": "Route component that checks session state and redirects authenticated users based on their role (admin to dashboard, guest/default to home).",
+      "tags": ["route", "authentication", "authorization", "react-component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/routes/AuthRoute.jsx:checkAuth",
+      "type": "function",
+      "name": "checkAuth",
+      "filePath": "src/routes/AuthRoute.jsx",
+      "lineRange": [13, 21],
+      "summary": "Async function that retrieves the current session and updates auth state, handling errors gracefully.",
+      "tags": ["async", "authentication", "api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/routes/ProtectedRoute.jsx",
+      "type": "file",
+      "name": "ProtectedRoute.jsx",
+      "filePath": "src/routes/ProtectedRoute.jsx",
+      "summary": "React route component that guards routes requiring authentication and optional role-based access control.",
+      "tags": ["route", "authentication", "authorization", "react-component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/routes/ProtectedRoute.jsx:ProtectedRoute",
+      "type": "function",
+      "name": "ProtectedRoute",
+      "filePath": "src/routes/ProtectedRoute.jsx",
+      "lineRange": [5, 39],
+      "summary": "Route component that verifies authentication and role requirements before rendering the protected element.",
+      "tags": ["route", "authentication", "authorization", "react-component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/routes/ProtectedRoute.jsx:checkAuth",
+      "type": "function",
+      "name": "checkAuth",
+      "filePath": "src/routes/ProtectedRoute.jsx",
+      "lineRange": [13, 21],
+      "summary": "Async function that retrieves the current session and updates auth state, handling errors gracefully.",
+      "tags": ["async", "authentication", "api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/styles.css",
+      "type": "file",
+      "name": "styles.css",
+      "filePath": "src/styles.css",
+      "summary": "Main stylesheet defining CSS custom properties for typography and colors, global reset styles, and reusable component styles for buttons, form fields, and layout utilities.",
+      "tags": ["styling", "css-variables", "design-system", "responsive"],
+      "complexity": "complex",
+      "languageNotes": "Uses CSS custom properties (variables) for theming, flexbox/grid layout patterns, and clamp() for fluid typography."
+    },
+    {
+      "id": "file:src/styles/BlogPageStyles.css",
+      "type": "file",
+      "name": "BlogPageStyles.css",
+      "filePath": "src/styles/BlogPageStyles.css",
+      "summary": "Blog-specific stylesheet containing header layouts, form styles for blog creation, and responsive button components.",
+      "tags": ["styling", "blog", "form-styles", "responsive"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/vite-env.d.ts",
+      "type": "file",
+      "name": "vite-env.d.ts",
+      "filePath": "src/vite-env.d.ts",
+      "summary": "Vite TypeScript environment declaration file referencing Vite client types for IDE support.",
+      "tags": ["type-definition", "vite", "typescript"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/integration/api.test.js",
+      "type": "file",
+      "name": "api.test.js",
+      "filePath": "tests/integration/api.test.js",
+      "summary": "Comprehensive integration test suite for the Bumpy Road API covering health checks, public routes, weather validation, catalog search, authentication flows, and admin workflows.",
+      "tags": ["test", "integration", "api-testing", "authentication", "authorization"],
+      "complexity": "complex",
+      "languageNotes": "Uses Node.js built-in test runner with async/await, fetch API for HTTP requests, and cookie jar management."
+    },
+    {
+      "id": "function:tests/integration/api.test.js:updateCookieJar",
+      "type": "function",
+      "name": "updateCookieJar",
+      "filePath": "tests/integration/api.test.js",
+      "lineRange": [12, 27],
+      "summary": "Parses Set-Cookie headers and updates the cookie jar map, handling session expiration via max-age=0.",
+      "tags": ["test-helper", "cookie-management", "http"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/integration/api.test.js:request",
+      "type": "function",
+      "name": "request",
+      "filePath": "tests/integration/api.test.js",
+      "lineRange": [29, 53],
+      "summary": "Helper function that wraps fetch with automatic cookie handling, JSON serialization, and header management.",
+      "tags": ["test-helper", "http-client", "api-testing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tests/integration/api.test.js:json",
+      "type": "function",
+      "name": "json",
+      "filePath": "tests/integration/api.test.js",
+      "lineRange": [55, 57],
+      "summary": "Simple helper that parses JSON from a response object.",
+      "tags": ["test-helper", "json-parsing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/unit/destinationQuality.test.js",
+      "type": "file",
+      "name": "destinationQuality.test.js",
+      "filePath": "tests/unit/destinationQuality.test.js",
+      "summary": "Unit tests for destination guide quality scoring, verifying that guide profiles are complete and that destinations without verified media cannot become ready.",
+      "tags": ["test", "unit", "destination", "quality-scoring"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/unit/destinationQuality.test.js:eligibleDestination",
+      "type": "function",
+      "name": "eligibleDestination",
+      "filePath": "tests/unit/destinationQuality.test.js",
+      "lineRange": [8, 23],
+      "summary": "Factory function that creates a test destination object with sensible defaults for guide quality testing.",
+      "tags": ["test-factory", "test-data"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/unit/ingestion.test.js",
+      "type": "file",
+      "name": "ingestion.test.js",
+      "filePath": "tests/unit/ingestion.test.js",
+      "summary": "Unit tests for the ingestion service verifying HTTPS URL validation and Wikimedia text extraction to plain text.",
+      "tags": ["test", "unit", "ingestion", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/unit/security.test.js",
+      "type": "file",
+      "name": "security.test.js",
+      "filePath": "tests/unit/security.test.js",
+      "summary": "Unit tests for security middleware validating environment secret requirements and role-based access control.",
+      "tags": ["test", "unit", "security", "authentication", "authorization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/unit/security.test.js:requireRole",
+      "type": "function",
+      "name": "requireRole",
+      "filePath": "tests/unit/security.test.js",
+      "lineRange": [39, 68],
+      "summary": "Express middleware factory that returns a role-checking middleware function for authorization.",
+      "tags": ["middleware", "authorization", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/unit/weatherWindow.test.js",
+      "type": "file",
+      "name": "weatherWindow.test.js",
+      "filePath": "tests/unit/weatherWindow.test.js",
+      "summary": "Unit tests for weather window service covering forecast summarization, scoring algorithms, and date range validation.",
+      "tags": ["test", "unit", "weather", "forecasting"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/unit/weatherWindow.test.js:forecastPayload",
+      "type": "function",
+      "name": "forecastPayload",
+      "filePath": "tests/unit/weatherWindow.test.js",
+      "lineRange": [9, 28],
+      "summary": "Factory function that creates a test weather forecast payload with hourly data for scoring tests.",
+      "tags": ["test-factory", "test-data", "weather"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:vite.config.ts",
+      "type": "file",
+      "name": "vite.config.ts",
+      "filePath": "vite.config.ts",
+      "summary": "Vite development server configuration with React plugin support and proxy rules for backend API routes to localhost:5000.",
+      "tags": ["configuration", "vite", "build-system", "proxy"],
+      "complexity": "moderate",
+      "languageNotes": "Uses Vite's defineConfig with proxy configuration for development, supporting WebSocket (ws: true) and HTML navigation bypass."
+    },
+    {
+      "id": "function:vite.config.ts:bypassHtmlNavigation",
+      "type": "function",
+      "name": "bypassHtmlNavigation",
+      "filePath": "vite.config.ts",
+      "lineRange": [23, 24],
+      "summary": "Proxy bypass function that returns index.html for HTML navigation requests but lets API calls through to the backend.",
+      "tags": ["proxy", "configuration", "spa"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "index.html",
+      "summary": "Main HTML entry point for the Bumpy Road single-page application, loading the React app into the root div and including Font Awesome icons.",
+      "tags": ["entry-point", "html", "spa", "frontend"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/routes/AuthRoute.jsx",
+      "target": "function:src/routes/AuthRoute.jsx:AuthRoute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/routes/AuthRoute.jsx",
+      "target": "function:src/routes/AuthRoute.jsx:checkAuth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/routes/AuthRoute.jsx",
+      "target": "file:src/routes/AuthRoute.jsx",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/routes/ProtectedRoute.jsx",
+      "target": "function:src/routes/ProtectedRoute.jsx:ProtectedRoute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/routes/ProtectedRoute.jsx",
+      "target": "function:src/routes/ProtectedRoute.jsx:checkAuth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/routes/ProtectedRoute.jsx",
+      "target": "file:src/routes/ProtectedRoute.jsx",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/integration/api.test.js",
+      "target": "function:tests/integration/api.test.js:updateCookieJar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/integration/api.test.js",
+      "target": "function:tests/integration/api.test.js:request",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/integration/api.test.js",
+      "target": "function:tests/integration/api.test.js:json",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/unit/destinationQuality.test.js",
+      "target": "function:tests/unit/destinationQuality.test.js:eligibleDestination",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/unit/security.test.js",
+      "target": "function:tests/unit/security.test.js:requireRole",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/unit/weatherWindow.test.js",
+      "target": "function:tests/unit/weatherWindow.test.js:forecastPayload",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:vite.config.ts",
+      "target": "function:vite.config.ts:bypassHtmlNavigation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:index.html",
+      "target": "file:src/index.jsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

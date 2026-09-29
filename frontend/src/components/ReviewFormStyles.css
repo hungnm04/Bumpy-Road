@@ -1,0 +1,124 @@
+.review-form-inline {
+  margin: 0;
+}
+
+.review-form-inline form {
+  margin: 0;
+}
+
+.review-input-area {
+  display: grid;
+  gap: 12px;
+}
+
+.comment-input {
+  width: 100%;
+  min-height: 130px;
+  padding: 13px;
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  background: #fffaf0;
+  color: var(--color-ink);
+  font-size: 0.96rem;
+  line-height: 1.55;
+  outline: none;
+  resize: vertical;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.comment-input:focus {
+  border-color: var(--color-moss);
+  background: #fff8ec;
+  box-shadow: 0 0 0 4px rgba(49, 95, 69, 0.13);
+}
+
+.comment-input::placeholder {
+  color: rgba(79, 74, 66, 0.68);
+}
+
+.review-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.star-rating-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.star-rating-inline span {
+  display: inline-flex;
+  color: rgba(23, 21, 18, 0.24);
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.star-rating-inline span.active,
+.star-rating-inline span:hover {
+  color: var(--color-gold);
+  transform: translateY(-1px);
+}
+
+.star-rating-inline svg {
+  width: 19px;
+  height: 19px;
+}
+
+.submit-review-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 1rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--color-forest);
+  color: #fff8ec;
+  font-size: 0.9rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+.submit-review-btn:hover:not(:disabled) {
+  background: var(--color-rust);
+  transform: translateY(-1px);
+}
+
+.submit-review-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.review-input-area .error-message {
+  margin: 0;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: rgba(156, 36, 29, 0.08);
+  color: #9c241d;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+@media (max-width: 520px) {
+  .review-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .submit-review-btn {
+    width: 100%;
+  }
+}

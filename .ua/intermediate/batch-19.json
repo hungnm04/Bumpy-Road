@@ -1,0 +1,496 @@
+{
+  "nodes": [
+    {
+      "id": "file:./src/components/Navbar.jsx",
+      "type": "file",
+      "name": "Navbar.jsx",
+      "filePath": "./src/components/Navbar.jsx",
+      "summary": "Main navigation bar component with search functionality, authentication status handling, and user profile dropdown integration. Provides search-as-you-type for mountain destinations.",
+      "tags": ["component", "navigation", "search", "auth-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:./src/components/NotificationModal.jsx",
+      "type": "file",
+      "name": "NotificationModal.jsx",
+      "filePath": "./src/components/NotificationModal.jsx",
+      "summary": "Modal dialog component for displaying detailed notification information including FAQ replies with date formatting and email reply functionality.",
+      "tags": ["component", "modal", "notification"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:./src/components/NotificationPopover.jsx",
+      "type": "file",
+      "name": "NotificationPopover.jsx",
+      "filePath": "./src/components/NotificationPopover.jsx",
+      "summary": "Popover component for displaying user notifications with real-time updates via Socket.IO, mark-as-read functionality, and modal integration for detailed views.",
+      "tags": ["component", "notification", "websocket", "popover"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:./src/components/PageNotFound.jsx",
+      "type": "file",
+      "name": "PageNotFound.jsx",
+      "filePath": "./src/components/PageNotFound.jsx",
+      "summary": "Simple 404 error page component displayed when a requested route does not exist.",
+      "tags": ["component", "error-page", "routing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:./src/components/ProfileDropdown.jsx",
+      "type": "file",
+      "name": "ProfileDropdown.jsx",
+      "filePath": "./src/components/ProfileDropdown.jsx",
+      "summary": "Dropdown menu component displaying user profile information with avatar, username, and role, featuring click-outside-to-close behavior.",
+      "tags": ["component", "dropdown", "user-profile"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:./src/components/ReviewForm.jsx",
+      "type": "file",
+      "name": "ReviewForm.jsx",
+      "filePath": "./src/components/ReviewForm.jsx",
+      "summary": "Review submission form with star rating system and comment input, supporting authenticated submission via fetchWithAuth with fallback anonymous review capability.",
+      "tags": ["component", "form", "review", "rating"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:./src/components/ReviewList.jsx",
+      "type": "file",
+      "name": "ReviewList.jsx",
+      "filePath": "./src/components/ReviewList.jsx",
+      "summary": "Display component for rendering a list of reviews with star ratings, user avatars, formatted dates, and text truncation.",
+      "tags": ["component", "review", "display"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:./src/components/ReviewSection.jsx",
+      "type": "file",
+      "name": "ReviewSection.jsx",
+      "filePath": "./src/components/ReviewSection.jsx",
+      "summary": "Section component that fetches and displays reviews for a mountain location with sorting controls (newest/oldest/highest/lowest rating).",
+      "tags": ["component", "review", "data-fetching"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:./src/components/Trip.jsx",
+      "type": "file",
+      "name": "Trip.jsx",
+      "filePath": "./src/components/Trip.jsx",
+      "summary": "Component for displaying trip summary information with navigation to detailed trip data.",
+      "tags": ["component", "trip", "display"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:./src/components/TripData.jsx",
+      "type": "file",
+      "name": "TripData.jsx",
+      "filePath": "./src/components/TripData.jsx",
+      "summary": "Minimal component for rendering trip data properties passed via props.",
+      "tags": ["component", "trip", "props-renderer"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:./src/components/MountainDetails.jsx",
+      "type": "file",
+      "name": "MountainDetails.jsx",
+      "filePath": "./src/components/MountainDetails.jsx",
+      "summary": "Comprehensive mountain detail page showing location information, conditions, tags, time windows, alternatives, and user reviews with sorting options.",
+      "tags": ["component", "detail-page", "mountain", "data-fetching"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:./src/components/MountainDetails.jsx:displayType",
+      "type": "function",
+      "name": "displayType",
+      "filePath": "./src/components/MountainDetails.jsx",
+      "lineRange": [26, 28],
+      "summary": "Formats display type values by replacing underscores with spaces for user-friendly rendering.",
+      "tags": ["utility", "formatting", "string-manipulation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:./src/components/MountainDetails.jsx:formatWindow",
+      "type": "function",
+      "name": "formatWindow",
+      "filePath": "./src/components/MountainDetails.jsx",
+      "lineRange": [30, 36],
+      "summary": "Formats time window objects with start/end dates and times using locale-aware formatting.",
+      "tags": ["utility", "formatting", "date-handling"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:./src/components/MountainDetails.jsx:GuidanceList",
+      "type": "function",
+      "name": "GuidanceList",
+      "filePath": "./src/components/MountainDetails.jsx",
+      "lineRange": [38, 47],
+      "summary": "Renders a list of guidance items as styled badge components for mountain guidance display.",
+      "tags": ["component", "display", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:./src/hooks/useDebounce.js",
+      "type": "file",
+      "name": "useDebounce.js",
+      "filePath": "./src/hooks/useDebounce.js",
+      "summary": "Custom React hook that delays updating a value until after a specified delay, commonly used for search input debouncing to reduce API calls.",
+      "tags": ["hook", "utility", "debounce", "custom-hook"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:./src/hooks/useDebounce.js:useDebounce",
+      "type": "function",
+      "name": "useDebounce",
+      "filePath": "./src/hooks/useDebounce.js",
+      "lineRange": [3, 17],
+      "summary": "Implements debounce logic using useState and useEffect with setTimeout to delay value propagation.",
+      "tags": ["hook", "debounce", "timing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:./src/index.jsx",
+      "type": "file",
+      "name": "index.jsx",
+      "filePath": "./src/index.jsx",
+      "summary": "Application entry point that renders the root React component to the DOM.",
+      "tags": ["entry-point", "app-bootstrap"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:./src/pages/About.jsx",
+      "type": "file",
+      "name": "About.jsx",
+      "filePath": "./src/pages/About.jsx",
+      "summary": "Static about page providing project information and background for the Bumpy Road application.",
+      "tags": ["page", "static-content", "information"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:./src/pages/AdminDashboard.jsx",
+      "type": "file",
+      "name": "AdminDashboard.jsx",
+      "filePath": "./src/pages/AdminDashboard.jsx",
+      "summary": "Comprehensive admin panel for managing mountains, users, and data ingestion including CRUD operations, bulk publishing, and import status monitoring.",
+      "tags": ["page", "admin", "dashboard", "crud", "data-management"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:./src/pages/BlogDetail.jsx",
+      "type": "file",
+      "name": "BlogDetail.jsx",
+      "filePath": "./src/pages/BlogDetail.jsx",
+      "summary": "Individual blog post page that fetches and displays full blog content with author information and timestamps.",
+      "tags": ["page", "blog", "detail-view", "data-fetching"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:./src/pages/BlogPage.jsx",
+      "type": "file",
+      "name": "BlogPage.jsx",
+      "filePath": "./src/pages/BlogPage.jsx",
+      "summary": "Blog listing page displaying all published blogs with summaries, thumbnails, and navigation to create new posts.",
+      "tags": ["page", "blog", "listing", "data-fetching"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:./src/pages/CreateAccount.jsx",
+      "type": "file",
+      "name": "CreateAccount.jsx",
+      "filePath": "./src/pages/CreateAccount.jsx",
+      "summary": "User registration page with form validation for email, username, password with confirmation, and error handling for backend responses.",
+      "tags": ["page", "auth", "form", "registration", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:./src/pages/CreateBlog.jsx",
+      "type": "file",
+      "name": "CreateBlog.jsx",
+      "filePath": "./src/pages/CreateBlog.jsx",
+      "summary": "Blog creation page with form fields for title, content, category, and image URL, using authenticated submission.",
+      "tags": ["page", "blog", "form", "creation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:./src/pages/FAQ.jsx",
+      "type": "file",
+      "name": "FAQ.jsx",
+      "filePath": "./src/pages/FAQ.jsx",
+      "summary": "Static FAQ page displaying frequently asked questions and answers for users.",
+      "tags": ["page", "static-content", "faq"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:./src/pages/HomePage.jsx",
+      "type": "file",
+      "name": "HomePage.jsx",
+      "filePath": "./src/pages/HomePage.jsx",
+      "summary": "Landing page component that checks user role on mount and redirects admin users to the admin dashboard.",
+      "tags": ["page", "home", "routing", "auth-guard"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:./src/pages/Login.jsx",
+      "type": "file",
+      "name": "Login.jsx",
+      "filePath": "./src/pages/Login.jsx",
+      "summary": "Login page with username/password form, error handling, loading states, and redirect to intended destination after successful authentication.",
+      "tags": ["page", "auth", "form", "login", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:./src/pages/Places.jsx",
+      "type": "file",
+      "name": "Places.jsx",
+      "filePath": "./src/pages/Places.jsx",
+      "summary": "Mountain destinations listing page with search, filtering by continent and difficulty, debounced search input, and featured places display.",
+      "tags": ["page", "listing", "search", "filter", "data-fetching"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:./src/pages/Places.jsx:DestinationCard",
+      "type": "function",
+      "name": "DestinationCard",
+      "filePath": "./src/pages/Places.jsx",
+      "lineRange": [26, 59],
+      "summary": "Card component for displaying a single mountain destination with image, tags, elevation, and navigation link.",
+      "tags": ["component", "card", "display"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:./src/pages/Profile.jsx",
+      "type": "file",
+      "name": "Profile.jsx",
+      "filePath": "./src/pages/Profile.jsx",
+      "summary": "User profile page with view/edit modes, profile data fetching, avatar upload with progress tracking, and toast notifications for actions.",
+      "tags": ["page", "profile", "user-management", "upload"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:./src/pages/WeatherWindow.jsx",
+      "type": "file",
+      "name": "WeatherWindow.jsx",
+      "filePath": "./src/pages/WeatherWindow.jsx",
+      "summary": "Weather recommendation interface allowing users to filter by date range, conditions, and preferences to get personalized mountain recommendations.",
+      "tags": ["page", "weather", "recommendation", "filter", "api-handler"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:./src/pages/WeatherWindow.jsx:formatDate",
+      "type": "function",
+      "name": "formatDate",
+      "filePath": "./src/pages/WeatherWindow.jsx",
+      "lineRange": [18, 20],
+      "summary": "Formats a date object to ISO string format (YYYY-MM-DD) for API query parameters.",
+      "tags": ["utility", "formatting", "date-handling"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:./src/pages/WeatherWindow.jsx:addDays",
+      "type": "function",
+      "name": "addDays",
+      "filePath": "./src/pages/WeatherWindow.jsx",
+      "lineRange": [22, 26],
+      "summary": "Adds a specified number of days to a date object and returns the resulting date.",
+      "tags": ["utility", "date-manipulation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:./src/pages/WeatherWindow.jsx:formatWindow",
+      "type": "function",
+      "name": "formatWindow",
+      "filePath": "./src/pages/WeatherWindow.jsx",
+      "lineRange": [28, 34],
+      "summary": "Formats weather window objects displaying start and end times with locale-aware date/time formatting.",
+      "tags": ["utility", "formatting", "date-handling"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:./src/pages/WeatherWindow.jsx:WeatherResult",
+      "type": "function",
+      "name": "WeatherResult",
+      "filePath": "./src/pages/WeatherWindow.jsx",
+      "lineRange": [36, 79],
+      "summary": "Display component for a single weather recommendation result showing place image, time window, recommendation reasons, and tradeoffs.",
+      "tags": ["component", "display", "weather"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:./src/components/MountainDetails.jsx",
+      "target": "function:./src/components/MountainDetails.jsx:displayType",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:./src/components/MountainDetails.jsx",
+      "target": "function:./src/components/MountainDetails.jsx:formatWindow",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:./src/components/MountainDetails.jsx",
+      "target": "function:./src/components/MountainDetails.jsx:GuidanceList",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:./src/hooks/useDebounce.js",
+      "target": "function:./src/hooks/useDebounce.js:useDebounce",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "function:./src/hooks/useDebounce.js:useDebounce",
+      "target": "file:./src/hooks/useDebounce.js",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:./src/pages/Places.jsx",
+      "target": "function:./src/pages/Places.jsx:DestinationCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:./src/pages/WeatherWindow.jsx",
+      "target": "function:./src/pages/WeatherWindow.jsx:formatDate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:./src/pages/WeatherWindow.jsx",
+      "target": "function:./src/pages/WeatherWindow.jsx:addDays",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:./src/pages/WeatherWindow.jsx",
+      "target": "function:./src/pages/WeatherWindow.jsx:formatWindow",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:./src/pages/WeatherWindow.jsx",
+      "target": "function:./src/pages/WeatherWindow.jsx:WeatherResult",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:./src/components/ReviewSection.jsx",
+      "target": "file:./src/components/ReviewForm.jsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:./src/components/ReviewSection.jsx",
+      "target": "file:./src/components/ReviewList.jsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:./src/components/MountainDetails.jsx",
+      "target": "file:./src/components/ReviewSection.jsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:./src/components/Navbar.jsx",
+      "target": "file:./src/hooks/useDebounce.js",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:./src/pages/Places.jsx",
+      "target": "file:./src/hooks/useDebounce.js",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:./src/components/Navbar.jsx",
+      "target": "file:./src/components/ProfileDropdown.jsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:./src/components/NotificationPopover.jsx",
+      "target": "file:./src/components/NotificationModal.jsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:./src/components/Trip.jsx",
+      "target": "file:./src/components/TripData.jsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:./src/pages/BlogPage.jsx",
+      "target": "file:./src/pages/BlogDetail.jsx",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:./src/pages/BlogPage.jsx",
+      "target": "file:./src/pages/CreateBlog.jsx",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:./src/pages/Login.jsx",
+      "target": "file:./src/pages/CreateAccount.jsx",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:./src/pages/Profile.jsx",
+      "target": "file:./src/pages/Login.jsx",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:./src/pages/WeatherWindow.jsx",
+      "target": "file:./src/components/MountainDetails.jsx",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:./src/pages/Places.jsx",
+      "target": "file:./src/components/MountainDetails.jsx",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:./src/pages/HomePage.jsx",
+      "target": "file:./src/pages/AdminDashboard.jsx",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

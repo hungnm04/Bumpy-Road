@@ -1,0 +1,35 @@
+{
+  "nodes": [
+    {
+      "id": "service:./backend/Dockerfile",
+      "type": "service",
+      "name": "backend/Dockerfile",
+      "filePath": "./backend/Dockerfile",
+      "summary": "Multi-stage Docker build for the backend Node.js application using node:22-alpine. The builder stage installs production dependencies, and the final stage copies node_modules and application code, runs as a non-root user, and starts server.js on port 5000.",
+      "tags": ["containerization", "infrastructure", "deployment", "backend"],
+      "complexity": "moderate",
+      "languageNotes": "Multi-stage build pattern separates dependency installation from runtime, reducing image size. Non-root user enhances security. Creates storage directories for avatars and mountain-photos at build time."
+    },
+    {
+      "id": "service:./backend/Dockerfile:builder",
+      "type": "service",
+      "name": "builder",
+      "filePath": "./backend/Dockerfile",
+      "lineRange": [2, 7],
+      "summary": "Builder stage that installs production Node.js dependencies using npm ci, then cleans the cache to reduce image size.",
+      "tags": ["containerization", "build-stage", "dependencies"],
+      "complexity": "simple"
+    },
+    {
+      "id": "service:./backend/Dockerfile:node",
+      "type": "service",
+      "name": "node",
+      "filePath": "./backend/Dockerfile",
+      "lineRange": [8, 30],
+      "summary": "Runtime stage that copies dependencies from the builder, sets up a non-root nodejs user, copies application code, creates storage directories, and starts the server on port 5000.",
+      "tags": ["containerization", "runtime-stage", "production"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

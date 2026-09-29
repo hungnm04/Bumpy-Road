@@ -1,0 +1,120 @@
+.trip {
+  padding: clamp(70px, 10vw, 120px) max(24px, calc((100vw - var(--page-max)) / 2));
+  background: var(--color-forest);
+  color: #fff8ec;
+  text-align: left;
+}
+
+.trip-header {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(260px, 0.65fr);
+  gap: clamp(24px, 6vw, 80px);
+  align-items: end;
+  margin-bottom: clamp(34px, 6vw, 58px);
+}
+
+.trip .eyebrow {
+  color: var(--color-gold);
+}
+
+.trip h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 8vw, 6.1rem);
+  font-weight: 800;
+  line-height: 0.9;
+}
+
+.trip-header p:last-child {
+  margin: 0;
+  color: rgba(255, 248, 236, 0.72);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.tripcard {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.tripcard-item {
+  cursor: pointer;
+}
+
+.t-card {
+  min-width: 0;
+  border: 1px solid rgba(255, 248, 236, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 248, 236, 0.06);
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.t-card:hover {
+  border-color: rgba(215, 174, 69, 0.72);
+  background: rgba(255, 248, 236, 0.1);
+  transform: translateY(-6px);
+}
+
+.t-image {
+  position: relative;
+  aspect-ratio: 1.18;
+  overflow: hidden;
+  background: rgba(255, 248, 236, 0.08);
+}
+
+.t-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+.t-card:hover .t-image img {
+  transform: scale(1.07);
+}
+
+.t-image span {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 7px 9px;
+  border-radius: 6px;
+  background: rgba(20, 39, 30, 0.76);
+  color: #fff8ec;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.t-card h4 {
+  margin: 18px 18px 10px;
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 3vw, 2.2rem);
+  line-height: 1;
+}
+
+.t-card p {
+  margin: 0 18px 22px;
+  color: rgba(255, 248, 236, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 860px) {
+  .trip-header,
+  .tripcard {
+    grid-template-columns: 1fr;
+  }
+
+  .t-image {
+    aspect-ratio: 1.7;
+  }
+}

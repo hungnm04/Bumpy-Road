@@ -1,0 +1,403 @@
+{
+  "nodes": [
+    {
+      "id": "file:frontend/src/App.jsx",
+      "type": "file",
+      "name": "App.jsx",
+      "filePath": "frontend/src/App.jsx",
+      "summary": "Root React component that serves as the main entry point for the Bumpy Road application, managing routing and top-level layout.",
+      "tags": ["entry-point", "component", "routing"],
+      "complexity": "moderate",
+      "languageNotes": "React functional component with 17 imports, likely using React Router for navigation."
+    },
+    {
+      "id": "file:frontend/src/api/assetUrls.js",
+      "type": "file",
+      "name": "assetUrls.js",
+      "filePath": "frontend/src/api/assetUrls.js",
+      "summary": "Provides image URL utilities including a fallback mechanism for mountain images when URLs are invalid or missing.",
+      "tags": ["utility", "image", "asset-management"],
+      "complexity": "simple",
+      "languageNotes": "Contains getMountainImageUrl function that handles URL validation and fallback logic."
+    },
+    {
+      "id": "file:frontend/src/api/auth.js",
+      "type": "file",
+      "name": "auth.js",
+      "filePath": "frontend/src/api/auth.js",
+      "summary": "Authentication utilities module with one import dependency.",
+      "tags": ["utility", "authentication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/api/config.js",
+      "type": "file",
+      "name": "config.js",
+      "filePath": "frontend/src/api/config.js",
+      "summary": "API configuration file defining backend endpoint settings and environment variables.",
+      "tags": ["configuration", "api"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/api/fetchWithAuth.js",
+      "type": "file",
+      "name": "fetchWithAuth.js",
+      "filePath": "frontend/src/api/fetchWithAuth.js",
+      "summary": "Wraps the native fetch API to automatically include authentication headers and handle token-based requests.",
+      "tags": ["utility", "api", "middleware", "authentication"],
+      "complexity": "simple",
+      "languageNotes": "Central authentication middleware used across the application for API requests."
+    },
+    {
+      "id": "file:frontend/src/api/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "frontend/src/api/index.js",
+      "summary": "Central API module providing generic HTTP request functions (get, post, put, upload) with built-in error parsing and JSON handling.",
+      "tags": ["api-handler", "barrel", "http-client"],
+      "complexity": "moderate",
+      "languageNotes": "Barrel file exporting CRUD operations with consistent error handling pattern."
+    },
+    {
+      "id": "file:frontend/src/api/profile.js",
+      "type": "file",
+      "name": "profile.js",
+      "filePath": "frontend/src/api/profile.js",
+      "summary": "Profile API module for fetching and managing user profile data.",
+      "tags": ["api-handler", "user-profile"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/api/session.js",
+      "type": "file",
+      "name": "session.js",
+      "filePath": "frontend/src/api/session.js",
+      "summary": "Session management module that retrieves the current user session with authentication.",
+      "tags": ["utility", "session", "authentication"],
+      "complexity": "simple",
+      "languageNotes": "Exports getSession function that calls fetchWithAuth to retrieve session data."
+    },
+    {
+      "id": "file:frontend/src/components/AboutUs.jsx",
+      "type": "file",
+      "name": "AboutUs.jsx",
+      "filePath": "frontend/src/components/AboutUs.jsx",
+      "summary": "About page component displaying information about the Bumpy Road application and team.",
+      "tags": ["component", "page", "static-content"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/components/AddLocationForm.jsx",
+      "type": "file",
+      "name": "AddLocationForm.jsx",
+      "filePath": "frontend/src/components/AddLocationForm.jsx",
+      "summary": "Comprehensive form component for adding new mountain destinations with image upload, location details, tags, and seasonal information.",
+      "tags": ["component", "form", "data-entry", "upload"],
+      "complexity": "complex",
+      "languageNotes": "Large form component with dual upload methods (URL or file), multiple state hooks, and comprehensive form handling."
+    },
+    {
+      "id": "file:frontend/src/components/AddUserForm.jsx",
+      "type": "file",
+      "name": "AddUserForm.jsx",
+      "filePath": "frontend/src/components/AddUserForm.jsx",
+      "summary": "Form component for creating new user accounts with validation and submission handling.",
+      "tags": ["component", "form", "user-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:frontend/src/components/ContactForm.jsx",
+      "type": "file",
+      "name": "ContactForm.jsx",
+      "filePath": "frontend/src/components/ContactForm.jsx",
+      "summary": "Contact form component with client-side validation, toast notifications for feedback, and backend submission handling.",
+      "tags": ["component", "form", "user-input", "validation"],
+      "complexity": "moderate",
+      "languageNotes": "Includes email validation and uses react-toastify for user feedback."
+    },
+    {
+      "id": "file:frontend/src/components/Destination.jsx",
+      "type": "file",
+      "name": "Destination.jsx",
+      "filePath": "frontend/src/components/Destination.jsx",
+      "summary": "Display component for rendering destination information with image handling and navigation links.",
+      "tags": ["component", "display", "image"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/components/DestinationData.jsx",
+      "type": "file",
+      "name": "DestinationData.jsx",
+      "filePath": "frontend/src/components/DestinationData.jsx",
+      "summary": "React class component for rendering destination-specific data sections.",
+      "tags": ["component", "class-component", "data-display"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/components/EditLocationForm.jsx",
+      "type": "file",
+      "name": "EditLocationForm.jsx",
+      "filePath": "frontend/src/components/EditLocationForm.jsx",
+      "summary": "Full-featured form for editing existing mountain destinations, including data fetching, image preview with error handling, and comprehensive field updates.",
+      "tags": ["component", "form", "data-editing", "upload"],
+      "complexity": "complex",
+      "languageNotes": "Complex form with pre-populated data loading, image preview component, and multiple upload methods."
+    },
+    {
+      "id": "file:frontend/src/components/EditUserForm.jsx",
+      "type": "file",
+      "name": "EditUserForm.jsx",
+      "filePath": "frontend/src/components/EditUserForm.jsx",
+      "summary": "Form for editing existing user profiles with password change capability and comprehensive field validation.",
+      "tags": ["component", "form", "user-management", "data-editing"],
+      "complexity": "moderate",
+      "languageNotes": "Includes optional password change mode and selective field updates."
+    },
+    {
+      "id": "file:frontend/src/components/Footer.jsx",
+      "type": "file",
+      "name": "Footer.jsx",
+      "filePath": "frontend/src/components/Footer.jsx",
+      "summary": "Footer component displaying copyright information and site navigation links.",
+      "tags": ["component", "layout", "static-content"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/components/Hero.jsx",
+      "type": "file",
+      "name": "Hero.jsx",
+      "filePath": "frontend/src/components/Hero.jsx",
+      "summary": "Hero section component displaying statistics and welcome content for the landing page.",
+      "tags": ["component", "landing-page", "display"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/components/ImageModal.jsx",
+      "type": "file",
+      "name": "ImageModal.jsx",
+      "filePath": "frontend/src/components/ImageModal.jsx",
+      "summary": "Lightweight modal component for displaying images with click-to-close functionality.",
+      "tags": ["component", "modal", "image-display"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/components/Logout.jsx",
+      "type": "file",
+      "name": "Logout.jsx",
+      "filePath": "frontend/src/components/Logout.jsx",
+      "summary": "Logout button component that handles user session termination and redirects to the home page.",
+      "tags": ["component", "authentication", "user-action"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/components/MenuItems.js",
+      "type": "file",
+      "name": "MenuItems.js",
+      "filePath": "frontend/src/components/MenuItems.js",
+      "summary": "Navigation menu configuration file defining menu items and their associated routes.",
+      "tags": ["data", "navigation", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/components/MountainCard.jsx",
+      "type": "file",
+      "name": "MountainCard.jsx",
+      "filePath": "frontend/src/components/MountainCard.jsx",
+      "summary": "Card component for displaying mountain summaries with image, attribution, and click navigation.",
+      "tags": ["component", "card", "display", "image"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/components/MountainDetails.jsx",
+      "type": "file",
+      "name": "MountainDetails.jsx",
+      "filePath": "frontend/src/components/MountainDetails.jsx",
+      "summary": "Comprehensive detail page for mountain destinations showing elevation, conditions, guidance, alternatives, and user reviews with sorting.",
+      "tags": ["component", "page", "data-display", "detail-view"],
+      "complexity": "complex",
+      "languageNotes": "Feature-rich component with conditions data, guidance lists, alternatives, and integrated review system."
+    },
+    {
+      "id": "file:frontend/src/components/Navbar.jsx",
+      "type": "file",
+      "name": "Navbar.jsx",
+      "filePath": "frontend/src/components/Navbar.jsx",
+      "summary": "Top navigation bar with search functionality, authentication state management, user profile display, and responsive menu.",
+      "tags": ["component", "navigation", "search", "user-menu"],
+      "complexity": "complex",
+      "languageNotes": "Complex navigation with real-time search, debounced queries, and conditional auth state rendering."
+    },
+    {
+      "id": "file:frontend/src/components/ReviewForm.jsx",
+      "type": "file",
+      "name": "ReviewForm.jsx",
+      "filePath": "frontend/src/components/ReviewForm.jsx",
+      "summary": "Form component for submitting user reviews with star rating selection and comment input.",
+      "tags": ["component", "form", "user-review", "rating"],
+      "complexity": "moderate",
+      "languageNotes": "Interactive star rating component with hover states and form validation."
+    },
+    {
+      "id": "function:frontend/src/App.jsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "frontend/src/App.jsx",
+      "lineRange": [20, 44],
+      "summary": "Root application component that renders the main layout and routes for the Bumpy Road platform.",
+      "tags": ["entry-point", "component", "routing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:frontend/src/components/AddLocationForm.jsx:AddLocationForm",
+      "type": "function",
+      "name": "AddLocationForm",
+      "filePath": "frontend/src/components/AddLocationForm.jsx",
+      "lineRange": [7, 278],
+      "summary": "Large form component handling mountain location creation with file upload, URL-based image, tag management, and comprehensive form validation.",
+      "tags": ["component", "form", "data-entry", "upload"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:frontend/src/components/AddUserForm.jsx:AddUserForm",
+      "type": "function",
+      "name": "AddUserForm",
+      "filePath": "frontend/src/components/AddUserForm.jsx",
+      "lineRange": [5, 127],
+      "summary": "Form for adding new users to the system with loading states, error handling, and callback notifications.",
+      "tags": ["component", "form", "user-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:frontend/src/components/ContactForm.jsx:ContactForm",
+      "type": "function",
+      "name": "ContactForm",
+      "filePath": "frontend/src/components/ContactForm.jsx",
+      "lineRange": [6, 131],
+      "summary": "Contact form with client-side validation, form state management, and toast notifications for submission feedback.",
+      "tags": ["component", "form", "validation", "user-input"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:frontend/src/components/EditLocationForm.jsx:EditLocationForm",
+      "type": "function",
+      "name": "EditLocationForm",
+      "filePath": "frontend/src/components/EditLocationForm.jsx",
+      "lineRange": [7, 408],
+      "summary": "Comprehensive edit form for updating mountain locations with pre-populated data, image management, and field-specific handlers.",
+      "tags": ["component", "form", "data-editing"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:frontend/src/components/EditUserForm.jsx:EditUserForm",
+      "type": "function",
+      "name": "EditUserForm",
+      "filePath": "frontend/src/components/EditUserForm.jsx",
+      "lineRange": [5, 208],
+      "summary": "User edit form with password change mode, selective field updates, and profile data pre-loading.",
+      "tags": ["component", "form", "user-management", "data-editing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:frontend/src/components/MountainDetails.jsx:MountainDetails",
+      "type": "function",
+      "name": "MountainDetails",
+      "filePath": "frontend/src/components/MountainDetails.jsx",
+      "lineRange": [49, 276],
+      "summary": "Main mountain detail view component displaying comprehensive information including elevation, conditions, guidance, alternatives, and reviews.",
+      "tags": ["component", "page", "detail-view", "data-display"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:frontend/src/components/ReviewForm.jsx:ReviewForm",
+      "type": "function",
+      "name": "ReviewForm",
+      "filePath": "frontend/src/components/ReviewForm.jsx",
+      "lineRange": [9, 102],
+      "summary": "Review submission form with interactive star rating and comment field for user feedback on mountain destinations.",
+      "tags": ["component", "form", "rating", "user-review"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:frontend/src/components/DestinationData.jsx:DestinationData",
+      "type": "class",
+      "name": "DestinationData",
+      "filePath": "frontend/src/components/DestinationData.jsx",
+      "lineRange": [4, 20],
+      "summary": "React class component for rendering destination data sections with a render method.",
+      "tags": ["component", "class-component", "data-display"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:frontend/src/components/AddLocationForm.jsx",
+      "target": "function:frontend/src/components/AddLocationForm.jsx:AddLocationForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/AddUserForm.jsx",
+      "target": "function:frontend/src/components/AddUserForm.jsx:AddUserForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/ContactForm.jsx",
+      "target": "function:frontend/src/components/ContactForm.jsx:ContactForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/DestinationData.jsx",
+      "target": "class:frontend/src/components/DestinationData.jsx:DestinationData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/EditLocationForm.jsx",
+      "target": "function:frontend/src/components/EditLocationForm.jsx:EditLocationForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/EditUserForm.jsx",
+      "target": "function:frontend/src/components/EditUserForm.jsx:EditUserForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/MountainDetails.jsx",
+      "target": "function:frontend/src/components/MountainDetails.jsx:MountainDetails",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/ReviewForm.jsx",
+      "target": "function:frontend/src/components/ReviewForm.jsx:ReviewForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/App.jsx",
+      "target": "function:frontend/src/App.jsx:App",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/App.jsx",
+      "target": "function:frontend/src/App.jsx:App",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "bumpy-road",
+  "keywords": [
+    "react",
+    "starter"
+  ],
+  "main": "src/index.js",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.0",
+    "framer-motion": "^11.15.0",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
+    "moment": "^2.30.1",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.13.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.3.0",
+    "react-router-dom": "^6.26.2",
+    "react-transition-group": "^4.4.5",
+    "sharp": "^0.35.4",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.29.2",
+    "@eslint/js": "^10.0.1",
+    "@vitejs/plugin-react": "^6.0.2",
+    "eslint": "^10.4.1",
+    "globals": "^17.6.0",
+    "nodemon": "^3.1.14",
+    "prettier": "3.5.1",
+    "typescript": "5.6.2",
+    "vite": "^8.0.14"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev:server": "nodemon --ignore storage --ignore dist server.js",
+    "db:migrate": "node server/scripts/migrate.js",
+    "db:seed:dev": "node server/scripts/runSql.js database/seeds/dev_seed.sql",
+    "db:seed:admin": "node server/scripts/seedAdmin.js",
+    "data:discover": "node server/scripts/discoverDestinations.js",
+    "data:refresh": "node server/scripts/discoverDestinations.js --existing-only",
+    "data:publish-ready": "node server/scripts/publishReadyDestinations.js",
+    "data:audit-guides": "node server/scripts/auditDestinationGuides.js",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "node --test tests/unit/security.test.js tests/unit/ingestion.test.js tests/unit/destinationQuality.test.js tests/unit/weatherWindow.test.js",
+    "test:integration": "node --test --test-concurrency=1 tests/integration/api.test.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
+    "check-format": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
+    "remove-prev-photos": "node server/scripts/removePreviousPhotoUrl.js"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

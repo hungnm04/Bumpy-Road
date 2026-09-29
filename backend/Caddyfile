@@ -1,0 +1,23 @@
+{
+    admin off
+    auto_https off
+}
+
+:80 {
+    # Serve frontend from nginx container
+    reverse_proxy frontend:80
+
+    # Rewrite /api/* and other backend routes
+    @backend {
+        path_regexp ^/(api|login|logout|create-account|refresh-token|auth-status|profile|upload-avatar|places|featured-places|mountains|weather-window|faq|admin|notifications|blog|storage) /.*
+    }
+
+    handle @backend {
+        reverse_proxy backend:5000
+    }
+
+    # Health check
+    handle /healthz {
+        reverse_proxy backend:5000/healthz
+    }
+}

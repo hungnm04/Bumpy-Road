@@ -1,0 +1,135 @@
+{
+  "nodes": [
+    {
+      "id": "file:frontend/src/components/AboutUsStyles.css",
+      "type": "file",
+      "name": "AboutUsStyles.css",
+      "filePath": "frontend/src/components/AboutUsStyles.css",
+      "summary": "Stylesheet for the About Us page section with a three-column grid layout displaying company information cards with typography and responsive breakpoints.",
+      "tags": ["component-styles", "page-section", "grid-layout", "typography"],
+      "complexity": "simple",
+      "languageNotes": "CSS with CSS custom properties for theming (color-paper, color-ink) and responsive clamp() functions for fluid sizing."
+    },
+    {
+      "id": "file:frontend/src/components/AddLocationForm.css",
+      "type": "file",
+      "name": "AddLocationForm.css",
+      "filePath": "frontend/src/components/AddLocationForm.css",
+      "summary": "Modal dialog styles for adding a new mountain location, featuring a two-column form grid, photo upload section with URL/file toggle, and action buttons.",
+      "tags": ["component-styles", "form-ui", "modal", "photo-upload", "responsive"],
+      "complexity": "moderate",
+      "languageNotes": "CSS modal overlay using backdrop-filter blur, CSS custom properties for theming, and responsive form grid collapsing to single column on mobile."
+    },
+    {
+      "id": "file:frontend/src/components/AddUserForm.css",
+      "type": "file",
+      "name": "AddUserForm.css",
+      "filePath": "frontend/src/components/AddUserForm.css",
+      "summary": "Modal dialog styles for the user registration form, featuring a single-column layout with form groups, validation error states, and submit/cancel actions.",
+      "tags": ["component-styles", "form-ui", "modal", "user-form", "validation"],
+      "complexity": "simple",
+      "languageNotes": "CSS modal with dark overlay backdrop, form input focus states using box-shadow ring, and error message styling in red tones."
+    },
+    {
+      "id": "file:frontend/src/components/ContactFormStyles.css",
+      "type": "file",
+      "name": "ContactFormStyles.css",
+      "filePath": "frontend/src/components/ContactFormStyles.css",
+      "summary": "Page-level contact form styles with a prominent header, form fields for text input and textarea, submit button with hover effects, and inline validation error display.",
+      "tags": ["component-styles", "form-ui", "contact-page", "typography", "responsive"],
+      "complexity": "simple",
+      "languageNotes": "CSS with large display typography using clamp(), form focus states with box-shadow rings, and hover transform on buttons."
+    },
+    {
+      "id": "file:frontend/src/components/DestinationStyles.css",
+      "type": "file",
+      "name": "DestinationStyles.css",
+      "filePath": "frontend/src/components/DestinationStyles.css",
+      "summary": "Styles for the destination page featuring hero sections with two-column grid layouts for alternating text and image blocks, decorative overlays, and responsive stacking on mobile.",
+      "tags": ["component-styles", "page-section", "layout", "hero", "image-layout"],
+      "complexity": "moderate",
+      "languageNotes": "CSS with decorative pseudo-element overlays, alternating grid direction via reverse class, and repeating linear gradient patterns for texture."
+    },
+    {
+      "id": "file:frontend/src/components/EditLocationForm.css",
+      "type": "file",
+      "name": "EditLocationForm.css",
+      "filePath": "frontend/src/components/EditLocationForm.css",
+      "summary": "Modal dialog styles for editing an existing mountain location, nearly identical to AddLocationForm with a two-column form grid, photo management, and update/cancel actions.",
+      "tags": ["component-styles", "form-ui", "modal", "photo-upload", "responsive"],
+      "complexity": "moderate",
+      "languageNotes": "CSS modal with backdrop-filter blur, form grid responsive collapse, and image preview container with rounded corners."
+    },
+    {
+      "id": "file:frontend/src/components/EditUserForm.css",
+      "type": "file",
+      "name": "EditUserForm.css",
+      "filePath": "frontend/src/components/EditUserForm.css",
+      "summary": "Modal dialog styles for editing user profile, featuring form fields with optional/required labels, a collapsible password section, and submit/cancel action buttons.",
+      "tags": ["component-styles", "form-ui", "modal", "user-form", "validation"],
+      "complexity": "moderate",
+      "languageNotes": "CSS modal with optional field indicator via pseudo-element content, password toggle section with border separator, and focus ring states."
+    },
+    {
+      "id": "file:frontend/src/components/FooterStyles.css",
+      "type": "file",
+      "name": "FooterStyles.css",
+      "filePath": "frontend/src/components/FooterStyles.css",
+      "summary": "Footer component styles with a brand section containing logo and company name, social media icon links with hover effects, and a three-column navigation grid.",
+      "tags": ["component-styles", "footer", "social-links", "navigation", "responsive"],
+      "complexity": "moderate",
+      "languageNotes": "CSS with dark gradient background, social icon hover with border color and translateY transitions, and responsive single-column stacking on mobile."
+    },
+    {
+      "id": "file:frontend/src/components/HeroStyles.css",
+      "type": "file",
+      "name": "HeroStyles.css",
+      "filePath": "frontend/src/components/HeroStyles.css",
+      "summary": "Hero section styles for full-viewport and mid-height hero variants with background image overlay, kicker label, statistics row, and responsive typography.",
+      "tags": ["component-styles", "hero", "stats", "typography", "responsive"],
+      "complexity": "moderate",
+      "languageNotes": "CSS with layered pseudo-element gradients, decorative repeating-linear-gradient pattern overlay, and CSS animation for spinner keyframe."
+    },
+    {
+      "id": "file:frontend/src/components/ImageModalStyles.css",
+      "type": "file",
+      "name": "ImageModalStyles.css",
+      "filePath": "frontend/src/components/ImageModalStyles.css",
+      "summary": "Lightweight modal overlay for displaying images in full-screen with a dark backdrop, centered image content, and a positioned close button.",
+      "tags": ["component-styles", "modal", "lightbox", "overlay"],
+      "complexity": "simple",
+      "languageNotes": "CSS fixed-position overlay with flexbox centering, high z-index for stacking, and close button positioned absolutely outside the image bounds."
+    },
+    {
+      "id": "file:frontend/src/components/MountainCardStyles.css",
+      "type": "file",
+      "name": "MountainCardStyles.css",
+      "filePath": "frontend/src/components/MountainCardStyles.css",
+      "summary": "Card component styles for mountain listings with image, difficulty badge overlay, location, stats, and rating display, featuring hover lift animation and image zoom.",
+      "tags": ["component-styles", "card", "hover-effect", "image-gallery", "ratings"],
+      "complexity": "moderate",
+      "languageNotes": "CSS with cubic-bezier easing for smooth transitions, overflow hidden for image zoom effect, flexbox column layout for card structure, and rating stars styling."
+    },
+    {
+      "id": "file:frontend/src/components/MountainDetailsStyles.css",
+      "type": "file",
+      "name": "MountainDetailsStyles.css",
+      "filePath": "frontend/src/components/MountainDetailsStyles.css",
+      "summary": "Comprehensive stylesheet for the mountain detail page including hero section, two-column content grid, weather widget, review panel, guidance list, and alternative mountains grid.",
+      "tags": ["component-styles", "page-layout", "review-panel", "weather-widget", "guidance", "grid-layout"],
+      "complexity": "complex",
+      "languageNotes": "CSS with complex multi-column grids, overlapping hero overlay with negative margin, practical facts grid with icon alignment, and tag pill styling for mountain metadata."
+    },
+    {
+      "id": "file:frontend/src/components/NavbarStyles.css",
+      "type": "file",
+      "name": "NavbarStyles.css",
+      "filePath": "frontend/src/components/NavbarStyles.css",
+      "summary": "Sticky navigation bar styles with brand mark, centered menu links, search dropdown with results, authentication button, and mobile-responsive hamburger menu.",
+      "tags": ["component-styles", "navigation", "dropdown", "search", "responsive", "sticky"],
+      "complexity": "complex",
+      "languageNotes": "CSS with sticky positioning, multi-column grid layout, search results dropdown with overflow scroll, mobile menu toggle via active class, and search spinner animation."
+    }
+  ],
+  "edges": []
+}

@@ -1,0 +1,16 @@
+{
+  "name": "bumpy-road",
+  "version": "1.0.0",
+  "description": "Bumpy Road - Mountain destination field guide",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "start": "npm run start --prefix backend",
+    "dev:server": "npm run dev:server --prefix backend",
+    "db:migrate": "npm run db:migrate --prefix backend",
+    "db:seed:admin": "npm run db:seed:admin --prefix backend",
+    "data:discover": "npm run data:discover --prefix backend",
+    "test": "npm run test --prefix backend"
+  }
+}

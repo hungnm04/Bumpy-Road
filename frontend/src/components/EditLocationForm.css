@@ -1,0 +1,180 @@
+.edit-location-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(7, 12, 9, 0.72);
+  backdrop-filter: blur(10px);
+}
+
+.edit-location-content {
+  width: min(900px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  background: #fff8ec;
+  box-shadow: var(--shadow-soft);
+  color: var(--color-ink);
+  text-align: left;
+}
+
+.edit-location-content h2 {
+  margin: 0 0 20px;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1;
+}
+
+.edit-location-form .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.edit-location-form .form-group {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.edit-location-form label {
+  color: var(--color-ink);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.edit-location-form input,
+.edit-location-form select,
+.edit-location-form textarea {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  background: #fffaf0;
+  color: var(--color-ink);
+  outline: none;
+}
+
+.edit-location-form input,
+.edit-location-form select {
+  min-height: 46px;
+  padding: 0 12px;
+}
+
+.edit-location-form textarea {
+  min-height: 130px;
+  padding: 12px;
+  resize: vertical;
+}
+
+.edit-location-form input:focus,
+.edit-location-form select:focus,
+.edit-location-form textarea:focus {
+  border-color: var(--color-moss);
+  box-shadow: 0 0 0 4px rgba(49, 95, 69, 0.13);
+}
+
+.edit-location-form .photo-upload-section {
+  padding: 16px;
+  border: 1px dashed var(--color-line-strong);
+  border-radius: 8px;
+  background: rgba(49, 95, 69, 0.06);
+}
+
+.edit-location-form .upload-method-toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-location-form .toggle-btn,
+.edit-location-form .file-upload-label,
+.edit-location-form .update-btn,
+.edit-location-form .cancel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.edit-location-form .toggle-btn {
+  flex: 1;
+  border: 1px solid var(--color-line);
+  background: #fffaf0;
+  color: var(--color-ink);
+}
+
+.edit-location-form .toggle-btn.active {
+  border-color: var(--color-rust);
+  background: var(--color-rust);
+  color: #fff8ec;
+}
+
+.edit-location-form .file-input {
+  display: none;
+}
+
+.edit-location-form .file-upload-label {
+  border: 1px solid var(--color-line);
+  background: #fffaf0;
+}
+
+.edit-location-form .image-preview-container {
+  margin-top: 12px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.edit-location-form .image-preview {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+}
+
+.edit-location-form .full-width {
+  grid-column: 1 / -1;
+}
+
+.edit-location-form .edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.edit-location-form .update-btn {
+  border: 0;
+  background: var(--color-rust);
+  color: #fff8ec;
+  padding: 0 16px;
+}
+
+.edit-location-form .cancel-btn {
+  border: 1px solid var(--color-line);
+  background: transparent;
+  color: var(--color-ink);
+  padding: 0 16px;
+}
+
+.edit-location-content .error-message {
+  margin: 16px 0;
+  padding: 12px;
+  border: 1px solid rgba(156, 36, 29, 0.26);
+  border-radius: 8px;
+  background: rgba(156, 36, 29, 0.08);
+  color: #9c241d;
+}
+
+@media (max-width: 760px) {
+  .edit-location-form .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

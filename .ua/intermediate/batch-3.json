@@ -1,0 +1,287 @@
+{
+  "nodes": [
+    {
+      "id": "table:backend/database/migrations/001_initial_schema.sql:users",
+      "type": "table",
+      "name": "users",
+      "filePath": "backend/database/migrations/001_initial_schema.sql",
+      "lineRange": [15, 30],
+      "summary": "Core user accounts table with authentication fields, profile information, and avatar storage.",
+      "tags": ["database", "user-management", "authentication"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:backend/database/migrations/001_initial_schema.sql:mountains",
+      "type": "table",
+      "name": "mountains",
+      "filePath": "backend/database/migrations/001_initial_schema.sql",
+      "lineRange": [32, 41],
+      "summary": "Primary destinations table storing mountain name, location, description, photo, and continent.",
+      "tags": ["database", "core-entity", "destinations"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:backend/database/migrations/001_initial_schema.sql:reviews",
+      "type": "table",
+      "name": "reviews",
+      "filePath": "backend/database/migrations/001_initial_schema.sql",
+      "lineRange": [43, 53],
+      "summary": "User-submitted reviews with ratings and comments for mountain destinations.",
+      "tags": ["database", "user-content", "reviews"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:backend/database/migrations/001_initial_schema.sql:faqs",
+      "type": "table",
+      "name": "faqs",
+      "filePath": "backend/database/migrations/001_initial_schema.sql",
+      "lineRange": [55, 63],
+      "summary": "Contact form submissions stored as FAQ entries with name, email, subject, and message.",
+      "tags": ["database", "user-content", "contact-form"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:backend/database/migrations/001_initial_schema.sql:notifications",
+      "type": "table",
+      "name": "notifications",
+      "filePath": "backend/database/migrations/001_initial_schema.sql",
+      "lineRange": [65, 73],
+      "summary": "System notifications with type, title, content, read status, and JSON data payload.",
+      "tags": ["database", "notifications", "messaging"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:backend/database/migrations/001_initial_schema.sql:blogs",
+      "type": "table",
+      "name": "blogs",
+      "filePath": "backend/database/migrations/001_initial_schema.sql",
+      "lineRange": [75, 84],
+      "summary": "Editorial blog posts with title, content, author, category, and image.",
+      "tags": ["database", "cms", "blog-content"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:backend/database/migrations/002_destination_catalog.sql:mountain_sources",
+      "type": "table",
+      "name": "mountain_sources",
+      "filePath": "backend/database/migrations/002_destination_catalog.sql",
+      "lineRange": [65, 76],
+      "summary": "Tracks provenance of mountain data from external providers including license and attribution information.",
+      "tags": ["database", "data-provenance", "external-data"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:backend/database/migrations/002_destination_catalog.sql:mountain_media",
+      "type": "table",
+      "name": "mountain_media",
+      "filePath": "backend/database/migrations/002_destination_catalog.sql",
+      "lineRange": [78, 91],
+      "summary": "Stores media assets for mountains including images, thumbnails, author credits, and license information.",
+      "tags": ["database", "media", "assets"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:backend/database/migrations/002_destination_catalog.sql:ingestion_runs",
+      "type": "table",
+      "name": "ingestion_runs",
+      "filePath": "backend/database/migrations/002_destination_catalog.sql",
+      "lineRange": [93, 106],
+      "summary": "Audit log for external data ingestion processes tracking provider, mode, counts, and timing.",
+      "tags": ["database", "audit-log", "data-ingestion"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:backend/database/migrations/006_refresh_tokens.sql:refresh_tokens",
+      "type": "table",
+      "name": "refresh_tokens",
+      "filePath": "backend/database/migrations/006_refresh_tokens.sql",
+      "lineRange": [5, 11],
+      "summary": "Active refresh tokens for JWT authentication with JTI identifier and creation timestamp.",
+      "tags": ["database", "authentication", "jwt"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:backend/database/migrations/006_refresh_tokens.sql:revoked_refresh_tokens",
+      "type": "table",
+      "name": "revoked_refresh_tokens",
+      "filePath": "backend/database/migrations/006_refresh_tokens.sql",
+      "lineRange": [14, 18],
+      "summary": "Revoked refresh tokens for logout and token invalidation tracking with expiry timestamps.",
+      "tags": ["database", "authentication", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/database/migrations/001_initial_schema.sql",
+      "type": "file",
+      "name": "001_initial_schema.sql",
+      "filePath": "backend/database/migrations/001_initial_schema.sql",
+      "summary": "Initial database schema migration creating core tables: users, mountains, reviews, faqs, notifications, and blogs with appropriate indexes.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "moderate",
+      "languageNotes": "Creates 6 tables and 6 indexes for the Bumpy Road destination review platform."
+    },
+    {
+      "id": "file:backend/database/migrations/002_destination_catalog.sql",
+      "type": "file",
+      "name": "002_destination_catalog.sql",
+      "filePath": "backend/database/migrations/002_destination_catalog.sql",
+      "summary": "Extends the schema with destination catalog features: mountain_sources for provenance tracking, mountain_media for assets, and ingestion_runs for audit logging.",
+      "tags": ["database", "migration", "data-ingestion"],
+      "complexity": "moderate",
+      "languageNotes": "Adds 3 tables and 9 indexes for external data integration."
+    },
+    {
+      "id": "file:backend/database/migrations/003_editorial_blog_catalog.sql",
+      "type": "file",
+      "name": "003_editorial_blog_catalog.sql",
+      "filePath": "backend/database/migrations/003_editorial_blog_catalog.sql",
+      "summary": "Editorial blog catalog extension adding categories, tags, and content metadata for enhanced blog management.",
+      "tags": ["database", "migration", "blog-content"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/database/migrations/004_dedupe_reviews.sql",
+      "type": "file",
+      "name": "004_dedupe_reviews.sql",
+      "filePath": "backend/database/migrations/004_dedupe_reviews.sql",
+      "summary": "Data cleanup migration removing duplicate reviews to ensure data integrity.",
+      "tags": ["database", "migration", "data-cleanup"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/database/migrations/005_destination_guides_weather.sql",
+      "type": "file",
+      "name": "005_destination_guides_weather.sql",
+      "filePath": "backend/database/migrations/005_destination_guides_weather.sql",
+      "summary": "Adds guide status columns and weather-related fields to the mountains table with supporting indexes.",
+      "tags": ["database", "migration", "feature-addition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/database/migrations/006_refresh_tokens.sql",
+      "type": "file",
+      "name": "006_refresh_tokens.sql",
+      "filePath": "backend/database/migrations/006_refresh_tokens.sql",
+      "summary": "Implements JWT refresh token authentication with active tokens table, revocation tracking, and supporting indexes.",
+      "tags": ["database", "migration", "authentication"],
+      "complexity": "simple",
+      "languageNotes": "Supports logout functionality by tracking revoked tokens separately from active ones."
+    },
+    {
+      "id": "file:backend/database/migrations/007_provenance_columns.sql",
+      "type": "file",
+      "name": "007_provenance_columns.sql",
+      "filePath": "backend/database/migrations/007_provenance_columns.sql",
+      "summary": "Adds source and completeness tracking columns to mountains table for enhanced data quality monitoring.",
+      "tags": ["database", "migration", "data-quality"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:backend/database/migrations/001_initial_schema.sql",
+      "target": "table:backend/database/migrations/001_initial_schema.sql:users",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/database/migrations/001_initial_schema.sql",
+      "target": "table:backend/database/migrations/001_initial_schema.sql:mountains",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/database/migrations/001_initial_schema.sql",
+      "target": "table:backend/database/migrations/001_initial_schema.sql:reviews",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/database/migrations/001_initial_schema.sql",
+      "target": "table:backend/database/migrations/001_initial_schema.sql:faqs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/database/migrations/001_initial_schema.sql",
+      "target": "table:backend/database/migrations/001_initial_schema.sql:notifications",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/database/migrations/001_initial_schema.sql",
+      "target": "table:backend/database/migrations/001_initial_schema.sql:blogs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/database/migrations/002_destination_catalog.sql",
+      "target": "table:backend/database/migrations/002_destination_catalog.sql:mountain_sources",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/database/migrations/002_destination_catalog.sql",
+      "target": "table:backend/database/migrations/002_destination_catalog.sql:mountain_media",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/database/migrations/002_destination_catalog.sql",
+      "target": "table:backend/database/migrations/002_destination_catalog.sql:ingestion_runs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/database/migrations/006_refresh_tokens.sql",
+      "target": "table:backend/database/migrations/006_refresh_tokens.sql:refresh_tokens",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/database/migrations/006_refresh_tokens.sql",
+      "target": "table:backend/database/migrations/006_refresh_tokens.sql:revoked_refresh_tokens",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/database/migrations/001_initial_schema.sql",
+      "target": "table:backend/database/migrations/001_initial_schema.sql:mountains",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/database/migrations/002_destination_catalog.sql",
+      "target": "table:backend/database/migrations/001_initial_schema.sql:mountains",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/database/migrations/005_destination_guides_weather.sql",
+      "target": "table:backend/database/migrations/001_initial_schema.sql:mountains",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/database/migrations/007_provenance_columns.sql",
+      "target": "table:backend/database/migrations/001_initial_schema.sql:mountains",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

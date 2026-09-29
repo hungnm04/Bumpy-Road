@@ -1,0 +1,799 @@
+{
+  "nodes": [
+    {
+      "id": "file:backend/server/config/setupStorage.js",
+      "type": "file",
+      "name": "setupStorage.js",
+      "filePath": "backend/server/config/setupStorage.js",
+      "summary": "Initializes storage directories for avatars and mountain photos on server startup.",
+      "tags": ["configuration", "utility", "filesystem"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/ingestion/catalogRepository.js",
+      "type": "file",
+      "name": "catalogRepository.js",
+      "filePath": "backend/server/ingestion/catalogRepository.js",
+      "summary": "Database repository for ingesting and upserting mountain destination catalog data from external sources with transactional integrity.",
+      "tags": ["data-pipeline", "repository", "database"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/server/ingestion/httpClient.js",
+      "type": "file",
+      "name": "httpClient.js",
+      "filePath": "backend/server/ingestion/httpClient.js",
+      "summary": "HTTP client with caching, rate limiting, and hostname allowlisting for safe external API requests during data ingestion.",
+      "tags": ["utility", "http-client", "caching"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/ingestion/wikidata.js",
+      "type": "file",
+      "name": "wikidata.js",
+      "filePath": "backend/server/ingestion/wikidata.js",
+      "summary": "Wikidata SPARQL query executor for discovering and refreshing mountain destination data including coordinates, elevation, and descriptions.",
+      "tags": ["data-pipeline", "wikidata", "sparql"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/server/ingestion/wikimedia.js",
+      "type": "file",
+      "name": "wikimedia.js",
+      "filePath": "backend/server/ingestion/wikimedia.js",
+      "summary": "Wikimedia Commons API client for fetching image metadata and URLs associated with mountain destinations.",
+      "tags": ["data-pipeline", "media", "wikimedia"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/middlewares/auth.js",
+      "type": "file",
+      "name": "auth.js",
+      "filePath": "backend/server/middlewares/auth.js",
+      "summary": "JWT authentication middleware with role-based access control, ownership verification, and refresh token validation.",
+      "tags": ["middleware", "authentication", "authorization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/middlewares/uploadMiddleware.js",
+      "type": "file",
+      "name": "uploadMiddleware.js",
+      "filePath": "backend/server/middlewares/uploadMiddleware.js",
+      "summary": "File upload middleware using multer for processing user avatar images with MIME type validation and image processing.",
+      "tags": ["middleware", "upload", "image-processing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/models/userModel.js",
+      "type": "file",
+      "name": "userModel.js",
+      "filePath": "backend/server/models/userModel.js",
+      "summary": "User model class providing methods to update and retrieve user avatar URLs with automatic cleanup of old files.",
+      "tags": ["data-model", "repository", "users"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/server/models/userModel.js:UserModel",
+      "type": "class",
+      "name": "UserModel",
+      "filePath": "backend/server/models/userModel.js",
+      "lineRange": [4, 43],
+      "summary": "Data model class for user avatar management with transaction support for updating and retrieving user avatars.",
+      "tags": ["data-model", "repository", "users"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/config/setupStorage.js:setupStorage",
+      "type": "function",
+      "name": "setupStorage",
+      "filePath": "backend/server/config/setupStorage.js",
+      "lineRange": [4, 14],
+      "summary": "Creates storage directories for avatars and mountain photos if they do not exist.",
+      "tags": ["utility", "filesystem", "setup"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/config/socket.js:getAllowedOrigins",
+      "type": "function",
+      "name": "getAllowedOrigins",
+      "filePath": "backend/server/config/socket.js",
+      "lineRange": [5, 12],
+      "summary": "Parses allowed CORS origins from environment variable or provides development defaults.",
+      "tags": ["utility", "cors", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server.js:requireEnv",
+      "type": "function",
+      "name": "requireEnv",
+      "filePath": "backend/server.js",
+      "lineRange": [40, 44],
+      "summary": "Validates that required environment variables are set, throwing an error if missing.",
+      "tags": ["utility", "validation", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/catalogRepository.js:slugify",
+      "type": "function",
+      "name": "slugify",
+      "filePath": "backend/server/ingestion/catalogRepository.js",
+      "lineRange": [5, 12],
+      "summary": "Converts destination names to URL-friendly slugs with external ID suffix for uniqueness.",
+      "tags": ["utility", "formatting"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/catalogRepository.js:getWikidataSources",
+      "type": "function",
+      "name": "getWikidataSources",
+      "filePath": "backend/server/ingestion/catalogRepository.js",
+      "lineRange": [14, 35],
+      "summary": "Retrieves all Wikidata external sources configured in the catalog for data ingestion.",
+      "tags": ["data-pipeline", "repository"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/ingestion/catalogRepository.js:createRun",
+      "type": "function",
+      "name": "createRun",
+      "filePath": "backend/server/ingestion/catalogRepository.js",
+      "lineRange": [37, 46],
+      "summary": "Creates a new ingestion run record to track data import operations.",
+      "tags": ["data-pipeline", "repository"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/catalogRepository.js:completeRun",
+      "type": "function",
+      "name": "completeRun",
+      "filePath": "backend/server/ingestion/catalogRepository.js",
+      "lineRange": [48, 69],
+      "summary": "Marks an ingestion run as complete with status and statistics.",
+      "tags": ["data-pipeline", "repository"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/ingestion/catalogRepository.js:upsertDestination",
+      "type": "function",
+      "name": "upsertDestination",
+      "filePath": "backend/server/ingestion/catalogRepository.js",
+      "lineRange": [71, 235],
+      "summary": "Inserts or updates a mountain destination with associated media files in a transaction.",
+      "tags": ["data-pipeline", "repository", "database"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:backend/server/ingestion/httpClient.js:sleep",
+      "type": "function",
+      "name": "sleep",
+      "filePath": "backend/server/ingestion/httpClient.js",
+      "lineRange": [15, 15],
+      "summary": "Promise-based delay function for rate limiting between API requests.",
+      "tags": ["utility", "async"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/httpClient.js:getAllowedHosts",
+      "type": "function",
+      "name": "getAllowedHosts",
+      "filePath": "backend/server/ingestion/httpClient.js",
+      "lineRange": [17, 24],
+      "summary": "Returns allowed hostname set for security, configurable via environment variable.",
+      "tags": ["utility", "security", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/httpClient.js:getUserAgent",
+      "type": "function",
+      "name": "getUserAgent",
+      "filePath": "backend/server/ingestion/httpClient.js",
+      "lineRange": [26, 34],
+      "summary": "Returns the user agent string for HTTP requests, from environment or default.",
+      "tags": ["utility", "http"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/httpClient.js:assertAllowedUrl",
+      "type": "function",
+      "name": "assertAllowedUrl",
+      "filePath": "backend/server/ingestion/httpClient.js",
+      "lineRange": [36, 48],
+      "summary": "Validates that a URL hostname is in the allowed hosts list for SSRF protection.",
+      "tags": ["utility", "security", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/httpClient.js:cacheFileFor",
+      "type": "function",
+      "name": "cacheFileFor",
+      "filePath": "backend/server/ingestion/httpClient.js",
+      "lineRange": [50, 53],
+      "summary": "Generates a cache file path for a given URL using SHA-256 hash.",
+      "tags": ["utility", "caching"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/httpClient.js:readCache",
+      "type": "function",
+      "name": "readCache",
+      "filePath": "backend/server/ingestion/httpClient.js",
+      "lineRange": [55, 69],
+      "summary": "Reads cached JSON response if it exists and is not expired based on TTL.",
+      "tags": ["utility", "caching"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/httpClient.js:writeCache",
+      "type": "function",
+      "name": "writeCache",
+      "filePath": "backend/server/ingestion/httpClient.js",
+      "lineRange": [71, 74],
+      "summary": "Writes JSON response to cache file with directory creation.",
+      "tags": ["utility", "caching"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/httpClient.js:fetchJson",
+      "type": "function",
+      "name": "fetchJson",
+      "filePath": "backend/server/ingestion/httpClient.js",
+      "lineRange": [76, 130],
+      "summary": "Fetches JSON from a URL with caching, rate limiting, size limits, and SSRF protection.",
+      "tags": ["utility", "http", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/ingestion/wikidata.js:bindingValue",
+      "type": "function",
+      "name": "bindingValue",
+      "filePath": "backend/server/ingestion/wikidata.js",
+      "lineRange": [15, 17],
+      "summary": "Extracts a value from a Wikidata SPARQL binding object by key.",
+      "tags": ["utility", "wikidata"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/wikidata.js:externalIdFromUrl",
+      "type": "function",
+      "name": "externalIdFromUrl",
+      "filePath": "backend/server/ingestion/wikidata.js",
+      "lineRange": [19, 21],
+      "summary": "Extracts the ID component from a Wikidata entity URL.",
+      "tags": ["utility", "parsing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/wikidata.js:parsePoint",
+      "type": "function",
+      "name": "parsePoint",
+      "filePath": "backend/server/ingestion/wikidata.js",
+      "lineRange": [23, 32],
+      "summary": "Parses WKT Point format strings to latitude and longitude numbers.",
+      "tags": ["utility", "parsing", "geospatial"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/wikidata.js:normalizeContinent",
+      "type": "function",
+      "name": "normalizeContinent",
+      "filePath": "backend/server/ingestion/wikidata.js",
+      "lineRange": [34, 37],
+      "summary": "Extracts the primary continent name from a comma-separated list.",
+      "tags": ["utility", "normalization"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/wikidata.js:factualDescription",
+      "type": "function",
+      "name": "factualDescription",
+      "filePath": "backend/server/ingestion/wikidata.js",
+      "lineRange": [39, 52],
+      "summary": "Generates a factual description from elevation data in human-readable format.",
+      "tags": ["utility", "formatting"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/wikidata.js:discoveryQuery",
+      "type": "function",
+      "name": "discoveryQuery",
+      "filePath": "backend/server/ingestion/wikidata.js",
+      "lineRange": [54, 75],
+      "summary": "Generates a SPARQL query for discovering destinations of a specific type with pagination.",
+      "tags": ["data-pipeline", "wikidata", "sparql"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/ingestion/wikidata.js:normalizeDiscoveryBinding",
+      "type": "function",
+      "name": "normalizeDiscoveryBinding",
+      "filePath": "backend/server/ingestion/wikidata.js",
+      "lineRange": [77, 109],
+      "summary": "Transforms raw Wikidata SPARQL binding data into normalized destination format.",
+      "tags": ["data-pipeline", "normalization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/ingestion/wikidata.js:discoverDestinations",
+      "type": "function",
+      "name": "discoverDestinations",
+      "filePath": "backend/server/ingestion/wikidata.js",
+      "lineRange": [111, 201],
+      "summary": "Discovers mountain destinations from Wikidata SPARQL endpoint with pagination and caching.",
+      "tags": ["data-pipeline", "wikidata"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:backend/server/ingestion/wikidata.js:claimValue",
+      "type": "function",
+      "name": "claimValue",
+      "filePath": "backend/server/ingestion/wikidata.js",
+      "lineRange": [203, 205],
+      "summary": "Extracts a property value from a Wikidata entity claims object.",
+      "tags": ["utility", "wikidata"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/wikidata.js:normalizeExistingEntity",
+      "type": "function",
+      "name": "normalizeExistingEntity",
+      "filePath": "backend/server/ingestion/wikidata.js",
+      "lineRange": [207, 241],
+      "summary": "Updates existing destination data with refreshed information from Wikidata.",
+      "tags": ["data-pipeline", "normalization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/ingestion/wikidata.js:refreshExistingDestinations",
+      "type": "function",
+      "name": "refreshExistingDestinations",
+      "filePath": "backend/server/ingestion/wikidata.js",
+      "lineRange": [243, 270],
+      "summary": "Batch refreshes existing destination records with latest Wikidata information.",
+      "tags": ["data-pipeline", "batch-processing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/ingestion/wikimedia.js:plainText",
+      "type": "function",
+      "name": "plainText",
+      "filePath": "backend/server/ingestion/wikimedia.js",
+      "lineRange": [3, 12],
+      "summary": "Strips HTML tags and decodes common HTML entities to plain text.",
+      "tags": ["utility", "parsing", "html"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/wikimedia.js:filenameFromImageValue",
+      "type": "function",
+      "name": "filenameFromImageValue",
+      "filePath": "backend/server/ingestion/wikimedia.js",
+      "lineRange": [14, 23],
+      "summary": "Extracts the filename from a Wikimedia Commons image value string.",
+      "tags": ["utility", "parsing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/wikimedia.js:metadataValue",
+      "type": "function",
+      "name": "metadataValue",
+      "filePath": "backend/server/ingestion/wikimedia.js",
+      "lineRange": [25, 27],
+      "summary": "Extracts and normalizes a metadata field value from Wikimedia API response.",
+      "tags": ["utility", "parsing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/ingestion/wikimedia.js:getCommonsMedia",
+      "type": "function",
+      "name": "getCommonsMedia",
+      "filePath": "backend/server/ingestion/wikimedia.js",
+      "lineRange": [29, 68],
+      "summary": "Fetches image metadata from Wikimedia Commons API including license and author information.",
+      "tags": ["data-pipeline", "media", "wikimedia"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/middlewares/auth.js:requireEnvSecret",
+      "type": "function",
+      "name": "requireEnvSecret",
+      "filePath": "backend/server/middlewares/auth.js",
+      "lineRange": [5, 11],
+      "summary": "Validates required secret environment variables are set in production.",
+      "tags": ["utility", "validation", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/middlewares/auth.js:authenticateJWT",
+      "type": "function",
+      "name": "authenticateJWT",
+      "filePath": "backend/server/middlewares/auth.js",
+      "lineRange": [13, 33],
+      "summary": "Express middleware that validates JWT bearer tokens and attaches user data to request.",
+      "tags": ["middleware", "authentication", "jwt"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/middlewares/auth.js:requireRole",
+      "type": "function",
+      "name": "requireRole",
+      "filePath": "backend/server/middlewares/auth.js",
+      "lineRange": [36, 42],
+      "summary": "Middleware factory that restricts access to users with specified roles.",
+      "tags": ["middleware", "authorization", "rbac"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/middlewares/auth.js:checkOwnership",
+      "type": "function",
+      "name": "checkOwnership",
+      "filePath": "backend/server/middlewares/auth.js",
+      "lineRange": [45, 104],
+      "summary": "Verifies resource ownership by checking if the authenticated user owns the requested resource.",
+      "tags": ["middleware", "authorization", "ownership"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/middlewares/auth.js:validateRefreshToken",
+      "type": "function",
+      "name": "validateRefreshToken",
+      "filePath": "backend/server/middlewares/auth.js",
+      "lineRange": [107, 125],
+      "summary": "Validates a refresh token against the database and checks for revocation.",
+      "tags": ["utility", "jwt", "authentication"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/middlewares/auth.js:revokeRefreshToken",
+      "type": "function",
+      "name": "revokeRefreshToken",
+      "filePath": "backend/server/middlewares/auth.js",
+      "lineRange": [128, 151],
+      "summary": "Adds a refresh token to the revocation list for logout functionality.",
+      "tags": ["utility", "jwt", "security"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/middlewares/auth.js:generateTokenId",
+      "type": "function",
+      "name": "generateTokenId",
+      "filePath": "backend/server/middlewares/auth.js",
+      "lineRange": [154, 157],
+      "summary": "Generates a cryptographically random token identifier for refresh token tracking.",
+      "tags": ["utility", "security", "crypto"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/middlewares/uploadMiddleware.js:handleFileUpload",
+      "type": "function",
+      "name": "handleFileUpload",
+      "filePath": "backend/server/middlewares/uploadMiddleware.js",
+      "lineRange": [8, 79],
+      "summary": "Multer middleware wrapper that validates MIME types, processes images, and saves avatars.",
+      "tags": ["middleware", "upload", "image-processing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/models/userModel.js:updateAvatar",
+      "type": "function",
+      "name": "updateAvatar",
+      "filePath": "backend/server/models/userModel.js",
+      "lineRange": [6, 36],
+      "summary": "Updates a user's avatar URL in a transaction, deleting the old file if it is not the default.",
+      "tags": ["data-model", "repository", "crud"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/models/userModel.js:getCurrentAvatar",
+      "type": "function",
+      "name": "getCurrentAvatar",
+      "filePath": "backend/server/models/userModel.js",
+      "lineRange": [38, 42],
+      "summary": "Retrieves the current avatar URL for a user from the database.",
+      "tags": ["data-model", "repository", "read"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:backend/server/ingestion/catalogRepository.js",
+      "target": "function:backend/server/ingestion/catalogRepository.js:slugify",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/catalogRepository.js",
+      "target": "function:backend/server/ingestion/catalogRepository.js:getWikidataSources",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/catalogRepository.js",
+      "target": "function:backend/server/ingestion/catalogRepository.js:createRun",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/catalogRepository.js",
+      "target": "function:backend/server/ingestion/catalogRepository.js:completeRun",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/catalogRepository.js",
+      "target": "function:backend/server/ingestion/catalogRepository.js:upsertDestination",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/httpClient.js",
+      "target": "function:backend/server/ingestion/httpClient.js:sleep",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/httpClient.js",
+      "target": "function:backend/server/ingestion/httpClient.js:getAllowedHosts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/httpClient.js",
+      "target": "function:backend/server/ingestion/httpClient.js:getUserAgent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/httpClient.js",
+      "target": "function:backend/server/ingestion/httpClient.js:assertAllowedUrl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/httpClient.js",
+      "target": "function:backend/server/ingestion/httpClient.js:cacheFileFor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/httpClient.js",
+      "target": "function:backend/server/ingestion/httpClient.js:readCache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/httpClient.js",
+      "target": "function:backend/server/ingestion/httpClient.js:writeCache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/httpClient.js",
+      "target": "function:backend/server/ingestion/httpClient.js:fetchJson",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/wikidata.js",
+      "target": "function:backend/server/ingestion/wikidata.js:bindingValue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/wikidata.js",
+      "target": "function:backend/server/ingestion/wikidata.js:externalIdFromUrl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/wikidata.js",
+      "target": "function:backend/server/ingestion/wikidata.js:parsePoint",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/wikidata.js",
+      "target": "function:backend/server/ingestion/wikidata.js:normalizeContinent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/wikidata.js",
+      "target": "function:backend/server/ingestion/wikidata.js:factualDescription",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/wikidata.js",
+      "target": "function:backend/server/ingestion/wikidata.js:discoveryQuery",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/wikidata.js",
+      "target": "function:backend/server/ingestion/wikidata.js:normalizeDiscoveryBinding",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/wikidata.js",
+      "target": "function:backend/server/ingestion/wikidata.js:discoverDestinations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/wikidata.js",
+      "target": "function:backend/server/ingestion/wikidata.js:claimValue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/wikidata.js",
+      "target": "function:backend/server/ingestion/wikidata.js:normalizeExistingEntity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/wikidata.js",
+      "target": "function:backend/server/ingestion/wikidata.js:refreshExistingDestinations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/wikimedia.js",
+      "target": "function:backend/server/ingestion/wikimedia.js:plainText",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/wikimedia.js",
+      "target": "function:backend/server/ingestion/wikimedia.js:filenameFromImageValue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/wikimedia.js",
+      "target": "function:backend/server/ingestion/wikimedia.js:metadataValue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/wikimedia.js",
+      "target": "function:backend/server/ingestion/wikimedia.js:getCommonsMedia",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/middlewares/auth.js",
+      "target": "function:backend/server/middlewares/auth.js:requireEnvSecret",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/middlewares/auth.js",
+      "target": "function:backend/server/middlewares/auth.js:authenticateJWT",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/middlewares/auth.js",
+      "target": "function:backend/server/middlewares/auth.js:requireRole",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/middlewares/auth.js",
+      "target": "function:backend/server/middlewares/auth.js:checkOwnership",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/middlewares/auth.js",
+      "target": "function:backend/server/middlewares/auth.js:validateRefreshToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/middlewares/auth.js",
+      "target": "function:backend/server/middlewares/auth.js:revokeRefreshToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/middlewares/auth.js",
+      "target": "function:backend/server/middlewares/auth.js:generateTokenId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/middlewares/uploadMiddleware.js",
+      "target": "function:backend/server/middlewares/uploadMiddleware.js:handleFileUpload",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/models/userModel.js",
+      "target": "class:backend/server/models/userModel.js:UserModel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/models/userModel.js",
+      "target": "function:backend/server/models/userModel.js:updateAvatar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/models/userModel.js",
+      "target": "function:backend/server/models/userModel.js:getCurrentAvatar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server/ingestion/wikidata.js",
+      "target": "file:backend/server/ingestion/httpClient.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server/ingestion/wikimedia.js",
+      "target": "file:backend/server/ingestion/httpClient.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server/middlewares/auth.js",
+      "target": "file:backend/server/models/userModel.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/server/middlewares/uploadMiddleware.js",
+      "target": "file:backend/server/models/userModel.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

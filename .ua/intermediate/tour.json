@@ -1,0 +1,85 @@
+[
+  {
+    "order": 1,
+    "title": "Project Overview",
+    "description": "Bumpy Road is a searchable mountain-destination field guide with a Vite React frontend, an Express API, and PostgreSQL. This README provides essential setup instructions, including Docker Compose commands for local development and seeded test accounts (admin/GuestPass123!). Understanding this high-level architecture prepares you for the deep dive into the codebase.",
+    "nodeIds": ["document:README.md"]
+  },
+  {
+    "order": 2,
+    "title": "Backend Entry Point",
+    "description": "The Express server entry point initializes the application by configuring middleware (rate limiting, CORS, security headers), setting up routes, integrating Socket.IO for real-time notifications, and establishing the PostgreSQL connection pool. This file orchestrates all backend concerns from a single bootstrap point.",
+    "nodeIds": ["file:backend/server.js"],
+    "languageLesson": "Express middleware is composed in a pipeline -- each middleware function can modify the request/response objects, terminate the cycle, or pass control to the next middleware using next()."
+  },
+  {
+    "order": 3,
+    "title": "Database Connection",
+    "description": "The database configuration uses Node-postgres (pg) to create a connection pool for PostgreSQL. This is the most depended-upon module in the backend (8 dependencies), serving as the central access point for all database operations from services like users.js, mountains.js, and reviews.js.",
+    "nodeIds": ["file:backend/server/config/db.js"],
+    "languageLesson": "Connection pooling reuses database connections across requests, reducing connection overhead. The pool size and timeout settings directly impact throughput under load."
+  },
+  {
+    "order": 4,
+    "title": "Authentication Middleware",
+    "description": "The auth middleware provides JWT token verification and role-based authorization. The authenticateJWT function extracts and validates tokens from the Authorization header, while requireRole generates middleware to check user permissions. This secures all protected API endpoints.",
+    "nodeIds": ["file:backend/server/middlewares/auth.js"],
+    "languageLesson": "Express middleware factories (functions that return middleware) enable reusable, composable authorization patterns. The requireRole middleware can enforce any role hierarchy without code duplication."
+  },
+  {
+    "order": 5,
+    "title": "API Routes and Controllers",
+    "description": "Express routers define API endpoints that delegate to controllers. Users routes handle authentication (login, register, profile), while admin routes manage mountains and users. Controllers like userControllers.js handle request parsing and response formatting, delegating business logic to services.",
+    "nodeIds": ["file:backend/server/routes/users.js", "file:backend/server/routes/adminRoutes.js", "file:backend/server/controllers/userControllers.js"],
+    "languageLesson": "The controller-service pattern separates HTTP handling (parsing, validation, response formatting) from business logic, making code more testable and reusable across different transport layers."
+  },
+  {
+    "order": 6,
+    "title": "Core Domain Services",
+    "description": "The mountains service handles search with rich filtering (region, country, type, elevation, difficulty, tags), while the users service manages authentication, password hashing with bcrypt, and profile updates. These services connect the controllers to the database layer.",
+    "nodeIds": ["file:backend/server/services/mountains.js", "file:backend/server/services/users.js"],
+    "languageLesson": "Services encapsulate business logic and database queries, keeping controllers thin. This separation enables unit testing of business rules without HTTP concerns."
+  },
+  {
+    "order": 7,
+    "title": "Weather Window Service",
+    "description": "The weather window service finds optimal hiking conditions by fetching Open-Meteo forecasts, scoring hourly conditions based on temperature, precipitation, wind, and visibility preferences, then ranking destinations by weather favorability. This integrates external weather APIs with the destination catalog.",
+    "nodeIds": ["file:backend/server/services/weatherWindow.js"],
+    "languageLesson": "The scoring algorithm normalizes multiple weather parameters into a composite score, allowing users to find destinations matching their preferred conditions across different climate zones."
+  },
+  {
+    "order": 8,
+    "title": "Frontend Entry Point",
+    "description": "The React App component (with the highest fan-out at 10 dependencies) serves as the frontend's central hub, importing the API layer, routing configuration, navigation, and key pages. It establishes the overall layout and route structure for the SPA.",
+    "nodeIds": ["file:frontend/src/App.jsx", "file:frontend/src/index.jsx"],
+    "languageLesson": "React's component composition model allows the App to compose smaller components. The highest fan-out indicates this component knows about many parts of the application -- consider if it should be refactored into a routing-specific component."
+  },
+  {
+    "order": 9,
+    "title": "Places Explorer",
+    "description": "The Places page implements the mountain destination explorer with search, filtering by continent and difficulty, debounced query input for performance, and featured places display. The useDebounce hook delays API calls until the user stops typing.",
+    "nodeIds": ["file:frontend/src/pages/Places.jsx", "file:frontend/src/hooks/useDebounce.js"],
+    "languageLesson": "Debouncing limits API calls during rapid user input by waiting for a pause before executing. This hook uses useState and useEffect with setTimeout, illustrating React's timing model."
+  },
+  {
+    "order": 10,
+    "title": "Database Schema",
+    "description": "The initial schema defines core tables: users for authentication and profiles, mountains for destinations, reviews for user feedback, faqs for contact submissions, and notifications for real-time alerts. The destination catalog extends mountains with editorial metadata and provenance tracking.",
+    "nodeIds": ["table:backend/database/migrations/001_initial_schema.sql:users", "table:backend/database/migrations/001_initial_schema.sql:mountains", "table:backend/database/migrations/002_destination_catalog.sql:mountains"],
+    "languageLesson": "Database migrations are sequential schema changes that evolve with the application. Each migration should be idempotent (safe to run multiple times) and the schema should be version-controlled alongside code."
+  },
+  {
+    "order": 11,
+    "title": "Data Ingestion Pipeline",
+    "description": "The ingestion system discovers mountain destinations from Wikidata using SPARQL queries, enriches them with OpenStreetMap geographic data, and stores provenance in the catalog. The httpClient includes retry logic, caching, and URL allowlists for security.",
+    "nodeIds": ["file:backend/server/ingestion/catalogRepository.js", "file:backend/server/ingestion/wikidata.js", "file:backend/server/ingestion/httpClient.js"],
+    "languageLesson": "External data integration requires defensive programming: retry logic for transient failures, caching to reduce API calls, and allowlists to prevent SSRF attacks when fetching external URLs."
+  },
+  {
+    "order": 12,
+    "title": "Containerization",
+    "description": "The backend Dockerfile uses a multi-stage build with node:22-alpine: the builder stage installs production dependencies, while the runtime stage runs as a non-root user for security. The frontend Dockerfile compiles the Vite app and serves it via nginx. Docker Compose orchestrates both services with PostgreSQL for local development.",
+    "nodeIds": ["service:./backend/Dockerfile", "service:frontend/Dockerfile", "service:docker-compose.yml"],
+    "languageLesson": "Multi-stage Docker builds separate build environments from runtime, producing smaller production images. The non-root user follows the principle of least privilege in container security."
+  }
+]

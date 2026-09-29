@@ -1,0 +1,18 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 7,
+  "edgesRestored": 8,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "Fixed section was clean: 10 duplicate node IDs removed (expected for cross-batch merging).",
+    "8 dangling edges dropped due to ID prefix mismatches between batches.",
+    "Root cause: Batch-4 used incorrect prefix 'table:database/' instead of 'table:backend/database/' for migration table nodes, causing 6 edges to be dropped.",
+    "Additional issues: batch-12-part-1 used incorrect function ID 'function:backend/server/config/setupDefaultAvatar.js:setupDefaultAvatar' which didn't match the file node ID, causing 1 edge drop.",
+    "batch-20 used incorrect path 'file:src/index.jsx' instead of 'file:frontend/src/index.jsx' in one edge, causing 1 edge drop.",
+    "Import map was empty ({}), so no cross-batch import edges were needed to verify.",
+    "No unknown node types or unknown complexity values found.",
+    "Data quality note: Several batches had duplicate file nodes with different path prefixes (e.g., 'file:database/' vs 'file:backend/database/'). The merge script kept the correct 'backend/database/' variants but kept some incorrect 'database/' variants as separate nodes. This creates duplicate file nodes for the same actual file - may want to audit these."
+  ]
+}

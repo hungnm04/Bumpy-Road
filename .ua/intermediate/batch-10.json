@@ -1,0 +1,122 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/components/AboutUsStyles.css",
+      "type": "file",
+      "name": "AboutUsStyles.css",
+      "filePath": "src/components/AboutUsStyles.css",
+      "summary": "CSS stylesheet for the AboutUs page, defining a responsive 3-column grid layout for team section cards with paper-toned background and display typography.",
+      "tags": ["styling", "component", "layout", "responsive"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/AddLocationForm.css",
+      "type": "file",
+      "name": "AddLocationForm.css",
+      "filePath": "src/components/AddLocationForm.css",
+      "summary": "CSS stylesheet for the AddLocationForm modal, styling a centered modal with form inputs, photo upload section with URL/file toggle, image preview, and action buttons.",
+      "tags": ["styling", "form", "modal", "upload", "component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/AddUserForm.css",
+      "type": "file",
+      "name": "AddUserForm.css",
+      "filePath": "src/components/AddUserForm.css",
+      "summary": "CSS stylesheet for the AddUserForm modal, styling a narrow centered modal with form inputs, required field indicators, and submit/cancel action buttons.",
+      "tags": ["styling", "form", "modal", "component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/ContactFormStyles.css",
+      "type": "file",
+      "name": "ContactFormStyles.css",
+      "filePath": "src/components/ContactFormStyles.css",
+      "summary": "CSS stylesheet for the ContactForm, styling a full-page contact form with large display heading, responsive form layout, and submit button with hover states.",
+      "tags": ["styling", "form", "contact", "responsive", "component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/DestinationStyles.css",
+      "type": "file",
+      "name": "DestinationStyles.css",
+      "filePath": "src/components/DestinationStyles.css",
+      "summary": "CSS stylesheet for the Destination page, defining a multi-block layout with alternating image/text sections, decorative borders, and responsive grid breakpoints.",
+      "tags": ["styling", "layout", "responsive", "landing", "component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/EditLocationForm.css",
+      "type": "file",
+      "name": "EditLocationForm.css",
+      "filePath": "src/components/EditLocationForm.css",
+      "summary": "CSS stylesheet for the EditLocationForm modal, nearly identical to AddLocationForm, styling a centered modal with form inputs, photo upload section, and update/cancel buttons.",
+      "tags": ["styling", "form", "modal", "upload", "component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/EditUserForm.css",
+      "type": "file",
+      "name": "EditUserForm.css",
+      "filePath": "src/components/EditUserForm.css",
+      "summary": "CSS stylesheet for the EditUserForm modal, styling a narrow centered modal with form inputs, optional field indicators, password toggle section, and action buttons.",
+      "tags": ["styling", "form", "modal", "authentication", "component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/FooterStyles.css",
+      "type": "file",
+      "name": "FooterStyles.css",
+      "filePath": "src/components/FooterStyles.css",
+      "summary": "CSS stylesheet for the Footer component, styling a dark forest-toned footer with brand mark, social icons, and a 3-column link section layout.",
+      "tags": ["styling", "footer", "layout", "component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/HeroStyles.css",
+      "type": "file",
+      "name": "HeroStyles.css",
+      "filePath": "src/components/HeroStyles.css",
+      "summary": "CSS stylesheet for Hero and HeroMid components, defining full-viewport hero sections with gradient overlays, decorative grid patterns, large display typography, and stats row.",
+      "tags": ["styling", "hero", "landing", "layout", "responsive", "component"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/ImageModalStyles.css",
+      "type": "file",
+      "name": "ImageModalStyles.css",
+      "filePath": "src/components/ImageModalStyles.css",
+      "summary": "CSS stylesheet for the ImageModal component, styling a fullscreen overlay with centered image display and close button positioned at top-right.",
+      "tags": ["styling", "modal", "image", "component"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/MountainCardStyles.css",
+      "type": "file",
+      "name": "MountainCardStyles.css",
+      "filePath": "src/components/MountainCardStyles.css",
+      "summary": "CSS stylesheet for MountainCard component, styling a card with hover lift effect, image with zoom transition, difficulty badge, location icon, stats, and rating display.",
+      "tags": ["styling", "card", "component", "hover-effect"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/MountainDetailsStyles.css",
+      "type": "file",
+      "name": "MountainDetailsStyles.css",
+      "filePath": "src/components/MountainDetailsStyles.css",
+      "summary": "CSS stylesheet for the MountainDetails page, defining a detailed mountain destination page with hero image overlay, content grid with info/review/weather panels, dossier, alternatives, and community sections.",
+      "tags": ["styling", "page", "details", "layout", "responsive", "component"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/NavbarStyles.css",
+      "type": "file",
+      "name": "NavbarStyles.css",
+      "filePath": "src/components/NavbarStyles.css",
+      "summary": "CSS stylesheet for the Navbar component, styling a sticky top navigation bar with brand mark, centered menu links, search bar with dropdown results, auth button, and mobile responsive breakpoints.",
+      "tags": ["styling", "navigation", "header", "responsive", "component"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": []
+}

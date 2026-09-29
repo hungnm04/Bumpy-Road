@@ -1,0 +1,512 @@
+.mountain-details-page {
+  min-height: 100vh;
+  background: var(--color-paper);
+}
+
+.mountain-detail-hero {
+  position: relative;
+  display: grid;
+  min-height: 76vh;
+  padding-top: 36px;
+  overflow: hidden;
+  background: var(--color-forest);
+}
+
+.mountain-detail-hero::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(11, 18, 14, 0.86), rgba(11, 18, 14, 0.22)),
+    linear-gradient(180deg, rgba(11, 18, 14, 0.18), rgba(11, 18, 14, 0.82));
+  content: "";
+}
+
+.mountain-detail-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.92;
+}
+
+.mountain-detail-photo-pending {
+  display: grid;
+  min-height: 76vh;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(49, 95, 69, 0.86), rgba(110, 159, 178, 0.72));
+  color: rgba(255, 248, 236, 0.76);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mountain-photo-credit {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 9px;
+  border-radius: 5px;
+  background: rgba(11, 18, 14, 0.62);
+  color: rgba(255, 248, 236, 0.78);
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.mountain-photo-credit:hover {
+  color: #fff8ec;
+}
+
+.mountain-detail-overlay {
+  position: relative;
+  z-index: 1;
+  align-self: end;
+  width: min(var(--page-max), calc(100% - 40px));
+  margin: 0 auto;
+  padding: clamp(110px, 16vh, 170px) 0 clamp(58px, 10vh, 96px);
+  color: #fff8ec;
+  text-align: left;
+}
+
+.mountain-detail-overlay .eyebrow {
+  color: var(--color-gold);
+}
+
+.mountain-name {
+  max-width: 900px;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 11vw, 8.4rem);
+  font-weight: 800;
+  line-height: 0.84;
+  text-wrap: balance;
+}
+
+.mountain-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 24px 0 0;
+  color: rgba(255, 248, 236, 0.86);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 900;
+}
+
+.mountain-location svg {
+  color: var(--color-gold);
+}
+
+.mountain-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.44fr);
+  gap: 18px;
+  width: min(var(--page-max), calc(100% - 40px));
+  margin: -54px auto 0;
+  position: relative;
+  z-index: 2;
+}
+
+.mountain-info,
+.mountain-review-panel,
+.mountain-live-panel {
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  background: #fff8ec;
+  box-shadow: var(--shadow-tight);
+  text-align: left;
+}
+
+.mountain-info {
+  padding: clamp(24px, 5vw, 46px);
+}
+
+.mountain-live-panel {
+  position: relative;
+  padding: 22px;
+}
+
+.mountain-live-panel h2 {
+  max-width: 240px;
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  line-height: 0.96;
+}
+
+.mountain-live-panel > a {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--color-rust);
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+
+.mountain-weather-score {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: var(--color-moss);
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 0.8;
+}
+
+.mountain-weather-facts {
+  display: grid;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.mountain-weather-facts span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--color-ink-soft);
+  font-size: 0.78rem;
+  font-weight: 900;
+  line-height: 1.4;
+}
+
+.mountain-weather-facts svg {
+  color: var(--color-rust);
+  flex: 0 0 auto;
+}
+
+.mountain-panel-copy {
+  color: var(--color-ink-soft);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.mountain-info-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 18px;
+  color: var(--color-rust);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.mountain-description {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: clamp(1.08rem, 1.9vw, 1.28rem);
+  line-height: 1.85;
+  white-space: pre-line;
+}
+
+.mountain-quick-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.mountain-quick-facts span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  background: rgba(49, 95, 69, 0.08);
+  color: var(--color-ink);
+  font-weight: 900;
+}
+
+.mountain-quick-facts svg {
+  color: var(--color-rust);
+}
+
+.mountain-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 20px;
+}
+
+.mountain-tags span {
+  padding: 6px 8px;
+  border-radius: 5px;
+  background: rgba(180, 87, 47, 0.1);
+  color: var(--color-rust-dark);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.mountain-review-panel {
+  padding: 22px;
+}
+
+.review-header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.review-header-top .eyebrow {
+  margin-bottom: 8px;
+}
+
+.review-header-top h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  line-height: 1;
+}
+
+.sort-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 10px;
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  background: #fffaf0;
+  color: var(--color-ink);
+}
+
+.sort-control svg {
+  color: var(--color-rust);
+}
+
+.sort-select {
+  border: 0;
+  background: transparent;
+  color: var(--color-ink);
+  font-size: 0.86rem;
+  font-weight: 900;
+  outline: none;
+}
+
+.reviews-section {
+  width: min(var(--page-max), calc(100% - 40px));
+  margin: 18px auto 90px;
+  padding: clamp(22px, 4vw, 36px);
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  background: rgba(255, 248, 236, 0.72);
+  box-shadow: 0 8px 24px rgba(39, 31, 20, 0.08);
+}
+
+.mountain-preview-notice,
+.mountain-dossier,
+.mountain-alternatives,
+.mountain-community {
+  width: min(var(--page-max), calc(100% - 40px));
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.mountain-preview-notice {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  margin-bottom: 72px;
+  padding: 16px;
+  border: 1px solid rgba(180, 87, 47, 0.36);
+  border-radius: 8px;
+  background: rgba(255, 248, 236, 0.84);
+  color: var(--color-ink-soft);
+}
+
+.mountain-preview-notice svg {
+  color: var(--color-rust);
+  flex: 0 0 auto;
+}
+
+.mountain-preview-notice p {
+  margin: 4px 0 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.mountain-dossier,
+.mountain-alternatives {
+  padding: clamp(46px, 7vw, 76px) 0;
+  text-align: left;
+}
+
+.mountain-dossier h2,
+.mountain-alternatives h2 {
+  max-width: 720px;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  line-height: 0.92;
+}
+
+.mountain-dossier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.mountain-guidance-list {
+  padding: 18px;
+  border-top: 3px solid var(--color-moss);
+  background: rgba(255, 248, 236, 0.58);
+}
+
+.mountain-guidance-list h3 {
+  margin: 0 0 12px;
+  color: var(--color-rust);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+}
+
+.mountain-guidance-list p {
+  margin: 7px 0;
+  color: var(--color-ink-soft);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.mountain-practical-grid {
+  display: grid;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.mountain-practical-grid p {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 10px;
+  margin: 0;
+  padding: 14px 0;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-ink-soft);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.mountain-practical-grid svg {
+  margin-top: 3px;
+  color: var(--color-rust);
+}
+
+.mountain-practical-grid strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--color-ink);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+}
+
+.mountain-alternatives {
+  border-top: 1px solid var(--color-line);
+}
+
+.mountain-alternative-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.mountain-alternative-grid button {
+  display: grid;
+  min-height: 126px;
+  padding: 16px;
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  background: rgba(255, 248, 236, 0.8);
+  color: var(--color-ink);
+  cursor: pointer;
+  text-align: left;
+}
+
+.mountain-alternative-grid span {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  line-height: 0.98;
+}
+
+.mountain-alternative-grid small {
+  color: var(--color-ink-soft);
+  font-weight: 800;
+}
+
+.mountain-alternative-grid svg {
+  justify-self: end;
+  color: var(--color-rust);
+}
+
+.mountain-community {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.44fr) minmax(0, 1fr);
+  gap: 18px;
+  margin-bottom: 90px;
+}
+
+.mountain-community .reviews-section {
+  width: auto;
+  margin: 0;
+}
+
+.mountain-details-page > .loading,
+.mountain-details-page > .error-message {
+  width: min(var(--page-max), calc(100% - 40px));
+  margin: 0 auto;
+  padding-top: 100px;
+}
+
+@media (max-width: 900px) {
+  .mountain-content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mountain-community,
+  .mountain-dossier-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .mountain-detail-hero {
+    min-height: 66vh;
+  }
+
+    .mountain-content-grid,
+    .reviews-section,
+  .mountain-detail-overlay,
+  .mountain-preview-notice,
+  .mountain-dossier,
+  .mountain-alternatives,
+  .mountain-community {
+    width: calc(100% - 28px);
+  }
+
+  .mountain-alternative-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .review-header-top {
+    flex-direction: column;
+  }
+
+  .sort-control {
+    width: 100%;
+  }
+
+  .sort-select {
+    width: 100%;
+  }
+}

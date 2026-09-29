@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Newsreader:opsz,wght@6..72,500;6..72,700;6..72,800&display=swap");
+
+:root {
+  --font-display: "Newsreader", Georgia, serif;
+  --font-body: "Archivo", "Segoe UI", sans-serif;
+  --color-ink: #171512;
+  --color-ink-soft: #4f4a42;
+  --color-paper: #f4efe5;
+  --color-paper-deep: #e7dccb;
+  --color-mist: #dce9e7;
+  --color-moss: #315f45;
+  --color-forest: #14271e;
+  --color-rust: #b4572f;
+  --color-rust-dark: #7f351f;
+  --color-sky: #6e9fb2;
+  --color-gold: #d7ae45;
+  --color-line: rgba(23, 21, 18, 0.16);
+  --color-line-strong: rgba(23, 21, 18, 0.28);
+  --shadow-soft: 0 18px 60px rgba(39, 31, 20, 0.14);
+  --shadow-tight: 0 10px 28px rgba(39, 31, 20, 0.12);
+  --radius-card: 8px;
+  --radius-control: 6px;
+  --nav-height: 76px;
+  --page-max: 1180px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    linear-gradient(rgba(244, 239, 229, 0.92), rgba(244, 239, 229, 0.92)),
+    repeating-linear-gradient(
+      115deg,
+      rgba(49, 95, 69, 0.08) 0,
+      rgba(49, 95, 69, 0.08) 1px,
+      transparent 1px,
+      transparent 34px
+    );
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  letter-spacing: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.App {
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+.page-shell {
+  width: min(var(--page-max), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--color-rust);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.section-heading {
+  margin: 0;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 5.6rem);
+  font-weight: 800;
+  line-height: 0.94;
+}
+
+.section-copy {
+  color: var(--color-ink-soft);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  line-height: 1.75;
+}
+
+.action-link,
+.primary-action,
+.secondary-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  border-radius: var(--radius-control);
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.primary-action {
+  background: var(--color-rust);
+  color: #fff8ec;
+  box-shadow: 0 10px 26px rgba(127, 53, 31, 0.25);
+  padding: 0.85rem 1.15rem;
+}
+
+.secondary-action {
+  background: rgba(255, 248, 236, 0.84);
+  color: var(--color-ink);
+  border-color: rgba(255, 248, 236, 0.64);
+  padding: 0.85rem 1.1rem;
+}
+
+.action-link:hover,
+.primary-action:hover,
+.secondary-action:hover {
+  transform: translateY(-2px);
+}
+
+.field-input,
+.field-select,
+.field-textarea {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-control);
+  background: rgba(255, 248, 236, 0.78);
+  color: var(--color-ink);
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.field-input:focus,
+.field-select:focus,
+.field-textarea:focus {
+  border-color: var(--color-moss);
+  background: #fffaf0;
+  box-shadow: 0 0 0 4px rgba(49, 95, 69, 0.13);
+}
+
+.loading,
+.loading-spinner,
+.empty-state {
+  color: var(--color-ink-soft);
+  font-weight: 700;
+  text-align: center;
+}
+
+.error-message,
+.error,
+.backend-error {
+  color: #9c241d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    --nav-height: 68px;
+  }
+
+  .page-shell {
+    width: min(var(--page-max), calc(100% - 28px));
+  }
+}

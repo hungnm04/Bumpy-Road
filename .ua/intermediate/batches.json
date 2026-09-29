@@ -1,0 +1,2501 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 301,
+  "totalBatches": 20,
+  "exportsByPath": {
+    "./backend/server.js": [],
+    "./backend/server/config/db.js": [],
+    "./backend/server/config/setupDefaultAvatar.js": [],
+    "./backend/server/config/setupStorage.js": [],
+    "./backend/server/config/socket.js": [],
+    "./backend/server/controllers/adminController.js": [],
+    "./backend/server/controllers/blogController.js": [],
+    "./backend/server/controllers/faqController.js": [],
+    "./backend/server/controllers/mountainControllers.js": [],
+    "./backend/server/controllers/reviewControllers.js": [],
+    "./backend/server/controllers/userControllers.js": [],
+    "./backend/server/controllers/weatherWindowController.js": [],
+    "./backend/server/ingestion/catalogRepository.js": [],
+    "./backend/server/ingestion/httpClient.js": [],
+    "./backend/server/ingestion/wikidata.js": [],
+    "./backend/server/ingestion/wikimedia.js": [],
+    "./backend/server/middlewares/auth.js": [],
+    "./backend/server/middlewares/uploadMiddleware.js": [],
+    "./backend/server/models/userModel.js": [],
+    "./backend/server/routes/adminRoutes.js": [],
+    "./backend/server/routes/blogRoutes.js": [],
+    "./backend/server/routes/notificationRoutes.js": [],
+    "./backend/server/routes/profile.js": [],
+    "./backend/server/routes/users.js": [],
+    "./backend/server/scripts/auditDestinationGuides.js": [],
+    "./backend/server/scripts/discoverDestinations.js": [],
+    "./backend/server/scripts/migrate.js": [],
+    "./backend/server/scripts/publishReadyDestinations.js": [],
+    "./backend/server/scripts/runSql.js": [],
+    "./backend/server/scripts/seedAdmin.js": [],
+    "./backend/server/services/adminService.js": [],
+    "./backend/server/services/blogServices.js": [],
+    "./backend/server/services/destinationQuality.js": [],
+    "./backend/server/services/faq.js": [],
+    "./backend/server/services/mountains.js": [],
+    "./backend/server/services/reviews.js": [],
+    "./backend/server/services/storageService.js": [],
+    "./backend/server/services/users.js": [],
+    "./backend/server/services/weatherWindow.js": [],
+    "./backend/server/utils/errorHandling.js": [],
+    "./backend/server/utils/fileUtils.js": [],
+    "./backend/server/utils/imageUtils.js": [],
+    "./backend/server/utils/logger.js": [],
+    "./eslint.config.js": [],
+    "./frontend/src/App.jsx": [
+      "App"
+    ],
+    "./frontend/src/api/assetUrls.js": [
+      "FALLBACK_MOUNTAIN_IMAGE",
+      "getMountainImageUrl"
+    ],
+    "./frontend/src/api/auth.js": [],
+    "./frontend/src/api/config.js": [],
+    "./frontend/src/api/fetchWithAuth.js": [
+      "fetchWithAuth"
+    ],
+    "./frontend/src/api/index.js": [],
+    "./frontend/src/api/profile.js": [],
+    "./frontend/src/api/session.js": [
+      "getSession"
+    ],
+    "./frontend/src/components/AboutUs.jsx": [],
+    "./frontend/src/components/AddLocationForm.jsx": [],
+    "./frontend/src/components/AddUserForm.jsx": [],
+    "./frontend/src/components/ContactForm.jsx": [],
+    "./frontend/src/components/Destination.jsx": [],
+    "./frontend/src/components/DestinationData.jsx": [],
+    "./frontend/src/components/EditLocationForm.jsx": [],
+    "./frontend/src/components/EditUserForm.jsx": [],
+    "./frontend/src/components/Footer.jsx": [],
+    "./frontend/src/components/Hero.jsx": [],
+    "./frontend/src/components/ImageModal.jsx": [],
+    "./frontend/src/components/Logout.jsx": [],
+    "./frontend/src/components/MenuItems.js": [
+      "MenuItems"
+    ],
+    "./frontend/src/components/MountainCard.jsx": [],
+    "./frontend/src/components/MountainDetails.jsx": [],
+    "./frontend/src/components/Navbar.jsx": [],
+    "./frontend/src/components/NotificationModal.jsx": [],
+    "./frontend/src/components/NotificationPopover.jsx": [],
+    "./frontend/src/components/PageNotFound.jsx": [],
+    "./frontend/src/components/ProfileDropdown.jsx": [],
+    "./frontend/src/components/ReviewForm.jsx": [],
+    "./frontend/src/components/ReviewList.jsx": [],
+    "./frontend/src/components/ReviewSection.jsx": [],
+    "./frontend/src/components/Trip.jsx": [],
+    "./frontend/src/components/TripData.jsx": [],
+    "./frontend/src/hooks/useDebounce.js": [
+      "useDebounce"
+    ],
+    "./frontend/src/index.jsx": [],
+    "./frontend/src/pages/About.jsx": [],
+    "./frontend/src/pages/AdminDashboard.jsx": [],
+    "./frontend/src/pages/BlogDetail.jsx": [],
+    "./frontend/src/pages/BlogPage.jsx": [],
+    "./frontend/src/pages/CreateAccount.jsx": [],
+    "./frontend/src/pages/CreateBlog.jsx": [],
+    "./frontend/src/pages/FAQ.jsx": [],
+    "./frontend/src/pages/HomePage.jsx": [],
+    "./frontend/src/pages/Login.jsx": [],
+    "./frontend/src/pages/Places.jsx": [],
+    "./frontend/src/pages/Profile.jsx": [],
+    "./frontend/src/pages/WeatherWindow.jsx": [],
+    "./frontend/src/routes/AuthRoute.jsx": [],
+    "./frontend/src/routes/ProtectedRoute.jsx": [],
+    "./frontend/src/vite-env.d.ts": [],
+    "./frontend/vite.config.ts": [],
+    "./index.js": [],
+    "./server.js": [],
+    "./server/config/db.js": [],
+    "./server/config/setupDefaultAvatar.js": [],
+    "./server/config/setupStorage.js": [],
+    "./server/config/socket.js": [],
+    "./server/controllers/adminController.js": [],
+    "./server/controllers/blogController.js": [],
+    "./server/controllers/faqController.js": [],
+    "./server/controllers/mountainControllers.js": [],
+    "./server/controllers/reviewControllers.js": [],
+    "./server/controllers/userControllers.js": [],
+    "./server/controllers/weatherWindowController.js": [],
+    "./server/ingestion/catalogRepository.js": [],
+    "./server/ingestion/httpClient.js": [],
+    "./server/ingestion/overpass.js": [],
+    "./server/ingestion/pexels.js": [],
+    "./server/ingestion/unsplash.js": [],
+    "./server/ingestion/wikidata.js": [],
+    "./server/ingestion/wikimedia.js": [],
+    "./server/middlewares/auth.js": [],
+    "./server/middlewares/uploadMiddleware.js": [],
+    "./server/models/userModel.js": [],
+    "./server/routes/adminRoutes.js": [],
+    "./server/routes/blogRoutes.js": [],
+    "./server/routes/notificationRoutes.js": [],
+    "./server/routes/profile.js": [],
+    "./server/routes/users.js": [],
+    "./server/scripts/auditDestinationGuides.js": [],
+    "./server/scripts/discoverDestinations.js": [],
+    "./server/scripts/ingestPhotoSources.js": [],
+    "./server/scripts/migrate.js": [],
+    "./server/scripts/publishReadyDestinations.js": [],
+    "./server/scripts/runSql.js": [],
+    "./server/scripts/seedAdmin.js": [],
+    "./server/services/adminService.js": [],
+    "./server/services/blogServices.js": [],
+    "./server/services/destinationQuality.js": [],
+    "./server/services/faq.js": [],
+    "./server/services/mountains.js": [],
+    "./server/services/reviews.js": [],
+    "./server/services/storageService.js": [],
+    "./server/services/users.js": [],
+    "./server/services/weatherWindow.js": [],
+    "./server/utils/errorHandling.js": [],
+    "./server/utils/fileUtils.js": [],
+    "./server/utils/imageUtils.js": [],
+    "./src/App.jsx": [
+      "App"
+    ],
+    "./src/api/assetUrls.js": [
+      "FALLBACK_MOUNTAIN_IMAGE",
+      "getMountainImageUrl"
+    ],
+    "./src/api/auth.js": [],
+    "./src/api/config.js": [],
+    "./src/api/fetchWithAuth.js": [
+      "fetchWithAuth"
+    ],
+    "./src/api/index.js": [],
+    "./src/api/profile.js": [],
+    "./src/api/session.js": [
+      "getSession"
+    ],
+    "./src/components/AboutUs.jsx": [],
+    "./src/components/AddLocationForm.jsx": [],
+    "./src/components/AddUserForm.jsx": [],
+    "./src/components/ContactForm.jsx": [],
+    "./src/components/Destination.jsx": [],
+    "./src/components/DestinationData.jsx": [],
+    "./src/components/EditLocationForm.jsx": [],
+    "./src/components/EditUserForm.jsx": [],
+    "./src/components/Footer.jsx": [],
+    "./src/components/Hero.jsx": [],
+    "./src/components/ImageModal.jsx": [],
+    "./src/components/Logout.jsx": [],
+    "./src/components/MenuItems.js": [
+      "MenuItems"
+    ],
+    "./src/components/MountainCard.jsx": [],
+    "./src/components/MountainDetails.jsx": [],
+    "./src/components/Navbar.jsx": [],
+    "./src/components/NotificationModal.jsx": [],
+    "./src/components/NotificationPopover.jsx": [],
+    "./src/components/PageNotFound.jsx": [],
+    "./src/components/ProfileDropdown.jsx": [],
+    "./src/components/ReviewForm.jsx": [],
+    "./src/components/ReviewList.jsx": [],
+    "./src/components/ReviewSection.jsx": [],
+    "./src/components/Trip.jsx": [],
+    "./src/components/TripData.jsx": [],
+    "./src/hooks/useDebounce.js": [
+      "useDebounce"
+    ],
+    "./src/index.jsx": [],
+    "./src/pages/About.jsx": [],
+    "./src/pages/AdminDashboard.jsx": [],
+    "./src/pages/BlogDetail.jsx": [],
+    "./src/pages/BlogPage.jsx": [],
+    "./src/pages/CreateAccount.jsx": [],
+    "./src/pages/CreateBlog.jsx": [],
+    "./src/pages/FAQ.jsx": [],
+    "./src/pages/HomePage.jsx": [],
+    "./src/pages/Login.jsx": [],
+    "./src/pages/Places.jsx": [],
+    "./src/pages/Profile.jsx": [],
+    "./src/pages/WeatherWindow.jsx": [],
+    "./src/routes/AuthRoute.jsx": [],
+    "./src/routes/ProtectedRoute.jsx": [],
+    "./src/vite-env.d.ts": [],
+    "./tests/integration/api.test.js": [],
+    "./tests/unit/destinationQuality.test.js": [],
+    "./tests/unit/ingestion.test.js": [],
+    "./tests/unit/security.test.js": [],
+    "./tests/unit/weatherWindow.test.js": [],
+    "./vite.config.ts": []
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": "./backend/Dockerfile",
+          "language": "dockerfile",
+          "sizeLines": 29,
+          "fileCategory": "infra"
+        }
+      ],
+      "batchImportData": {
+        "./backend/Dockerfile": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "./frontend/Dockerfile",
+          "language": "dockerfile",
+          "sizeLines": 32,
+          "fileCategory": "infra"
+        }
+      ],
+      "batchImportData": {
+        "./frontend/Dockerfile": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 3,
+      "files": [
+        {
+          "path": "./backend/database/migrations/001_initial_schema.sql",
+          "language": "sql",
+          "sizeLines": 116,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./backend/database/migrations/002_destination_catalog.sql",
+          "language": "sql",
+          "sizeLines": 154,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./backend/database/migrations/003_editorial_blog_catalog.sql",
+          "language": "sql",
+          "sizeLines": 138,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./backend/database/migrations/004_dedupe_reviews.sql",
+          "language": "sql",
+          "sizeLines": 15,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./backend/database/migrations/005_destination_guides_weather.sql",
+          "language": "sql",
+          "sizeLines": 39,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./backend/database/migrations/006_refresh_tokens.sql",
+          "language": "sql",
+          "sizeLines": 50,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./backend/database/migrations/007_provenance_columns.sql",
+          "language": "sql",
+          "sizeLines": 25,
+          "fileCategory": "data"
+        }
+      ],
+      "batchImportData": {
+        "./backend/database/migrations/001_initial_schema.sql": [],
+        "./backend/database/migrations/002_destination_catalog.sql": [],
+        "./backend/database/migrations/003_editorial_blog_catalog.sql": [],
+        "./backend/database/migrations/004_dedupe_reviews.sql": [],
+        "./backend/database/migrations/005_destination_guides_weather.sql": [],
+        "./backend/database/migrations/006_refresh_tokens.sql": [],
+        "./backend/database/migrations/007_provenance_columns.sql": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 4,
+      "files": [
+        {
+          "path": "./database/migrations/001_initial_schema.sql",
+          "language": "sql",
+          "sizeLines": 116,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./database/migrations/002_destination_catalog.sql",
+          "language": "sql",
+          "sizeLines": 154,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./database/migrations/003_editorial_blog_catalog.sql",
+          "language": "sql",
+          "sizeLines": 138,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./database/migrations/004_dedupe_reviews.sql",
+          "language": "sql",
+          "sizeLines": 15,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./database/migrations/005_destination_guides_weather.sql",
+          "language": "sql",
+          "sizeLines": 39,
+          "fileCategory": "data"
+        }
+      ],
+      "batchImportData": {
+        "./database/migrations/001_initial_schema.sql": [],
+        "./database/migrations/002_destination_catalog.sql": [],
+        "./database/migrations/003_editorial_blog_catalog.sql": [],
+        "./database/migrations/004_dedupe_reviews.sql": [],
+        "./database/migrations/005_destination_guides_weather.sql": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 5,
+      "files": [
+        {
+          "path": "./.env",
+          "language": "env",
+          "sizeLines": 26,
+          "fileCategory": "config"
+        },
+        {
+          "path": "./AGENTS.md",
+          "language": "markdown",
+          "sizeLines": 32,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "./AUDIT.md",
+          "language": "markdown",
+          "sizeLines": 230,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "./PRODUCTION.md",
+          "language": "markdown",
+          "sizeLines": 240,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "./README.md",
+          "language": "markdown",
+          "sizeLines": 34,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "./SECURITY.md",
+          "language": "markdown",
+          "sizeLines": 185,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "./SKILL.md",
+          "language": "markdown",
+          "sizeLines": 42,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "./docker-compose.yml",
+          "language": "yaml",
+          "sizeLines": 122,
+          "fileCategory": "infra"
+        },
+        {
+          "path": "./index.html",
+          "language": "html",
+          "sizeLines": 24,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./master_prompt.md",
+          "language": "markdown",
+          "sizeLines": 147,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "./package.json",
+          "language": "json",
+          "sizeLines": 74,
+          "fileCategory": "config"
+        },
+        {
+          "path": "./settings.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "./.env": [],
+        "./AGENTS.md": [],
+        "./AUDIT.md": [],
+        "./PRODUCTION.md": [],
+        "./README.md": [],
+        "./SECURITY.md": [],
+        "./SKILL.md": [],
+        "./docker-compose.yml": [],
+        "./index.html": [],
+        "./master_prompt.md": [],
+        "./package.json": [],
+        "./settings.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 6,
+      "files": [
+        {
+          "path": "./backend/database/blog_table.sql",
+          "language": "sql",
+          "sizeLines": 18,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./backend/database/mountain.sql",
+          "language": "sql",
+          "sizeLines": 96,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./backend/database/postgres_backup.sql",
+          "language": "sql",
+          "sizeLines": 764,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./backend/database/sample_blogs.sql",
+          "language": "sql",
+          "sizeLines": 28,
+          "fileCategory": "data"
+        }
+      ],
+      "batchImportData": {
+        "./backend/database/blog_table.sql": [],
+        "./backend/database/mountain.sql": [],
+        "./backend/database/postgres_backup.sql": [],
+        "./backend/database/sample_blogs.sql": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 7,
+      "files": [
+        {
+          "path": "./database/blog_table.sql",
+          "language": "sql",
+          "sizeLines": 18,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./database/mountain.sql",
+          "language": "sql",
+          "sizeLines": 96,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./database/postgres_backup.sql",
+          "language": "sql",
+          "sizeLines": 764,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./database/sample_blogs.sql",
+          "language": "sql",
+          "sizeLines": 28,
+          "fileCategory": "data"
+        }
+      ],
+      "batchImportData": {
+        "./database/blog_table.sql": [],
+        "./database/mountain.sql": [],
+        "./database/postgres_backup.sql": [],
+        "./database/sample_blogs.sql": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 8,
+      "files": [
+        {
+          "path": "./frontend/src/components/AboutUsStyles.css",
+          "language": "css",
+          "sizeLines": 45,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/AddLocationForm.css",
+          "language": "css",
+          "sizeLines": 185,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/AddUserForm.css",
+          "language": "css",
+          "sizeLines": 109,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/ContactFormStyles.css",
+          "language": "css",
+          "sizeLines": 117,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/DestinationStyles.css",
+          "language": "css",
+          "sizeLines": 160,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/EditLocationForm.css",
+          "language": "css",
+          "sizeLines": 180,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/EditUserForm.css",
+          "language": "css",
+          "sizeLines": 133,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/FooterStyles.css",
+          "language": "css",
+          "sizeLines": 145,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/HeroStyles.css",
+          "language": "css",
+          "sizeLines": 227,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/ImageModalStyles.css",
+          "language": "css",
+          "sizeLines": 43,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/MountainCardStyles.css",
+          "language": "css",
+          "sizeLines": 180,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/MountainDetailsStyles.css",
+          "language": "css",
+          "sizeLines": 512,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/NavbarStyles.css",
+          "language": "css",
+          "sizeLines": 376,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/NotificationModal.css",
+          "language": "css",
+          "sizeLines": 224,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/NotificationPopover.css",
+          "language": "css",
+          "sizeLines": 186,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/PageNotFoundStyles.css",
+          "language": "css",
+          "sizeLines": 49,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/ProfileDropdown.css",
+          "language": "css",
+          "sizeLines": 74,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/ProfileDropdownStyles.css",
+          "language": "css",
+          "sizeLines": 74,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/ReviewFormStyles.css",
+          "language": "css",
+          "sizeLines": 124,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/components/ReviewListStyles.css",
+          "language": "css",
+          "sizeLines": 108,
+          "fileCategory": "markup"
+        }
+      ],
+      "batchImportData": {
+        "./frontend/src/components/AboutUsStyles.css": [],
+        "./frontend/src/components/AddLocationForm.css": [],
+        "./frontend/src/components/AddUserForm.css": [],
+        "./frontend/src/components/ContactFormStyles.css": [],
+        "./frontend/src/components/DestinationStyles.css": [],
+        "./frontend/src/components/EditLocationForm.css": [],
+        "./frontend/src/components/EditUserForm.css": [],
+        "./frontend/src/components/FooterStyles.css": [],
+        "./frontend/src/components/HeroStyles.css": [],
+        "./frontend/src/components/ImageModalStyles.css": [],
+        "./frontend/src/components/MountainCardStyles.css": [],
+        "./frontend/src/components/MountainDetailsStyles.css": [],
+        "./frontend/src/components/NavbarStyles.css": [],
+        "./frontend/src/components/NotificationModal.css": [],
+        "./frontend/src/components/NotificationPopover.css": [],
+        "./frontend/src/components/PageNotFoundStyles.css": [],
+        "./frontend/src/components/ProfileDropdown.css": [],
+        "./frontend/src/components/ProfileDropdownStyles.css": [],
+        "./frontend/src/components/ReviewFormStyles.css": [],
+        "./frontend/src/components/ReviewListStyles.css": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 9,
+      "files": [
+        {
+          "path": "./frontend/src/pages/AdminDashboard.css",
+          "language": "css",
+          "sizeLines": 396,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/pages/BlogPageStyles.css",
+          "language": "css",
+          "sizeLines": 444,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/pages/CreateAccountStyles.css",
+          "language": "css",
+          "sizeLines": 143,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/pages/LoginStyles.css",
+          "language": "css",
+          "sizeLines": 164,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/pages/PlacesStyles.css",
+          "language": "css",
+          "sizeLines": 457,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/pages/Profile.css",
+          "language": "css",
+          "sizeLines": 0,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/pages/ProfileStyles.css",
+          "language": "css",
+          "sizeLines": 304,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/pages/WeatherWindowStyles.css",
+          "language": "css",
+          "sizeLines": 322,
+          "fileCategory": "markup"
+        }
+      ],
+      "batchImportData": {
+        "./frontend/src/pages/AdminDashboard.css": [],
+        "./frontend/src/pages/BlogPageStyles.css": [],
+        "./frontend/src/pages/CreateAccountStyles.css": [],
+        "./frontend/src/pages/LoginStyles.css": [],
+        "./frontend/src/pages/PlacesStyles.css": [],
+        "./frontend/src/pages/Profile.css": [],
+        "./frontend/src/pages/ProfileStyles.css": [],
+        "./frontend/src/pages/WeatherWindowStyles.css": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 10,
+      "files": [
+        {
+          "path": "./src/components/AboutUsStyles.css",
+          "language": "css",
+          "sizeLines": 45,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/AddLocationForm.css",
+          "language": "css",
+          "sizeLines": 185,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/AddUserForm.css",
+          "language": "css",
+          "sizeLines": 109,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/ContactFormStyles.css",
+          "language": "css",
+          "sizeLines": 117,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/DestinationStyles.css",
+          "language": "css",
+          "sizeLines": 160,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/EditLocationForm.css",
+          "language": "css",
+          "sizeLines": 180,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/EditUserForm.css",
+          "language": "css",
+          "sizeLines": 133,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/FooterStyles.css",
+          "language": "css",
+          "sizeLines": 145,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/HeroStyles.css",
+          "language": "css",
+          "sizeLines": 227,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/ImageModalStyles.css",
+          "language": "css",
+          "sizeLines": 43,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/MountainCardStyles.css",
+          "language": "css",
+          "sizeLines": 169,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/MountainDetailsStyles.css",
+          "language": "css",
+          "sizeLines": 512,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/NavbarStyles.css",
+          "language": "css",
+          "sizeLines": 376,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/NotificationModal.css",
+          "language": "css",
+          "sizeLines": 224,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/NotificationPopover.css",
+          "language": "css",
+          "sizeLines": 186,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/PageNotFoundStyles.css",
+          "language": "css",
+          "sizeLines": 49,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/ProfileDropdown.css",
+          "language": "css",
+          "sizeLines": 74,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/ProfileDropdownStyles.css",
+          "language": "css",
+          "sizeLines": 74,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/ReviewFormStyles.css",
+          "language": "css",
+          "sizeLines": 124,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/components/ReviewListStyles.css",
+          "language": "css",
+          "sizeLines": 108,
+          "fileCategory": "markup"
+        }
+      ],
+      "batchImportData": {
+        "./src/components/AboutUsStyles.css": [],
+        "./src/components/AddLocationForm.css": [],
+        "./src/components/AddUserForm.css": [],
+        "./src/components/ContactFormStyles.css": [],
+        "./src/components/DestinationStyles.css": [],
+        "./src/components/EditLocationForm.css": [],
+        "./src/components/EditUserForm.css": [],
+        "./src/components/FooterStyles.css": [],
+        "./src/components/HeroStyles.css": [],
+        "./src/components/ImageModalStyles.css": [],
+        "./src/components/MountainCardStyles.css": [],
+        "./src/components/MountainDetailsStyles.css": [],
+        "./src/components/NavbarStyles.css": [],
+        "./src/components/NotificationModal.css": [],
+        "./src/components/NotificationPopover.css": [],
+        "./src/components/PageNotFoundStyles.css": [],
+        "./src/components/ProfileDropdown.css": [],
+        "./src/components/ProfileDropdownStyles.css": [],
+        "./src/components/ReviewFormStyles.css": [],
+        "./src/components/ReviewListStyles.css": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 11,
+      "files": [
+        {
+          "path": "./src/pages/AdminDashboard.css",
+          "language": "css",
+          "sizeLines": 396,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/pages/BlogPageStyles.css",
+          "language": "css",
+          "sizeLines": 444,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/pages/CreateAccountStyles.css",
+          "language": "css",
+          "sizeLines": 143,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/pages/LoginStyles.css",
+          "language": "css",
+          "sizeLines": 164,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/pages/PlacesStyles.css",
+          "language": "css",
+          "sizeLines": 457,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/pages/Profile.css",
+          "language": "css",
+          "sizeLines": 0,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/pages/ProfileStyles.css",
+          "language": "css",
+          "sizeLines": 304,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/pages/WeatherWindowStyles.css",
+          "language": "css",
+          "sizeLines": 322,
+          "fileCategory": "markup"
+        }
+      ],
+      "batchImportData": {
+        "./src/pages/AdminDashboard.css": [],
+        "./src/pages/BlogPageStyles.css": [],
+        "./src/pages/CreateAccountStyles.css": [],
+        "./src/pages/LoginStyles.css": [],
+        "./src/pages/PlacesStyles.css": [],
+        "./src/pages/Profile.css": [],
+        "./src/pages/ProfileStyles.css": [],
+        "./src/pages/WeatherWindowStyles.css": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 12,
+      "files": [
+        {
+          "path": "./.claude/settings.local.json",
+          "language": "json",
+          "sizeLines": 8,
+          "fileCategory": "config"
+        },
+        {
+          "path": "./.ua/config.json",
+          "language": "json",
+          "sizeLines": 3,
+          "fileCategory": "config"
+        },
+        {
+          "path": "./backend/database/seeds/dev_seed.sql",
+          "language": "sql",
+          "sizeLines": 67,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./backend/package.json",
+          "language": "json",
+          "sizeLines": 34,
+          "fileCategory": "config"
+        },
+        {
+          "path": "./backend/server.js",
+          "language": "javascript",
+          "sizeLines": 239,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/config/db.js",
+          "language": "javascript",
+          "sizeLines": 30,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/config/setupDefaultAvatar.js",
+          "language": "javascript",
+          "sizeLines": 33,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/config/setupStorage.js",
+          "language": "javascript",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/config/socket.js",
+          "language": "javascript",
+          "sizeLines": 31,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/controllers/adminController.js",
+          "language": "javascript",
+          "sizeLines": 457,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/controllers/blogController.js",
+          "language": "javascript",
+          "sizeLines": 139,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/controllers/faqController.js",
+          "language": "javascript",
+          "sizeLines": 49,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/controllers/mountainControllers.js",
+          "language": "javascript",
+          "sizeLines": 72,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/controllers/reviewControllers.js",
+          "language": "javascript",
+          "sizeLines": 61,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/controllers/userControllers.js",
+          "language": "javascript",
+          "sizeLines": 359,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/controllers/weatherWindowController.js",
+          "language": "javascript",
+          "sizeLines": 72,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/ingestion/catalogRepository.js",
+          "language": "javascript",
+          "sizeLines": 243,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/ingestion/httpClient.js",
+          "language": "javascript",
+          "sizeLines": 135,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/ingestion/wikidata.js",
+          "language": "javascript",
+          "sizeLines": 275,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/ingestion/wikimedia.js",
+          "language": "javascript",
+          "sizeLines": 73,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/middlewares/auth.js",
+          "language": "javascript",
+          "sizeLines": 167,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/middlewares/uploadMiddleware.js",
+          "language": "javascript",
+          "sizeLines": 81,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/models/userModel.js",
+          "language": "javascript",
+          "sizeLines": 45,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/routes/adminRoutes.js",
+          "language": "javascript",
+          "sizeLines": 46,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/routes/blogRoutes.js",
+          "language": "javascript",
+          "sizeLines": 12,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "./.claude/settings.local.json": [],
+        "./.ua/config.json": [],
+        "./backend/database/seeds/dev_seed.sql": [],
+        "./backend/package.json": [],
+        "./backend/server.js": [],
+        "./backend/server/config/db.js": [],
+        "./backend/server/config/setupDefaultAvatar.js": [],
+        "./backend/server/config/setupStorage.js": [],
+        "./backend/server/config/socket.js": [],
+        "./backend/server/controllers/adminController.js": [],
+        "./backend/server/controllers/blogController.js": [],
+        "./backend/server/controllers/faqController.js": [],
+        "./backend/server/controllers/mountainControllers.js": [],
+        "./backend/server/controllers/reviewControllers.js": [],
+        "./backend/server/controllers/userControllers.js": [],
+        "./backend/server/controllers/weatherWindowController.js": [],
+        "./backend/server/ingestion/catalogRepository.js": [],
+        "./backend/server/ingestion/httpClient.js": [],
+        "./backend/server/ingestion/wikidata.js": [],
+        "./backend/server/ingestion/wikimedia.js": [],
+        "./backend/server/middlewares/auth.js": [],
+        "./backend/server/middlewares/uploadMiddleware.js": [],
+        "./backend/server/models/userModel.js": [],
+        "./backend/server/routes/adminRoutes.js": [],
+        "./backend/server/routes/blogRoutes.js": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 13,
+      "files": [
+        {
+          "path": "./backend/server/routes/notificationRoutes.js",
+          "language": "javascript",
+          "sizeLines": 58,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/routes/profile.js",
+          "language": "javascript",
+          "sizeLines": 11,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/routes/users.js",
+          "language": "javascript",
+          "sizeLines": 9,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/scripts/auditDestinationGuides.js",
+          "language": "javascript",
+          "sizeLines": 173,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/scripts/discoverDestinations.js",
+          "language": "javascript",
+          "sizeLines": 103,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/scripts/migrate.js",
+          "language": "javascript",
+          "sizeLines": 72,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/scripts/publishReadyDestinations.js",
+          "language": "javascript",
+          "sizeLines": 43,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/scripts/runSql.js",
+          "language": "javascript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/scripts/seedAdmin.js",
+          "language": "javascript",
+          "sizeLines": 81,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/services/adminService.js",
+          "language": "javascript",
+          "sizeLines": 575,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/services/blogServices.js",
+          "language": "javascript",
+          "sizeLines": 101,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/services/destinationQuality.js",
+          "language": "javascript",
+          "sizeLines": 134,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/services/faq.js",
+          "language": "javascript",
+          "sizeLines": 53,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/services/mountains.js",
+          "language": "javascript",
+          "sizeLines": 180,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/services/reviews.js",
+          "language": "javascript",
+          "sizeLines": 28,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/services/storageService.js",
+          "language": "javascript",
+          "sizeLines": 73,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/services/users.js",
+          "language": "javascript",
+          "sizeLines": 368,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/services/weatherWindow.js",
+          "language": "javascript",
+          "sizeLines": 395,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/utils/errorHandling.js",
+          "language": "javascript",
+          "sizeLines": 10,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/utils/fileUtils.js",
+          "language": "javascript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/utils/imageUtils.js",
+          "language": "javascript",
+          "sizeLines": 135,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./backend/server/utils/logger.js",
+          "language": "javascript",
+          "sizeLines": 19,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./database/seeds/dev_seed.sql",
+          "language": "sql",
+          "sizeLines": 67,
+          "fileCategory": "data"
+        },
+        {
+          "path": "./eslint.config.js",
+          "language": "javascript",
+          "sizeLines": 54,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/index.html",
+          "language": "html",
+          "sizeLines": 24,
+          "fileCategory": "markup"
+        }
+      ],
+      "batchImportData": {
+        "./backend/server/routes/notificationRoutes.js": [],
+        "./backend/server/routes/profile.js": [],
+        "./backend/server/routes/users.js": [],
+        "./backend/server/scripts/auditDestinationGuides.js": [],
+        "./backend/server/scripts/discoverDestinations.js": [],
+        "./backend/server/scripts/migrate.js": [],
+        "./backend/server/scripts/publishReadyDestinations.js": [],
+        "./backend/server/scripts/runSql.js": [],
+        "./backend/server/scripts/seedAdmin.js": [],
+        "./backend/server/services/adminService.js": [],
+        "./backend/server/services/blogServices.js": [],
+        "./backend/server/services/destinationQuality.js": [],
+        "./backend/server/services/faq.js": [],
+        "./backend/server/services/mountains.js": [],
+        "./backend/server/services/reviews.js": [],
+        "./backend/server/services/storageService.js": [],
+        "./backend/server/services/users.js": [],
+        "./backend/server/services/weatherWindow.js": [],
+        "./backend/server/utils/errorHandling.js": [],
+        "./backend/server/utils/fileUtils.js": [],
+        "./backend/server/utils/imageUtils.js": [],
+        "./backend/server/utils/logger.js": [],
+        "./database/seeds/dev_seed.sql": [],
+        "./eslint.config.js": [],
+        "./frontend/index.html": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 14,
+      "files": [
+        {
+          "path": "./frontend/package.json",
+          "language": "json",
+          "sizeLines": 72,
+          "fileCategory": "config"
+        },
+        {
+          "path": "./frontend/src/App.jsx",
+          "language": "javascript",
+          "sizeLines": 44,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/api/assetUrls.js",
+          "language": "javascript",
+          "sizeLines": 23,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/api/auth.js",
+          "language": "javascript",
+          "sizeLines": 11,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/api/config.js",
+          "language": "javascript",
+          "sizeLines": 9,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/api/fetchWithAuth.js",
+          "language": "javascript",
+          "sizeLines": 29,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/api/index.js",
+          "language": "javascript",
+          "sizeLines": 70,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/api/profile.js",
+          "language": "javascript",
+          "sizeLines": 9,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/api/session.js",
+          "language": "javascript",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/AboutUs.jsx",
+          "language": "javascript",
+          "sizeLines": 37,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/AddLocationForm.jsx",
+          "language": "javascript",
+          "sizeLines": 280,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/AddUserForm.jsx",
+          "language": "javascript",
+          "sizeLines": 129,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/ContactForm.jsx",
+          "language": "javascript",
+          "sizeLines": 133,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/Destination.jsx",
+          "language": "javascript",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/DestinationData.jsx",
+          "language": "javascript",
+          "sizeLines": 22,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/EditLocationForm.jsx",
+          "language": "javascript",
+          "sizeLines": 410,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/EditUserForm.jsx",
+          "language": "javascript",
+          "sizeLines": 210,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/Footer.jsx",
+          "language": "javascript",
+          "sizeLines": 55,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/Hero.jsx",
+          "language": "javascript",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/ImageModal.jsx",
+          "language": "javascript",
+          "sizeLines": 17,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/Logout.jsx",
+          "language": "javascript",
+          "sizeLines": 21,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/MenuItems.js",
+          "language": "javascript",
+          "sizeLines": 32,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/MountainCard.jsx",
+          "language": "javascript",
+          "sizeLines": 50,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/MountainDetails.jsx",
+          "language": "javascript",
+          "sizeLines": 278,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/Navbar.jsx",
+          "language": "javascript",
+          "sizeLines": 187,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "./frontend/package.json": [],
+        "./frontend/src/App.jsx": [],
+        "./frontend/src/api/assetUrls.js": [],
+        "./frontend/src/api/auth.js": [],
+        "./frontend/src/api/config.js": [],
+        "./frontend/src/api/fetchWithAuth.js": [],
+        "./frontend/src/api/index.js": [],
+        "./frontend/src/api/profile.js": [],
+        "./frontend/src/api/session.js": [],
+        "./frontend/src/components/AboutUs.jsx": [],
+        "./frontend/src/components/AddLocationForm.jsx": [],
+        "./frontend/src/components/AddUserForm.jsx": [],
+        "./frontend/src/components/ContactForm.jsx": [],
+        "./frontend/src/components/Destination.jsx": [],
+        "./frontend/src/components/DestinationData.jsx": [],
+        "./frontend/src/components/EditLocationForm.jsx": [],
+        "./frontend/src/components/EditUserForm.jsx": [],
+        "./frontend/src/components/Footer.jsx": [],
+        "./frontend/src/components/Hero.jsx": [],
+        "./frontend/src/components/ImageModal.jsx": [],
+        "./frontend/src/components/Logout.jsx": [],
+        "./frontend/src/components/MenuItems.js": [],
+        "./frontend/src/components/MountainCard.jsx": [],
+        "./frontend/src/components/MountainDetails.jsx": [],
+        "./frontend/src/components/Navbar.jsx": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 15,
+      "files": [
+        {
+          "path": "./frontend/src/components/NotificationModal.jsx",
+          "language": "javascript",
+          "sizeLines": 119,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/NotificationPopover.jsx",
+          "language": "javascript",
+          "sizeLines": 172,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/PageNotFound.jsx",
+          "language": "javascript",
+          "sizeLines": 20,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/ProfileDropdown.jsx",
+          "language": "javascript",
+          "sizeLines": 55,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/ReviewForm.jsx",
+          "language": "javascript",
+          "sizeLines": 104,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/ReviewList.jsx",
+          "language": "javascript",
+          "sizeLines": 49,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/ReviewSection.jsx",
+          "language": "javascript",
+          "sizeLines": 62,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/Trip.jsx",
+          "language": "javascript",
+          "sizeLines": 42,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/TripData.jsx",
+          "language": "javascript",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/components/TripStyles.css",
+          "language": "css",
+          "sizeLines": 116,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/hooks/useDebounce.js",
+          "language": "javascript",
+          "sizeLines": 17,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/index.jsx",
+          "language": "javascript",
+          "sizeLines": 14,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/pages/About.jsx",
+          "language": "javascript",
+          "sizeLines": 25,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/pages/AdminDashboard.jsx",
+          "language": "javascript",
+          "sizeLines": 792,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/pages/BlogDetail.jsx",
+          "language": "javascript",
+          "sizeLines": 119,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/pages/BlogPage.jsx",
+          "language": "javascript",
+          "sizeLines": 150,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/pages/CreateAccount.jsx",
+          "language": "javascript",
+          "sizeLines": 136,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/pages/CreateBlog.jsx",
+          "language": "javascript",
+          "sizeLines": 148,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/pages/FAQ.jsx",
+          "language": "javascript",
+          "sizeLines": 25,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/pages/HomePage.jsx",
+          "language": "javascript",
+          "sizeLines": 61,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/pages/Login.jsx",
+          "language": "javascript",
+          "sizeLines": 101,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/pages/Places.jsx",
+          "language": "javascript",
+          "sizeLines": 269,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/pages/Profile.jsx",
+          "language": "javascript",
+          "sizeLines": 278,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/pages/WeatherWindow.jsx",
+          "language": "javascript",
+          "sizeLines": 237,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/routes/AuthRoute.jsx",
+          "language": "javascript",
+          "sizeLines": 43,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "./frontend/src/components/NotificationModal.jsx": [],
+        "./frontend/src/components/NotificationPopover.jsx": [],
+        "./frontend/src/components/PageNotFound.jsx": [],
+        "./frontend/src/components/ProfileDropdown.jsx": [],
+        "./frontend/src/components/ReviewForm.jsx": [],
+        "./frontend/src/components/ReviewList.jsx": [],
+        "./frontend/src/components/ReviewSection.jsx": [],
+        "./frontend/src/components/Trip.jsx": [],
+        "./frontend/src/components/TripData.jsx": [],
+        "./frontend/src/components/TripStyles.css": [],
+        "./frontend/src/hooks/useDebounce.js": [],
+        "./frontend/src/index.jsx": [],
+        "./frontend/src/pages/About.jsx": [],
+        "./frontend/src/pages/AdminDashboard.jsx": [],
+        "./frontend/src/pages/BlogDetail.jsx": [],
+        "./frontend/src/pages/BlogPage.jsx": [],
+        "./frontend/src/pages/CreateAccount.jsx": [],
+        "./frontend/src/pages/CreateBlog.jsx": [],
+        "./frontend/src/pages/FAQ.jsx": [],
+        "./frontend/src/pages/HomePage.jsx": [],
+        "./frontend/src/pages/Login.jsx": [],
+        "./frontend/src/pages/Places.jsx": [],
+        "./frontend/src/pages/Profile.jsx": [],
+        "./frontend/src/pages/WeatherWindow.jsx": [],
+        "./frontend/src/routes/AuthRoute.jsx": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 16,
+      "files": [
+        {
+          "path": "./frontend/src/routes/ProtectedRoute.jsx",
+          "language": "javascript",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/src/styles.css",
+          "language": "css",
+          "sizeLines": 209,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/styles/BlogPageStyles.css",
+          "language": "css",
+          "sizeLines": 169,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./frontend/src/vite-env.d.ts",
+          "language": "typescript",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./frontend/vite.config.ts",
+          "language": "typescript",
+          "sizeLines": 44,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./index.js",
+          "language": "javascript",
+          "sizeLines": 89,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server.js",
+          "language": "javascript",
+          "sizeLines": 259,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/config/db.js",
+          "language": "javascript",
+          "sizeLines": 30,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/config/setupDefaultAvatar.js",
+          "language": "javascript",
+          "sizeLines": 33,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/config/setupStorage.js",
+          "language": "javascript",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/config/socket.js",
+          "language": "javascript",
+          "sizeLines": 31,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/controllers/adminController.js",
+          "language": "javascript",
+          "sizeLines": 326,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/controllers/blogController.js",
+          "language": "javascript",
+          "sizeLines": 67,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/controllers/faqController.js",
+          "language": "javascript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/controllers/mountainControllers.js",
+          "language": "javascript",
+          "sizeLines": 72,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/controllers/reviewControllers.js",
+          "language": "javascript",
+          "sizeLines": 45,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/controllers/userControllers.js",
+          "language": "javascript",
+          "sizeLines": 241,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/controllers/weatherWindowController.js",
+          "language": "javascript",
+          "sizeLines": 72,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/ingestion/catalogRepository.js",
+          "language": "javascript",
+          "sizeLines": 293,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/ingestion/httpClient.js",
+          "language": "javascript",
+          "sizeLines": 150,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/ingestion/overpass.js",
+          "language": "javascript",
+          "sizeLines": 59,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/ingestion/pexels.js",
+          "language": "javascript",
+          "sizeLines": 43,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/ingestion/unsplash.js",
+          "language": "javascript",
+          "sizeLines": 48,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/ingestion/wikidata.js",
+          "language": "javascript",
+          "sizeLines": 275,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/ingestion/wikimedia.js",
+          "language": "javascript",
+          "sizeLines": 73,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "./frontend/src/routes/ProtectedRoute.jsx": [],
+        "./frontend/src/styles.css": [],
+        "./frontend/src/styles/BlogPageStyles.css": [],
+        "./frontend/src/vite-env.d.ts": [],
+        "./frontend/vite.config.ts": [],
+        "./index.js": [],
+        "./server.js": [],
+        "./server/config/db.js": [],
+        "./server/config/setupDefaultAvatar.js": [],
+        "./server/config/setupStorage.js": [],
+        "./server/config/socket.js": [],
+        "./server/controllers/adminController.js": [],
+        "./server/controllers/blogController.js": [],
+        "./server/controllers/faqController.js": [],
+        "./server/controllers/mountainControllers.js": [],
+        "./server/controllers/reviewControllers.js": [],
+        "./server/controllers/userControllers.js": [],
+        "./server/controllers/weatherWindowController.js": [],
+        "./server/ingestion/catalogRepository.js": [],
+        "./server/ingestion/httpClient.js": [],
+        "./server/ingestion/overpass.js": [],
+        "./server/ingestion/pexels.js": [],
+        "./server/ingestion/unsplash.js": [],
+        "./server/ingestion/wikidata.js": [],
+        "./server/ingestion/wikimedia.js": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 17,
+      "files": [
+        {
+          "path": "./server/middlewares/auth.js",
+          "language": "javascript",
+          "sizeLines": 40,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/middlewares/uploadMiddleware.js",
+          "language": "javascript",
+          "sizeLines": 54,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/models/userModel.js",
+          "language": "javascript",
+          "sizeLines": 45,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/routes/adminRoutes.js",
+          "language": "javascript",
+          "sizeLines": 46,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/routes/blogRoutes.js",
+          "language": "javascript",
+          "sizeLines": 10,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/routes/notificationRoutes.js",
+          "language": "javascript",
+          "sizeLines": 58,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/routes/profile.js",
+          "language": "javascript",
+          "sizeLines": 11,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/routes/users.js",
+          "language": "javascript",
+          "sizeLines": 9,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/scripts/auditDestinationGuides.js",
+          "language": "javascript",
+          "sizeLines": 173,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/scripts/discoverDestinations.js",
+          "language": "javascript",
+          "sizeLines": 103,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/scripts/ingestPhotoSources.js",
+          "language": "javascript",
+          "sizeLines": 170,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/scripts/migrate.js",
+          "language": "javascript",
+          "sizeLines": 72,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/scripts/publishReadyDestinations.js",
+          "language": "javascript",
+          "sizeLines": 43,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/scripts/runSql.js",
+          "language": "javascript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/scripts/seedAdmin.js",
+          "language": "javascript",
+          "sizeLines": 81,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/services/adminService.js",
+          "language": "javascript",
+          "sizeLines": 551,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/services/blogServices.js",
+          "language": "javascript",
+          "sizeLines": 52,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/services/destinationQuality.js",
+          "language": "javascript",
+          "sizeLines": 134,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/services/faq.js",
+          "language": "javascript",
+          "sizeLines": 53,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/services/mountains.js",
+          "language": "javascript",
+          "sizeLines": 185,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/services/reviews.js",
+          "language": "javascript",
+          "sizeLines": 28,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/services/storageService.js",
+          "language": "javascript",
+          "sizeLines": 73,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/services/users.js",
+          "language": "javascript",
+          "sizeLines": 200,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/services/weatherWindow.js",
+          "language": "javascript",
+          "sizeLines": 395,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/utils/errorHandling.js",
+          "language": "javascript",
+          "sizeLines": 10,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "./server/middlewares/auth.js": [],
+        "./server/middlewares/uploadMiddleware.js": [],
+        "./server/models/userModel.js": [],
+        "./server/routes/adminRoutes.js": [],
+        "./server/routes/blogRoutes.js": [],
+        "./server/routes/notificationRoutes.js": [],
+        "./server/routes/profile.js": [],
+        "./server/routes/users.js": [],
+        "./server/scripts/auditDestinationGuides.js": [],
+        "./server/scripts/discoverDestinations.js": [],
+        "./server/scripts/ingestPhotoSources.js": [],
+        "./server/scripts/migrate.js": [],
+        "./server/scripts/publishReadyDestinations.js": [],
+        "./server/scripts/runSql.js": [],
+        "./server/scripts/seedAdmin.js": [],
+        "./server/services/adminService.js": [],
+        "./server/services/blogServices.js": [],
+        "./server/services/destinationQuality.js": [],
+        "./server/services/faq.js": [],
+        "./server/services/mountains.js": [],
+        "./server/services/reviews.js": [],
+        "./server/services/storageService.js": [],
+        "./server/services/users.js": [],
+        "./server/services/weatherWindow.js": [],
+        "./server/utils/errorHandling.js": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 18,
+      "files": [
+        {
+          "path": "./server/utils/fileUtils.js",
+          "language": "javascript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./server/utils/imageUtils.js",
+          "language": "javascript",
+          "sizeLines": 18,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/App.jsx",
+          "language": "javascript",
+          "sizeLines": 44,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/api/assetUrls.js",
+          "language": "javascript",
+          "sizeLines": 23,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/api/auth.js",
+          "language": "javascript",
+          "sizeLines": 11,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/api/config.js",
+          "language": "javascript",
+          "sizeLines": 9,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/api/fetchWithAuth.js",
+          "language": "javascript",
+          "sizeLines": 29,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/api/index.js",
+          "language": "javascript",
+          "sizeLines": 70,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/api/profile.js",
+          "language": "javascript",
+          "sizeLines": 9,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/api/session.js",
+          "language": "javascript",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/AboutUs.jsx",
+          "language": "javascript",
+          "sizeLines": 37,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/AddLocationForm.jsx",
+          "language": "javascript",
+          "sizeLines": 280,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/AddUserForm.jsx",
+          "language": "javascript",
+          "sizeLines": 129,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/ContactForm.jsx",
+          "language": "javascript",
+          "sizeLines": 133,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/Destination.jsx",
+          "language": "javascript",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/DestinationData.jsx",
+          "language": "javascript",
+          "sizeLines": 22,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/EditLocationForm.jsx",
+          "language": "javascript",
+          "sizeLines": 410,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/EditUserForm.jsx",
+          "language": "javascript",
+          "sizeLines": 210,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/Footer.jsx",
+          "language": "javascript",
+          "sizeLines": 55,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/Hero.jsx",
+          "language": "javascript",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/ImageModal.jsx",
+          "language": "javascript",
+          "sizeLines": 17,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/Logout.jsx",
+          "language": "javascript",
+          "sizeLines": 21,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/MenuItems.js",
+          "language": "javascript",
+          "sizeLines": 32,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/MountainCard.jsx",
+          "language": "javascript",
+          "sizeLines": 32,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/MountainDetails.jsx",
+          "language": "javascript",
+          "sizeLines": 278,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "./server/utils/fileUtils.js": [],
+        "./server/utils/imageUtils.js": [],
+        "./src/App.jsx": [],
+        "./src/api/assetUrls.js": [],
+        "./src/api/auth.js": [],
+        "./src/api/config.js": [],
+        "./src/api/fetchWithAuth.js": [],
+        "./src/api/index.js": [],
+        "./src/api/profile.js": [],
+        "./src/api/session.js": [],
+        "./src/components/AboutUs.jsx": [],
+        "./src/components/AddLocationForm.jsx": [],
+        "./src/components/AddUserForm.jsx": [],
+        "./src/components/ContactForm.jsx": [],
+        "./src/components/Destination.jsx": [],
+        "./src/components/DestinationData.jsx": [],
+        "./src/components/EditLocationForm.jsx": [],
+        "./src/components/EditUserForm.jsx": [],
+        "./src/components/Footer.jsx": [],
+        "./src/components/Hero.jsx": [],
+        "./src/components/ImageModal.jsx": [],
+        "./src/components/Logout.jsx": [],
+        "./src/components/MenuItems.js": [],
+        "./src/components/MountainCard.jsx": [],
+        "./src/components/MountainDetails.jsx": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 19,
+      "files": [
+        {
+          "path": "./src/components/Navbar.jsx",
+          "language": "javascript",
+          "sizeLines": 187,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/NotificationModal.jsx",
+          "language": "javascript",
+          "sizeLines": 119,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/NotificationPopover.jsx",
+          "language": "javascript",
+          "sizeLines": 172,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/PageNotFound.jsx",
+          "language": "javascript",
+          "sizeLines": 20,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/ProfileDropdown.jsx",
+          "language": "javascript",
+          "sizeLines": 55,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/ReviewForm.jsx",
+          "language": "javascript",
+          "sizeLines": 104,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/ReviewList.jsx",
+          "language": "javascript",
+          "sizeLines": 49,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/ReviewSection.jsx",
+          "language": "javascript",
+          "sizeLines": 62,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/Trip.jsx",
+          "language": "javascript",
+          "sizeLines": 42,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/TripData.jsx",
+          "language": "javascript",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/components/TripStyles.css",
+          "language": "css",
+          "sizeLines": 116,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/hooks/useDebounce.js",
+          "language": "javascript",
+          "sizeLines": 17,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/index.jsx",
+          "language": "javascript",
+          "sizeLines": 14,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/pages/About.jsx",
+          "language": "javascript",
+          "sizeLines": 25,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/pages/AdminDashboard.jsx",
+          "language": "javascript",
+          "sizeLines": 792,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/pages/BlogDetail.jsx",
+          "language": "javascript",
+          "sizeLines": 119,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/pages/BlogPage.jsx",
+          "language": "javascript",
+          "sizeLines": 150,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/pages/CreateAccount.jsx",
+          "language": "javascript",
+          "sizeLines": 136,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/pages/CreateBlog.jsx",
+          "language": "javascript",
+          "sizeLines": 148,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/pages/FAQ.jsx",
+          "language": "javascript",
+          "sizeLines": 25,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/pages/HomePage.jsx",
+          "language": "javascript",
+          "sizeLines": 61,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/pages/Login.jsx",
+          "language": "javascript",
+          "sizeLines": 101,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/pages/Places.jsx",
+          "language": "javascript",
+          "sizeLines": 269,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/pages/Profile.jsx",
+          "language": "javascript",
+          "sizeLines": 278,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/pages/WeatherWindow.jsx",
+          "language": "javascript",
+          "sizeLines": 237,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "./src/components/Navbar.jsx": [],
+        "./src/components/NotificationModal.jsx": [],
+        "./src/components/NotificationPopover.jsx": [],
+        "./src/components/PageNotFound.jsx": [],
+        "./src/components/ProfileDropdown.jsx": [],
+        "./src/components/ReviewForm.jsx": [],
+        "./src/components/ReviewList.jsx": [],
+        "./src/components/ReviewSection.jsx": [],
+        "./src/components/Trip.jsx": [],
+        "./src/components/TripData.jsx": [],
+        "./src/components/TripStyles.css": [],
+        "./src/hooks/useDebounce.js": [],
+        "./src/index.jsx": [],
+        "./src/pages/About.jsx": [],
+        "./src/pages/AdminDashboard.jsx": [],
+        "./src/pages/BlogDetail.jsx": [],
+        "./src/pages/BlogPage.jsx": [],
+        "./src/pages/CreateAccount.jsx": [],
+        "./src/pages/CreateBlog.jsx": [],
+        "./src/pages/FAQ.jsx": [],
+        "./src/pages/HomePage.jsx": [],
+        "./src/pages/Login.jsx": [],
+        "./src/pages/Places.jsx": [],
+        "./src/pages/Profile.jsx": [],
+        "./src/pages/WeatherWindow.jsx": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 20,
+      "files": [
+        {
+          "path": "./src/routes/AuthRoute.jsx",
+          "language": "javascript",
+          "sizeLines": 43,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/routes/ProtectedRoute.jsx",
+          "language": "javascript",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./src/styles.css",
+          "language": "css",
+          "sizeLines": 209,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/styles/BlogPageStyles.css",
+          "language": "css",
+          "sizeLines": 169,
+          "fileCategory": "markup"
+        },
+        {
+          "path": "./src/vite-env.d.ts",
+          "language": "typescript",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./tests/integration/api.test.js",
+          "language": "javascript",
+          "sizeLines": 284,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./tests/unit/destinationQuality.test.js",
+          "language": "javascript",
+          "sizeLines": 40,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./tests/unit/ingestion.test.js",
+          "language": "javascript",
+          "sizeLines": 38,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./tests/unit/security.test.js",
+          "language": "javascript",
+          "sizeLines": 68,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./tests/unit/weatherWindow.test.js",
+          "language": "javascript",
+          "sizeLines": 57,
+          "fileCategory": "code"
+        },
+        {
+          "path": "./vite.config.ts",
+          "language": "typescript",
+          "sizeLines": 44,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "./src/routes/AuthRoute.jsx": [],
+        "./src/routes/ProtectedRoute.jsx": [],
+        "./src/styles.css": [],
+        "./src/styles/BlogPageStyles.css": [],
+        "./src/vite-env.d.ts": [],
+        "./tests/integration/api.test.js": [],
+        "./tests/unit/destinationQuality.test.js": [],
+        "./tests/unit/ingestion.test.js": [],
+        "./tests/unit/security.test.js": [],
+        "./tests/unit/weatherWindow.test.js": [],
+        "./vite.config.ts": []
+      },
+      "neighborMap": {}
+    }
+  ]
+}

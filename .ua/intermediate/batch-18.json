@@ -1,0 +1,685 @@
+{
+  "nodes": [
+    {
+      "id": "file:server/utils/fileUtils.js",
+      "type": "file",
+      "name": "fileUtils.js",
+      "filePath": "server/utils/fileUtils.js",
+      "summary": "Server-side utility module providing file management functions for avatar cleanup and file existence checking.",
+      "tags": ["utility", "server", "file-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/utils/fileUtils.js:cleanupOldAvatar",
+      "type": "function",
+      "name": "cleanupOldAvatar",
+      "filePath": "server/utils/fileUtils.js",
+      "lineRange": [4, 12],
+      "summary": "Removes an old avatar file from the filesystem if it exists, handling errors gracefully.",
+      "tags": ["utility", "file-management", "cleanup"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/utils/fileUtils.js:checkFileExists",
+      "type": "function",
+      "name": "checkFileExists",
+      "filePath": "server/utils/fileUtils.js",
+      "lineRange": [14, 22],
+      "summary": "Checks if a file exists at the specified path using filesystem access validation.",
+      "tags": ["utility", "file-management", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/utils/imageUtils.js",
+      "type": "file",
+      "name": "imageUtils.js",
+      "filePath": "server/utils/imageUtils.js",
+      "summary": "Server-side utility module for image directory management and file validation.",
+      "tags": ["utility", "server", "image-processing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/utils/imageUtils.js:ensureImageDirectory",
+      "type": "function",
+      "name": "ensureImageDirectory",
+      "filePath": "server/utils/imageUtils.js",
+      "lineRange": [4, 10],
+      "summary": "Ensures the image upload directory exists, creating it if necessary.",
+      "tags": ["utility", "directory-management", "setup"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/utils/imageUtils.js:isImageValid",
+      "type": "function",
+      "name": "isImageValid",
+      "filePath": "server/utils/imageUtils.js",
+      "lineRange": [12, 16],
+      "summary": "Validates that a filename has an allowed image extension (jpg, jpeg, png, gif, webp).",
+      "tags": ["utility", "validation", "image-processing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/ingestion/wikimedia.js",
+      "type": "file",
+      "name": "wikimedia.js",
+      "filePath": "server/ingestion/wikimedia.js",
+      "summary": "Data ingestion module that fetches and parses Wikimedia Commons metadata for mountain images.",
+      "tags": ["ingestion", "api-client", "data-pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/ingestion/wikimedia.js:plainText",
+      "type": "function",
+      "name": "plainText",
+      "filePath": "server/ingestion/wikimedia.js",
+      "lineRange": [3, 12],
+      "summary": "Strips HTML tags and decodes HTML entities from a string, returning plain text.",
+      "tags": ["utility", "html-parsing", "text-processing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/ingestion/wikimedia.js:filenameFromImageValue",
+      "type": "function",
+      "name": "filenameFromImageValue",
+      "filePath": "server/ingestion/wikimedia.js",
+      "lineRange": [14, 23],
+      "summary": "Extracts the image filename from a Wikimedia image value string, handling both URL and File: prefix formats.",
+      "tags": ["utility", "parsing", "wikimedia"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/ingestion/wikimedia.js:getCommonsMedia",
+      "type": "function",
+      "name": "getCommonsMedia",
+      "filePath": "server/ingestion/wikimedia.js",
+      "lineRange": [29, 68],
+      "summary": "Fetches detailed metadata for a Wikimedia Commons image including description, artist, and license information.",
+      "tags": ["api-client", "data-ingestion", "wikimedia"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/App.jsx",
+      "type": "file",
+      "name": "App.jsx",
+      "filePath": "src/App.jsx",
+      "summary": "Main React application component that serves as the entry point and routing container for the Bumpy Road app.",
+      "tags": ["entry-point", "component", "routing"],
+      "complexity": "simple",
+      "languageNotes": "React functional component using JSX with multiple child component imports."
+    },
+    {
+      "id": "function:src/App.jsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "src/App.jsx",
+      "lineRange": [20, 44],
+      "summary": "Root application component rendering the main layout with hero section and route-based content display.",
+      "tags": ["component", "entry-point", "layout"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/api/assetUrls.js",
+      "type": "file",
+      "name": "assetUrls.js",
+      "filePath": "src/api/assetUrls.js",
+      "summary": "API utility module providing image URL processing with fallback handling for mountain images.",
+      "tags": ["utility", "api", "asset-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/assetUrls.js:getMountainImageUrl",
+      "type": "function",
+      "name": "getMountainImageUrl",
+      "filePath": "src/api/assetUrls.js",
+      "lineRange": [3, 23],
+      "summary": "Resolves a mountain photo URL, returning the original if already absolute, or constructing a server path otherwise.",
+      "tags": ["utility", "url-processing", "asset-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/api/auth.js",
+      "type": "file",
+      "name": "auth.js",
+      "filePath": "src/api/auth.js",
+      "summary": "Authentication API module handling user login and logout operations.",
+      "tags": ["api", "authentication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/api/config.js",
+      "type": "file",
+      "name": "config.js",
+      "filePath": "src/api/config.js",
+      "summary": "Application configuration module defining API endpoints and server connection settings.",
+      "tags": ["configuration", "api"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/api/fetchWithAuth.js",
+      "type": "file",
+      "name": "fetchWithAuth.js",
+      "filePath": "src/api/fetchWithAuth.js",
+      "summary": "HTTP client wrapper that automatically attaches authentication credentials to requests.",
+      "tags": ["api-client", "middleware", "authentication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/fetchWithAuth.js:fetchWithAuth",
+      "type": "function",
+      "name": "fetchWithAuth",
+      "filePath": "src/api/fetchWithAuth.js",
+      "lineRange": [1, 29],
+      "summary": "Performs authenticated HTTP requests, automatically including session credentials and handling file upload vs JSON responses.",
+      "tags": ["api-client", "authentication", "http"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/api/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "src/api/index.js",
+      "summary": "Core API client module providing HTTP methods (GET, POST, PUT, upload) with error handling.",
+      "tags": ["api-client", "http", "entry-point"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/api/index.js:parseError",
+      "type": "function",
+      "name": "parseError",
+      "filePath": "src/api/index.js",
+      "lineRange": [3, 10],
+      "summary": "Parses error responses from API calls, extracting error messages from response bodies.",
+      "tags": ["utility", "error-handling", "api-client"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/api/profile.js",
+      "type": "file",
+      "name": "profile.js",
+      "filePath": "src/api/profile.js",
+      "summary": "User profile API module for fetching and updating user profile information.",
+      "tags": ["api", "user-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/api/session.js",
+      "type": "file",
+      "name": "session.js",
+      "filePath": "src/api/session.js",
+      "summary": "Session management API module for retrieving current user session state.",
+      "tags": ["api", "session-management", "authentication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/api/session.js:getSession",
+      "type": "function",
+      "name": "getSession",
+      "filePath": "src/api/session.js",
+      "lineRange": [3, 16],
+      "summary": "Fetches the current user session from the server, returning user data if authenticated.",
+      "tags": ["api-client", "session", "authentication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/AboutUs.jsx",
+      "type": "file",
+      "name": "AboutUs.jsx",
+      "filePath": "src/components/AboutUs.jsx",
+      "summary": "React component displaying information about the Bumpy Road project and team.",
+      "tags": ["component", "content", "static"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/AboutUs.jsx:AboutUs",
+      "type": "function",
+      "name": "AboutUs",
+      "filePath": "src/components/AboutUs.jsx",
+      "lineRange": [3, 35],
+      "summary": "Renders the about page with project description and team information.",
+      "tags": ["component", "content"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/AddLocationForm.jsx",
+      "type": "file",
+      "name": "AddLocationForm.jsx",
+      "filePath": "src/components/AddLocationForm.jsx",
+      "summary": "Form component for adding new mountain hiking locations with image upload and detailed metadata fields.",
+      "tags": ["component", "form", "data-entry"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/AddLocationForm.jsx:AddLocationForm",
+      "type": "function",
+      "name": "AddLocationForm",
+      "filePath": "src/components/AddLocationForm.jsx",
+      "lineRange": [7, 278],
+      "summary": "Comprehensive form for creating new hiking destinations with file upload, multiple metadata fields, and validation.",
+      "tags": ["component", "form", "data-entry", "image-upload"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/AddUserForm.jsx",
+      "type": "file",
+      "name": "AddUserForm.jsx",
+      "filePath": "src/components/AddUserForm.jsx",
+      "summary": "Form component for creating new user accounts with validation and error handling.",
+      "tags": ["component", "form", "user-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/AddUserForm.jsx:AddUserForm",
+      "type": "function",
+      "name": "AddUserForm",
+      "filePath": "src/components/AddUserForm.jsx",
+      "lineRange": [5, 127],
+      "summary": "Form for adding new users with loading states, error handling, and callback on successful creation.",
+      "tags": ["component", "form", "user-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/ContactForm.jsx",
+      "type": "file",
+      "name": "ContactForm.jsx",
+      "filePath": "src/components/ContactForm.jsx",
+      "summary": "Contact form component with client-side validation and toast notifications for user feedback.",
+      "tags": ["component", "form", "user-interaction"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/ContactForm.jsx:ContactForm",
+      "type": "function",
+      "name": "ContactForm",
+      "filePath": "src/components/ContactForm.jsx",
+      "lineRange": [6, 131],
+      "summary": "Contact form with validation for name, email, and message fields, showing success/error feedback via toasts.",
+      "tags": ["component", "form", "validation", "user-interaction"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/Destination.jsx",
+      "type": "file",
+      "name": "Destination.jsx",
+      "filePath": "src/components/Destination.jsx",
+      "summary": "Display component for showing a single mountain destination with details and edit capability.",
+      "tags": ["component", "display", "destination"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/Destination.jsx:Destination",
+      "type": "function",
+      "name": "Destination",
+      "filePath": "src/components/Destination.jsx",
+      "lineRange": [8, 39],
+      "summary": "Renders a mountain destination card with image, name, elevation, and edit/delete actions.",
+      "tags": ["component", "display", "destination"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/DestinationData.jsx",
+      "type": "file",
+      "name": "DestinationData.jsx",
+      "filePath": "src/components/DestinationData.jsx",
+      "summary": "Class-based React component for displaying raw destination data in a structured format.",
+      "tags": ["component", "data-display", "class-component"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:src/components/DestinationData.jsx:DestinationData",
+      "type": "class",
+      "name": "DestinationData",
+      "filePath": "src/components/DestinationData.jsx",
+      "lineRange": [4, 20],
+      "summary": "Class component that renders a formatted view of destination data properties.",
+      "tags": ["component", "data-display", "class-component"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/EditLocationForm.jsx",
+      "type": "file",
+      "name": "EditLocationForm.jsx",
+      "filePath": "src/components/EditLocationForm.jsx",
+      "summary": "Form component for editing existing mountain hiking locations with pre-populated data and image management.",
+      "tags": ["component", "form", "data-editing"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/EditLocationForm.jsx:EditLocationForm",
+      "type": "function",
+      "name": "EditLocationForm",
+      "filePath": "src/components/EditLocationForm.jsx",
+      "lineRange": [7, 408],
+      "summary": "Full-featured edit form for mountain destinations with image upload, metadata management, and preview functionality.",
+      "tags": ["component", "form", "data-editing", "image-upload"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/EditUserForm.jsx",
+      "type": "file",
+      "name": "EditUserForm.jsx",
+      "filePath": "src/components/EditUserForm.jsx",
+      "summary": "Form component for editing existing user accounts with password change support.",
+      "tags": ["component", "form", "user-management"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/EditUserForm.jsx:EditUserForm",
+      "type": "function",
+      "name": "EditUserForm",
+      "filePath": "src/components/EditUserForm.jsx",
+      "lineRange": [5, 208],
+      "summary": "User edit form with pre-populated fields, password change mode, validation, and success callbacks.",
+      "tags": ["component", "form", "user-management"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/Footer.jsx",
+      "type": "file",
+      "name": "Footer.jsx",
+      "filePath": "src/components/Footer.jsx",
+      "summary": "Application footer component displaying copyright and social links.",
+      "tags": ["component", "layout", "static"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/Footer.jsx:Footer",
+      "type": "function",
+      "name": "Footer",
+      "filePath": "src/components/Footer.jsx",
+      "lineRange": [5, 53],
+      "summary": "Renders the site footer with branding, navigation links, and social media icons.",
+      "tags": ["component", "layout"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/Hero.jsx",
+      "type": "file",
+      "name": "Hero.jsx",
+      "filePath": "src/components/Hero.jsx",
+      "summary": "Hero section component with background image and statistics display.",
+      "tags": ["component", "layout", "visual"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/Hero.jsx:Hero",
+      "type": "function",
+      "name": "Hero",
+      "filePath": "src/components/Hero.jsx",
+      "lineRange": [5, 39],
+      "summary": "Displays the main hero banner with background styling and mountain statistics.",
+      "tags": ["component", "layout", "visual"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ImageModal.jsx",
+      "type": "file",
+      "name": "ImageModal.jsx",
+      "filePath": "src/components/ImageModal.jsx",
+      "summary": "Modal overlay component for displaying full-size images with close functionality.",
+      "tags": ["component", "modal", "image-viewer"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/ImageModal.jsx:ImageModal",
+      "type": "function",
+      "name": "ImageModal",
+      "filePath": "src/components/ImageModal.jsx",
+      "lineRange": [4, 15],
+      "summary": "Renders an image in a modal overlay with click-outside-to-close behavior.",
+      "tags": ["component", "modal", "image-viewer"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/Logout.jsx",
+      "type": "file",
+      "name": "Logout.jsx",
+      "filePath": "src/components/Logout.jsx",
+      "summary": "Logout button component that clears user session and redirects to home.",
+      "tags": ["component", "authentication", "user-action"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/Logout.jsx:LogoutButton",
+      "type": "function",
+      "name": "LogoutButton",
+      "filePath": "src/components/Logout.jsx",
+      "lineRange": [4, 19],
+      "summary": "Button component that triggers logout API call and navigates to home page on success.",
+      "tags": ["component", "authentication", "user-action"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/MenuItems.js",
+      "type": "file",
+      "name": "MenuItems.js",
+      "filePath": "src/components/MenuItems.js",
+      "summary": "Navigation menu items data file defining the site navigation structure.",
+      "tags": ["data", "navigation", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/MountainCard.jsx",
+      "type": "file",
+      "name": "MountainCard.jsx",
+      "filePath": "src/components/MountainCard.jsx",
+      "summary": "Card component for displaying mountain information with image fallback handling.",
+      "tags": ["component", "display", "card"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/MountainCard.jsx:MountainCard",
+      "type": "function",
+      "name": "MountainCard",
+      "filePath": "src/components/MountainCard.jsx",
+      "lineRange": [5, 30],
+      "summary": "Renders a mountain card with image, elevation, and click handler for viewing details.",
+      "tags": ["component", "card", "display"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:server/utils/fileUtils.js",
+      "target": "function:server/utils/fileUtils.js:cleanupOldAvatar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/utils/fileUtils.js",
+      "target": "function:server/utils/fileUtils.js:checkFileExists",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/utils/imageUtils.js",
+      "target": "function:server/utils/imageUtils.js:ensureImageDirectory",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/utils/imageUtils.js",
+      "target": "function:server/utils/imageUtils.js:isImageValid",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/ingestion/wikimedia.js",
+      "target": "function:server/ingestion/wikimedia.js:plainText",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/ingestion/wikimedia.js",
+      "target": "function:server/ingestion/wikimedia.js:filenameFromImageValue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/ingestion/wikimedia.js",
+      "target": "function:server/ingestion/wikimedia.js:getCommonsMedia",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "function:src/App.jsx:App",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/App.jsx",
+      "target": "function:src/App.jsx:App",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/assetUrls.js",
+      "target": "function:src/api/assetUrls.js:getMountainImageUrl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/assetUrls.js",
+      "target": "function:src/api/assetUrls.js:getMountainImageUrl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/fetchWithAuth.js",
+      "target": "function:src/api/fetchWithAuth.js:fetchWithAuth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/fetchWithAuth.js",
+      "target": "function:src/api/fetchWithAuth.js:fetchWithAuth",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/api/index.js",
+      "target": "function:src/api/index.js:parseError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/session.js",
+      "target": "function:src/api/session.js:getSession",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/api/session.js",
+      "target": "function:src/api/session.js:getSession",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/AboutUs.jsx",
+      "target": "function:src/components/AboutUs.jsx:AboutUs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/AddLocationForm.jsx",
+      "target": "function:src/components/AddLocationForm.jsx:AddLocationForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/AddUserForm.jsx",
+      "target": "function:src/components/AddUserForm.jsx:AddUserForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ContactForm.jsx",
+      "target": "function:src/components/ContactForm.jsx:ContactForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/Destination.jsx",
+      "target": "function:src/components/Destination.jsx:Destination",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/DestinationData.jsx",
+      "target": "class:src/components/DestinationData.jsx:DestinationData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/EditLocationForm.jsx",
+      "target": "function:src/components/EditLocationForm.jsx:EditLocationForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/EditUserForm.jsx",
+      "target": "function:src/components/EditUserForm.jsx:EditUserForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/Footer.jsx",
+      "target": "function:src/components/Footer.jsx:Footer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/Hero.jsx",
+      "target": "function:src/components/Hero.jsx:Hero",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ImageModal.jsx",
+      "target": "function:src/components/ImageModal.jsx:ImageModal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/Logout.jsx",
+      "target": "function:src/components/Logout.jsx:LogoutButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/MountainCard.jsx",
+      "target": "function:src/components/MountainCard.jsx:MountainCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    }
+  ]
+}

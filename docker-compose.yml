@@ -1,0 +1,122 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER:-bumpyroad}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD is required}
+      POSTGRES_DB: ${DB_NAME:-bumpyroad}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - alpine_scout_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 10s
+      timeout: 5s
+      retries: 8
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      CLIENT_ORIGINS: ${CLIENT_ORIGINS:-http://localhost}
+      DB_USER: ${DB_USER:-bumpyroad}
+      DB_HOST: db
+      DB_NAME: ${DB_NAME:-bumpyroad}
+      DB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD is required}
+      DB_PORT: 5432
+      DB_SSL: "false"
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET is required}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:?JWT_REFRESH_SECRET is required}
+      ADMIN_USERNAME: ${ADMIN_USERNAME:?ADMIN_USERNAME is required}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:?ADMIN_EMAIL is required}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?ADMIN_PASSWORD is required}
+      ADMIN_FIRST_NAME: ${ADMIN_FIRST_NAME:-Bumpy}
+      ADMIN_LAST_NAME: ${ADMIN_LAST_NAME:-Admin}
+      INGEST_USER_AGENT: ${INGEST_USER_AGENT:-BumpyRoad/1.0}
+      INGEST_ALLOWED_HOSTS: ${INGEST_ALLOWED_HOSTS:-query.wikidata.org,www.wikidata.org,commons.wikimedia.org,api.open-meteo.com}
+    volumes:
+      - storage_data:/app/storage
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - alpine_scout_net
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:5000/healthz || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    command: sh -c "npm run db:migrate && npm run db:seed:admin && node server.js"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - alpine_scout_net
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost/index.html || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./caddy_data:/data
+      - ./caddy_config:/config
+    depends_on:
+      frontend:
+        condition: service_healthy
+    networks:
+      - alpine_scout_net
+
+  db-tools:
+    image: node:22-alpine
+    profiles: ["tools"]
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+      - storage_data:/app/storage
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+      DB_USER: ${DB_USER:-bumpyroad}
+      DB_HOST: db
+      DB_NAME: ${DB_NAME:-bumpyroad}
+      DB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD is required}
+      DB_PORT: 5432
+      INGEST_USER_AGENT: ${INGEST_USER_AGENT:-BumpyRoad/1.0}
+      INGEST_ALLOWED_HOSTS: ${INGEST_ALLOWED_HOSTS:-query.wikidata.org,www.wikidata.org,commons.wikimedia.org,api.open-meteo.com}
+      UNSPLASH_ACCESS_KEY: ${UNSPLASH_ACCESS_KEY:-}
+      PEXELS_API_KEY: ${PEXELS_API_KEY:-}
+    entrypoint: ["node"]
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - alpine_scout_net
+
+networks:
+  alpine_scout_net:
+    driver: bridge
+
+volumes:
+  pgdata:
+  storage_data:
+  caddy_data:
+  caddy_config:

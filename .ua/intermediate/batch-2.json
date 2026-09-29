@@ -1,0 +1,15 @@
+{
+  "nodes": [
+    {
+      "id": "service:frontend/Dockerfile",
+      "type": "service",
+      "name": "Dockerfile",
+      "filePath": "frontend/Dockerfile",
+      "summary": "Multi-stage Docker build producing a minimal nginx-based production image for the frontend application. The builder stage compiles the React/Vite application, and the runtime stage serves static assets with a custom nginx configuration running as non-root.",
+      "tags": ["containerization", "infrastructure", "deployment", "frontend"],
+      "complexity": "moderate",
+      "languageNotes": "Multi-stage build separates the Node.js build environment from the lightweight nginx runtime. Non-root nginx configuration enhances container security. Static assets are served from /usr/share/nginx/html with custom nginx.conf."
+    }
+  ],
+  "edges": []
+}

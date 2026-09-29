@@ -1,0 +1,908 @@
+{
+  "nodes": [
+    {
+      "id": "file:backend/server/services/mountains.js",
+      "type": "file",
+      "name": "mountains.js",
+      "filePath": "./backend/server/services/mountains.js",
+      "summary": "Public-facing service for mountain destination search and retrieval, supporting filtering by query, region, type, difficulty, tags, and elevation.",
+      "tags": [
+        "service",
+        "search",
+        "mountain"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/mountains.js:searchMountains",
+      "type": "function",
+      "name": "searchMountains",
+      "filePath": "./backend/server/services/mountains.js",
+      "lineRange": [
+        10,
+        94
+      ],
+      "summary": "Searches mountain destinations with dynamic SQL filtering based on query parameters including region, type, difficulty, and elevation ranges.",
+      "tags": [
+        "search",
+        "filtering",
+        "sql"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/mountains.js:getPlaceById",
+      "type": "function",
+      "name": "getPlaceById",
+      "filePath": "./backend/server/services/mountains.js",
+      "lineRange": [
+        96,
+        157
+      ],
+      "summary": "Retrieves a detailed mountain destination by ID, including weather conditions, nearby places, and editorials.",
+      "tags": [
+        "read",
+        "detail",
+        "mountain"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/mountains.js:getFeaturedPlacesFromDB",
+      "type": "function",
+      "name": "getFeaturedPlacesFromDB",
+      "filePath": "./backend/server/services/mountains.js",
+      "lineRange": [
+        159,
+        174
+      ],
+      "summary": "Retrieves featured mountain destinations marked for homepage display.",
+      "tags": [
+        "read",
+        "featured",
+        "homepage"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/services/reviews.js",
+      "type": "file",
+      "name": "reviews.js",
+      "filePath": "./backend/server/services/reviews.js",
+      "summary": "Service for managing user-submitted reviews of mountain destinations, supporting retrieval by mountain ID and new review creation.",
+      "tags": [
+        "service",
+        "reviews",
+        "user-generated"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/reviews.js:getReviewsByMountainId",
+      "type": "function",
+      "name": "getReviewsByMountainId",
+      "filePath": "./backend/server/services/reviews.js",
+      "lineRange": [
+        3,
+        13
+      ],
+      "summary": "Retrieves all reviews for a specific mountain destination ordered by creation date.",
+      "tags": [
+        "read",
+        "reviews",
+        "mountain"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/reviews.js:addReview",
+      "type": "function",
+      "name": "addReview",
+      "filePath": "./backend/server/services/reviews.js",
+      "lineRange": [
+        15,
+        23
+      ],
+      "summary": "Adds a new user review for a mountain destination with rating and comment.",
+      "tags": [
+        "create",
+        "review",
+        "rating"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/services/storageService.js",
+      "type": "file",
+      "name": "storageService.js",
+      "filePath": "./backend/server/services/storageService.js",
+      "summary": "Service class managing local file storage for user avatars with SHA-256 hash-based deduplication and path security validation.",
+      "tags": [
+        "service",
+        "storage",
+        "file-management"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:backend/server/services/storageService.js:StorageService",
+      "type": "class",
+      "name": "StorageService",
+      "filePath": "./backend/server/services/storageService.js",
+      "lineRange": [
+        5,
+        71
+      ],
+      "summary": "Manages local storage of user avatar files with hash-based deduplication and security checks for file path traversal.",
+      "tags": [
+        "storage",
+        "file-management",
+        "deduplication"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/services/users.js",
+      "type": "file",
+      "name": "users.js",
+      "filePath": "./backend/server/services/users.js",
+      "summary": "Comprehensive user service handling authentication, registration, profile management, and JWT refresh token lifecycle with password migration support.",
+      "tags": [
+        "service",
+        "authentication",
+        "user-management"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:backend/server/services/users.js:verifyPassword",
+      "type": "function",
+      "name": "verifyPassword",
+      "filePath": "./backend/server/services/users.js",
+      "lineRange": [
+        22,
+        43
+      ],
+      "summary": "Verifies a password against stored hash, supporting both argon2 and legacy bcrypt formats with automatic migration.",
+      "tags": [
+        "authentication",
+        "password",
+        "migration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/users.js:migratePasswordIfNeeded",
+      "type": "function",
+      "name": "migratePasswordIfNeeded",
+      "filePath": "./backend/server/services/users.js",
+      "lineRange": [
+        46,
+        66
+      ],
+      "summary": "Migrates legacy bcrypt passwords to argon2 format upon successful verification.",
+      "tags": [
+        "migration",
+        "password",
+        "security"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/users.js:verifyLogin",
+      "type": "function",
+      "name": "verifyLogin",
+      "filePath": "./backend/server/services/users.js",
+      "lineRange": [
+        77,
+        116
+      ],
+      "summary": "Authenticates user by email or username with password verification and automatic password migration.",
+      "tags": [
+        "authentication",
+        "login",
+        "verification"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/users.js:createUser",
+      "type": "function",
+      "name": "createUser",
+      "filePath": "./backend/server/services/users.js",
+      "lineRange": [
+        118,
+        179
+      ],
+      "summary": "Creates a new user account with password validation and hashed storage using argon2.",
+      "tags": [
+        "registration",
+        "user-creation",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/users.js:getUserProfile",
+      "type": "function",
+      "name": "getUserProfile",
+      "filePath": "./backend/server/services/users.js",
+      "lineRange": [
+        181,
+        201
+      ],
+      "summary": "Retrieves public user profile information by username.",
+      "tags": [
+        "read",
+        "profile",
+        "public"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/users.js:getUserByUsername",
+      "type": "function",
+      "name": "getUserByUsername",
+      "filePath": "./backend/server/services/users.js",
+      "lineRange": [
+        203,
+        219
+      ],
+      "summary": "Retrieves full user record by username for internal use.",
+      "tags": [
+        "read",
+        "user",
+        "internal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/users.js:updateUserProfile",
+      "type": "function",
+      "name": "updateUserProfile",
+      "filePath": "./backend/server/services/users.js",
+      "lineRange": [
+        221,
+        261
+      ],
+      "summary": "Updates user profile including avatar with old avatar cleanup using database transaction.",
+      "tags": [
+        "update",
+        "profile",
+        "avatar"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/users.js:storeRefreshToken",
+      "type": "function",
+      "name": "storeRefreshToken",
+      "filePath": "./backend/server/services/users.js",
+      "lineRange": [
+        264,
+        276
+      ],
+      "summary": "Stores a JWT refresh token with its JTI claim for later revocation.",
+      "tags": [
+        "token",
+        "refresh",
+        "storage"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/users.js:validateRefreshToken",
+      "type": "function",
+      "name": "validateRefreshToken",
+      "filePath": "./backend/server/services/users.js",
+      "lineRange": [
+        278,
+        301
+      ],
+      "summary": "Validates that a refresh token JTI exists and has not been revoked.",
+      "tags": [
+        "token",
+        "validation",
+        "security"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/users.js:revokeRefreshToken",
+      "type": "function",
+      "name": "revokeRefreshToken",
+      "filePath": "./backend/server/services/users.js",
+      "lineRange": [
+        303,
+        340
+      ],
+      "summary": "Revokes a refresh token by decoding its JWT to extract the JTI and marking it as used in the database.",
+      "tags": [
+        "token",
+        "revocation",
+        "logout"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/users.js:cleanupExpiredTokens",
+      "type": "function",
+      "name": "cleanupExpiredTokens",
+      "filePath": "./backend/server/services/users.js",
+      "lineRange": [
+        343,
+        354
+      ],
+      "summary": "Removes expired refresh tokens from the database to prevent table bloat.",
+      "tags": [
+        "maintenance",
+        "cleanup",
+        "database"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/services/weatherWindow.js",
+      "type": "file",
+      "name": "weatherWindow.js",
+      "filePath": "./backend/server/services/weatherWindow.js",
+      "summary": "Weather forecasting service that fetches Open-Meteo data, scores conditions against user preferences, and ranks destinations by optimal weather windows.",
+      "tags": [
+        "service",
+        "weather",
+        "forecasting",
+        "ranking"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:backend/server/services/weatherWindow.js:parseDate",
+      "type": "function",
+      "name": "parseDate",
+      "filePath": "./backend/server/services/weatherWindow.js",
+      "lineRange": [
+        30,
+        40
+      ],
+      "summary": "Parses a date string and validates it is a valid timestamp.",
+      "tags": [
+        "date",
+        "parsing",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/weatherWindow.js:validateDateRange",
+      "type": "function",
+      "name": "validateDateRange",
+      "filePath": "./backend/server/services/weatherWindow.js",
+      "lineRange": [
+        42,
+        55
+      ],
+      "summary": "Validates that a date range is valid and does not exceed maximum allowed days.",
+      "tags": [
+        "date",
+        "validation",
+        "range"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/weatherWindow.js:scoreHour",
+      "type": "function",
+      "name": "scoreHour",
+      "filePath": "./backend/server/services/weatherWindow.js",
+      "lineRange": [
+        71,
+        79
+      ],
+      "summary": "Calculates a quality score for a single hour based on weather parameters.",
+      "tags": [
+        "scoring",
+        "weather",
+        "hourly"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/weatherWindow.js:findBestWindow",
+      "type": "function",
+      "name": "findBestWindow",
+      "filePath": "./backend/server/services/weatherWindow.js",
+      "lineRange": [
+        81,
+        111
+      ],
+      "summary": "Finds the optimal multi-hour weather window by scoring contiguous hour blocks.",
+      "tags": [
+        "optimization",
+        "weather",
+        "window"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/weatherWindow.js:summarizeForecast",
+      "type": "function",
+      "name": "summarizeForecast",
+      "filePath": "./backend/server/services/weatherWindow.js",
+      "lineRange": [
+        113,
+        141
+      ],
+      "summary": "Aggregates hourly forecast data into summary statistics for temperature, precipitation, wind, visibility, and best window.",
+      "tags": [
+        "aggregation",
+        "forecast",
+        "summary"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/weatherWindow.js:getTolerancePreferences",
+      "type": "function",
+      "name": "getTolerancePreferences",
+      "filePath": "./backend/server/services/weatherWindow.js",
+      "lineRange": [
+        143,
+        152
+      ],
+      "summary": "Returns weather tolerance thresholds for different destination types.",
+      "tags": [
+        "preferences",
+        "tolerance",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/weatherWindow.js:scoreForecast",
+      "type": "function",
+      "name": "scoreForecast",
+      "filePath": "./backend/server/services/weatherWindow.js",
+      "lineRange": [
+        154,
+        221
+      ],
+      "summary": "Scores a forecast against destination requirements, generating reasons, tradeoffs, and a final weighted score.",
+      "tags": [
+        "scoring",
+        "matching",
+        "recommendation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/weatherWindow.js:buildForecastUrl",
+      "type": "function",
+      "name": "buildForecastUrl",
+      "filePath": "./backend/server/services/weatherWindow.js",
+      "lineRange": [
+        223,
+        234
+      ],
+      "summary": "Constructs the Open-Meteo API URL with coordinates and hourly parameters for multiple destinations.",
+      "tags": [
+        "api",
+        "url-builder",
+        "open-meteo"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/weatherWindow.js:fetchForecasts",
+      "type": "function",
+      "name": "fetchForecasts",
+      "filePath": "./backend/server/services/weatherWindow.js",
+      "lineRange": [
+        240,
+        258
+      ],
+      "summary": "Fetches weather forecasts from Open-Meteo API for multiple destinations in batch.",
+      "tags": [
+        "api",
+        "fetching",
+        "weather"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/weatherWindow.js:findGuideCandidates",
+      "type": "function",
+      "name": "findGuideCandidates",
+      "filePath": "./backend/server/services/weatherWindow.js",
+      "lineRange": [
+        260,
+        303
+      ],
+      "summary": "Queries database for destinations matching weather preference filters with pagination.",
+      "tags": [
+        "database",
+        "query",
+        "candidates"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/weatherWindow.js:rankWeatherWindows",
+      "type": "function",
+      "name": "rankWeatherWindows",
+      "filePath": "./backend/server/services/weatherWindow.js",
+      "lineRange": [
+        312,
+        354
+      ],
+      "summary": "Main orchestration function that validates dates, finds candidates, fetches forecasts, and ranks destinations by weather suitability.",
+      "tags": [
+        "orchestration",
+        "ranking",
+        "main"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/weatherWindow.js:getPlaceConditions",
+      "type": "function",
+      "name": "getPlaceConditions",
+      "filePath": "./backend/server/services/weatherWindow.js",
+      "lineRange": [
+        356,
+        386
+      ],
+      "summary": "Retrieves weather conditions and scoring for a specific destination within a date range.",
+      "tags": [
+        "read",
+        "conditions",
+        "weather"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/utils/errorHandling.js",
+      "type": "file",
+      "name": "errorHandling.js",
+      "filePath": "./backend/server/utils/errorHandling.js",
+      "summary": "Express error handling utility providing consistent API error responses with appropriate HTTP status codes.",
+      "tags": [
+        "utility",
+        "error-handling",
+        "middleware"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/utils/fileUtils.js",
+      "type": "file",
+      "name": "fileUtils.js",
+      "filePath": "./backend/server/utils/fileUtils.js",
+      "summary": "File system utilities for avatar cleanup and file existence checking, used by user profile management.",
+      "tags": [
+        "utility",
+        "file-system"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/utils/imageUtils.js",
+      "type": "file",
+      "name": "imageUtils.js",
+      "filePath": "./backend/server/utils/imageUtils.js",
+      "summary": "Image processing utilities using Sharp for magic byte validation, MIME detection, and automatic resizing with quality optimization.",
+      "tags": [
+        "utility",
+        "image-processing",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/utils/imageUtils.js:checkMagicBytes",
+      "type": "function",
+      "name": "checkMagicBytes",
+      "filePath": "./backend/server/utils/imageUtils.js",
+      "lineRange": [
+        30,
+        75
+      ],
+      "summary": "Validates image files by checking magic bytes against expected signatures for common image formats.",
+      "tags": [
+        "validation",
+        "security",
+        "magic-bytes"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/utils/imageUtils.js:processImage",
+      "type": "function",
+      "name": "processImage",
+      "filePath": "./backend/server/utils/imageUtils.js",
+      "lineRange": [
+        95,
+        127
+      ],
+      "summary": "Validates, resizes, and converts images to WebP format with configurable max dimensions and quality.",
+      "tags": [
+        "processing",
+        "resize",
+        "conversion"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/utils/logger.js",
+      "type": "file",
+      "name": "logger.js",
+      "filePath": "./backend/server/utils/logger.js",
+      "summary": "Centralized logging configuration using Pino with JSON output for production and pretty printing for development.",
+      "tags": [
+        "utility",
+        "logging",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:database/seeds/dev_seed.sql:seed_data",
+      "type": "table",
+      "name": "dev_seed.sql",
+      "filePath": "./database/seeds/dev_seed.sql",
+      "summary": "Development seed data SQL file for populating initial test data across multiple tables.",
+      "tags": [
+        "database",
+        "seed",
+        "development",
+        "test-data"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:eslint.config.js",
+      "type": "file",
+      "name": "eslint.config.js",
+      "filePath": "./eslint.config.js",
+      "summary": "ESLint flat configuration file enabling TypeScript support, React hooks rules, and import sorting.",
+      "tags": [
+        "configuration",
+        "linting",
+        "code-quality"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:frontend/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "./frontend/package.json",
+      "summary": "NPM package configuration for the React frontend with dependencies for routing, state management, charting, and UI components.",
+      "tags": [
+        "configuration",
+        "npm",
+        "dependencies",
+        "react"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:backend/server/services/mountains.js",
+      "target": "function:backend/server/services/mountains.js:searchMountains",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/mountains.js",
+      "target": "function:backend/server/services/mountains.js:getPlaceById",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/mountains.js",
+      "target": "function:backend/server/services/mountains.js:getFeaturedPlacesFromDB",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/reviews.js",
+      "target": "function:backend/server/services/reviews.js:getReviewsByMountainId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/reviews.js",
+      "target": "function:backend/server/services/reviews.js:addReview",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/storageService.js",
+      "target": "class:backend/server/services/storageService.js:StorageService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/users.js",
+      "target": "function:backend/server/services/users.js:verifyPassword",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/users.js",
+      "target": "function:backend/server/services/users.js:migratePasswordIfNeeded",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/users.js",
+      "target": "function:backend/server/services/users.js:verifyLogin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/users.js",
+      "target": "function:backend/server/services/users.js:createUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/users.js",
+      "target": "function:backend/server/services/users.js:getUserProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/users.js",
+      "target": "function:backend/server/services/users.js:getUserByUsername",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/users.js",
+      "target": "function:backend/server/services/users.js:updateUserProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/users.js",
+      "target": "function:backend/server/services/users.js:storeRefreshToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/users.js",
+      "target": "function:backend/server/services/users.js:validateRefreshToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/users.js",
+      "target": "function:backend/server/services/users.js:revokeRefreshToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/users.js",
+      "target": "function:backend/server/services/users.js:cleanupExpiredTokens",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/weatherWindow.js",
+      "target": "function:backend/server/services/weatherWindow.js:parseDate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/weatherWindow.js",
+      "target": "function:backend/server/services/weatherWindow.js:validateDateRange",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/weatherWindow.js",
+      "target": "function:backend/server/services/weatherWindow.js:scoreHour",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/weatherWindow.js",
+      "target": "function:backend/server/services/weatherWindow.js:findBestWindow",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/weatherWindow.js",
+      "target": "function:backend/server/services/weatherWindow.js:summarizeForecast",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/weatherWindow.js",
+      "target": "function:backend/server/services/weatherWindow.js:getTolerancePreferences",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/weatherWindow.js",
+      "target": "function:backend/server/services/weatherWindow.js:scoreForecast",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/weatherWindow.js",
+      "target": "function:backend/server/services/weatherWindow.js:buildForecastUrl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/weatherWindow.js",
+      "target": "function:backend/server/services/weatherWindow.js:fetchForecasts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/weatherWindow.js",
+      "target": "function:backend/server/services/weatherWindow.js:findGuideCandidates",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/weatherWindow.js",
+      "target": "function:backend/server/services/weatherWindow.js:rankWeatherWindows",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/weatherWindow.js",
+      "target": "function:backend/server/services/weatherWindow.js:getPlaceConditions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/utils/imageUtils.js",
+      "target": "function:backend/server/utils/imageUtils.js:checkMagicBytes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/utils/imageUtils.js",
+      "target": "function:backend/server/utils/imageUtils.js:processImage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    }
+  ]
+}

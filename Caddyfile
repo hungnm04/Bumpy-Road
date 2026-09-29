@@ -1,0 +1,111 @@
+# Production Caddyfile - AlpineScout
+# Single entry point: all traffic goes through Caddy
+
+{
+    admin off
+    auto_https off
+}
+
+:80 {
+    # Serve frontend (nginx)
+    reverse_proxy frontend:80
+
+    # Route API and backend-specific routes to backend
+    @api {
+        path_prefix /api/
+    }
+
+    @auth {
+        path /login /logout /create-account /refresh-token /auth-status
+    }
+
+    @profile {
+        path /profile /upload-avatar
+    }
+
+    @places {
+        path /places /featured-places
+    }
+
+    @weather {
+        path /weather-window /api/weather-window
+    }
+
+    @reviews {
+        path_regexp ^/mountains/
+    }
+
+    @admin {
+        path_prefix /admin
+    }
+
+    @notifications {
+        path_prefix /notifications
+    }
+
+    @blog {
+        path /blog /api/blog
+    }
+
+    @storage {
+        path_prefix /storage
+    }
+
+    @faq {
+        path /faq
+    }
+
+    handle @api {
+        reverse_proxy backend:5000
+    }
+
+    handle @auth {
+        reverse_proxy backend:5000
+    }
+
+    handle @profile {
+        reverse_proxy backend:5000
+    }
+
+    handle @places {
+        reverse_proxy backend:5000
+    }
+
+    handle @weather {
+        reverse_proxy backend:5000
+    }
+
+    handle @reviews {
+        reverse_proxy backend:5000
+    }
+
+    handle @admin {
+        reverse_proxy backend:5000
+    }
+
+    handle @notifications {
+        reverse_proxy backend:5000
+    }
+
+    handle @blog {
+        reverse_proxy backend:5000
+    }
+
+    handle @storage {
+        reverse_proxy backend:5000
+    }
+
+    handle @faq {
+        reverse_proxy backend:5000
+    }
+
+    # Health check
+    handle /healthz {
+        reverse_proxy backend:5000/healthz
+    }
+
+    # Log configuration
+    log {
+        output file /data/access.log
+    }
+}

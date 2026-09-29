@@ -1,0 +1,385 @@
+{
+  "nodes": [
+    {
+      "id": "file:frontend/src/components/NotificationModal.jsx",
+      "type": "file",
+      "name": "NotificationModal.jsx",
+      "filePath": "frontend/src/components/NotificationModal.jsx",
+      "summary": "Modal component for displaying FAQ notifications with escape key and click-outside handlers, featuring formatted date display and email reply functionality.",
+      "tags": ["component", "modal", "notification", "faq"],
+      "complexity": "moderate",
+      "languageNotes": "React functional component with useRef for DOM manipulation and inline date formatting."
+    },
+    {
+      "id": "file:frontend/src/components/NotificationPopover.jsx",
+      "type": "file",
+      "name": "NotificationPopover.jsx",
+      "filePath": "frontend/src/components/NotificationPopover.jsx",
+      "summary": "Popover component for displaying and managing user notifications with real-time Socket.io integration, mark-as-read functionality, and filtering between recent and all notifications.",
+      "tags": ["component", "notification", "popover", "websocket", "real-time"],
+      "complexity": "moderate",
+      "languageNotes": "Uses Socket.io for real-time notifications and fetchWithAuth for authenticated API calls."
+    },
+    {
+      "id": "file:frontend/src/components/PageNotFound.jsx",
+      "type": "file",
+      "name": "PageNotFound.jsx",
+      "filePath": "frontend/src/components/PageNotFound.jsx",
+      "summary": "Simple 404 error page component displayed when users navigate to non-existent routes.",
+      "tags": ["component", "error-page", "routing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/components/ProfileDropdown.jsx",
+      "type": "file",
+      "name": "ProfileDropdown.jsx",
+      "filePath": "frontend/src/components/ProfileDropdown.jsx",
+      "summary": "Dropdown menu component displaying user profile with avatar, username, and navigation links to profile and logout functionality.",
+      "tags": ["component", "dropdown", "user-profile", "navigation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/components/ReviewForm.jsx",
+      "type": "file",
+      "name": "ReviewForm.jsx",
+      "filePath": "frontend/src/components/ReviewForm.jsx",
+      "summary": "Form component for submitting reviews with star rating selection (1-5 stars), text comment input, and validation before submission.",
+      "tags": ["component", "form", "review", "rating"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:frontend/src/components/ReviewList.jsx",
+      "type": "file",
+      "name": "ReviewList.jsx",
+      "filePath": "frontend/src/components/ReviewList.jsx",
+      "summary": "Component for rendering a list of reviews with star ratings, formatted dates, and user information display.",
+      "tags": ["component", "review", "list", "display"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/components/ReviewSection.jsx",
+      "type": "file",
+      "name": "ReviewSection.jsx",
+      "filePath": "frontend/src/components/ReviewSection.jsx",
+      "summary": "Container component managing review fetching, sorting (newest/oldest/highest/lowest), and displaying both ReviewForm and ReviewList.",
+      "tags": ["component", "review", "container", "sorting"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:frontend/src/components/Trip.jsx",
+      "type": "file",
+      "name": "Trip.jsx",
+      "filePath": "frontend/src/components/Trip.jsx",
+      "summary": "Trip display component rendering trip information including destination, date, and associated metadata.",
+      "tags": ["component", "trip", "display"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/components/TripData.jsx",
+      "type": "file",
+      "name": "TripData.jsx",
+      "filePath": "frontend/src/components/TripData.jsx",
+      "summary": "Minimal component for displaying raw trip data props in a structured format.",
+      "tags": ["component", "trip", "data"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/hooks/useDebounce.js",
+      "type": "file",
+      "name": "useDebounce.js",
+      "filePath": "frontend/src/hooks/useDebounce.js",
+      "summary": "Custom React hook that delays updating a value until after a specified delay, useful for debouncing search inputs.",
+      "tags": ["hook", "utility", "debounce", "performance"],
+      "complexity": "simple",
+      "languageNotes": "Exported hook using useState and useEffect with setTimeout for debounce logic."
+    },
+    {
+      "id": "file:frontend/src/index.jsx",
+      "type": "file",
+      "name": "index.jsx",
+      "filePath": "frontend/src/index.jsx",
+      "summary": "Application entry point that renders the root App component into the DOM.",
+      "tags": ["entry-point", "bootstrap"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/pages/About.jsx",
+      "type": "file",
+      "name": "About.jsx",
+      "filePath": "frontend/src/pages/About.jsx",
+      "summary": "About page displaying company information, mission statement, and team details.",
+      "tags": ["page", "static-content", "about"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/pages/AdminDashboard.jsx",
+      "type": "file",
+      "name": "AdminDashboard.jsx",
+      "filePath": "frontend/src/pages/AdminDashboard.jsx",
+      "summary": "Comprehensive admin dashboard for managing mountains/locations, users, and data ingestion with search, filtering, CRUD operations, and bulk publishing capabilities.",
+      "tags": ["page", "admin", "dashboard", "crud", "data-management"],
+      "complexity": "complex",
+      "languageNotes": "Large component with 17+ useState hooks managing mountains, users, ingestion candidates, and search functionality."
+    },
+    {
+      "id": "file:frontend/src/pages/BlogDetail.jsx",
+      "type": "file",
+      "name": "BlogDetail.jsx",
+      "filePath": "frontend/src/pages/BlogDetail.jsx",
+      "summary": "Blog detail page displaying full blog post content with author information, formatted dates, and associated mountain images.",
+      "tags": ["page", "blog", "content-display"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:frontend/src/pages/BlogPage.jsx",
+      "type": "file",
+      "name": "BlogPage.jsx",
+      "filePath": "frontend/src/pages/BlogPage.jsx",
+      "summary": "Blog listing page showing all blog posts with search functionality and navigation to create new blogs for authenticated users.",
+      "tags": ["page", "blog", "listing", "search"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:frontend/src/pages/CreateAccount.jsx",
+      "type": "file",
+      "name": "CreateAccount.jsx",
+      "filePath": "frontend/src/pages/CreateAccount.jsx",
+      "summary": "User registration page with form validation for email, username, password, and confirm password fields.",
+      "tags": ["page", "auth", "registration", "form"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:frontend/src/pages/FAQ.jsx",
+      "type": "file",
+      "name": "FAQ.jsx",
+      "filePath": "frontend/src/pages/FAQ.jsx",
+      "summary": "Frequently Asked Questions page displaying common questions and answers about the platform.",
+      "tags": ["page", "static-content", "faq"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/pages/HomePage.jsx",
+      "type": "file",
+      "name": "HomePage.jsx",
+      "filePath": "frontend/src/pages/HomePage.jsx",
+      "summary": "Home page with role-based redirects, sending admins to dashboard and regular users to the places explorer.",
+      "tags": ["page", "home", "routing", "auth"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/pages/Login.jsx",
+      "type": "file",
+      "name": "Login.jsx",
+      "filePath": "frontend/src/pages/Login.jsx",
+      "summary": "Login page with username/password authentication, redirect to intended destination, and error handling.",
+      "tags": ["page", "auth", "login", "form"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:frontend/src/pages/Places.jsx",
+      "type": "file",
+      "name": "Places.jsx",
+      "filePath": "frontend/src/pages/Places.jsx",
+      "summary": "Destination explorer page with search, filtering by continent/difficulty/activity, debounced query input, and featured places display.",
+      "tags": ["page", "explorer", "search", "filtering", "places"],
+      "complexity": "complex",
+      "languageNotes": "Contains DestinationCard sub-component and main Places component with search debouncing and multi-filter support."
+    },
+    {
+      "id": "file:frontend/src/pages/Profile.jsx",
+      "type": "file",
+      "name": "Profile.jsx",
+      "filePath": "frontend/src/pages/Profile.jsx",
+      "summary": "User profile page with view/edit modes, avatar upload with progress tracking, and profile information management.",
+      "tags": ["page", "profile", "user", "crud"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:frontend/src/pages/WeatherWindow.jsx",
+      "type": "file",
+      "name": "WeatherWindow.jsx",
+      "filePath": "frontend/src/pages/WeatherWindow.jsx",
+      "summary": "Weather forecasting page allowing users to search for optimal climbing windows based on filters like date range, precipitation, wind, and temperature.",
+      "tags": ["page", "weather", "forecasting", "filtering", "api-handler"],
+      "complexity": "complex",
+      "languageNotes": "Contains helper functions (formatDate, addDays, formatWindow) and WeatherResult sub-component."
+    },
+    {
+      "id": "file:frontend/src/routes/AuthRoute.jsx",
+      "type": "file",
+      "name": "AuthRoute.jsx",
+      "filePath": "frontend/src/routes/AuthRoute.jsx",
+      "summary": "Route guard component that redirects authenticated users away from auth pages (login/register) to their intended destination.",
+      "tags": ["route", "guard", "auth", "redirect"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:frontend/src/routes/ProtectedRoute.jsx",
+      "type": "file",
+      "name": "ProtectedRoute.jsx",
+      "filePath": "frontend/src/routes/ProtectedRoute.jsx",
+      "summary": "Route guard component requiring authentication, redirecting unauthenticated users to the login page with return URL.",
+      "tags": ["route", "guard", "auth", "protected"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:frontend/src/hooks/useDebounce.js:useDebounce",
+      "type": "function",
+      "name": "useDebounce",
+      "filePath": "frontend/src/hooks/useDebounce.js",
+      "lineRange": [3, 17],
+      "summary": "Custom React hook that debounces a value by the specified delay using useState and useEffect with setTimeout.",
+      "tags": ["hook", "utility", "debounce"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:frontend/src/pages/Places.jsx:DestinationCard",
+      "type": "function",
+      "name": "DestinationCard",
+      "filePath": "frontend/src/pages/Places.jsx",
+      "lineRange": [26, 59],
+      "summary": "Sub-component rendering a destination card with image, elevation display, tags, and navigation link.",
+      "tags": ["component", "card", "display"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:frontend/src/pages/Places.jsx:Places",
+      "type": "function",
+      "name": "Places",
+      "filePath": "frontend/src/pages/Places.jsx",
+      "lineRange": [61, 267],
+      "summary": "Main places explorer component with search functionality, multiple filters (continent, difficulty, activity), and featured places section.",
+      "tags": ["page", "explorer", "search", "filtering"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:frontend/src/pages/WeatherWindow.jsx:formatDate",
+      "type": "function",
+      "name": "formatDate",
+      "filePath": "frontend/src/pages/WeatherWindow.jsx",
+      "lineRange": [18, 20],
+      "summary": "Helper function formatting a Date object to YYYY-MM-DD string using ISO format.",
+      "tags": ["utility", "date", "formatting"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:frontend/src/pages/WeatherWindow.jsx:addDays",
+      "type": "function",
+      "name": "addDays",
+      "filePath": "frontend/src/pages/WeatherWindow.jsx",
+      "lineRange": [22, 26],
+      "summary": "Helper function adding a specified number of days to a Date object.",
+      "tags": ["utility", "date", "manipulation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:frontend/src/pages/WeatherWindow.jsx:formatWindow",
+      "type": "function",
+      "name": "formatWindow",
+      "filePath": "frontend/src/pages/WeatherWindow.jsx",
+      "lineRange": [28, 34],
+      "summary": "Helper function formatting a weather window object to display start/end date and time.",
+      "tags": ["utility", "formatting", "display"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:frontend/src/pages/WeatherWindow.jsx:WeatherResult",
+      "type": "function",
+      "name": "WeatherResult",
+      "filePath": "frontend/src/pages/WeatherWindow.jsx",
+      "lineRange": [36, 79],
+      "summary": "Sub-component rendering a single weather forecast result with image, recommendation reasons, and tradeoffs.",
+      "tags": ["component", "weather", "display"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:frontend/src/pages/WeatherWindow.jsx:WeatherWindow",
+      "type": "function",
+      "name": "WeatherWindow",
+      "filePath": "frontend/src/pages/WeatherWindow.jsx",
+      "lineRange": [81, 235],
+      "summary": "Main weather window search component with date range selection, multiple weather filters, and results display.",
+      "tags": ["page", "weather", "search", "filtering"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:frontend/src/pages/Places.jsx",
+      "target": "function:frontend/src/pages/Places.jsx:DestinationCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/pages/Places.jsx",
+      "target": "function:frontend/src/pages/Places.jsx:Places",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/pages/WeatherWindow.jsx",
+      "target": "function:frontend/src/pages/WeatherWindow.jsx:formatDate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/pages/WeatherWindow.jsx",
+      "target": "function:frontend/src/pages/WeatherWindow.jsx:addDays",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/pages/WeatherWindow.jsx",
+      "target": "function:frontend/src/pages/WeatherWindow.jsx:formatWindow",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/pages/WeatherWindow.jsx",
+      "target": "function:frontend/src/pages/WeatherWindow.jsx:WeatherResult",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/pages/WeatherWindow.jsx",
+      "target": "function:frontend/src/pages/WeatherWindow.jsx:WeatherWindow",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/hooks/useDebounce.js",
+      "target": "function:frontend/src/hooks/useDebounce.js:useDebounce",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/hooks/useDebounce.js",
+      "target": "function:frontend/src/hooks/useDebounce.js:useDebounce",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:frontend/src/pages/Places.jsx",
+      "target": "file:frontend/src/hooks/useDebounce.js",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "function:frontend/src/pages/Places.jsx:Places",
+      "target": "function:frontend/src/hooks/useDebounce.js:useDebounce",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

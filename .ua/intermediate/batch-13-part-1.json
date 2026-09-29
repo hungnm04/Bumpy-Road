@@ -1,0 +1,894 @@
+{
+  "nodes": [
+    {
+      "id": "file:backend/server/routes/notificationRoutes.js",
+      "type": "file",
+      "name": "notificationRoutes.js",
+      "filePath": "./backend/server/routes/notificationRoutes.js",
+      "summary": "Express route handlers for push notification subscriptions, enabling clients to subscribe to destination updates via WebPush.",
+      "tags": [
+        "api-handler",
+        "routes",
+        "notifications"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/routes/profile.js",
+      "type": "file",
+      "name": "profile.js",
+      "filePath": "./backend/server/routes/profile.js",
+      "summary": "Express route handler for user profile endpoints, providing basic profile data retrieval and updates.",
+      "tags": [
+        "api-handler",
+        "routes",
+        "user-profile"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/routes/users.js",
+      "type": "file",
+      "name": "users.js",
+      "filePath": "./backend/server/routes/users.js",
+      "summary": "Express route handler for user authentication and management endpoints including registration and login.",
+      "tags": [
+        "api-handler",
+        "routes",
+        "authentication"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/scripts/auditDestinationGuides.js",
+      "type": "file",
+      "name": "auditDestinationGuides.js",
+      "filePath": "./backend/server/scripts/auditDestinationGuides.js",
+      "summary": "CLI script that audits destination guides by evaluating quality scores, selecting balanced candidates across regions, and promoting top guides to featured status.",
+      "tags": [
+        "script",
+        "cli",
+        "destination-management"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/scripts/auditDestinationGuides.js:loadPublishedDestinations",
+      "type": "function",
+      "name": "loadPublishedDestinations",
+      "filePath": "./backend/server/scripts/auditDestinationGuides.js",
+      "lineRange": [
+        19,
+        39
+      ],
+      "summary": "Loads all published destination guides from the database for quality auditing.",
+      "tags": [
+        "database-query",
+        "destination"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/scripts/auditDestinationGuides.js:rankCandidates",
+      "type": "function",
+      "name": "rankCandidates",
+      "filePath": "./backend/server/scripts/auditDestinationGuides.js",
+      "lineRange": [
+        41,
+        54
+      ],
+      "summary": "Ranks destination guide candidates by quality score, giving bonuses for sources and elevation data.",
+      "tags": [
+        "ranking",
+        "quality",
+        "destination"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/scripts/auditDestinationGuides.js:selectBalancedGuides",
+      "type": "function",
+      "name": "selectBalancedGuides",
+      "filePath": "./backend/server/scripts/auditDestinationGuides.js",
+      "lineRange": [
+        56,
+        78
+      ],
+      "summary": "Selects destination guides ensuring geographic balance across regions, selecting from each region before adding extras.",
+      "tags": [
+        "selection",
+        "balancing",
+        "geographic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/scripts/auditDestinationGuides.js:promoteGuide",
+      "type": "function",
+      "name": "promoteGuide",
+      "filePath": "./backend/server/scripts/auditDestinationGuides.js",
+      "lineRange": [
+        94,
+        123
+      ],
+      "summary": "Promotes a destination guide by updating its status to featured and resetting other featured guides in the same region.",
+      "tags": [
+        "promotion",
+        "featured",
+        "destination"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/scripts/auditDestinationGuides.js:auditDestinationGuides",
+      "type": "function",
+      "name": "auditDestinationGuides",
+      "filePath": "./backend/server/scripts/auditDestinationGuides.js",
+      "lineRange": [
+        125,
+        166
+      ],
+      "summary": "Main orchestration function that loads destinations, ranks them, selects balanced guides, evaluates quality, and promotes top candidates.",
+      "tags": [
+        "main",
+        "orchestration",
+        "workflow"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/scripts/discoverDestinations.js",
+      "type": "file",
+      "name": "discoverDestinations.js",
+      "filePath": "./backend/server/scripts/discoverDestinations.js",
+      "summary": "CLI script for discovering and ingesting new mountain destinations from Wikidata sources, with support for batch processing and incremental updates.",
+      "tags": [
+        "script",
+        "cli",
+        "data-ingestion",
+        "wikidata"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/scripts/discoverDestinations.js:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "./backend/server/scripts/discoverDestinations.js",
+      "lineRange": [
+        42,
+        96
+      ],
+      "summary": "Main function that parses CLI arguments, discovers destinations from sources, and upserts them into the database with run tracking.",
+      "tags": [
+        "main",
+        "orchestration",
+        "data-ingestion"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/scripts/migrate.js",
+      "type": "file",
+      "name": "migrate.js",
+      "filePath": "./backend/server/scripts/migrate.js",
+      "summary": "Database migration script that waits for database readiness, creates a migrations tracking table, and executes all SQL migration files in order.",
+      "tags": [
+        "script",
+        "database",
+        "migration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/scripts/migrate.js:waitForDatabase",
+      "type": "function",
+      "name": "waitForDatabase",
+      "filePath": "./backend/server/scripts/migrate.js",
+      "lineRange": [
+        9,
+        20
+      ],
+      "summary": "Polls the database with retry logic until it becomes responsive, logging connection attempts.",
+      "tags": [
+        "database",
+        "health-check",
+        "retry"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/scripts/migrate.js:migrate",
+      "type": "function",
+      "name": "migrate",
+      "filePath": "./backend/server/scripts/migrate.js",
+      "lineRange": [
+        22,
+        65
+      ],
+      "summary": "Executes all SQL migration files from the migrations directory in sorted order, using transactions for atomicity.",
+      "tags": [
+        "migration",
+        "transaction",
+        "sql-execution"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/scripts/publishReadyDestinations.js",
+      "type": "file",
+      "name": "publishReadyDestinations.js",
+      "filePath": "./backend/server/scripts/publishReadyDestinations.js",
+      "summary": "CLI script that publishes all destinations marked as ready, updating their status from draft to published.",
+      "tags": [
+        "script",
+        "cli",
+        "publication"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/scripts/publishReadyDestinations.js:publishReadyDestinations",
+      "type": "function",
+      "name": "publishReadyDestinations",
+      "filePath": "./backend/server/scripts/publishReadyDestinations.js",
+      "lineRange": [
+        3,
+        36
+      ],
+      "summary": "Finds all destinations with ready status and batch-updates them to published, logging the results.",
+      "tags": [
+        "publication",
+        "batch-update"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/scripts/runSql.js",
+      "type": "file",
+      "name": "runSql.js",
+      "filePath": "./backend/server/scripts/runSql.js",
+      "summary": "Utility script that executes a SQL file against the database, accepting the file path as a command-line argument.",
+      "tags": [
+        "script",
+        "database",
+        "sql-execution"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/scripts/runSql.js:runSql",
+      "type": "function",
+      "name": "runSql",
+      "filePath": "./backend/server/scripts/runSql.js",
+      "lineRange": [
+        5,
+        17
+      ],
+      "summary": "Reads and executes a SQL file from the command line argument against the database pool.",
+      "tags": [
+        "sql-execution",
+        "file-reader"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/scripts/seedAdmin.js",
+      "type": "file",
+      "name": "seedAdmin.js",
+      "filePath": "./backend/server/scripts/seedAdmin.js",
+      "summary": "Seeds the database with an admin user and assigns editorial blog access, used for initial setup or testing.",
+      "tags": [
+        "script",
+        "database",
+        "seeding",
+        "admin"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/scripts/seedAdmin.js:validateEnv",
+      "type": "function",
+      "name": "validateEnv",
+      "filePath": "./backend/server/scripts/seedAdmin.js",
+      "lineRange": [
+        6,
+        16
+      ],
+      "summary": "Validates that required environment variables for admin credentials are present and non-empty.",
+      "tags": [
+        "validation",
+        "environment"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/scripts/seedAdmin.js:seedAdmin",
+      "type": "function",
+      "name": "seedAdmin",
+      "filePath": "./backend/server/scripts/seedAdmin.js",
+      "lineRange": [
+        18,
+        74
+      ],
+      "summary": "Creates an admin user with hashed password and assigns editorial blog permissions to their role.",
+      "tags": [
+        "seeding",
+        "admin-creation",
+        "permissions"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/services/adminService.js",
+      "type": "file",
+      "name": "adminService.js",
+      "filePath": "./backend/server/services/adminService.js",
+      "summary": "Comprehensive admin service handling mountain destination CRUD operations, user management, and ingestion candidate workflows with quality evaluation.",
+      "tags": [
+        "service",
+        "admin",
+        "crud",
+        "data-management"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:backend/server/services/adminService.js:withGuideQuality",
+      "type": "function",
+      "name": "withGuideQuality",
+      "filePath": "./backend/server/services/adminService.js",
+      "lineRange": [
+        24,
+        35
+      ],
+      "summary": "Normalizes destination data and evaluates its guide quality, returning quality score and any issues found.",
+      "tags": [
+        "quality",
+        "validation",
+        "destination"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/adminService.js:deleteStoredMountainPhoto",
+      "type": "function",
+      "name": "deleteStoredMountainPhoto",
+      "filePath": "./backend/server/services/adminService.js",
+      "lineRange": [
+        37,
+        54
+      ],
+      "summary": "Deletes a mountain photo from local storage, validating the path is within the uploads directory for security.",
+      "tags": [
+        "storage",
+        "deletion",
+        "security"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/adminService.js:addMountain",
+      "type": "function",
+      "name": "addMountain",
+      "filePath": "./backend/server/services/adminService.js",
+      "lineRange": [
+        81,
+        188
+      ],
+      "summary": "Creates a new mountain destination with comprehensive validation, quality evaluation, and database insertion.",
+      "tags": [
+        "create",
+        "mountain",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/adminService.js:updateMountain",
+      "type": "function",
+      "name": "updateMountain",
+      "filePath": "./backend/server/services/adminService.js",
+      "lineRange": [
+        190,
+        295
+      ],
+      "summary": "Updates an existing mountain destination with optional photo management and quality re-evaluation.",
+      "tags": [
+        "update",
+        "mountain",
+        "photo-management"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/adminService.js:deleteMountain",
+      "type": "function",
+      "name": "deleteMountain",
+      "filePath": "./backend/server/services/adminService.js",
+      "lineRange": [
+        297,
+        322
+      ],
+      "summary": "Deletes a mountain destination and its associated stored photo from the filesystem.",
+      "tags": [
+        "delete",
+        "mountain",
+        "cleanup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/adminService.js:getMountainById",
+      "type": "function",
+      "name": "getMountainById",
+      "filePath": "./backend/server/services/adminService.js",
+      "lineRange": [
+        324,
+        338
+      ],
+      "summary": "Retrieves a single mountain destination by its unique identifier.",
+      "tags": [
+        "read",
+        "mountain",
+        "by-id"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/adminService.js:addUser",
+      "type": "function",
+      "name": "addUser",
+      "filePath": "./backend/server/services/adminService.js",
+      "lineRange": [
+        340,
+        373
+      ],
+      "summary": "Creates a new user account with password validation and hashing.",
+      "tags": [
+        "create",
+        "user",
+        "authentication"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/adminService.js:deleteUser",
+      "type": "function",
+      "name": "deleteUser",
+      "filePath": "./backend/server/services/adminService.js",
+      "lineRange": [
+        375,
+        389
+      ],
+      "summary": "Deletes a user account from the database by username.",
+      "tags": [
+        "delete",
+        "user"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/adminService.js:updateUser",
+      "type": "function",
+      "name": "updateUser",
+      "filePath": "./backend/server/services/adminService.js",
+      "lineRange": [
+        391,
+        439
+      ],
+      "summary": "Updates user properties including role, permissions, and optional password changes.",
+      "tags": [
+        "update",
+        "user",
+        "permissions"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/adminService.js:getUserById",
+      "type": "function",
+      "name": "getUserById",
+      "filePath": "./backend/server/services/adminService.js",
+      "lineRange": [
+        441,
+        460
+      ],
+      "summary": "Retrieves user details by username from the database.",
+      "tags": [
+        "read",
+        "user",
+        "by-username"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/adminService.js:getIngestionRuns",
+      "type": "function",
+      "name": "getIngestionRuns",
+      "filePath": "./backend/server/services/adminService.js",
+      "lineRange": [
+        462,
+        471
+      ],
+      "summary": "Retrieves a list of recent data ingestion runs with status information.",
+      "tags": [
+        "read",
+        "ingestion",
+        "runs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/adminService.js:getIngestionCandidates",
+      "type": "function",
+      "name": "getIngestionCandidates",
+      "filePath": "./backend/server/services/adminService.js",
+      "lineRange": [
+        473,
+        505
+      ],
+      "summary": "Retrieves destinations that are candidates for publication, filtering by draft, published, or rejected status.",
+      "tags": [
+        "read",
+        "candidates",
+        "publication"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/adminService.js:setCandidateStatus",
+      "type": "function",
+      "name": "setCandidateStatus",
+      "filePath": "./backend/server/services/adminService.js",
+      "lineRange": [
+        507,
+        535
+      ],
+      "summary": "Updates the status of a single ingestion candidate to published or rejected, with editorial tag normalization.",
+      "tags": [
+        "update",
+        "candidate",
+        "status"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/adminService.js:bulkPublishCandidates",
+      "type": "function",
+      "name": "bulkPublishCandidates",
+      "filePath": "./backend/server/services/adminService.js",
+      "lineRange": [
+        537,
+        556
+      ],
+      "summary": "Publishes multiple ingestion candidates in a single database operation.",
+      "tags": [
+        "update",
+        "bulk",
+        "publication"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/services/blogServices.js",
+      "type": "file",
+      "name": "blogServices.js",
+      "filePath": "./backend/server/services/blogServices.js",
+      "summary": "Service layer for blog content management including retrieval, creation, updates, and deletion of editorial blog posts.",
+      "tags": [
+        "service",
+        "blog",
+        "cms"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/server/services/destinationQuality.js",
+      "type": "file",
+      "name": "destinationQuality.js",
+      "filePath": "./backend/server/services/destinationQuality.js",
+      "summary": "Quality evaluation module for destination guides, assessing completeness of required fields and generating quality scores and profiles.",
+      "tags": [
+        "service",
+        "quality",
+        "validation",
+        "destination"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/destinationQuality.js:buildOriginalOverview",
+      "type": "function",
+      "name": "buildOriginalOverview",
+      "filePath": "./backend/server/services/destinationQuality.js",
+      "lineRange": [
+        60,
+        74
+      ],
+      "summary": "Generates an overview string for a destination including type, region, location, and elevation.",
+      "tags": [
+        "overview",
+        "formatting",
+        "destination"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/server/services/destinationQuality.js:evaluateGuideQuality",
+      "type": "function",
+      "name": "evaluateGuideQuality",
+      "filePath": "./backend/server/services/destinationQuality.js",
+      "lineRange": [
+        76,
+        111
+      ],
+      "summary": "Evaluates guide completeness by checking required fields and generates a quality score with issue list.",
+      "tags": [
+        "quality",
+        "validation",
+        "scoring"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/destinationQuality.js:buildGuideProfile",
+      "type": "function",
+      "name": "buildGuideProfile",
+      "filePath": "./backend/server/services/destinationQuality.js",
+      "lineRange": [
+        113,
+        127
+      ],
+      "summary": "Creates a complete guide profile with type-based overview and quality assessment.",
+      "tags": [
+        "profile",
+        "quality",
+        "destination"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/server/services/faq.js",
+      "type": "file",
+      "name": "faq.js",
+      "filePath": "./backend/server/services/faq.js",
+      "summary": "Service for handling FAQ submissions with Socket.IO real-time notifications to admin users when new questions arrive.",
+      "tags": [
+        "service",
+        "faq",
+        "real-time"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:backend/server/services/faq.js:submitFAQ",
+      "type": "function",
+      "name": "submitFAQ",
+      "filePath": "./backend/server/services/faq.js",
+      "lineRange": [
+        5,
+        51
+      ],
+      "summary": "Processes FAQ submissions using a database transaction, storing the question and emitting real-time notification to connected admins.",
+      "tags": [
+        "submission",
+        "transaction",
+        "websocket"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:backend/server/scripts/auditDestinationGuides.js",
+      "target": "function:backend/server/scripts/auditDestinationGuides.js:loadPublishedDestinations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/scripts/auditDestinationGuides.js",
+      "target": "function:backend/server/scripts/auditDestinationGuides.js:rankCandidates",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/scripts/auditDestinationGuides.js",
+      "target": "function:backend/server/scripts/auditDestinationGuides.js:selectBalancedGuides",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/scripts/auditDestinationGuides.js",
+      "target": "function:backend/server/scripts/auditDestinationGuides.js:promoteGuide",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/scripts/auditDestinationGuides.js",
+      "target": "function:backend/server/scripts/auditDestinationGuides.js:auditDestinationGuides",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/scripts/discoverDestinations.js",
+      "target": "function:backend/server/scripts/discoverDestinations.js:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/scripts/migrate.js",
+      "target": "function:backend/server/scripts/migrate.js:waitForDatabase",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/scripts/migrate.js",
+      "target": "function:backend/server/scripts/migrate.js:migrate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/scripts/publishReadyDestinations.js",
+      "target": "function:backend/server/scripts/publishReadyDestinations.js:publishReadyDestinations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/scripts/runSql.js",
+      "target": "function:backend/server/scripts/runSql.js:runSql",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/scripts/seedAdmin.js",
+      "target": "function:backend/server/scripts/seedAdmin.js:validateEnv",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/scripts/seedAdmin.js",
+      "target": "function:backend/server/scripts/seedAdmin.js:seedAdmin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/adminService.js",
+      "target": "function:backend/server/services/adminService.js:withGuideQuality",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/adminService.js",
+      "target": "function:backend/server/services/adminService.js:deleteStoredMountainPhoto",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/adminService.js",
+      "target": "function:backend/server/services/adminService.js:addMountain",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/adminService.js",
+      "target": "function:backend/server/services/adminService.js:updateMountain",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/adminService.js",
+      "target": "function:backend/server/services/adminService.js:deleteMountain",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/adminService.js",
+      "target": "function:backend/server/services/adminService.js:getMountainById",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/adminService.js",
+      "target": "function:backend/server/services/adminService.js:addUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/adminService.js",
+      "target": "function:backend/server/services/adminService.js:deleteUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/adminService.js",
+      "target": "function:backend/server/services/adminService.js:updateUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/adminService.js",
+      "target": "function:backend/server/services/adminService.js:getUserById",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/adminService.js",
+      "target": "function:backend/server/services/adminService.js:getIngestionRuns",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/adminService.js",
+      "target": "function:backend/server/services/adminService.js:getIngestionCandidates",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/adminService.js",
+      "target": "function:backend/server/services/adminService.js:setCandidateStatus",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/adminService.js",
+      "target": "function:backend/server/services/adminService.js:bulkPublishCandidates",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/destinationQuality.js",
+      "target": "function:backend/server/services/destinationQuality.js:buildOriginalOverview",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/destinationQuality.js",
+      "target": "function:backend/server/services/destinationQuality.js:evaluateGuideQuality",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/destinationQuality.js",
+      "target": "function:backend/server/services/destinationQuality.js:buildGuideProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/server/services/faq.js",
+      "target": "function:backend/server/services/faq.js:submitFAQ",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    }
+  ]
+}

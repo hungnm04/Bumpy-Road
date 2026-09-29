@@ -1,0 +1,165 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/pages/AdminDashboard.css",
+      "type": "file",
+      "name": "AdminDashboard.css",
+      "filePath": "src/pages/AdminDashboard.css",
+      "summary": "Admin dashboard layout with sidebar navigation, featuring forest-green theme, grid-based content structure, and responsive nav menu with hover effects.",
+      "tags": ["admin", "dashboard", "layout", "sidebar", "navigation"],
+      "complexity": "moderate",
+      "languageNotes": "CSS stylesheet using CSS custom properties for theming (color-forest, color-gold, color-ink) and CSS Grid for layout."
+    },
+    {
+      "id": "file:src/pages/BlogPageStyles.css",
+      "type": "file",
+      "name": "BlogPageStyles.css",
+      "filePath": "src/pages/BlogPageStyles.css",
+      "summary": "Blog listing and detail page styles with gradient backgrounds, responsive typography using clamp(), and card-based grid layout for blog posts.",
+      "tags": ["blog", "layout", "typography", "grid", "responsive"],
+      "complexity": "moderate",
+      "languageNotes": "CSS stylesheet with responsive typography using clamp() for fluid font sizing and auto-fill grid for card layout."
+    },
+    {
+      "id": "file:src/pages/CreateAccountStyles.css",
+      "type": "file",
+      "name": "CreateAccountStyles.css",
+      "filePath": "src/pages/CreateAccountStyles.css",
+      "summary": "Account creation page styles featuring a dark overlay background with centered form box, glassmorphism effects, and warm color palette.",
+      "tags": ["auth", "form", "layout", "glassmorphism", "responsive"],
+      "complexity": "simple",
+      "languageNotes": "CSS stylesheet with backdrop-filter for glassmorphism effect and CSS Grid place-items for centering."
+    },
+    {
+      "id": "file:src/pages/LoginStyles.css",
+      "type": "file",
+      "name": "LoginStyles.css",
+      "filePath": "src/pages/LoginStyles.css",
+      "summary": "Login page styles with centered authentication form, overlay background, and consistent styling with create account page.",
+      "tags": ["auth", "form", "layout", "login", "responsive"],
+      "complexity": "simple",
+      "languageNotes": "CSS stylesheet for authentication form layout with overlay background pattern."
+    },
+    {
+      "id": "file:src/pages/PlacesStyles.css",
+      "type": "file",
+      "name": "PlacesStyles.css",
+      "filePath": "src/pages/PlacesStyles.css",
+      "summary": "Places and trips listing page styles with hero section featuring large typography, statistics display, and filtering controls.",
+      "tags": ["places", "listing", "hero", "statistics", "layout"],
+      "complexity": "moderate",
+      "languageNotes": "CSS stylesheet with responsive hero layout using CSS Grid and clamp() for fluid typography."
+    },
+    {
+      "id": "file:src/pages/ProfileStyles.css",
+      "type": "file",
+      "name": "ProfileStyles.css",
+      "filePath": "src/pages/ProfileStyles.css",
+      "summary": "User profile page styles with personal information display, avatar styling, and associated trip/review sections.",
+      "tags": ["profile", "user", "layout", "avatar", "personal"],
+      "complexity": "moderate",
+      "languageNotes": "CSS stylesheet for user profile layout and component styling."
+    },
+    {
+      "id": "file:src/pages/WeatherWindowStyles.css",
+      "type": "file",
+      "name": "WeatherWindowStyles.css",
+      "filePath": "src/pages/WeatherWindowStyles.css",
+      "summary": "Weather information window styles for displaying trip weather conditions with icons, temperature, and forecasts.",
+      "tags": ["weather", "widget", "forecast", "icons", "information"],
+      "complexity": "moderate",
+      "languageNotes": "CSS stylesheet for weather display widget with icon styling and data visualization."
+    },
+    {
+      "id": "file:src/components/NotificationModal.css",
+      "type": "file",
+      "name": "NotificationModal.css",
+      "filePath": "src/components/NotificationModal.css",
+      "summary": "Notification modal component styles with overlay backdrop, animated entry/exit transitions, and modal card with header and close button.",
+      "tags": ["modal", "notification", "overlay", "animation", "component"],
+      "complexity": "moderate",
+      "languageNotes": "CSS stylesheet with fadeIn animation, transform transitions for modal entry, and fixed positioning for overlay."
+    },
+    {
+      "id": "file:src/components/NotificationPopover.css",
+      "type": "file",
+      "name": "NotificationPopover.css",
+      "filePath": "src/components/NotificationPopover.css",
+      "summary": "Notification popover styles for displaying brief notification messages with positioning and animation effects.",
+      "tags": ["notification", "popover", "toast", "animation", "component"],
+      "complexity": "moderate",
+      "languageNotes": "CSS stylesheet with popover positioning and fade animations for notification display."
+    },
+    {
+      "id": "file:src/components/PageNotFoundStyles.css",
+      "type": "file",
+      "name": "PageNotFoundStyles.css",
+      "filePath": "src/components/PageNotFoundStyles.css",
+      "summary": "404 error page styles for displaying page not found message with appropriate messaging and navigation options.",
+      "tags": ["error", "404", "not-found", "page", "layout"],
+      "complexity": "simple",
+      "languageNotes": "CSS stylesheet for error page layout and messaging styling."
+    },
+    {
+      "id": "file:src/components/ProfileDropdown.css",
+      "type": "file",
+      "name": "ProfileDropdown.css",
+      "filePath": "src/components/ProfileDropdown.css",
+      "summary": "Profile dropdown menu component styles with avatar display, animated menu entries, and hover effects.",
+      "tags": ["dropdown", "profile", "menu", "animation", "component"],
+      "complexity": "simple",
+      "languageNotes": "CSS stylesheet with fadeIn animation, dropdown positioning, and hover state transitions."
+    },
+    {
+      "id": "file:src/components/ProfileDropdownStyles.css",
+      "type": "file",
+      "name": "ProfileDropdownStyles.css",
+      "filePath": "src/components/ProfileDropdownStyles.css",
+      "summary": "Alternative profile dropdown styles with consistent avatar and menu styling, likely a variant or refactored version.",
+      "tags": ["dropdown", "profile", "menu", "variant", "component"],
+      "complexity": "simple",
+      "languageNotes": "CSS stylesheet variant for profile dropdown, may be consolidated with ProfileDropdown.css."
+    },
+    {
+      "id": "file:src/components/ReviewFormStyles.css",
+      "type": "file",
+      "name": "ReviewFormStyles.css",
+      "filePath": "src/components/ReviewFormStyles.css",
+      "summary": "Review submission form styles with text input area, star rating display, and action buttons for review submission.",
+      "tags": ["review", "form", "rating", "input", "component"],
+      "complexity": "simple",
+      "languageNotes": "CSS stylesheet for review form with star rating styling and textarea transitions."
+    },
+    {
+      "id": "file:src/components/ReviewListStyles.css",
+      "type": "file",
+      "name": "ReviewListStyles.css",
+      "filePath": "src/components/ReviewListStyles.css",
+      "summary": "Review listing styles for displaying user reviews with author info, ratings, and review content cards.",
+      "tags": ["review", "listing", "card", "rating", "component"],
+      "complexity": "simple",
+      "languageNotes": "CSS stylesheet for review card layout and display styling."
+    },
+    {
+      "id": "file:src/components/TripStyles.css",
+      "type": "file",
+      "name": "TripStyles.css",
+      "filePath": "src/components/TripStyles.css",
+      "summary": "Trip display component styles for showing trip information including routes, waypoints, and trip details.",
+      "tags": ["trip", "display", "route", "waypoints", "component"],
+      "complexity": "simple",
+      "languageNotes": "CSS stylesheet for trip information display and route visualization."
+    },
+    {
+      "id": "file:src/pages/Profile.css",
+      "type": "file",
+      "name": "Profile.css",
+      "filePath": "src/pages/Profile.css",
+      "summary": "Empty placeholder file for profile page styles. Styling may be handled by ProfileStyles.css or inline styles.",
+      "tags": ["profile", "placeholder", "empty"],
+      "complexity": "simple",
+      "languageNotes": "Empty CSS file, no styles defined."
+    }
+  ],
+  "edges": []
+}

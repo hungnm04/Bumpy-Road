@@ -1,0 +1,155 @@
+{
+  "nodes": [
+    {
+      "id": "file:frontend/src/pages/AdminDashboard.css",
+      "type": "file",
+      "name": "AdminDashboard.css",
+      "filePath": "frontend/src/pages/AdminDashboard.css",
+      "summary": "Comprehensive styling for the admin dashboard interface including sidebar navigation, stats cards, location and user tables, search bar, and responsive layout adaptations.",
+      "tags": ["admin", "dashboard", "tables", "navigation", "layout"],
+      "complexity": "complex",
+      "languageNotes": "BEM naming convention with CSS custom properties for theming; uses CSS Grid and Flexbox for responsive layouts; includes media queries for tablet breakpoint."
+    },
+    {
+      "id": "file:frontend/src/pages/BlogPageStyles.css",
+      "type": "file",
+      "name": "BlogPageStyles.css",
+      "filePath": "frontend/src/pages/BlogPageStyles.css",
+      "summary": "Styling for blog listing, blog detail, and create blog pages featuring card-based grid layouts, hero sections with parallax-style overlays, and form styling.",
+      "tags": ["blog", "cards", "grid-layout", "forms", "typography"],
+      "complexity": "complex",
+      "languageNotes": "Implements featured background gradients and decorative grid patterns; uses CSS Grid for responsive card layouts; includes detail page hero overlay effects."
+    },
+    {
+      "id": "file:frontend/src/pages/CreateAccountStyles.css",
+      "type": "file",
+      "name": "CreateAccountStyles.css",
+      "filePath": "frontend/src/pages/CreateAccountStyles.css",
+      "summary": "Authentication styling for the account creation page with a full-viewport background image, centered form card, and form input styling with focus states.",
+      "tags": ["authentication", "forms", "auth", "account-creation"],
+      "complexity": "simple",
+      "languageNotes": "Uses background image with gradient overlay for atmospheric effect; form inputs include focus ring styling using box-shadow."
+    },
+    {
+      "id": "file:frontend/src/pages/LoginStyles.css",
+      "type": "file",
+      "name": "LoginStyles.css",
+      "filePath": "frontend/src/pages/LoginStyles.css",
+      "summary": "Authentication styling for the login page with similar visual treatment to account creation, including form inputs, error states, and secondary action buttons.",
+      "tags": ["authentication", "forms", "auth", "login"],
+      "complexity": "simple",
+      "languageNotes": "Shares visual language with CreateAccountStyles; includes secondary button variant and notice/error message styling."
+    },
+    {
+      "id": "file:frontend/src/pages/PlacesStyles.css",
+      "type": "file",
+      "name": "PlacesStyles.css",
+      "filePath": "frontend/src/pages/PlacesStyles.css",
+      "summary": "Extensive styling for the places/locations browsing page featuring a search interface with autocomplete dropdown, filter controls, and responsive mountain location cards.",
+      "tags": ["places", "search", "cards", "filters", "grid-layout"],
+      "complexity": "complex",
+      "languageNotes": "Implements search bar with absolute-positioned dropdown results; includes filter form styling; mountain cards feature hover effects with image scaling."
+    },
+    {
+      "id": "file:frontend/src/pages/ProfileStyles.css",
+      "type": "file",
+      "name": "ProfileStyles.css",
+      "filePath": "frontend/src/pages/ProfileStyles.css",
+      "summary": "User profile page styling with sidebar layout, avatar management section, editable profile details form, and toast notification component.",
+      "tags": ["profile", "user", "forms", "avatar", "sidebar"],
+      "complexity": "moderate",
+      "languageNotes": "Two-column layout with sidebar; avatar section with overlay upload trigger; includes upload progress bar styling."
+    },
+    {
+      "id": "file:frontend/src/pages/WeatherWindowStyles.css",
+      "type": "file",
+      "name": "WeatherWindowStyles.css",
+      "filePath": "frontend/src/pages/WeatherWindowStyles.css",
+      "summary": "Weather forecast page styling with a search form for filtering by date and conditions, and results display featuring location cards with temperature rankings.",
+      "tags": ["weather", "search", "forecast", "cards", "form"],
+      "complexity": "moderate",
+      "languageNotes": "Four-column search form grid; weather result cards with prominent temperature display; includes responsive adjustments for mobile layouts."
+    },
+    {
+      "id": "file:frontend/src/components/NotificationModal.css",
+      "type": "file",
+      "name": "NotificationModal.css",
+      "filePath": "frontend/src/components/NotificationModal.css",
+      "summary": "Modal dialog styling for displaying notification and FAQ content with overlay backdrop, slide-in animation, and action buttons for reply and archive.",
+      "tags": ["modal", "notification", "dialog", "animation"],
+      "complexity": "moderate",
+      "languageNotes": "Includes fadeIn keyframe animation; modal transitions with translateY for smooth entrance; responsive stacking on mobile."
+    },
+    {
+      "id": "file:frontend/src/components/NotificationPopover.css",
+      "type": "file",
+      "name": "NotificationPopover.css",
+      "filePath": "frontend/src/components/NotificationPopover.css",
+      "summary": "Popover styling for notification dropdown with badge indicator, scrollable notification list, read/unread states, and mark-all-read functionality.",
+      "tags": ["popover", "notification", "dropdown", "scrollable"],
+      "complexity": "moderate",
+      "languageNotes": "Custom scrollbar styling for webkit browsers; includes unread/read state visual differentiation with background colors."
+    },
+    {
+      "id": "file:frontend/src/components/PageNotFoundStyles.css",
+      "type": "file",
+      "name": "PageNotFoundStyles.css",
+      "filePath": "frontend/src/components/PageNotFoundStyles.css",
+      "summary": "404 error page styling with full-viewport background, large display typography for the error code, and centered call-to-action button.",
+      "tags": ["404", "error", "not-found", "landing"],
+      "complexity": "simple",
+      "languageNotes": "Minimal styling with dramatic background image and gradient overlay; uses clamp() for responsive heading size."
+    },
+    {
+      "id": "file:frontend/src/components/ProfileDropdown.css",
+      "type": "file",
+      "name": "ProfileDropdown.css",
+      "filePath": "frontend/src/components/ProfileDropdown.css",
+      "summary": "User profile dropdown menu styling with avatar button, animated dropdown menu, and navigation items with hover effects.",
+      "tags": ["dropdown", "menu", "profile", "navigation"],
+      "complexity": "simple",
+      "languageNotes": "Includes fadeIn animation with scale transform for dropdown entrance; uses simpler white/gray color scheme."
+    },
+    {
+      "id": "file:frontend/src/components/ProfileDropdownStyles.css",
+      "type": "file",
+      "name": "ProfileDropdownStyles.css",
+      "filePath": "frontend/src/components/ProfileDropdownStyles.css",
+      "summary": "Alternative profile dropdown styling with forest theme colors matching the application design system, including header button and menu item styling.",
+      "tags": ["dropdown", "menu", "profile", "navigation"],
+      "complexity": "simple",
+      "languageNotes": "Uses application color tokens (var(--color-forest), var(--color-rust)); same class names as ProfileDropdown.css with different styling."
+    },
+    {
+      "id": "file:frontend/src/components/ReviewFormStyles.css",
+      "type": "file",
+      "name": "ReviewFormStyles.css",
+      "filePath": "frontend/src/components/ReviewFormStyles.css",
+      "summary": "Inline review form styling with textarea input, star rating selector with hover states, and submit button with disabled state handling.",
+      "tags": ["review", "form", "rating", "stars", "textarea"],
+      "complexity": "simple",
+      "languageNotes": "Star rating uses CSS-driven hover/active states; includes focus and error message styling."
+    },
+    {
+      "id": "file:frontend/src/components/ReviewListStyles.css",
+      "type": "file",
+      "name": "ReviewListStyles.css",
+      "filePath": "frontend/src/components/ReviewListStyles.css",
+      "summary": "Review list and individual review item styling with avatar section, star rating display, date formatting, and hover effects on review cards.",
+      "tags": ["review", "list", "cards", "avatar", "rating"],
+      "complexity": "simple",
+      "languageNotes": "Two-column layout (avatar + content) transforms to single column on mobile; includes star rating display using gold color."
+    },
+    {
+      "id": "file:frontend/src/components/TripStyles.css",
+      "type": "file",
+      "name": "TripStyles.css",
+      "filePath": "frontend/src/components/TripStyles.css",
+      "summary": "Trip planning section styling with dark forest theme background, three-column card grid, and hover effects on trip location cards.",
+      "tags": ["trip", "cards", "grid-layout", "travel"],
+      "complexity": "simple",
+      "languageNotes": "Uses forest green background with warm cream text colors; trip cards feature image zoom on hover with border color change."
+    }
+  ],
+  "edges": []
+}

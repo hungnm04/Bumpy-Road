@@ -1,0 +1,192 @@
+{
+  "nodes": [
+    {
+      "id": "file:index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "index.html",
+      "summary": "HTML entry point that bootstraps the React application, loading fonts, favicon, and the main JavaScript module.",
+      "tags": ["entry-point", "markup", "frontend"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:.env",
+      "type": "config",
+      "name": ".env",
+      "filePath": ".env",
+      "summary": "Environment configuration file defining runtime settings for Node.js server including database connection, JWT secrets, and admin user credentials.",
+      "tags": ["configuration", "environment", "security"],
+      "complexity": "moderate",
+      "languageNotes": "Contains sensitive credentials (JWT secrets, admin password) that must not be committed to version control."
+    },
+    {
+      "id": "config:package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "package.json",
+      "summary": "npm package manifest defining AlpineScout application metadata, production and development dependencies, and build/test scripts.",
+      "tags": ["configuration", "build-system", "dependencies"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:settings.json",
+      "type": "config",
+      "name": "settings.json",
+      "filePath": "settings.json",
+      "summary": "VS Code editor settings configuring default formatter to Prettier with format-on-save enabled.",
+      "tags": ["configuration", "editor", "formatting"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:AGENTS.md",
+      "type": "document",
+      "name": "AGENTS.md",
+      "filePath": "AGENTS.md",
+      "summary": "Guidelines document for AI agents working on this repository, covering development, production checks, deployment, and coding conventions.",
+      "tags": ["documentation", "guidelines", "development"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:AUDIT.md",
+      "type": "document",
+      "name": "AUDIT.md",
+      "filePath": "AUDIT.md",
+      "summary": "Comprehensive Phase 0 audit report documenting routes inventory, environment variables, SQL query patterns, authentication flow, file upload handling, database schema, security observations, and Docker container state.",
+      "tags": ["documentation", "audit", "security", "database"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:PRODUCTION.md",
+      "type": "document",
+      "name": "PRODUCTION.md",
+      "filePath": "PRODUCTION.md",
+      "summary": "Production deployment guide for GCP Compute Engine covering VM creation, Docker installation, secrets configuration, deployment procedures, local MVP testing, data import, backups, and security checklist.",
+      "tags": ["documentation", "deployment", "infrastructure", "gcp"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Project overview documentation with local setup instructions and development checks for the Bumpy Road application.",
+      "tags": ["documentation", "entry-point", "overview"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:SECURITY.md",
+      "type": "document",
+      "name": "SECURITY.md",
+      "filePath": "SECURITY.md",
+      "summary": "Security documentation detailing the AlpineScout threat model, security controls for authentication, RBAC, input validation, file uploads, network isolation, and container security, plus accepted risks and security checklist.",
+      "tags": ["documentation", "security", "threat-model"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:SKILL.md",
+      "type": "document",
+      "name": "SKILL.md",
+      "filePath": "SKILL.md",
+      "summary": "Design thinking principles and frontend aesthetics guidelines for maintaining consistent UI/UX standards.",
+      "tags": ["documentation", "design", "frontend"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:master_prompt.md",
+      "type": "document",
+      "name": "master_prompt.md",
+      "filePath": "master_prompt.md",
+      "summary": "Master build prompt documenting the complete 6-phase development plan for AlpineScout including audit, containerization, backend security hardening, network hardening, documentation, verification, and data ingestion.",
+      "tags": ["documentation", "architecture", "development-plan"],
+      "complexity": "complex"
+    },
+    {
+      "id": "service:docker-compose.yml",
+      "type": "service",
+      "name": "docker-compose.yml",
+      "filePath": "docker-compose.yml",
+      "summary": "Docker Compose configuration defining multi-container orchestration with services, custom bridge networks, and persistent volumes for the AlpineScout application stack.",
+      "tags": ["containerization", "orchestration", "infrastructure"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:master_prompt.md",
+      "target": "document:AUDIT.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:master_prompt.md",
+      "target": "document:SECURITY.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:master_prompt.md",
+      "target": "document:PRODUCTION.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:master_prompt.md",
+      "target": "service:docker-compose.yml",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:AGENTS.md",
+      "target": "document:master_prompt.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:AUDIT.md",
+      "target": "config:.env",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:AUDIT.md",
+      "target": "service:docker-compose.yml",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:PRODUCTION.md",
+      "target": "service:docker-compose.yml",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "service:docker-compose.yml",
+      "target": "config:.env",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:README.md",
+      "target": "config:package.json",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:index.html",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

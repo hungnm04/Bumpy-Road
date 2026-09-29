@@ -1,0 +1,267 @@
+{
+  "nodes": [
+    {
+      "id": "file:database/blog_table.sql",
+      "type": "file",
+      "name": "blog_table.sql",
+      "filePath": "database/blog_table.sql",
+      "summary": "SQL migration defining the blogs table with title, content, author reference, category, and image URL, plus sample data inserts.",
+      "tags": ["database", "migration", "blog-content"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:database/mountain.sql",
+      "type": "file",
+      "name": "mountain.sql",
+      "filePath": "database/mountain.sql",
+      "summary": "Database schema definition file creating users, FAQs, and user_favorites tables with foreign keys, indexes, full-text search support, and data constraints.",
+      "tags": ["database", "schema", "migration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:database/postgres_backup.sql",
+      "type": "file",
+      "name": "postgres_backup.sql",
+      "filePath": "database/postgres_backup.sql",
+      "summary": "Full database backup containing complete schema for comments, FAQs, mountains, notifications, posts, reviews, user_favorites, and users tables with all indexes.",
+      "tags": ["database", "backup", "schema", "migration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:database/sample_blogs.sql",
+      "type": "file",
+      "name": "sample_blogs.sql",
+      "filePath": "database/sample_blogs.sql",
+      "summary": "Seed data file inserting sample mountain climbing and hiking blog posts into the blogs table.",
+      "tags": ["database", "seed-data", "blog-content"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:database/blog_table.sql:blogs",
+      "type": "table",
+      "name": "blogs",
+      "filePath": "database/blog_table.sql",
+      "lineRange": [4, 12],
+      "summary": "Blog posts table storing mountain adventure articles with title, content, author reference, category, and image URL fields.",
+      "tags": ["database", "blog", "content"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:database/mountain.sql:users",
+      "type": "table",
+      "name": "users",
+      "filePath": "database/mountain.sql",
+      "lineRange": [4, 41],
+      "summary": "User accounts table with username primary key, storing password, role, email, first/last name, bio, avatar, and audit timestamps.",
+      "tags": ["database", "user", "authentication", "profile"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:database/mountain.sql:faqs",
+      "type": "table",
+      "name": "faqs",
+      "filePath": "database/mountain.sql",
+      "lineRange": [13, 61],
+      "summary": "Frequently asked questions table for user-submitted inquiries with contact information and message content.",
+      "tags": ["database", "faq", "contact"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:database/mountain.sql:user_favorites",
+      "type": "table",
+      "name": "user_favorites",
+      "filePath": "database/mountain.sql",
+      "lineRange": [48, 54],
+      "summary": "Junction table linking users to their favorite mountains with unique constraint preventing duplicates.",
+      "tags": ["database", "junction-table", "favorites"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:database/postgres_backup.sql:comments",
+      "type": "table",
+      "name": "comments",
+      "filePath": "database/postgres_backup.sql",
+      "lineRange": [27, 34],
+      "summary": "User comments table with post and user references for discussion functionality.",
+      "tags": ["database", "comments", "social"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:database/postgres_backup.sql:faqs",
+      "type": "table",
+      "name": "faqs",
+      "filePath": "database/postgres_backup.sql",
+      "lineRange": [65, 73],
+      "summary": "FAQ table with full schema including updated_at timestamp for tracking modifications.",
+      "tags": ["database", "faq", "contact"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:database/postgres_backup.sql:mountains",
+      "type": "table",
+      "name": "mountains",
+      "filePath": "database/postgres_backup.sql",
+      "lineRange": [104, 113],
+      "summary": "Mountain destinations table storing location, description, photo, and continent information.",
+      "tags": ["database", "mountain", "content", "geographic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:database/postgres_backup.sql:notifications",
+      "type": "table",
+      "name": "notifications",
+      "filePath": "database/postgres_backup.sql",
+      "lineRange": [144, 152],
+      "summary": "User notification table with type, title, content, and read status tracking.",
+      "tags": ["database", "notifications", "messaging"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:database/postgres_backup.sql:posts",
+      "type": "table",
+      "name": "posts",
+      "filePath": "database/postgres_backup.sql",
+      "lineRange": [183, 191],
+      "summary": "User posts table with mountain association for travel journals and articles.",
+      "tags": ["database", "posts", "content"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:database/postgres_backup.sql:reviews",
+      "type": "table",
+      "name": "reviews",
+      "filePath": "database/postgres_backup.sql",
+      "lineRange": [222, 232],
+      "summary": "Mountain reviews table with rating (1-5) and flagging capability for moderation.",
+      "tags": ["database", "reviews", "ratings"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:database/postgres_backup.sql:user_favorites",
+      "type": "table",
+      "name": "user_favorites",
+      "filePath": "database/postgres_backup.sql",
+      "lineRange": [263, 269],
+      "summary": "User mountain favorites junction table with timestamps.",
+      "tags": ["database", "junction-table", "favorites"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:database/postgres_backup.sql:users",
+      "type": "table",
+      "name": "users",
+      "filePath": "database/postgres_backup.sql",
+      "lineRange": [300, 314],
+      "summary": "Full user accounts schema with extended profile including first/last name, bio, avatar storage with hash.",
+      "tags": ["database", "user", "authentication", "profile"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:database/blog_table.sql",
+      "target": "table:database/blog_table.sql:blogs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:database/mountain.sql",
+      "target": "table:database/mountain.sql:users",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:database/mountain.sql",
+      "target": "table:database/mountain.sql:faqs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:database/mountain.sql",
+      "target": "table:database/mountain.sql:user_favorites",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:database/postgres_backup.sql",
+      "target": "table:database/postgres_backup.sql:comments",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:database/postgres_backup.sql",
+      "target": "table:database/postgres_backup.sql:faqs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:database/postgres_backup.sql",
+      "target": "table:database/postgres_backup.sql:mountains",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:database/postgres_backup.sql",
+      "target": "table:database/postgres_backup.sql:notifications",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:database/postgres_backup.sql",
+      "target": "table:database/postgres_backup.sql:posts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:database/postgres_backup.sql",
+      "target": "table:database/postgres_backup.sql:reviews",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:database/postgres_backup.sql",
+      "target": "table:database/postgres_backup.sql:user_favorites",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:database/postgres_backup.sql",
+      "target": "table:database/postgres_backup.sql:users",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:database/sample_blogs.sql",
+      "target": "file:database/blog_table.sql",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:database/blog_table.sql:blogs",
+      "target": "table:database/mountain.sql:users",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "table:database/mountain.sql:user_favorites",
+      "target": "table:database/mountain.sql:users",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

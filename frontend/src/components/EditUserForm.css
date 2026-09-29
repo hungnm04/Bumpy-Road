@@ -1,0 +1,133 @@
+.edit-user-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(7, 12, 9, 0.72);
+  backdrop-filter: blur(10px);
+}
+
+.edit-user-content {
+  width: min(520px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  background: #fff8ec;
+  box-shadow: var(--shadow-soft);
+  color: var(--color-ink);
+  text-align: left;
+}
+
+.edit-user-content h2 {
+  margin: 0 0 20px;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1;
+}
+
+.edit-user-form {
+  display: grid;
+  gap: 14px;
+}
+
+.edit-user-form .form-group {
+  display: grid;
+  gap: 8px;
+}
+
+.edit-user-form label {
+  color: var(--color-ink);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.edit-user-form label::after {
+  content: " (optional)";
+  color: var(--color-ink-soft);
+  font-size: 0.76em;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.edit-user-form label.required::after {
+  content: " *";
+  color: #9c241d;
+}
+
+.edit-user-form input {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 12px;
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  background: #fffaf0;
+  color: var(--color-ink);
+  outline: none;
+}
+
+.edit-user-form input:focus {
+  border-color: var(--color-moss);
+  box-shadow: 0 0 0 4px rgba(49, 95, 69, 0.13);
+}
+
+.edit-user-form .password-section {
+  margin: 4px 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-line);
+}
+
+.edit-user-form .toggle-password-btn,
+.edit-user-form .submit-btn,
+.edit-user-form .cancel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.edit-user-form .toggle-password-btn {
+  width: 100%;
+  margin-bottom: 12px;
+  border: 1px solid var(--color-line);
+  background: rgba(49, 95, 69, 0.08);
+  color: var(--color-forest);
+}
+
+.edit-user-form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.edit-user-form .submit-btn {
+  border: 0;
+  background: var(--color-rust);
+  color: #fff8ec;
+}
+
+.edit-user-form .cancel-btn {
+  border: 1px solid var(--color-line);
+  background: transparent;
+  color: var(--color-ink);
+}
+
+.edit-user-content .error-message {
+  margin: 16px 0;
+  padding: 12px;
+  border: 1px solid rgba(156, 36, 29, 0.26);
+  border-radius: 8px;
+  background: rgba(156, 36, 29, 0.08);
+  color: #9c241d;
+}
