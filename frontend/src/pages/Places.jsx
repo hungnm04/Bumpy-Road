@@ -13,6 +13,7 @@ import {
 } from "react-icons/lu";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import SkeletonCard from "../components/SkeletonCard";
 import { getMountainImageUrl } from "../api/assetUrls";
 import { useDebounce } from "../hooks/useDebounce";
 import "./PlacesStyles.css";
@@ -329,6 +330,13 @@ function Places() {
               )}
             </AnimatePresence>
             {!searchLoading && renderCards(searchResults, "Field note")}
+            {searchLoading && (
+              <div className="mountain-card-grid">
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <SkeletonCard key={i} index={i} />
+                ))}
+              </div>
+            )}
           </section>
         ) : (
           <section className="featured-places">
@@ -338,11 +346,15 @@ function Places() {
                 <h2>Featured mountain destinations</h2>
               </div>
             </div>
-            {featuredLoading
-              ? <motion.div className="loading-spinner" animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.5, repeat: Infinity }}>
-                  Loading destination notes...
-                </motion.div>
-              : renderCards(featuredPlaces, "Featured")}
+            {featuredLoading ? (
+              <div className="mountain-card-grid">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <SkeletonCard key={i} index={i} />
+                ))}
+              </div>
+            ) : (
+              renderCards(featuredPlaces, "Featured")
+            )}
           </section>
         )}
       </main>

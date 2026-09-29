@@ -1,8 +1,25 @@
 const express = require("express");
 const router = express.Router();
 const adminController = require("../controllers/adminController");
+const auditLog = require("../services/auditLog");
 
 // Remove debug middleware
+
+// Audit log
+router.get("/audit-log", async (req, res) => {
+  try {
+    const { limit, offset, actor, resource_type } = req.query;
+    const result = await auditLog.getAuditLog({
+      limit: limit ? Number(limit) : 50,
+      offset: offset ? Number(offset) : 0,
+      actor,
+      resourceType: resource_type,
+    });
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch audit log" });
+  }
+});
 
 // Mountains endpoints
 router.get("/ingestion/runs", adminController.getIngestionRuns);

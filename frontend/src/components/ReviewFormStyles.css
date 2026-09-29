@@ -32,7 +32,6 @@
 .comment-input:focus {
   border-color: var(--color-moss);
   background: #fff8ec;
-  box-shadow: 0 0 0 4px rgba(49, 95, 69, 0.13);
 }
 
 .comment-input::placeholder {
@@ -44,32 +43,28 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .star-rating-inline {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
-.star-rating-inline span {
+.wave-star-btn {
   display: inline-flex;
-  color: rgba(23, 21, 18, 0.24);
   cursor: pointer;
-  transition:
-    color 160ms ease,
-    transform 160ms ease;
+  transition: transform 160ms ease;
 }
 
-.star-rating-inline span.active,
-.star-rating-inline span:hover {
-  color: var(--color-gold);
-  transform: translateY(-1px);
+.wave-star-btn:hover {
+  transform: translateY(-2px);
 }
 
-.star-rating-inline svg {
-  width: 19px;
-  height: 19px;
+.wave-star-btn:disabled {
+  cursor: default;
+  transform: none;
 }
 
 .submit-review-btn {
@@ -78,7 +73,7 @@
   justify-content: center;
   gap: 8px;
   min-height: 42px;
-  padding: 0 1rem;
+  padding: 0 1.2rem;
   border: 0;
   border-radius: 6px;
   background: var(--color-forest);
@@ -88,13 +83,12 @@
   cursor: pointer;
   transition:
     background 180ms ease,
-    transform 180ms ease,
-    opacity 180ms ease;
+    box-shadow 180ms ease;
 }
 
 .submit-review-btn:hover:not(:disabled) {
   background: var(--color-rust);
-  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(127, 53, 31, 0.3);
 }
 
 .submit-review-btn:disabled {

@@ -1,5 +1,5 @@
 -- Migration 007: Provenance columns on mountains
--- Phase 6 of master_prompt.md: every record traceable to source
+-- Keep ingested destination records traceable to their sources.
 
 ALTER TABLE mountains
   ADD COLUMN IF NOT EXISTS source VARCHAR(40),

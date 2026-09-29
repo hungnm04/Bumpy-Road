@@ -1,4 +1,16 @@
 services:
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: redis-server --maxmemory 128mb --maxmemory-policy allkeys-lru
+    networks:
+      - alpine_scout_net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
   db:
     image: postgres:16-alpine
     restart: unless-stopped
@@ -40,10 +52,14 @@ services:
       ADMIN_LAST_NAME: ${ADMIN_LAST_NAME:-Admin}
       INGEST_USER_AGENT: ${INGEST_USER_AGENT:-BumpyRoad/1.0}
       INGEST_ALLOWED_HOSTS: ${INGEST_ALLOWED_HOSTS:-query.wikidata.org,www.wikidata.org,commons.wikimedia.org,api.open-meteo.com}
+      REDIS_URL: redis://redis:6379
+      CHECK_BREACHED_PASSWORDS: ${CHECK_BREACHED_PASSWORDS:-true}
     volumes:
       - storage_data:/app/storage
     depends_on:
       db:
+        condition: service_healthy
+      redis:
         condition: service_healthy
     networks:
       - alpine_scout_net
@@ -120,3 +136,4 @@ volumes:
   storage_data:
   caddy_data:
   caddy_config:
+  redis_data:

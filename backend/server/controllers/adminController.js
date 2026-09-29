@@ -1,4 +1,5 @@
 const adminService = require("../services/adminService");
+const auditLog = require("../services/auditLog");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
@@ -57,10 +58,7 @@ const upload = multer({
     const allowedExtensions = new Set([".jpeg", ".jpg", ".png", ".webp"]);
     const extname = allowedExtensions.has(path.extname(file.originalname).toLowerCase());
     const mimetype = allowedTypes.has(file.mimetype);
-
-    if (mimetype && extname) {
-      return cb(null, true);
-    }
+    if (mimetype && extname) return cb(null, true);
     cb(new Error("Only JPEG, PNG, and WebP images are allowed"));
   },
 });
@@ -68,49 +66,34 @@ const upload = multer({
 // Verify uploaded image with magic byte validation and Sharp re-encoding
 const verifyUploadedImage = async (req, res, next) => {
   if (!req.file) return next();
-
   try {
     const fileBuffer = req.file.buffer;
-
-    // Security: Validate magic bytes (not just MIME header)
     const validation = isValidImageBuffer(fileBuffer);
     if (!validation.valid) {
       logger.warn({ reason: validation.reason }, "Admin photo upload rejected: invalid content");
       return res.status(400).json({ success: false, message: validation.reason });
     }
-
-    // Re-encode through Sharp (strips EXIF, normalizes format)
     const processed = await processImage(fileBuffer, {
       maxWidth: 1920,
       maxHeight: 1080,
       quality: 85,
       format: "jpeg",
     });
-
-    // Generate secure filename
     const timestamp = Date.now();
     const token = crypto.randomBytes(8).toString("hex");
     const filename = `mountain_${timestamp}_${token}.jpg`;
     const uploadPath = path.join(__dirname, "../../storage/mountain-photos");
-
-    // Ensure directory exists
     if (!fs.existsSync(uploadPath)) {
       fs.mkdirSync(uploadPath, { recursive: true });
     }
-
-    // Write processed image
     const filePath = path.join(uploadPath, filename);
     await fs.promises.writeFile(filePath, processed.buffer);
-
-    // Attach processed file info to request
     req.processedFile = {
       path: filePath,
       filename,
       url: `/storage/mountain-photos/${filename}`,
     };
-
     logger.info({ filename, size: processed.buffer.length }, "Admin photo processed successfully");
-
     next();
   } catch (error) {
     logger.error({ err: error }, "Admin photo verification failed");
@@ -120,6 +103,8 @@ const verifyUploadedImage = async (req, res, next) => {
     return res.status(400).json({ success: false, message: "Invalid image file" });
   }
 };
+
+// ---- Controllers with audit logging ----
 
 const getTotalLocations = async (req, res) => {
   try {
@@ -165,51 +150,27 @@ const addMountain = async (req, res) => {
   try {
     const validated = addMountainSchema.parse(req.body);
     const mountain = await adminService.addMountain(validated);
-
     logger.info({ mountainId: mountain.id, name: mountain.name }, "Mountain added by admin");
-
-    res.status(201).json({
-      success: true,
-      message: "Mountain added successfully",
-      mountain,
-    });
+    await auditLog.logDestinationAction(req.user.username, "create_destination", mountain.id, { name: mountain.name }, req);
+    res.status(201).json({ success: true, message: "Mountain added successfully", mountain });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return res.status(400).json({
-        success: false,
-        message: "Validation error",
-        errors: error.errors,
-      });
+      return res.status(400).json({ success: false, message: "Validation error", errors: error.errors });
     }
     logger.error({ err: error }, "Error adding mountain");
-    res.status(error.status || 500).json({
-      success: false,
-      message: "Failed to add mountain: " + error.message,
-    });
+    res.status(error.status || 500).json({ success: false, message: "Failed to add mountain: " + error.message });
   }
 };
 
 const uploadPhoto = async (req, res) => {
   try {
     if (!req.processedFile) {
-      return res.status(400).json({
-        success: false,
-        message: "No file uploaded",
-      });
+      return res.status(400).json({ success: false, message: "No file uploaded" });
     }
-
-    res.status(200).json({
-      success: true,
-      message: "File uploaded successfully",
-      filename: req.processedFile.filename,
-      url: req.processedFile.url,
-    });
+    res.status(200).json({ success: true, message: "File uploaded successfully", filename: req.processedFile.filename, url: req.processedFile.url });
   } catch (error) {
     logger.error({ err: error }, "Error uploading photo");
-    res.status(error.status || 500).json({
-      success: false,
-      message: error.message || "Failed to upload file",
-    });
+    res.status(error.status || 500).json({ success: false, message: error.message || "Failed to upload file" });
   }
 };
 
@@ -218,47 +179,28 @@ const updateMountain = async (req, res) => {
     const { id } = req.params;
     const validated = addMountainSchema.partial().parse(req.body);
     const mountain = await adminService.updateMountain(id, validated);
-
-    logger.info({ mountainId: id, username: req.user?.username }, "Mountain updated by admin");
-
-    res.status(200).json({
-      success: true,
-      message: "Mountain updated successfully",
-      mountain,
-    });
+    logger.info({ mountainId: id }, "Mountain updated by admin");
+    await auditLog.logDestinationAction(req.user.username, "update_destination", id, validated, req);
+    res.status(200).json({ success: true, message: "Mountain updated successfully", mountain });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return res.status(400).json({
-        success: false,
-        message: "Validation error",
-        errors: error.errors,
-      });
+      return res.status(400).json({ success: false, message: "Validation error", errors: error.errors });
     }
     logger.error({ err: error }, "Error updating mountain");
-    res.status(error.status || 500).json({
-      success: false,
-      message: "Failed to update mountain: " + error.message,
-    });
+    res.status(error.status || 500).json({ success: false, message: "Failed to update mountain: " + error.message });
   }
 };
 
 const deleteMountain = async (req, res) => {
   try {
     const { id } = req.params;
+    await auditLog.logDestinationAction(req.user.username, "delete_destination", id, {}, req);
     await adminService.deleteMountain(id);
-
-    logger.info({ mountainId: id, username: req.user?.username }, "Mountain deleted by admin");
-
-    res.status(200).json({
-      success: true,
-      message: "Mountain deleted successfully",
-    });
+    logger.info({ mountainId: id }, "Mountain deleted by admin");
+    res.status(200).json({ success: true, message: "Mountain deleted successfully" });
   } catch (error) {
     logger.error({ err: error }, "Error deleting mountain");
-    res.status(500).json({
-      success: false,
-      message: "Failed to delete mountain: " + error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
@@ -266,16 +208,10 @@ const getMountainById = async (req, res) => {
   try {
     const { id } = req.params;
     const mountain = await adminService.getMountainById(id);
-    res.status(200).json({
-      success: true,
-      mountain,
-    });
+    res.status(200).json({ success: true, mountain });
   } catch (error) {
     logger.error({ err: error }, "Error fetching mountain");
-    res.status(404).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(404).json({ success: false, message: error.message });
   }
 };
 
@@ -283,47 +219,28 @@ const addUser = async (req, res) => {
   try {
     const validated = addUserSchema.parse(req.body);
     const user = await adminService.addUser(validated);
-
-    logger.info({ username: user.username, adminUsername: req.user?.username }, "User added by admin");
-
-    res.status(201).json({
-      success: true,
-      message: "User added successfully",
-      user,
-    });
+    logger.info({ username: user.username }, "User added by admin");
+    await auditLog.logUserAction(req.user.username, "create_user", user.username, { email: user.email }, req);
+    res.status(201).json({ success: true, message: "User added successfully", user });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return res.status(400).json({
-        success: false,
-        message: "Validation error",
-        errors: error.errors,
-      });
+      return res.status(400).json({ success: false, message: "Validation error", errors: error.errors });
     }
     logger.error({ err: error }, "Error adding user");
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
 const deleteUser = async (req, res) => {
   try {
     const { username } = req.params;
+    await auditLog.logUserAction(req.user.username, "delete_user", username, {}, req);
     await adminService.deleteUser(username);
-
-    logger.info({ deletedUsername: username, adminUsername: req.user?.username }, "User deleted by admin");
-
-    res.status(200).json({
-      success: true,
-      message: "User deleted successfully",
-    });
+    logger.info({ deletedUsername: username }, "User deleted by admin");
+    res.status(200).json({ success: true, message: "User deleted successfully" });
   } catch (error) {
     logger.error({ err: error }, "Error deleting user");
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
@@ -332,27 +249,15 @@ const updateUser = async (req, res) => {
     const { username } = req.params;
     const validated = updateUserSchema.parse(req.body);
     const user = await adminService.updateUser(username, validated);
-
-    logger.info({ updatedUsername: username, adminUsername: req.user?.username }, "User updated by admin");
-
-    res.status(200).json({
-      success: true,
-      message: "User updated successfully",
-      user,
-    });
+    logger.info({ updatedUsername: username }, "User updated by admin");
+    await auditLog.logUserAction(req.user.username, "update_user", username, { changed_fields: Object.keys(validated) }, req);
+    res.status(200).json({ success: true, message: "User updated successfully", user });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return res.status(400).json({
-        success: false,
-        message: "Validation error",
-        errors: error.errors,
-      });
+      return res.status(400).json({ success: false, message: "Validation error", errors: error.errors });
     }
     logger.error({ err: error }, "Error updating user");
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
@@ -360,16 +265,10 @@ const getUserById = async (req, res) => {
   try {
     const { username } = req.params;
     const user = await adminService.getUserById(username);
-    res.status(200).json({
-      success: true,
-      user,
-    });
+    res.status(200).json({ success: true, user });
   } catch (error) {
     logger.error({ err: error }, "Error fetching user");
-    res.status(404).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(404).json({ success: false, message: error.message });
   }
 };
 
@@ -396,9 +295,8 @@ const getIngestionCandidates = async (req, res) => {
 const publishIngestionCandidate = async (req, res) => {
   try {
     const candidate = await adminService.setCandidateStatus(req.params.id, "published", req.body);
-
-    logger.info({ candidateId: req.params.id, username: req.user?.username }, "Ingestion candidate published");
-
+    logger.info({ candidateId: req.params.id }, "Ingestion candidate published");
+    await auditLog.logDestinationAction(req.user.username, "publish_destination", req.params.id, req.body, req);
     res.status(200).json({ success: true, candidate });
   } catch (error) {
     logger.error({ err: error }, "Error publishing ingestion candidate");
@@ -409,9 +307,8 @@ const publishIngestionCandidate = async (req, res) => {
 const rejectIngestionCandidate = async (req, res) => {
   try {
     const candidate = await adminService.setCandidateStatus(req.params.id, "rejected");
-
-    logger.info({ candidateId: req.params.id, username: req.user?.username }, "Ingestion candidate rejected");
-
+    logger.info({ candidateId: req.params.id }, "Ingestion candidate rejected");
+    await auditLog.logDestinationAction(req.user.username, "reject_destination", req.params.id, {}, req);
     res.status(200).json({ success: true, candidate });
   } catch (error) {
     logger.error({ err: error }, "Error rejecting ingestion candidate");
@@ -422,9 +319,12 @@ const rejectIngestionCandidate = async (req, res) => {
 const bulkPublishIngestionCandidates = async (req, res) => {
   try {
     const publishedCount = await adminService.bulkPublishCandidates(req.body.ids || []);
-
-    logger.info({ count: publishedCount, ids: req.body.ids, username: req.user?.username }, "Bulk publish candidates");
-
+    logger.info({ count: publishedCount, ids: req.body.ids }, "Bulk publish candidates");
+    await auditLog.logAdminAction({
+      actorUsername: req.user.username,
+      action: "bulk_publish_destinations",
+      details: { count: publishedCount, ids: req.body.ids },
+    }, req);
     res.status(200).json({ success: true, publishedCount });
   } catch (error) {
     logger.error({ err: error }, "Error bulk publishing ingestion candidates");

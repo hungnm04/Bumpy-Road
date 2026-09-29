@@ -34,8 +34,10 @@ const verifyPassword = async (password, storedPassword) => {
       return bcrypt.compare(password, storedPassword);
     }
 
-    // Plain text (very old format - should not happen)
-    return password === storedPassword;
+    // Plain text — reject immediately; this should never exist in a properly seeded DB
+    // Keeping the check but treating it as a failed verification (not a fallback success)
+    logger.error({ username: "unknown" }, "Plaintext password detected — this is a security risk");
+    return false;
   } catch (error) {
     logger.error({ err: error }, "Password verification error");
     return false;

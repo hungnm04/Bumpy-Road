@@ -19,6 +19,9 @@ const reviewController = require("./server/controllers/reviewControllers");
 const adminRoutes = require("./server/routes/adminRoutes");
 const blogRoutes = require("./server/routes/blogRoutes");
 
+// Import rate limiter
+const { checkRateLimit, recordAttempt } = require("./server/services/rateLimiter");
+
 // Import middlewares
 const { authenticateJWT, requireRole, requireEnvSecret, checkOwnership } = require("./server/middlewares/auth");
 const { handleFileUpload } = require("./server/middlewares/uploadMiddleware");
@@ -106,6 +109,10 @@ app.use(helmet({
     directives: cspDirectives,
   },
   crossOriginEmbedderPolicy: false,
+  referrerPolicy: { policy: "strict-origin-when-cross-origin" },
+  permissionsPolicy: {
+    camera: [], microphone: [], geolocation: [], interestCohort: [],
+  },
 }));
 
 app.set("trust proxy", 1);
@@ -180,16 +187,70 @@ app.get("/healthz", async (req, res) => {
   }
 });
 
+// Security.txt — RFC 9116
+app.get("/.well-known/security.txt", (req, res) => {
+  res.set("Content-Type", "text/plain");
+  res.send(
+    "Contact: mailto:security@" + (process.env.ADMIN_EMAIL?.replace("admin@", "") || "bumpyroad.example.com") + "\n" +
+    "Expires: " + new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString() + "\n" +
+    "Preferred-Languages: en\n" +
+    "Policy: https://" + (process.env.CLIENT_ORIGINS?.split(",")[0] || "bumpyroad.example.com") + "/security\n" +
+    "Hiring: https://" + (process.env.CLIENT_ORIGINS?.split(",")[0] || "bumpyroad.example.com") + "/about\n"
+  );
+});
+
+app.get("/security.txt", (req, res) => {
+  res.redirect(301, "/.well-known/security.txt");
+});
+
 // Serve static files BEFORE routes
 app.use(express.static(path.join(__dirname, "dist"), { index: false }));
 app.use("/storage", express.static(path.join(__dirname, "storage")));
 
+// Rate limiting middleware
+const AUTH_MAX_ATTEMPTS = 25;
+const REFRESH_MAX_ATTEMPTS = 50;
+
+const rateLimitAuth = async (req, res, next) => {
+  const ip = req.ip || req.connection.remoteAddress || "unknown";
+  const result = await checkRateLimit(ip, "auth");
+  await recordAttempt(ip, "auth");
+  res.set("X-RateLimit-Limit", String(AUTH_MAX_ATTEMPTS));
+  res.set("X-RateLimit-Remaining", String(result.remaining));
+  res.set("X-RateLimit-Reset", String(Math.floor(result.resetAt / 1000)));
+  if (!result.allowed) {
+    logger.warn({ ip }, "Auth rate limit exceeded");
+    return res.status(429).json({
+      message: "Too many requests. Please wait before trying again.",
+      retryAfter: Math.ceil((result.resetAt - Date.now()) / 1000),
+    });
+  }
+  next();
+};
+
+const rateLimitRefresh = async (req, res, next) => {
+  const ip = req.ip || req.connection.remoteAddress || "unknown";
+  const result = await checkRateLimit(ip, "refresh");
+  await recordAttempt(ip, "refresh");
+  res.set("X-RateLimit-Limit", String(REFRESH_MAX_ATTEMPTS));
+  res.set("X-RateLimit-Remaining", String(result.remaining));
+  res.set("X-RateLimit-Reset", String(Math.floor(result.resetAt / 1000)));
+  if (!result.allowed) {
+    return res.status(429).json({
+      message: "Too many token refresh requests.",
+      retryAfter: Math.ceil((result.resetAt - Date.now()) / 1000),
+    });
+  }
+  next();
+};
+
 // Auth routes
-app.post("/login", userController.login);
-app.post("/create-account", userController.createAccount);
+app.post("/login", rateLimitAuth, userController.login);
+app.post("/create-account", rateLimitAuth, userController.createAccount);
 app.get("/auth-status", userController.authStatus);
+app.get("/verify-email", userController.verifyEmail);
 app.post("/logout", authenticateJWT, userController.logout);
-app.post("/refresh-token", userController.refreshToken);
+app.post("/refresh-token", rateLimitRefresh, userController.refreshToken);
 
 // Profile routes - with ownership check
 app.get("/profile", authenticateJWT, userController.getProfile);
