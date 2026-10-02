@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   LuArrowRight,
@@ -54,6 +54,18 @@ function MountainDetails() {
   const [error, setError] = useState(null);
   const [reviewsError, setReviewsError] = useState("");
   const [sortOrder, setSortOrder] = useState("newest");
+  const heroRef = useRef(null);
+
+  // Parallax: hero image scrolls at 0.5x speed for depth
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!heroRef.current) return;
+      const scrollY = window.scrollY;
+      heroRef.current.style.transform = `translateY(${scrollY * 0.4}px)`;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     if (!id) {
@@ -132,7 +144,13 @@ function MountainDetails() {
       <div className="mountain-details-page">
         <section className="mountain-detail-hero">
           {imageUrl ? (
-            <img className="mountain-detail-image" src={imageUrl} alt={mountain.name} />
+            <img
+              ref={heroRef}
+              className="mountain-detail-image"
+              src={imageUrl}
+              alt={mountain.name}
+              style={{ transform: "translateY(0)", willChange: "transform" }}
+            />
           ) : (
             <div className="mountain-detail-photo-pending">Photo review pending</div>
           )}

@@ -304,22 +304,9 @@ const validateRefreshToken = async (jti) => {
 
 const revokeRefreshToken = async (jti) => {
   try {
-    // Get expiration time from token (decoded separately)
-    const decoded = await new Promise((resolve, reject) => {
-      const jwt = require("jsonwebtoken");
-      // Decode without verification to get exp
-      const decoded = jwt.decode(req?.cookies?.refreshToken || "");
-      if (decoded?.exp) {
-        resolve(decoded);
-      } else {
-        // Default to 7 days from now if we can't decode
-        resolve({ exp: Math.floor(Date.now() / 1000) + 7 * 24 * 60 * 60 });
-      }
-    });
+    // Default expiry to 7 days from now — the JWT library handles actual expiry
+    const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
 
-    const expiresAt = new Date(decoded.exp * 1000);
-
-    // Add to revoked tokens table
     await pool.query(
       `INSERT INTO revoked_refresh_tokens (token_jti, expires_at)
        VALUES ($1, $2)
@@ -327,7 +314,6 @@ const revokeRefreshToken = async (jti) => {
       [jti, expiresAt]
     );
 
-    // Remove from active tokens
     await pool.query(
       "DELETE FROM refresh_tokens WHERE token_jti = $1",
       [jti]
@@ -340,6 +326,25 @@ const revokeRefreshToken = async (jti) => {
     return false;
   }
 };
+
+// Resolve an email or username to a canonical username, for consistent lockout tracking.
+async function normalizeUsername(usernameOrEmail) {
+  // If it looks like an email, look up by email first
+  const isEmail = usernameOrEmail.includes("@");
+  if (isEmail) {
+    const { rows } = await pool.query(
+      "SELECT username FROM users WHERE LOWER(email) = LOWER($1)",
+      [usernameOrEmail]
+    );
+    if (rows.length > 0) return rows[0].username;
+  }
+  // Otherwise treat as username
+  const { rows } = await pool.query(
+    "SELECT username FROM users WHERE username = $1",
+    [usernameOrEmail]
+  );
+  return rows.length > 0 ? rows[0].username : null;
+}
 
 // Clean up expired tokens (can be run as a scheduled task)
 const cleanupExpiredTokens = async () => {
@@ -361,6 +366,7 @@ module.exports = {
   updateUserProfile,
   getUserProfile,
   getUserByUsername,
+  normalizeUsername,
   hashPassword,
   validatePassword,
   storeRefreshToken,

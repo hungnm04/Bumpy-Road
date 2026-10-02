@@ -16,6 +16,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import AuthRoute from "./routes/AuthRoute";
 import CreateBlog from "./pages/CreateBlog";
 import WeatherWindow from "./pages/WeatherWindow";
+import VerifyEmail from "./pages/VerifyEmail";
 
 export default function App() {
   return (
@@ -37,7 +38,8 @@ export default function App() {
         <Route path="/blog/:id" element={<BlogDetail />} />
         <Route path="*" element={<PageNotFound />} />
         <Route path="/places/:id" element={<MountainDetails />} />
-        <Route path="/create-account" element={<CreateAccount />} />{" "}
+        <Route path="/create-account" element={<CreateAccount />} />
+        <Route path="/verify-email" element={<VerifyEmail />} />
       </Routes>
     </div>
   );

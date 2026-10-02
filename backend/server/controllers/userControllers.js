@@ -3,6 +3,7 @@ const { z } = require("zod");
 const { randomBytes } = require("crypto");
 const pool = require("../config/db");
 const userService = require("../services/users");
+const { sendEmailVerification } = require("../services/emailService");
 const { requireEnvSecret, revokeRefreshToken, generateTokenId } = require("../middlewares/auth");
 const logger = require("../utils/logger");
 
@@ -122,6 +123,7 @@ async function createVerificationToken(username, email) {
 
 // ponytail: HIBP k-Anonymity check — only the first 5 chars of SHA-1 hash sent to API
 async function checkPasswordBreached(password) {
+  const isProd = process.env.NODE_ENV === "production" || process.env.CHECK_BREACHED_PASSWORDS === "true";
   try {
     const { createHash } = await import("crypto");
     const hash = createHash("sha1").update(password).digest("hex").toUpperCase();
@@ -132,7 +134,11 @@ async function checkPasswordBreached(password) {
       headers: { "User-Agent": process.env.INGEST_USER_AGENT || "BumpyRoad/1.0" },
     });
 
-    if (!response.ok) return false;
+    if (!response.ok) {
+      if (isProd) throw new Error(`HIBP returned ${response.status}`);
+      return false; // dev: skip on error
+    }
+
     const text = await response.text();
     const lines = text.split("\n");
     for (const line of lines) {
@@ -140,8 +146,10 @@ async function checkPasswordBreached(password) {
       if (hashSuffix.trim() === suffix) return true;
     }
     return false;
-  } catch {
-    return false; // Fail open in dev; fail closed in production
+  } catch (err) {
+    // Production: fail closed — reject the password rather than expose it
+    if (isProd) throw new Error("Password breach check unavailable: " + err.message);
+    return false; // dev: skip on error
   }
 }
 
@@ -152,27 +160,50 @@ const login = async (req, res) => {
     const validated = loginSchema.parse(req.body);
     const { username, password } = validated;
 
+    // Resolve email → username for consistent lockout tracking
+    // (userService.verifyLogin accepts either, but lockout records use usernames)
+    const normalizedUsername = await userService.normalizeUsername(username);
+    if (!normalizedUsername) {
+      return res.status(401).json({ message: "Invalid username or password." });
+    }
+
     // Check account lockout first
-    const lockout = await checkLockout(username);
+    const lockout = await checkLockout(normalizedUsername);
     if (lockout) {
       const remaining = Math.ceil((new Date(lockout.locked_until) - Date.now()) / 1000 / 60);
-      logger.warn({ username }, "Login blocked — account locked");
+      logger.warn({ username: normalizedUsername }, "Login blocked — account locked");
       return res.status(423).json({
         message: `Account temporarily locked. Try again in ${remaining} minute${remaining !== 1 ? "s" : ""}.`,
         retryAfter: remaining * 60,
       });
     }
 
-    const result = await userService.verifyLogin(username, password);
+    const result = await userService.verifyLogin(normalizedUsername, password);
 
     if (!result.success) {
-      await recordFailedAttempt(username);
-      logger.warn({ username }, "Failed login attempt");
+      await recordFailedAttempt(normalizedUsername);
+      logger.warn({ username: normalizedUsername }, "Failed login attempt");
       return res.status(401).json({ message: result.message });
     }
 
     // Login succeeded — clear lockout
-    await clearLockout(username);
+    await clearLockout(normalizedUsername);
+
+    // Check email verification — unverified accounts can't log in
+    const { rows: emailRows } = await pool.query(
+      "SELECT email_verified FROM users WHERE username = $1",
+      [normalizedUsername]
+    );
+    if (emailRows.length > 0 && !emailRows[0].email_verified) {
+      logger.info({ username: normalizedUsername }, "Login blocked — email not verified");
+      // No cookies set yet at this point in the flow — clear is a no-op but keeps intent clear
+      res.clearCookie("accessToken", authCookieOptions(0));
+      res.clearCookie("refreshToken", authCookieOptions(0));
+      return res.status(403).json({
+        message: "Please verify your email address before signing in. Check your inbox for the verification link.",
+        verification_required: true,
+      });
+    }
 
     const user = result.user;
 
@@ -215,16 +246,8 @@ const createAccount = async (req, res) => {
     const validated = createAccountSchema.parse(req.body);
     const { username, password, email, first_name, last_name, bio } = validated;
 
-    // Check password breach (skip in dev)
-    if (isProduction || process.env.CHECK_BREACHED_PASSWORDS === "true") {
-      const breached = await checkPasswordBreached(password);
-      if (breached) {
-        return res.status(400).json({
-          success: false,
-          message: "This password has appeared in a data breach. Please choose a different one.",
-        });
-      }
-    }
+    // HIBP breach check — fails closed in production, skips in dev
+    await checkPasswordBreached(password);
 
     const result = await userService.createUser({
       username,
@@ -242,28 +265,26 @@ const createAccount = async (req, res) => {
       });
     }
 
-    // Create email verification token
-    const verifyToken = await createVerificationToken(username, email);
+    // Create email verification token and send verification email
+    const verifyToken = generateVerificationToken();
+    await pool.query(`
+      INSERT INTO email_verification_tokens (username, token, email, expires_at)
+      VALUES ($1, $2, $3, NOW() + INTERVAL '7 days')
+      ON CONFLICT (token) DO UPDATE SET
+        username = EXCLUDED.username, email = EXCLUDED.email,
+        expires_at = EXCLUDED.expires_at, verified_at = NULL
+    `, [username, verifyToken, email]);
 
-    // ponytail: In production, send email with verification link.
-    // For now, log it so the admin can verify users during development.
-    const verifyUrl = isProduction
-      ? `${process.env.CLIENT_ORIGINS?.split(",")[0]}/verify-email?token=${verifyToken}`
-      : null;
+    await sendEmailVerification(email, username, verifyToken);
 
-    if (!isProduction) {
-      logger.info({ username, email, verifyToken, verifyUrl }, "Email verification token created (dev mode)");
-    }
-
-    logger.info({ username }, "Account created");
+    logger.info({ username }, "Account created — verification email sent");
 
     res.status(201).json({
       success: true,
       message: isProduction
-        ? "Account created. Please check your email to verify your address."
-        : "Account created. Verification token logged to server console (dev mode).",
+        ? "Account created. Check your email to verify your address."
+        : "Account created. Check server logs for the Ethereal email preview URL.",
       verification_pending: true,
-      verify_url: verifyUrl, // only populated in production
     });
   } catch (error) {
     if (error instanceof z.ZodError) {
@@ -271,6 +292,14 @@ const createAccount = async (req, res) => {
         success: false,
         message: "Validation error",
         errors: error.errors,
+      });
+    }
+    // HIBP unavailable in production — surface the error to the user so they know to retry
+    if (error.message && error.message.startsWith("Password breach check unavailable")) {
+      logger.error({ err: error }, "Account creation failed — breach check unavailable");
+      return res.status(503).json({
+        success: false,
+        message: "Password check temporarily unavailable. Please try again in a moment.",
       });
     }
     logger.error({ err: error }, "Account creation error");

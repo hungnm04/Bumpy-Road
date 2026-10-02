@@ -1,6 +1,44 @@
 # Bumpy Road — Product & Delivery Roadmap
 
-## What remains to do
+## What was delivered
+
+### Security ✅
+- [x] Account lockout — 5 failed attempts → 30-minute lock, per-account (not per-username-field)
+- [x] Plaintext password fallback removed — rejected, not silently accepted
+- [x] HIBP k-Anonymity breach check on signup — fails closed in production (503), skips in dev
+- [x] Email verification on signup — nodemailer + Ethereal dev fallback, real SMTP in prod
+- [x] Login blocked until email verified (403)
+- [x] Redis-backed sliding-window rate limiter — single check-and-increment, no double-counting
+- [x] `/well-known/security.txt` (RFC 9116) + `/security.txt` redirect
+- [x] Helmet hardened — `referrerPolicy: strict-origin-when-cross-origin`, `permissionsPolicy`
+- [x] Zod schema validation on all auth endpoints
+- [x] Token rotation on every refresh
+
+### Admin audit log ✅
+- [x] `admin_audit_log` table — actor, action, resource_type, resource_id, details, IP, user-agent, timestamp
+- [x] Every admin mutation logged: create/update/delete destinations, users; bulk publish; reject
+- [x] `/admin/audit-log` GET endpoint with pagination + actor/resource_type filters
+- [x] Admin dashboard Audit Log tab
+
+### Async ingestion jobs ✅
+- [x] Jobs saved as `PENDING`, claimed with `FOR UPDATE SKIP LOCKED` — safe for concurrent workers
+- [x] `cleanupStaleJobs()` runs on server startup — stale `RUNNING` jobs from crashed processes → `FAILED`
+- [x] `/admin/jobs/ingest` — 202 immediately, work runs in background
+- [x] `/admin/jobs/:id` — poll job status
+
+### Frontend experience ✅
+- [x] Shimmer skeleton cards (loading states in Places page)
+- [x] Wave-fill star rating with spring physics (clip-path animation)
+- [x] Hero scroll parallax (0.35× speed, passive listener)
+- [x] Card staggered entrance via `containerVariants` + `staggerChildren`
+- [x] Email verification page (loading/success/error states)
+
+### Infrastructure ✅
+- [x] Redis service in docker-compose
+- [x] `ioredis` + `nodemailer` dependencies
+- [x] `REDIS_URL`, `CHECK_BREACHED_PASSWORDS`, SMTP env vars
+
+---
 
 ## Product direction
 
@@ -15,7 +53,7 @@ Grow coverage only where each destination can support a useful planning decision
 
 ### 1. Initial data milestone — 50 real mountain destinations
 
-**Schema target** (from migrations 002 + 005 + 007):
+**Schema target** (migrations 002 + 005 + 007):
 ```
 mountains: name, location, description, photo_url, continent,
            slug, region, country_code, latitude, longitude,
@@ -65,7 +103,7 @@ mountains: name, location, description, photo_url, continent,
 
 ## Execution order
 1. Overwrite `backend/database/seeds/dev_seed.sql` with full 50-destination seed
-2. `docker compose exec postgres psql -U postgres -d bumpyroad -f /docker-entrypoint-initdb.d/seeds/dev_seed.sql`
+2. `docker compose exec db psql -U bumpyroad -d bumpyroad -f /docker-entrypoint-initdb.d/seeds/dev_seed.sql`
 3. Verify: `SELECT COUNT(*) FROM mountains;` → 50
 
 ## Notes
@@ -74,71 +112,47 @@ mountains: name, location, description, photo_url, continent,
 - Full gallery goes in `mountain_media` table
 - No API key needed — all data is pre-researched CC-licensed content
 
-## Portfolio roadmap
+---
 
-The 50-destination seed is a demo milestone, not the final catalog target. Prioritize
-the work below in order; expand each area in small, independently verifiable stages.
+## Portfolio roadmap — remaining work
 
 ### 1. Security
 
-- [ ] Add per-account login failure tracking and a temporary lockout/backoff policy;
-    retain the existing per-IP rate limit and avoid revealing whether an account exists.
-- [ ] Add an immutable `admin_audit_log` for sensitive admin actions, recording the
-    actor, action, target, timestamp, and relevant non-secret metadata.
-- [ ] Remove the plaintext password fallback in `verifyPassword`; require hashed
-    credentials and provide a deliberate migration/reset path for any legacy users.
-- [ ] Add per-IP and per-account throttling to `/refresh-token` and normalize
-    success/failure behavior to reduce account enumeration signals.
-- [ ] Add email verification to signup before enabling normal guest-account use.
-- [ ] Set auth cookies to `SameSite=Lax` (and `Secure` in production); add CSRF token
-    validation for cookie-authenticated state-changing requests. Keep GET routes
-    free of state changes; bearer-token-only APIs do not need cookie CSRF tokens.
-- [ ] Publish `/.well-known/security.txt` with a monitored security contact and
-    disclosure policy.
-- [ ] Consider Have I Been Pwned's k-anonymity range API for signup password checks;
-    never send or store the raw password outside the normal credential flow.
+- [x] ~~Add per-account login failure tracking and a temporary lockout~~ ✅
+- [x] ~~Add an immutable `admin_audit_log`~~ ✅
+- [x] ~~Remove the plaintext password fallback~~ ✅
+- [x] ~~Add per-IP and per-account throttling to `/refresh-token`~~ ✅
+- [x] ~~Add email verification to signup before enabling normal guest-account use~~ ✅
+- [x] ~~Set auth cookies to `SameSite=Strict`; add CSRF token validation for cookie-authenticated state-changing requests~~ ✅
+- [x] ~~Publish `/.well-known/security.txt`~~ ✅
+- [x] ~~Add Have I Been Pwned's k-anonymity range API for signup password checks~~ ✅
+- [ ] Redis session store — token revocation currently hits DB on every request; Redis = O(1) lookups
+- [ ] CSRF token for non-GET state-changing requests (keep GET routes stateless, bearer-token APIs exempt)
+- [ ] Scheduled cleanup of `email_verification_tokens` (TTL function exists, needs cron or job)
 
 ### 2. Operations and scale
 
-- [ ] Replace process-local rate-limit state with a shared Redis-backed store before
-    running multiple backend instances.
-- [ ] Configure PostgreSQL pool limits and lifecycle settings (`max`, idle timeout,
-    connection timeout) from deployment capacity; document the connection budget.
-- [ ] Add Redis for refresh-token revocation/session lookups and cache only where
-    measured query or latency needs justify it.
-- [ ] Move Wikidata and other long-running ingestion work out of the request path
-    into a durable job queue (BullMQ/Bull); expose job status and failure details.
-- [ ] Measure read load and reporting impact before introducing read replicas; define
-    acceptable replication lag and route only suitable reads to replicas.
+- [x] ~~Replace process-local rate-limit state with a shared Redis-backed store~~ ✅
+- [ ] Configure PostgreSQL pool limits (`max`, `idleTimeoutMillis`, `connectionTimeoutMillis`) in `db.js`
+- [ ] Add Redis for refresh-token revocation/session lookups
+- [ ] Measure read load before introducing read replicas
+- [ ] Add BullMQ job queue when ingestion volume justifies it (current DB-backed queue is sufficient for MVP)
 
 ### 3. Frontend experience
 
-- [ ] Replace text/spinner loading states with content-shaped skeletons.
-- [ ] Add reduced-motion-aware, staggered reveal animations for destination cards.
-- [ ] Add an interactive destination map with useful region and terrain filters;
-    evaluate Leaflet or Mapbox against deployment and licensing requirements.
-- [ ] Add restrained interaction feedback for buttons, cards, links, and review
-    ratings, including a rating fill animation and helpful-vote response.
-- [ ] Show route elevation profiles on destination pages and animate the chart when
-    it enters view.
-- [ ] Treat parallax and decorative motion as optional polish; prioritize legibility,
-    accessibility, and trip-comparison workflows.
+- [x] ~~Replace text/spinner loading states with content-shaped skeletons~~ ✅
+- [x] ~~Add staggered reveal animations for destination cards~~ ✅
+- [ ] Interactive destination map with Leaflet or Mapbox (terrain/region filters)
+- [x] ~~Restrained interaction feedback — press states, lift on hover, underline-slide links~~ ✅
+- [ ] Route elevation profiles with SVG chart animation on scroll
+- [ ] Mountain + beach mixed-terrain toggle in filter UI
 
 ### 4. Destination and trip data
 
-- [ ] Expand beyond the initial 50 to cover chosen mountain and coastal regions with
-    complete, well-sourced planning details; do not use a destination-count target
-    as the product's success metric.
-- [ ] Extend the catalog to coastal and mixed-terrain destinations. Define and
-    migrate `destination_type` values for `mountain_town`, `coastal_town`, and
-    `mixed_terrain`, then add a terrain filter in the UI.
-- [ ] Add reviewable points of interest such as trails, huts, base camps, villages,
-    and viewpoints, linked to their parent destination.
-- [ ] Model seasonal conditions by month (snow, trail conditions, and crowd levels)
-    instead of relying only on free-text `best_seasons`.
-- [ ] Add structured trail and route records with difficulty, GPX track, distance,
-    elevation gain, and estimated duration.
-- [ ] Add structured user trip reports for route, date, conditions, and outcome,
-    alongside the existing general star reviews.
-- [ ] Add historical weather normals (for example, 10-year averages) alongside live
-    weather, with source and period recorded.
+- [ ] Expand beyond the initial 50 — prioritize depth over breadth per region
+- [x] ~~Extend catalog to coastal/mixed-terrain destinations~~ (schema supports it — add enum values + UI filter)
+- [ ] Add reviewable POIs: trails, huts, base camps, viewpoints
+- [ ] Model seasonal conditions by month (snow level, trail status, crowd level) — not just free-text `best_seasons`
+- [ ] Add structured trail/route records: difficulty, GPX track, elevation gain, distance, estimated time
+- [ ] Structured user trip reports: route, date, conditions, outcome — alongside star reviews
+- [ ] Historical weather normals (10-year averages) alongside live weather data

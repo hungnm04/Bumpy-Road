@@ -54,6 +54,11 @@ services:
       INGEST_ALLOWED_HOSTS: ${INGEST_ALLOWED_HOSTS:-query.wikidata.org,www.wikidata.org,commons.wikimedia.org,api.open-meteo.com}
       REDIS_URL: redis://redis:6379
       CHECK_BREACHED_PASSWORDS: ${CHECK_BREACHED_PASSWORDS:-true}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      SMTP_FROM: ${SMTP_FROM:-noreply@bumpyroad.example.com}
     volumes:
       - storage_data:/app/storage
     depends_on:

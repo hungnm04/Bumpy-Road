@@ -1,4 +1,5 @@
 import "./HeroStyles.css";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { LuArrowRight, LuMap, LuMapPin, LuMountain } from "react-icons/lu";
@@ -13,6 +14,20 @@ const stagger = {
 };
 
 function Hero(props) {
+  const imgRef = useRef(null);
+
+  // Scroll parallax — hero image moves at 0.4× scroll speed (depth effect)
+  useEffect(() => {
+    if (props.cName !== "hero") return;
+    const onScroll = () => {
+      if (imgRef.current) {
+        imgRef.current.style.transform = `scale(1.08) translateY(${window.scrollY * 0.35}px)`;
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [props.cName]);
+
   const stats = props.stats || [
     { value: "42", label: "Featured climbs", icon: <LuMountain /> },
     { value: "6", label: "Continents", icon: <LuMapPin /> },
@@ -27,12 +42,14 @@ function Hero(props) {
       transition={{ duration: 0.6 }}
     >
       <motion.img
+        ref={imgRef}
         src={props.heroImg}
         alt="Mountain"
         className="hero-bg-image"
         initial={{ scale: 1.08 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.4, ease: "easeOut" }}
+        style={{ willChange: "transform" }}
       />
       <div className="hero-text">
         {props.kicker && (

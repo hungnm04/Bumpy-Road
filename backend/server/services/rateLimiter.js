@@ -32,141 +32,93 @@ async function getRedis() {
   }
 }
 
-// ponytail: in-memory fallback — global lock, per-IP bucket map
+// ponytail: in-memory fallback — per-IP bucket map with fixed window key
 // Upgrade path: REDIS_URL in production for multi-instance safety
 const memoryBuckets = new Map();
 
-const AUTH_WINDOW_MS = 15 * 60 * 1000;  // 15 minutes
-const AUTH_MAX_ATTEMPTS = 25;
-const REFRESH_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
-const REFRESH_MAX_ATTEMPTS = 50;
-const GENERAL_WINDOW_MS = 15 * 60 * 1000;
-const GENERAL_MAX_ATTEMPTS = 500;
+const BUCKETS = {
+  auth:    { windowMs: 15 * 60 * 1000, maxAttempts: 25 },
+  refresh: { windowMs: 15 * 60 * 1000, maxAttempts: 50 },
+  general: { windowMs: 15 * 60 * 1000, maxAttempts: 500 },
+};
 
-function getMemoryKey(identifier, windowMs, maxAttempts) {
+// Returns current count for a bucket, or null if no active window
+function memoryCount(bucket, identifier) {
+  const { windowMs } = BUCKETS[bucket] || BUCKETS.general;
   const now = Date.now();
-  const windowStart = now - windowMs;
-  // Clean old entries periodically
-  for (const [key, data] of memoryBuckets) {
-    if (data.windowStart < windowStart) memoryBuckets.delete(key);
-  }
-  return `${identifier}:${windowStart}`;
-}
-
-function checkMemoryBucket(key, maxAttempts) {
+  const key = `${bucket}:${identifier}`;
   const entry = memoryBuckets.get(key);
-  if (!entry) return { allowed: true, remaining: maxAttempts - 1, resetAt: Date.now() + (entry?.windowMs || 0) };
-  const now = Date.now();
-  if (now > entry.expiresAt) {
-    memoryBuckets.delete(key);
-    return { allowed: true, remaining: maxAttempts - 1, resetAt: now + entry.windowMs };
-  }
-  if (entry.count >= maxAttempts) {
-    return { allowed: false, remaining: 0, resetAt: entry.expiresAt };
-  }
-  return { allowed: true, remaining: maxAttempts - entry.count - 1, resetAt: entry.expiresAt };
+
+  if (!entry || now > entry.expiresAt) return 0;
+  return entry.count;
 }
 
-function incrementMemoryBucket(key, windowMs) {
+// Clean up all stale memory buckets (called on startup and periodically)
+function memoryCleanup() {
   const now = Date.now();
-  const expiresAt = now + windowMs;
-  const entry = memoryBuckets.get(key);
-  if (!entry || now > entry.expiresAt) {
-    memoryBuckets.set(key, { count: 1, expiresAt, windowMs });
-  } else {
-    entry.count += 1;
+  for (const [key, entry] of memoryBuckets) {
+    if (now > entry.expiresAt) memoryBuckets.delete(key);
   }
 }
 
-/**
- * Check rate limit — returns { allowed, remaining, resetAt }
- * identifier can be an IP address or user ID
- * bucket: 'auth' | 'refresh' | 'general'
- */
+// Check-and-increment atomically: returns {allowed, remaining, resetAt} AFTER incrementing
+// Every request increments the counter; exceeding the limit means blocked.
 async function checkRateLimit(identifier, bucket = "general") {
-  const configs = {
-    auth:    { windowMs: AUTH_WINDOW_MS,    maxAttempts: AUTH_MAX_ATTEMPTS },
-    refresh: { windowMs: REFRESH_WINDOW_MS, maxAttempts: REFRESH_MAX_ATTEMPTS },
-    general: { windowMs: GENERAL_WINDOW_MS, maxAttempts: GENERAL_MAX_ATTEMPTS },
-  };
-  const { windowMs, maxAttempts } = configs[bucket] || configs.general;
-  const client = await getRedis();
-
-  if (client) {
-    return checkRedisLimit(client, identifier, bucket, windowMs, maxAttempts);
-  }
-  const key = getMemoryKey(`${bucket}:${identifier}`, windowMs, maxAttempts);
-  return checkMemoryBucket(key, maxAttempts);
-}
-
-/**
- * Record a request attempt — call this for both allowed and rejected attempts
- */
-async function recordAttempt(identifier, bucket = "general") {
-  const configs = {
-    auth:    { windowMs: AUTH_WINDOW_MS,    maxAttempts: AUTH_MAX_ATTEMPTS },
-    refresh: { windowMs: REFRESH_WINDOW_MS, maxAttempts: REFRESH_MAX_ATTEMPTS },
-    general: { windowMs: GENERAL_WINDOW_MS, maxAttempts: GENERAL_MAX_ATTEMPTS },
-  };
-  const { windowMs } = configs[bucket] || configs.general;
-  const client = await getRedis();
-
-  if (client) {
-    return recordRedisAttempt(client, identifier, bucket, windowMs);
-  }
-  const key = getMemoryKey(`${bucket}:${identifier}`, windowMs, 0);
-  incrementMemoryBucket(key, windowMs);
-}
-
-// ---- Redis implementations ----
-
-async function checkRedisLimit(client, identifier, bucket, windowMs, maxAttempts) {
-  const key = `ratelimit:${bucket}:${identifier}`;
+  const config = BUCKETS[bucket] || BUCKETS.general;
+  const { windowMs, maxAttempts } = config;
   const now = Date.now();
-  const windowStart = now - windowMs;
+  const key = `${bucket}:${identifier}`;
 
-  try {
-    const pipeline = client.pipeline();
-    // Remove old entries outside the window
-    pipeline.zremrangebyscore(key, 0, windowStart);
-    // Count current entries
-    pipeline.zcard(key);
-    // Add current timestamp for this request
-    pipeline.zadd(key, now, `${now}:${Math.random()}`);
-    // Set expiry
-    pipeline.pexpire(key, windowMs);
-
-    const results = await pipeline.exec();
-    const count = results[1][1];
-
-    if (count >= maxAttempts) {
-      // Roll back the zadd
-      await client.zremrangebyscore(key, now, now);
-      const ttl = await client.pttl(key);
-      return { allowed: false, remaining: 0, resetAt: now + ttl };
+  // In-memory: atomic check-and-increment per bucket
+  if (!useRedis) {
+    memoryCleanup();
+    const entry = memoryBuckets.get(key);
+    if (!entry || now > entry.expiresAt) {
+      // New window
+      memoryBuckets.set(key, { count: 1, expiresAt: now + windowMs });
+      return { allowed: true, remaining: maxAttempts - 1, resetAt: now + windowMs };
     }
+    const newCount = entry.count + 1;
+    if (newCount > maxAttempts) {
+      return { allowed: false, remaining: 0, resetAt: entry.expiresAt };
+    }
+    entry.count = newCount;
+    return { allowed: true, remaining: maxAttempts - newCount, resetAt: entry.expiresAt };
+  }
 
-    return { allowed: true, remaining: maxAttempts - count - 1, resetAt: now + windowMs };
+  // Redis: ZSET sliding window — check and record atomically
+  try {
+    const client = await getRedis();
+    return await redisCheckAndRecord(client, key, now, windowMs, maxAttempts);
   } catch (err) {
-    logger.error({ err }, "Redis rate limit check failed");
+    logger.error({ err }, "Redis rate limit failed, allowing request");
     return { allowed: true, remaining: maxAttempts, resetAt: now + windowMs };
   }
 }
 
-async function recordRedisAttempt(client, identifier, bucket, windowMs) {
-  const key = `ratelimit:${bucket}:${identifier}`;
-  const now = Date.now();
-  try {
-    const pipeline = client.pipeline();
-    pipeline.zadd(key, now, `${now}:${Math.random()}`);
-    pipeline.pexpire(key, windowMs);
-    await pipeline.exec();
-  } catch (err) {
-    logger.error({ err }, "Redis rate limit record failed");
+async function redisCheckAndRecord(client, key, now, windowMs, maxAttempts) {
+  const windowStart = now - windowMs;
+
+  // Atomic: ZREMRANGEBYSCORE + ZCARD + ZADD + PEXPIRE in one pipeline
+  const pipeline = client.pipeline();
+  pipeline.zremrangebyscore(key, 0, windowStart); // trim old entries
+  pipeline.zcard(key);                              // current count
+  pipeline.zadd(key, now, `${now}:${Math.random()}`); // record this request
+  pipeline.pexpire(key, windowMs);
+
+  const results = await pipeline.exec();
+  const count = results[1][1]; // result of zcard
+
+  if (count >= maxAttempts) {
+    // Over limit — remove the entry we just added (roll back)
+    await client.zremrangebyscore(key, now, now);
+    const ttl = await client.pttl(key);
+    return { allowed: false, remaining: 0, resetAt: now + (ttl > 0 ? ttl : windowMs) };
   }
+
+  return { allowed: true, remaining: maxAttempts - count - 1, resetAt: now + windowMs };
 }
 
-// ponytail: no-op close for in-memory mode
 async function close() {
   if (redis) {
     await redis.quit();
@@ -174,4 +126,4 @@ async function close() {
   }
 }
 
-module.exports = { checkRateLimit, recordAttempt, close };
+module.exports = { checkRateLimit, close };

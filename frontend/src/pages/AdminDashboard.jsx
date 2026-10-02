@@ -13,6 +13,7 @@ import {
   FiTrash2,
   FiUsers,
   FiX,
+  FiFileText,
 } from "react-icons/fi";
 import { MdLogout } from "react-icons/md";
 import { fetchWithAuth } from "../api/fetchWithAuth";
@@ -31,6 +32,7 @@ const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
   const [ingestionCandidates, setIngestionCandidates] = useState([]);
   const [ingestionRuns, setIngestionRuns] = useState([]);
+  const [auditLog, setAuditLog] = useState([]);
   const [selectedCandidateIds, setSelectedCandidateIds] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -163,6 +165,20 @@ const AdminDashboard = () => {
           setSelectedCandidateIds([]);
         } catch (error) {
           console.error("Error fetching ingestion review data:", error);
+          setError(error.message);
+        } finally {
+          setLoading(false);
+        }
+      } else if (selectedNav === "audit") {
+        setLoading(true);
+        setError(null);
+        try {
+          const response = await fetchWithAuth("/admin/audit-log?limit=50");
+          if (!response.ok) throw new Error("Failed to fetch audit log");
+          const data = await response.json();
+          setAuditLog(data.entries || []);
+        } catch (error) {
+          console.error("Error fetching audit log:", error);
           setError(error.message);
         } finally {
           setLoading(false);
@@ -410,6 +426,13 @@ const AdminDashboard = () => {
             <span>Imports</span>
           </div>
           {/* Remove Settings nav item */}
+          <div
+            className={`admin-nav-item ${selectedNav === "audit" ? "active" : ""}`}
+            onClick={() => setSelectedNav("audit")}
+          >
+            <FiFileText className="admin-nav-icon" />
+            <span>Audit Log</span>
+          </div>
         </nav>
       </div>
 
@@ -779,6 +802,66 @@ const AdminDashboard = () => {
                     </tbody>
                   </table>
                 </section>
+              </div>
+            )}
+
+            {/* Audit Log View */}
+            {selectedNav === "audit" && (
+              <div className="admin-audit-view">
+                <div className="admin-table-header">
+                  <div>
+                    <p className="admin-table-kicker">Security & compliance</p>
+                    <h2>Admin Audit Log</h2>
+                  </div>
+                </div>
+
+                {loading ? (
+                  <div className="admin-loading">Loading audit entries…</div>
+                ) : error ? (
+                  <div className="admin-error">{error}</div>
+                ) : auditLog.length === 0 ? (
+                  <div className="admin-empty">No audit entries yet.</div>
+                ) : (
+                  <table className="admin-table">
+                    <thead>
+                      <tr>
+                        <th>When</th>
+                        <th>Actor</th>
+                        <th>Action</th>
+                        <th>Resource</th>
+                        <th>IP Address</th>
+                        <th>Details</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {auditLog.map((entry) => (
+                        <tr key={entry.id}>
+                          <td className="audit-time">
+                            {new Date(entry.created_at).toLocaleString()}
+                          </td>
+                          <td className="audit-actor">{entry.actor_username}</td>
+                          <td>
+                            <span className="audit-action-badge">{entry.action}</span>
+                          </td>
+                          <td>
+                            {entry.resource_type && (
+                              <span className="audit-resource">
+                                {entry.resource_type}
+                                {entry.resource_id ? ` / ${entry.resource_id}` : ""}
+                              </span>
+                            )}
+                          </td>
+                          <td className="audit-ip">{entry.ip_address || "—"}</td>
+                          <td className="audit-details">
+                            {entry.details && Object.keys(entry.details).length > 0
+                              ? JSON.stringify(entry.details)
+                              : "—"}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
               </div>
             )}
             {/* Remove Settings View */}

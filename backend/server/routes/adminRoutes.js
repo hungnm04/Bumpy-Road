@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const adminController = require("../controllers/adminController");
 const auditLog = require("../services/auditLog");
+const logger = require("../utils/logger");
 
 // Remove debug middleware
 
@@ -19,6 +20,60 @@ router.get("/audit-log", async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Failed to fetch audit log" });
   }
+});
+
+// Async job triggers — return immediately, work runs in background
+router.post("/jobs/ingest", async (req, res) => {
+  const { jobQueue } = require("../services/jobQueue");
+  const { discoverDestinations, refreshExistingDestinations } = require("../ingestion/wikidata");
+  const { getCommonsMedia } = require("../ingestion/wikimedia");
+  const catalogRepo = require("../ingestion/catalogRepository");
+
+  try {
+    // Enqueue as PENDING — worker will claim it
+    const jobId = await jobQueue.enqueue("wikidata", { mode: req.body.mode || "full" });
+
+    // Fire-and-forget — response goes back immediately
+    jobQueue.runBackground(jobId, async (claimedId) => {
+      const counts = { fetched: 0, staged: 0, updated: 0 };
+      let errorCount = 0;
+      try {
+        // claimJob uses FOR UPDATE SKIP LOCKED — safe for concurrent workers
+        const claimed = await jobQueue.claimJob("wikidata");
+        if (!claimed) {
+          logger.info({ jobId: claimedId }, "No pending ingestion job found — skipping");
+          return;
+        }
+
+        const destinations = await discoverDestinations(100, 20);
+        for (const dest of destinations) {
+          try {
+            const media = dest.coordinate ? await getCommonsMedia(dest.coordinate.lat, dest.coordinate.lon) : [];
+            const { upserted, updated } = await catalogRepo.upsertDestination(dest, media);
+            if (upserted) counts.fetched++;
+            if (updated) counts.updated++;
+          } catch (e) {
+            errorCount++;
+          }
+        }
+        await jobQueue.completeJob(claimed.id, "completed", counts, errorCount);
+      } catch (err) {
+        logger.error({ err, jobId: claimedId }, "Ingestion job failed");
+        await jobQueue.completeJob(claimedId, "failed", counts, errorCount, { error: err.message });
+      }
+    });
+
+    res.status(202).json({ jobId, status: "accepted", message: "Ingestion job started" });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to start ingestion: " + error.message });
+  }
+});
+
+router.get("/jobs/:id", async (req, res) => {
+  const { jobQueue } = require("../services/jobQueue");
+  const job = await jobQueue.getJobStatus(Number(req.params.id));
+  if (!job) return res.status(404).json({ message: "Job not found" });
+  res.json(job);
 });
 
 // Mountains endpoints

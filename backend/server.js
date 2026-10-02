@@ -9,6 +9,7 @@ const pool = require("./server/config/db");
 const setupStorage = require("./server/config/setupStorage");
 const setupDefaultAvatar = require("./server/config/setupDefaultAvatar");
 const logger = require("./server/utils/logger");
+const jobQueue = require("./server/services/jobQueue");
 
 // Import controllers
 const userController = require("./server/controllers/userControllers");
@@ -20,7 +21,7 @@ const adminRoutes = require("./server/routes/adminRoutes");
 const blogRoutes = require("./server/routes/blogRoutes");
 
 // Import rate limiter
-const { checkRateLimit, recordAttempt } = require("./server/services/rateLimiter");
+const { checkRateLimit } = require("./server/services/rateLimiter");
 
 // Import middlewares
 const { authenticateJWT, requireRole, requireEnvSecret, checkOwnership } = require("./server/middlewares/auth");
@@ -63,6 +64,11 @@ if (isProduction) {
 setupStorage();
 setupDefaultAvatar().catch((error) => {
   logger.error({ err: error }, "Default avatar setup failed");
+});
+
+// Clean up any jobs left in RUNNING state by a crashed previous process
+jobQueue.cleanupStaleJobs(30).catch((err) => {
+  logger.warn({ err }, "Stale job cleanup skipped");
 });
 
 // Custom Helmet CSP - explicit, listing every third-party origin
@@ -214,7 +220,6 @@ const REFRESH_MAX_ATTEMPTS = 50;
 const rateLimitAuth = async (req, res, next) => {
   const ip = req.ip || req.connection.remoteAddress || "unknown";
   const result = await checkRateLimit(ip, "auth");
-  await recordAttempt(ip, "auth");
   res.set("X-RateLimit-Limit", String(AUTH_MAX_ATTEMPTS));
   res.set("X-RateLimit-Remaining", String(result.remaining));
   res.set("X-RateLimit-Reset", String(Math.floor(result.resetAt / 1000)));
@@ -231,7 +236,6 @@ const rateLimitAuth = async (req, res, next) => {
 const rateLimitRefresh = async (req, res, next) => {
   const ip = req.ip || req.connection.remoteAddress || "unknown";
   const result = await checkRateLimit(ip, "refresh");
-  await recordAttempt(ip, "refresh");
   res.set("X-RateLimit-Limit", String(REFRESH_MAX_ATTEMPTS));
   res.set("X-RateLimit-Remaining", String(result.remaining));
   res.set("X-RateLimit-Reset", String(Math.floor(result.resetAt / 1000)));
